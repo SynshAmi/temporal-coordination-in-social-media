@@ -170,7 +170,7 @@ export default function App() {
         {/* Bottom Provenance & Copyright Strip, visually quieter and fully separated */}
         <div className="border-t border-[#d8d3c5] bg-[#ede8dc]">
           <div className="site-container py-5 flex flex-col md:flex-row md:items-center justify-between gap-2 text-[11px] font-mono text-[#6b6862]">
-            <div>All values generated from {researchData.metadata.source_run} &bull; LEN-Small archive, {researchData.paper.dataset.n_events} events</div>
+            <div>All values generated from the analysis pipeline &bull; LEN-Small archive ({researchData.paper.dataset.n_events} events)</div>
             <div>Suryansh Singh &bull; Devansh Kewlani &bull; Manipal Institute of Technology, Bengaluru</div>
           </div>
         </div>
