@@ -163,10 +163,13 @@ def main(repro_cfg, ref_cfg):
                 continue  # superseded-run views, a hand-exported table, and the run log
             rel = f.relative_to(ref_dir)
             rows.append({"reference": f.as_posix(), "repro": (rep_dir / rel).as_posix(), **compare(f, rep_dir / rel, roots)})
-    fig_ref = Path("reports/paper/figures")
+    fig_ref = Path(A["output"].get("paper_figures_dir", "paper/figures"))
     fig_rep = Path(B["output"]["paper_figures_dir"])
-    for f in sorted(fig_ref.glob("*.png")):
+    for f in sorted(fig_ref.glob("*.pdf")):
         rows.append({"reference": f.as_posix(), "repro": (fig_rep / f.name).as_posix(), **compare(f, fig_rep / f.name, roots)})
+    tex_ref = Path(A["output"].get("paper_results_tex", "paper/generated/results.tex"))
+    tex_rep = Path(B["output"]["paper_results_tex"])
+    rows.append({"reference": tex_ref.as_posix(), "repro": tex_rep.as_posix(), **compare(tex_ref, tex_rep, roots)})
     pay_ref = Path(A["output"].get("frontend_payload", "frontend/public/data/research_data.json"))
     pay_rep = Path(B["output"]["frontend_payload"])
     rows.append({"reference": pay_ref.as_posix(), "repro": pay_rep.as_posix(), **compare(pay_ref, pay_rep, roots)})

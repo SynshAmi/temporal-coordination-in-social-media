@@ -7,6 +7,15 @@ const CORE_IDS = [
   "S2_K250_FF_struct6", "S2_K250_FK_struct6", "S2_K250_KK_struct6", "S2_K250_KK_NK", "S2_K250_KK_combined",
 ];
 
+// Readable row label from the internal row ID, e.g. S1_LogReg_M4d -> "LR · M4 + density",
+// S2_K250_KK_NK -> "KK · N_K only"
+const S2_SETS = { NK: "N_K only", struct7: "structure + density", struct6: "structure", NK_struct6: "N_K + structure", content: "content", combined: "N_K + structure + content" };
+function rowLabel(id) {
+  const p = id.split("_");
+  if (p[0] === "S1") return `${p[1] === "LogReg" ? "LR" : p[1]} · ${p[2] === "M4d" ? "M4 + density" : p[2]}`;
+  return `${p[2]} · ${S2_SETS[p.slice(3).join("_")] || p.slice(3).join(" ")}`;
+}
+
 export default function ResultsTable({ experiments }) {
   const [searchTerm, setSearchTerm] = useState("");
   const [categoryFilter, setCategoryFilter] = useState("all");
@@ -129,7 +138,7 @@ export default function ResultsTable({ experiments }) {
         <table className="ieee-table">
           <thead>
             <tr>
-              <SortHead field="experiment_id">Row</SortHead>
+              <SortHead field="experiment_id">Model / Condition</SortHead>
               <th>Category</th>
               <th>Model</th>
               <SortHead field="balanced_accuracy">Bal. Acc [interval]</SortHead>
@@ -145,7 +154,7 @@ export default function ResultsTable({ experiments }) {
               <tbody key={exp.experiment_id}>
                 <tr className={`${rowTone} [&>td]:border-b-0 [&>td]:pb-2`}>
                   <td className="font-mono text-xs font-semibold text-[#15263a]">
-                    <div>{exp.experiment_id}</div>
+                    <div>{rowLabel(exp.experiment_id)}</div>
                     <div className="text-[11px] font-sans font-normal text-[#5e5a52]">{exp.feature_group}</div>
                   </td>
                   <td className="text-xs text-[#4a4740] font-sans whitespace-nowrap">{exp.category}</td>

@@ -6,9 +6,9 @@ corrected run's verified outputs (outputs/run_v2/paper_results.json) and the
 canonical manifest. No metric is typed in by hand.
 
 Run from the project root:
-    python reports/paper/make_paper_figures.py [--config CONFIG] [--out-dir DIR]
+    python paper/make_paper_figures.py [--config CONFIG] [--out-dir DIR]
 The config selects the run (output.run_dir) and data directories; the default
-output directory is reports/paper/figures, which the paper builder reads.
+output directory is paper/figures (vector PDFs read by paper/main.tex).
 """
 
 import argparse
@@ -23,7 +23,7 @@ import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 
-ROOT = Path(__file__).resolve().parents[2]
+ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "src"))
 from study2_observation import expected_endpoints  # noqa: E402
 
@@ -43,13 +43,14 @@ CAMP, COMP, INK, MUTE, ACC = "#8f2626", "#23527c", "#15263a", "#9a948a", "#c27d3
 plt.rcParams.update({
     "font.family": "serif", "font.serif": ["Times New Roman", "Times", "DejaVu Serif"],
     "font.size": 8, "axes.titlesize": 8, "axes.labelsize": 8, "xtick.labelsize": 7, "ytick.labelsize": 7,
-    "legend.fontsize": 7, "axes.spines.top": False, "axes.spines.right": False, "axes.linewidth": 0.6, "savefig.dpi": 600,
+    "legend.fontsize": 7, "axes.spines.top": False, "axes.spines.right": False, "axes.linewidth": 0.6, "savefig.dpi": 600, "pdf.fonttype": 42,
 })
 W = 3.5
 
 
 def save(fig, name):
-    fig.savefig(OUT / f"{name}.png", bbox_inches="tight", pad_inches=0.02)
+    # Vector PDF for the paper; no creation date, so rebuilds are byte-stable
+    fig.savefig(OUT / f"{name}.pdf", bbox_inches="tight", pad_inches=0.02, metadata={"CreationDate": None})
     plt.close(fig)
 
 

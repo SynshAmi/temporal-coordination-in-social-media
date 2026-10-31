@@ -11,22 +11,20 @@ import pytest
 import pandas as pd
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from _paths import MANIFESTS_DIR, PROCESSED_DIR  # noqa: E402
+from _paths import MANIFESTS_DIR, require  # noqa: E402
 
 
 @pytest.fixture(scope="module")
 def manifest():
     path = MANIFESTS_DIR / "manifest.parquet"
-    if not path.exists():
-        pytest.skip("manifest.parquet not found - run src/ingest_len.py first")
+    require(path, "Event manifest")
     return pd.read_parquet(path)
 
 
 @pytest.fixture(scope="module")
 def validation_report():
     path = MANIFESTS_DIR / "validation_report.json"
-    if not path.exists():
-        pytest.skip("validation_report.json not found - run src/validate_len.py first")
+    require(path, "Validation report")
     with open(path, "r", encoding="utf-8") as f:
         return json.load(f)
 

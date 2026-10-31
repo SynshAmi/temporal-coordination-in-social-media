@@ -1,4 +1,4 @@
-// Number formatting shared by every page; mirrors reports/paper/paper_content.js
+// Number formatting shared by every page; mirrors the paper's LaTeX macros (src/export_latex_results.py)
 // so the website and the paper print identical values.
 const minus = (t) => t.replace(/^-/, "−");
 

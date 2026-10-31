@@ -68,13 +68,13 @@ export default function App() {
         <div className="bg-white border border-[#8f2626] p-6 max-w-md space-y-3">
           <div className="flex items-center gap-2 text-[#8f2626] font-bold">
             <AlertCircle size={16} />
-            <span>Error Loading Verified Data</span>
+            <span>Results Could Not Be Loaded</span>
           </div>
           <p className="text-[#3c3a37] text-xs">
-            {error || "Could not parse research_data.json."}
+            {error || "The results data could not be read."}
           </p>
           <div className="text-[11px] text-[#757065] pt-2 border-t border-[#e5e0d4]">
-            Run <code className="bg-[#f2eee5] px-1 py-0.5">python src/export_frontend_data.py</code> to regenerate the payload.
+            Please reload the page. If the problem persists, the paper PDF is available from the repository.
           </div>
         </div>
       </div>
@@ -143,7 +143,7 @@ export default function App() {
               </div>
               <ul className="divide-y divide-[#e2dcd0]">
                 {[
-                  { href: "/LEN_Small_Measurement_Validity_Audit_Research_Paper.pdf", file: "LEN_Small_Measurement_Validity_Audit_Research_Paper.pdf", label: "Research Paper — PDF", meta: "Six-page research paper · PDF" },
+                  { href: "/LEN_Small_Predictive_Information_Beyond_Scale.pdf", file: "LEN_Small_Predictive_Information_Beyond_Scale.pdf", label: "Research Paper — PDF", meta: "IEEE conference paper · PDF" },
                   { href: "/data/research_data.json", file: "research_data.json", label: "Results Data", meta: "JSON · every value shown on this site" },
                 ].map((d) => (
                   <li key={d.href}>

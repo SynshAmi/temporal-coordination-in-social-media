@@ -16,12 +16,12 @@ Executes:
    9. Study 2: single-view observation (src/study2_observation.py)
   10. Independent verification (src/verify_studies.py)
   11. Paper results file (src/export_paper_results.py)
-  12. Paper figures (reports/paper/make_paper_figures.py)
+  12. Paper inputs: figures (paper/make_paper_figures.py) and LaTeX result macros
+      (src/export_latex_results.py)
   13. Website payload (src/export_frontend_data.py)
   14. Test Suite (pytest tests/ -v)
 
-The paper documents themselves are built separately (reports/paper: node build_paper.js,
-then the Word scripts; see README).
+The paper PDF itself is compiled separately with LaTeX: python paper/build.py (see README).
 """
 
 import os
@@ -38,15 +38,20 @@ sys.stdout.reconfigure(encoding="utf-8")
 sys.stderr.reconfigure(encoding="utf-8")
 
 
-def run_stage(command: list[str], stage_name: str, env: dict | None = None) -> float:
+def run_stage(commands: list, stage_name: str, env: dict | None = None) -> float:
+    """Runs one command, or a list of commands in order, as a single stage."""
+    if isinstance(commands[0], str):
+        commands = [commands]
     print("\n" + "=" * 70)
     print(f"STAGE: {stage_name}")
-    print(f"Command: {' '.join(command)}")
+    for command in commands:
+        print(f"Command: {' '.join(command)}")
     print("=" * 70 + "\n", flush=True)
     t0 = time.time()
-    res = subprocess.run(command, env=env)
-    if res.returncode != 0:
-        raise RuntimeError(f"Stage '{stage_name}' failed with return code {res.returncode}")
+    for command in commands:
+        res = subprocess.run(command, env=env)
+        if res.returncode != 0:
+            raise RuntimeError(f"Stage '{stage_name}' failed with return code {res.returncode}")
     return time.time() - t0
 
 
@@ -60,7 +65,8 @@ def main():
     out_cfg = yaml.safe_load(open(cfg_path, encoding="utf-8"))["output"]
     run_dir = Path(out_cfg["run_dir"])
     c = ["--config", cfg_path]
-    test_env = {**os.environ, "LEN_CONFIG": cfg_path}  # tests read paths from the same config
+    # tests read paths from the same config; inside the pipeline, missing generated data is a failure, not a skip
+    test_env = {**os.environ, "LEN_CONFIG": cfg_path, "LEN_REQUIRE_DATA": "1"}
 
     stages = [
         ("1. Ingest Archive", [py, "src/ingest_len.py", *c]),
@@ -75,8 +81,10 @@ def main():
         ("9. Study 2: Single-View Observation", [py, "src/study2_observation.py", *c]),
         ("10. Independent Verification", [py, "src/verify_studies.py", *c]),
         ("11. Export Paper Results", [py, "src/export_paper_results.py", *c]),
-        ("12. Paper Figures", [py, "reports/paper/make_paper_figures.py", *c,
-                               "--out-dir", out_cfg.get("paper_figures_dir", "reports/paper/figures")]),
+        ("12. Paper Inputs (Figures & LaTeX Result Macros)", [
+            [py, "paper/make_paper_figures.py", *c, "--out-dir", out_cfg.get("paper_figures_dir", "paper/figures")],
+            [py, "src/export_latex_results.py", *c],
+        ]),
         ("13. Export Website Payload", [py, "src/export_frontend_data.py", *c]),
     ]
     if not args.skip_tests:

@@ -21,14 +21,16 @@ Every result value on the site is read at runtime from `public/data/research_dat
 # from the project root
 python src/export_paper_results.py      # outputs/run_v2/paper_results.json (also used by the paper)
 python src/export_frontend_data.py      # frontend/public/data/research_data.json
-node reports/paper/export_references.js # frontend/src/lib/references.json (the paper's reference list)
+python paper/export_references.py      # frontend/src/lib/references.json (the paper's compiled reference list)
 ```
 
 The payload embeds `paper_results.json` unchanged under `paper` (checked by `tests/test_frontend_payload.py`), so the site and the paper cannot disagree. `tests/test_paper_website_parity.py` also checks:
 - the served PDF is the current paper;
 - the site's title and reference list match the paper's;
 - no result values are typed by hand into page source;
-- no superseded headline values appear on the site. Page text builds its numbers from that object. `src/lib/fmt.js` formats them exactly as the paper does.
+- no superseded headline values appear on the site.
+
+Page text builds its numbers from that object, and `src/lib/fmt.js` formats them exactly as the paper's LaTeX macros do.
 
 ## Pages
 
@@ -40,5 +42,6 @@ The payload embeds `paper_results.json` unchanged under `paper` (checked by `tes
 
 ## Downloads served from `public/`
 
-- `LEN_Small_Measurement_Validity_Audit_Research_Paper.pdf`: the research paper. Not edited here; `npm run dev` and `npm run build` copy it from `../reports/` first (`sync-paper` script).
+- `LEN_Small_Predictive_Information_Beyond_Scale.pdf`: the research paper. Not edited here; `npm run dev` and `npm run build` copy it from `../paper/` first (`sync-paper` script).
 - `data/research_data.json`: the exported results payload.
+- `_redirects`: Cloudflare Pages rule that permanently redirects the paper's previous file name to the current PDF.

@@ -8,7 +8,7 @@ accuracy reported here (0.923) is 0.894 in the corrected run.
 
 | File | What it was |
 |---|---|
-| `methodology_audit.md`, `LEN-Small_Methodology_Audit.{md,pdf}` | First audit report and its website downloads |
+| `methodology_audit.md`, `LEN-Small_Methodology_Audit.pdf` | First audit report and its PDF website download (the identical Markdown download copy was removed) |
 | `generate_audit_pdf.py` | Script that rendered that PDF |
 | `checkpoint_report.md` | `run_final` checkpoint report |
 | `test_audit_frontend_integration.py` | Website test that pinned `run_final` values |

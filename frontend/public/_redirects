@@ -1,0 +1,2 @@
+# Cloudflare Pages redirects. The paper PDF was renamed when the paper moved to LaTeX.
+/LEN_Small_Measurement_Validity_Audit_Research_Paper.pdf /LEN_Small_Predictive_Information_Beyond_Scale.pdf 301

@@ -11,15 +11,13 @@ import numpy as np
 import pandas as pd
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from _paths import MANIFESTS_DIR, VIEWS_PATH  # noqa: E402
+from _paths import MANIFESTS_DIR, VIEWS_PATH, require  # noqa: E402
 
 
 @pytest.fixture(scope="module")
 def views_df():
-    path = VIEWS_PATH
-    if not path.exists():
-        pytest.skip(f"{path.name} not found - run src/sample_views.py first")
-    return pd.read_parquet(path)
+    require(VIEWS_PATH, "Sampled edge views")
+    return pd.read_parquet(VIEWS_PATH)
 
 
 @pytest.fixture(scope="module")

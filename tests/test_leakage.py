@@ -13,23 +13,20 @@ sys.path.insert(0, str(Path(__file__).parent.parent / "src"))
 from splits import make_event_folds, assign_view_folds
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from _paths import MANIFESTS_DIR, VIEWS_PATH  # noqa: E402
+from _paths import MANIFESTS_DIR, VIEWS_PATH, require  # noqa: E402
 
 
 @pytest.fixture(scope="module")
 def manifest():
     path = MANIFESTS_DIR / "manifest.parquet"
-    if not path.exists():
-        pytest.skip("manifest.parquet not found")
+    require(path, "Event manifest")
     return pd.read_parquet(path)
 
 
 @pytest.fixture(scope="module")
 def views_df():
-    path = VIEWS_PATH
-    if not path.exists():
-        pytest.skip(f"{path.name} not found")
-    return pd.read_parquet(path)
+    require(VIEWS_PATH, "Sampled edge views")
+    return pd.read_parquet(VIEWS_PATH)
 
 
 def test_views_stay_in_same_fold(manifest, views_df):

@@ -5,30 +5,26 @@ import NK from "../components/NK";
 import REFERENCES from "../lib/references.json";
 import { f2, f3, int, sg, ci, ciu, con } from "../lib/fmt";
 
+const REPO_URL = "https://github.com/SynshAmi/temporal-coordination-in-social-media";
+
 const commands = [
   {
     id: "c1",
     title: "Run the full pipeline",
-    cmd: "python run_pipeline.py --config configs/v2_coreness_fix.yaml",
-    note: "Ingestion, deduplication, matching, edge sampling, cross-validation, both studies, independent verification, result exports and tests. Writes outputs/run_v2.",
+    cmd: "python run_pipeline.py",
+    note: "From the raw archive to every result: ingestion, matching, edge sampling, both studies, independent verification, result exports and tests.",
   },
   {
     id: "c2",
-    title: "Re-run the independent verification",
-    cmd: "python src/verify_studies.py --config configs/v2_coreness_fix.yaml",
-    note: "Recomputes every reported comparison from saved predictions, including label-permutation leakage tests, the null-model audit and the endpoint-count Monte Carlo check.",
+    title: "Run the test suite",
+    cmd: "python -m pytest tests/ -v",
+    note: "Ingestion and deduplication, fold leakage, sampling determinism, the coreness convention, degree preservation under rewiring, and agreement between the paper and this website.",
   },
   {
     id: "c3",
-    title: "Run the test suite",
-    cmd: "python -m pytest tests/ -v",
-    note: "Ingestion and deduplication, fold leakage, sampling determinism, the coreness convention and degree preservation under rewiring.",
-  },
-  {
-    id: "c4",
-    title: "Rebuild the website payload",
-    cmd: "python src/export_paper_results.py && python src/export_frontend_data.py",
-    note: "Both the paper and this website read outputs/run_v2/paper_results.json; nothing is typed in by hand.",
+    title: "Build the paper",
+    cmd: "python paper/build.py",
+    note: "Compiles the IEEE LaTeX paper (requires TeX Live or MiKTeX). Every number in it is generated from the pipeline's results.",
   },
 ];
 
@@ -317,25 +313,32 @@ export default function PageMethods({ data }) {
 
       {/* 5. Reproducibility and correction history */}
       <section className={panel}>
-        <MethodsSectionHead icon={History}>5. Reproducibility & Correction History</MethodsSectionHead>
+        <MethodsSectionHead icon={History}>5. Reproducibility & Methodological Corrections</MethodsSectionHead>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 lg:gap-6">
-          <ProtocolBlock title="Single Source of Results">
+          <ProtocolBlock title="Code and Data Availability">
             <p>
-              All parameters are read from one configuration file, and every number in the paper and on this website comes from one results file produced by the pipeline (<code className="font-mono text-[13px]">{P.source_run}/paper_results.json</code>). An independent verification script recomputes all reported comparisons from the saved predictions ({P.verification.n_pass}/{P.verification.n_checks} checks pass), including tests that permuting held-out labels does not change tuned hyperparameters.
+              Source code, configuration, tests, derived event-level outputs and reproduction instructions are available on{" "}
+              <a href={REPO_URL} target="_blank" rel="noopener noreferrer" className="underline decoration-[#b5ad9e] underline-offset-4 text-[#15263a] hover:text-[#23527c]">GitHub</a>. The code is released under the MIT licence, which does not extend to the paper, its figures or any data. One command runs the pipeline from the raw archive to every number, table and figure in the paper and on this website. An independent verification script recomputes all reported comparisons from the saved predictions ({P.verification.n_pass} of {P.verification.n_checks} checks pass), including checks that permuting held-out labels leaves the tuned hyperparameters unchanged.
             </p>
             <p>
-              A complete rerun from the raw archive into a separate directory reproduced every reported value on the same machine; reproduction on other machines has not been tested.
+              A complete rerun from the raw archive reproduced every reported value on the original machine; reproduction on other hardware has not been tested.
             </p>
             <p>
-              The raw archive is not redistributed; it is available from the LEN project. The repository's derived event-level files (identifiers, counts, features, predictions) are the authors' own outputs; the LEN release states no licence or redistribution terms that we could identify, and these files are not endorsed by the LEN authors.
+              The LEN-Small data are not redistributed and must be obtained from the LEN project, whose release states no licence or redistribution terms that we could identify. The repository's derived files (event names, counts, file digests, features and predictions) are provided for reproducibility only and are not endorsed by the LEN authors.
             </p>
           </ProtocolBlock>
-          <ProtocolBlock title="Corrections to an Earlier Version">
+          <ProtocolBlock title="Methodological Corrections">
             <p>
-              Two defects in an earlier version of this analysis were found and corrected. First, every graph contains self-loops, which the core-number routine rejects; the earlier code silently set both coreness features to zero. Second, an earlier frozen-model evaluation assigned sampled events to fold models using a budget-specific split, so some events were scored by a model trained on their own full graph.
+              Validation of an earlier version of this analysis identified two errors, both corrected before the reported results were produced.
             </p>
             <p>
-              Both are fixed and covered by regression tests, the earlier outputs are archived unchanged, and all results shown here come from the corrected run. For example, logistic regression on all twelve features in the base experiment grid reported BA {f3(P.superseded_run_final.A_combined_logreg_ba)} in the earlier run and reaches {f3(P.run_v2_metrics.A_combined_logreg.balanced_accuracy)} after correction; <strong>{f3(P.superseded_run_final.A_combined_logreg_ba)} is a superseded value, not a current result.</strong>
+              <strong>Coreness and self-loops.</strong> Every graph contains self-loops, which the core-number routine does not accept. The earlier implementation set both coreness features to zero instead of failing, so its arrangement features carried no coreness information. Core numbers are now computed on the undirected projection without self-loops. This affected every model that uses arrangement features.
+            </p>
+            <p>
+              <strong>Fold assignment for frozen models.</strong> Sampled events were assigned to frozen fold models with a split specific to each edge budget, so some were scored by a model whose training data included their own full graph, which inflates frozen-transfer accuracy. Each sampled event is now scored only by the full-cohort fold model that held it out. This affected only the frozen-transfer condition.
+            </p>
+            <p>
+              Both corrections are covered by regression tests, and every result shown here comes from the corrected pipeline. The superseded outputs are retained in the repository, with their values, for reference.
             </p>
           </ProtocolBlock>
         </div>
@@ -343,7 +346,11 @@ export default function PageMethods({ data }) {
 
       {/* 6. Commands */}
       <section className={panel}>
-        <MethodsSectionHead icon={Terminal}>6. Reproduction Commands</MethodsSectionHead>
+        <MethodsSectionHead icon={Terminal}>6. Reproducing the Results</MethodsSectionHead>
+        <p className="-mt-4 mb-8 text-sm text-[#4a4740] leading-relaxed max-w-[80ch]">
+          The raw LEN-Small archive must first be obtained from the LEN project and checked against its published SHA-256 digest. Setup, data provenance and the full workflow are documented in the{" "}
+          <a href={REPO_URL} target="_blank" rel="noopener noreferrer" className="underline decoration-[#b5ad9e] underline-offset-4 text-[#15263a] hover:text-[#23527c]">repository README</a>.
+        </p>
         <ol className="space-y-8">
           {commands.map((c, i) => (
             <li key={c.id} className="grid grid-cols-1 lg:grid-cols-12 gap-x-10 gap-y-4 items-start">

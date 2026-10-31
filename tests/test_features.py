@@ -16,7 +16,7 @@ from features import core_numbers_undirected, edges_to_digraph, extract_structur
 from train import frozen_model_test_events  # noqa: E402
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from _paths import PROCESSED_DIR as PROCESSED  # noqa: E402
+from _paths import PROCESSED_DIR as PROCESSED, require  # noqa: E402
 
 
 def test_coreness_ignores_self_loops():
@@ -46,8 +46,8 @@ def test_core_number_errors_are_not_swallowed(monkeypatch):
         extract_structural_features(nx.DiGraph([(0, 1)]))
 
 
-@pytest.mark.skipif(not (PROCESSED / "edges.parquet").exists(), reason="processed edges not available")
 def test_real_graphs_have_varying_coreness():
+    require(PROCESSED / "edges.parquet", "Processed edge table")
     edges = pd.read_parquet(PROCESSED / "edges.parquet")
     sample = edges["event_id"].drop_duplicates().sort_values().head(8)
     vals = []

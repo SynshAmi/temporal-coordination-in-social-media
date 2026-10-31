@@ -4,6 +4,8 @@ claim_evidence_audit.py
 Builds reports/audit/claim_evidence.md: every headline claim of the paper and
 website, the value(s) behind it, the key in <run_dir>/paper_results.json, the
 source artifact, and whether the value appears verbatim in the built paper PDF.
+Claims documented only in the repository (the superseded correction-history
+values) are checked against README.md instead.
 
 The website reads the same paper_results.json unchanged (enforced by
 tests/test_frontend_payload.py), so a claim that resolves here is the value the
@@ -16,21 +18,26 @@ import sys
 import json
 import re
 import argparse
+from decimal import Decimal, ROUND_HALF_UP
 from pathlib import Path
 
 import yaml
 
 sys.stdout.reconfigure(encoding="utf-8")
 
-PDF = Path("reports/LEN_Small_Measurement_Validity_Audit_Research_Paper.pdf")
+PDF = Path("paper/LEN_Small_Predictive_Information_Beyond_Scale.pdf")
+README = Path("README.md")
+REPO_ONLY = "(repository only)"
 OUT = Path("reports/audit/claim_evidence.md")
 
 
-# Formatting identical to reports/paper/paper_content.js
-def f3(v): return f"{v:.3f}".replace("-", "−")
-def f2(v): return f"{v:.2f}".replace("-", "−")
-def pct(v): return f"{100 * v:.1f}"
-def sg(v): return "0.000" if abs(v) < 0.0005 else ("+" if v > 0 else "−") + f"{abs(v):.3f}"
+# Formatting identical to the paper macros (src/export_latex_results.py) and the website (fmt.js)
+# Rounding matches JavaScript's toFixed (halves away from zero), as used by the website and the paper macros
+def fixed(v, d): return str(Decimal(v).quantize(Decimal(1).scaleb(-d), rounding=ROUND_HALF_UP))
+def f3(v): return fixed(v, 3).replace("-", "−")
+def f2(v): return fixed(v, 2).replace("-", "−")
+def pct(v): return fixed(100 * v, 1)
+def sg(v): return "0.000" if abs(v) < 0.0005 else ("+" if v > 0 else "−") + fixed(abs(v), 3)
 def ci(a): return f"[{sg(a[0])}, {sg(a[1])}]"
 def ciu(a): return f"[{f3(a[0])}, {f3(a[1])}]"
 
@@ -106,7 +113,7 @@ def claims(R):
         ("Exploratory matching: 16 pairs, |SMD| 2.24 → 0.10; counts near chance (median 0.531), content above chance (median 0.781)",
          [("matching.primary_pairs", str(g("matching.primary_pairs"))), ("matching.node_only.ba.M0.median", f3(g("matching.node_only.ba.M0.median"))),
           ("matching.node_only.ba.M3.median", f3(g("matching.node_only.ba.M3.median")))],
-         "outputs/run_v2/study1/matching_sensitivity.json", "Paper §IV-C, §V-C, Table V; website Fig. 3"),
+         "outputs/run_v2/study1/matching_sensitivity.json", "Paper §IV-D, §V-C, Table V; website Fig. 3"),
         ("Single views stay predictive through N_K alone (KK BA at K = 250 / 500 / 1000)",
          [(S2R.format(k) + ".KK|NK.single_view_ba_mean", f3(g(S2R.format(k))["KK|NK"]["single_view_ba_mean"])) for k in (250, 500, 1000)],
          "outputs/run_v2/study2/results.json", "Paper §V-D, Table VI, Fig. 3; website Overview RQ2, Fig. 4"),
@@ -132,12 +139,12 @@ def claims(R):
          [("eligibility.2000.campaign_eligible", str(g("eligibility")["2000"]["campaign_eligible"]) + " campaign events")],
          "data/manifests/edge_budget_eligibility.json", "Paper §IV-E; website Fig. 4, Methods §4"),
         ("Independent verification passes every check",
-         [("verification.n_pass / n_checks", f"{g('verification.n_pass')}/{g('verification.n_checks')}")],
-         "outputs/run_v2/verification/verification_report.json", "Paper §VIII; website hero, footer, Methods"),
-        ("Correction history: combined-model BA 0.923 (superseded run) → 0.894 (corrected run)",
+         [("verification.n_pass / n_checks", f"{g('verification.n_pass')} of {g('verification.n_checks')}")],
+         "outputs/run_v2/verification/verification_report.json", "Paper, Code and Data Availability; website hero, footer, Methods"),
+        ("Correction history (repository documentation; deliberately not in the paper): combined-model BA 0.923 (superseded) → 0.894 (corrected)",
          [("superseded_run_final.A_combined_logreg_ba", f3(g("superseded_run_final.A_combined_logreg_ba"))),
           ("run_v2_metrics.A_combined_logreg.balanced_accuracy", f3(g("run_v2_metrics.A_combined_logreg.balanced_accuracy")))],
-         "outputs/run_final/metrics.json (archived); outputs/run_v2/metrics.json", "Paper §VIII; website Methods §5"),
+         "outputs/run_final/metrics.json (archived); outputs/run_v2/metrics.json", f"README correction history; outputs/run_final/README.md {REPO_ONLY}"),
     ]
 
 
@@ -146,11 +153,16 @@ def pdf_text(pdf=PDF):
     return re.sub(r"\s+", " ", " ".join(p.extract_text() for p in PdfReader(pdf).pages))
 
 
-def check(R, text):
-    """[(claim, values, source, shown_in, found_flags)] for every headline claim."""
-    # Word may break a line after "[" or ","; compare with whitespace removed as a fallback
-    squeezed = text.replace(" ", "")
-    return [(claim, vals, src, where, [(v in text) or (v.replace(" ", "") in squeezed) for _, v in vals])
+def check(R, text, readme=None):
+    """[(claim, values, source, shown_in, found_flags)] for every headline claim.
+    Paper claims are searched in the PDF text; repository-only claims in README.md."""
+    readme = readme if readme is not None else README.read_text(encoding="utf-8")
+
+    def found(v, doc):
+        # line breaks may fall after "[" or ","; compare with whitespace removed as a fallback
+        return v in doc or v.replace(" ", "") in doc.replace(" ", "")
+
+    return [(claim, vals, src, where, [found(v, readme if REPO_ONLY in where else text) for _, v in vals])
             for claim, vals, src, where in claims(R)]
 
 
@@ -163,7 +175,7 @@ def main(config_path):
              "Each value is printed exactly as the paper formats it and searched for in the built PDF "
              f"(`{PDF.as_posix()}`). The website embeds the same results file unchanged "
              "(`tests/test_frontend_payload.py`).", "",
-             "| # | Claim | Value(s) as printed | Key in paper_results.json | Source artifact | Shown in | In PDF |",
+             "| # | Claim | Value(s) as printed | Key in paper_results.json | Source artifact | Shown in | Found |",
              "|---|---|---|---|---|---|---|"]
     missing = 0
     for i, (claim, vals, src, where, found) in enumerate(check(R, pdf_text()), 1):
@@ -171,7 +183,7 @@ def main(config_path):
         lines.append(f"| {i} | {claim} | " + "<br>".join(f"`{v}`" for _, v in vals) + " | "
                      + "<br>".join(f"`{k}`" for k, _ in vals) + f" | {src} | {where} | "
                      + ("yes" if all(found) else "**check**: " + ", ".join(v for (_, v), ok in zip(vals, found) if not ok)) + " |")
-    lines += ["", f"{len(lines) - 6} claims; {missing} with a value not found verbatim in the PDF."]
+    lines += ["", f"{len(lines) - 6} claims; {missing} with a value not found verbatim. Claims marked {REPO_ONLY} are checked in README.md, not the paper."]
     OUT.parent.mkdir(parents=True, exist_ok=True)
     OUT.write_text("\n".join(lines) + "\n", encoding="utf-8")
     print(f"{OUT}: {len(lines) - 8} claims, {missing} not found verbatim")

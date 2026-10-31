@@ -16,7 +16,8 @@ The unit of analysis is the event graph. No claims are made about individual acc
 
 | Artifact | Path |
 |---|---|
-| Research paper (Word and PDF) | `reports/LEN_Small_Measurement_Validity_Audit_Research_Paper.{docx,pdf}` |
+| Research paper (PDF) | `paper/LEN_Small_Predictive_Information_Beyond_Scale.pdf` |
+| Paper source (IEEE LaTeX) | `paper/main.tex`, `paper/references.bib`, `paper/figures/`, `paper/generated/results.tex` |
 | All reported numbers (single source for paper and website) | `outputs/run_v2/paper_results.json` |
 | Research website | `frontend/` (reads the same results file) |
 | Claim-to-evidence audit (25 headline claims) | `reports/audit/claim_evidence.md` |
@@ -58,12 +59,12 @@ Richer features improve probability quality (log loss) and ranking (AUC), not cl
 
 ## Correction history
 
-An earlier version of this analysis had two defects:
+Validation of an earlier version of this analysis identified two errors, both corrected before the reported results were produced (paper, Section VIII):
 
-1. Every graph contains self-loops, which the core-number routine rejects; the coreness features were silently set to zero.
-2. The frozen-model evaluation used a budget-specific fold split, so some sampled events were scored by a model trained on their own full graph.
+1. **Coreness and self-loops.** Every graph contains self-loops, which the core-number routine does not accept; the earlier implementation set both coreness features to zero instead of failing. This affected every model using arrangement features.
+2. **Fold assignment for frozen models.** Sampled events were assigned to frozen fold models with a budget-specific split, so some were scored by a model trained on their own full graph. This affected only the frozen-transfer condition.
 
-Both are fixed and covered by regression tests (`tests/test_features.py`). For example, logistic regression on all twelve features in the base experiment grid reported BA 0.923 in the earlier run and reaches 0.894 after correction. **0.923 is a superseded value, not a current result.** Superseded material is labelled as such in `outputs/run_final/`, `configs/final.yaml` and `archive/`.
+Both are covered by regression tests (`tests/test_features.py`). For example, logistic regression on all twelve features in the base experiment grid reported BA 0.923 in the earlier run and reaches 0.894 after correction. **0.923 is a superseded value, not a current result.** Superseded material is labelled as such in `outputs/run_final/`, `configs/final.yaml` and `archive/`.
 
 ## Data
 
@@ -79,8 +80,8 @@ We could not identify an explicit licence or redistribution terms for LEN or LEN
 |---|---|---|
 | Python | 3.12.10 | pipeline, tests |
 | Python packages | pinned in `requirements.txt` | pipeline, tests |
-| Node.js / npm | 22.20.0 / 10.9.3 (Node 18+ should work) | website; paper `.docx` builder |
-| Microsoft Word on Windows | Word 16.0 (build 16.0.20527), Windows 11 | native equations and PDF export of the paper only |
+| Node.js / npm | 22.20.0 / 10.9.3 (Node 18+ should work) | website |
+| LaTeX with `pdflatex` and `bibtex` | MiKTeX 25.12 (TeX Live also works) | compiling the paper only |
 | Disk | about 6 GB for the archive | |
 
 ### Step-by-step
@@ -93,13 +94,16 @@ sha256sum small_encoder_final.tar             # macOS: shasum -a 256; Windows: G
 # 2. Install dependencies
 python -m pip install -r requirements.txt
 cd frontend && npm install && cd ..
-cd reports/paper && npm install && cd ../..
 
-# 3. Run the whole pipeline: 14 stages, about 53 minutes on a 16-thread laptop
+# 3. Run the whole pipeline: 14 stages, about 53 minutes on a 16-thread laptop;
+#    the last stage runs the test suite
 python run_pipeline.py                        # default config: configs/v2_coreness_fix.yaml
 
-# 4. Tests only (also run as the pipeline's last stage)
-python -m pytest tests/ -v
+# 4. Build the paper (needs pdflatex and bibtex), then re-run the tests,
+#    which check the paper and the website against the results
+python paper/build.py
+python paper/export_references.py
+python -m pytest
 
 # 5. Website: development server or production build
 cd frontend
@@ -108,28 +112,36 @@ npm run build && npm run preview              # http://localhost:4173/
 cd ..
 ```
 
-The 14 stages are: ingest, validate, size matching, edge sampling, base grid training, fold-aligned frozen-model evaluation, checkpoint report, Study 1, Study 2, independent verification, paper results, paper figures, website payload and tests. Every stage reads its paths from the config. The pipeline stops at the first failing stage and records per-stage times in `<run_dir>/pipeline_stages.json`.
+The 14 stages are: ingest, validate, size matching, edge sampling, base grid training, fold-aligned frozen-model evaluation, checkpoint report, Study 1, Study 2, independent verification, paper results, paper inputs (figures and LaTeX result macros), website payload and tests. Every stage reads its paths from the config. The pipeline stops at the first failing stage and records per-stage times in `<run_dir>/pipeline_stages.json`.
 
 **Expected outputs:**
 - `data/manifests/*` and `data/processed/*`
 - `outputs/run_v2/`: `metrics.json`, `predictions.parquet`, `study1/`, `study2/`, `verification/verification_report.json` (21/21 checks) and `paper_results.json`
-- `reports/paper/figures/*.png`
+- `paper/figures/*.pdf` and `paper/generated/results.tex`
 - `frontend/public/data/research_data.json`
 
 ### Paper
 
-The paper is built outside the pipeline from `reports/paper/paper_content.js`, which reads `outputs/run_v2/paper_results.json`:
+The paper is IEEE LaTeX (`IEEEtran`, conference). `paper/main.tex` contains no hand-typed results: every number and table body is a macro in `paper/generated/results.tex`, which `src/export_latex_results.py` writes from `outputs/run_v2/paper_results.json` (pipeline stage 12). Compile it with any TeX Live or MiKTeX installation that provides `pdflatex` and `bibtex`:
 
 ```bash
-node reports/paper/build_paper.js             # writes reports/...Research_Paper.docx (equation placeholders)
-# Windows with Microsoft Word only (COM automation): native equations, then PDF
-powershell -ExecutionPolicy Bypass -File reports/paper/finalize_equations.ps1 -Docx reports/LEN_Small_Measurement_Validity_Audit_Research_Paper.docx
-powershell -ExecutionPolicy Bypass -File reports/paper/export_pdf.ps1 -Docx reports/LEN_Small_Measurement_Validity_Audit_Research_Paper.docx -Pdf reports/LEN_Small_Measurement_Validity_Audit_Research_Paper.pdf
-node reports/paper/export_references.js        # website reference list, from the paper source
+python paper/build.py                          # macros, pdflatex + bibtex; -> paper/LEN_Small_Predictive_Information_Beyond_Scale.pdf
+python paper/export_references.py              # website reference list, from the compiled bibliography
 python src/claim_evidence_audit.py             # checks all 25 headline claims against the PDF
 ```
 
-Without Word, the `.docx` still builds, but its three equations remain as `[[EQn]]` placeholders and no PDF is produced. `npm run dev` and `npm run build` copy the current PDF into the website.
+`paper/build.py` fails on undefined references or overfull lines. `npm run dev` and `npm run build` copy the current PDF into the website.
+
+### Verifying without the raw data
+
+A fresh clone can run the test suite without the archive or a TeX installation, because the paper PDF, its compiled bibliography (`paper/main.bbl`) and every result file are committed:
+
+```bash
+python -m pip install -r requirements.txt
+python -m pytest                               # 35 pass; 6 skip, each printing why
+```
+
+These tests check the paper/website parity, the claim-to-evidence values in the PDF, the bibliography, the result macros and the feature and rewiring unit tests. The six skipped tests need `data/processed/`, which is regenerated from the raw archive by `run_pipeline.py`; inside the pipeline a missing file makes them fail rather than skip.
 
 ### Checking a reproduction without overwriting the verified results
 
@@ -143,8 +155,9 @@ Fixed seeds: folds 42; matching 42 (plus 19 further visiting orders); edge sampl
 ## Repository layout
 
 ```
+├── README.md, LICENSE, NOTICE.md   Overview; MIT licence (code only); licensing scope
 ├── run_pipeline.py                 14-stage pipeline
-├── requirements.txt                Python dependencies (pinned)
+├── requirements.txt, pytest.ini    Python dependencies (pinned); test settings
 ├── configs/
 │   ├── v2_coreness_fix.yaml        Authoritative configuration (writes outputs/run_v2)
 │   ├── repro_check.yaml            Same, but writes under repro/ (reproduction check)
@@ -158,11 +171,16 @@ Fixed seeds: folds 42; matching 42 (plus 19 further visiting orders); edge sampl
 ├── outputs/
 │   ├── run_v2/                     Authoritative run
 │   └── run_final/                  SUPERSEDED original run (correction history)
+├── paper/
+│   ├── main.tex, references.bib    IEEE LaTeX source and bibliography
+│   ├── figures/                    Vector figures (generated by make_paper_figures.py)
+│   ├── generated/results.tex       Result macros (generated; never edited by hand)
+│   ├── main.bbl                    Compiled bibliography (generated; kept so tests run without TeX)
+│   ├── build.py                    Compiles the paper
+│   └── LEN_Small_Predictive_Information_Beyond_Scale.pdf   The paper
 ├── reports/
-│   ├── LEN_Small_..._Research_Paper.docx / .pdf
 │   ├── audit/                      Claim-to-evidence audit
-│   ├── reproducibility/            End-to-end reproducibility report and comparison
-│   └── paper/                      Paper source, figures and build scripts
+│   └── reproducibility/            End-to-end reproducibility report and comparison
 ├── frontend/                       Research website (React + Vite); see frontend/README.md
 ├── docs/research/                  Research planning documents
 └── archive/                        SUPERSEDED plan, paper and first audit (provenance only)
@@ -170,10 +188,12 @@ Fixed seeds: folds 42; matching 42 (plus 19 further visiting orders); edge sampl
 
 ## Licence
 
-Source code is released under the MIT licence (`LICENSE`). The licence does not cover:
-- the LEN dataset, which is not included;
-- the derived event-level files, which are provided for research reproducibility only (see Data);
-- the paper's text and figures, which remain © the authors.
+The project's **source code** is released under the MIT licence (`LICENSE`). The licence does not cover:
+- the **paper**, its LaTeX source, figures and the project documentation, which remain © the authors;
+- the **LEN dataset**, which is not included and belongs to its creators;
+- the **LEN-derived event-level files** (`data/manifests/`, `outputs/`, `frontend/public/data/`), which are provided for research reproducibility only.
+
+`NOTICE.md` lists exactly which files fall under each category.
 
 ## Citation
 

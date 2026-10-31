@@ -201,28 +201,37 @@
     "how": "byte-identical"
   },
   {
-    "reference": "reports/paper/figures/fig1_size_distributions.png",
-    "repro": "repro/paper_figures/fig1_size_distributions.png",
+    "reference": "paper/figures/fig1_size_distributions.pdf",
+    "repro": "repro/paper_figures/fig1_size_distributions.pdf",
     "status": "identical",
     "how": "byte-identical"
   },
   {
-    "reference": "reports/paper/figures/fig2_study1_contrasts.png",
-    "repro": "repro/paper_figures/fig2_study1_contrasts.png",
+    "reference": "paper/figures/fig2_study1_contrasts.pdf",
+    "repro": "repro/paper_figures/fig2_study1_contrasts.pdf",
     "status": "identical",
     "how": "byte-identical"
   },
   {
-    "reference": "reports/paper/figures/fig3_study2_single_view.png",
-    "repro": "repro/paper_figures/fig3_study2_single_view.png",
+    "reference": "paper/figures/fig3_study2_single_view.pdf",
+    "repro": "repro/paper_figures/fig3_study2_single_view.pdf",
     "status": "identical",
     "how": "byte-identical"
   },
   {
-    "reference": "reports/paper/figures/fig4_endpoint_mechanism.png",
-    "repro": "repro/paper_figures/fig4_endpoint_mechanism.png",
+    "reference": "paper/figures/fig4_endpoint_mechanism.pdf",
+    "repro": "repro/paper_figures/fig4_endpoint_mechanism.pdf",
     "status": "identical",
     "how": "byte-identical"
+  },
+  {
+    "reference": "paper/generated/results.tex",
+    "repro": "repro/paper/generated/results.tex",
+    "status": "identical",
+    "max_abs": 0.0,
+    "n_num": 0,
+    "other": [],
+    "how": "equal after ignoring run-specific fields"
   },
   {
     "reference": "frontend/public/data/research_data.json",

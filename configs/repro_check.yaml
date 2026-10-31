@@ -1,7 +1,7 @@
 # configs/repro_check.yaml
 # Phase 4 end-to-end reproducibility audit. Identical to configs/v2_coreness_fix.yaml
 # except that every location the pipeline WRITES is moved under repro/, so the
-# verified run (outputs/run_v2, data/, reports/paper/figures, frontend/public) is
+# verified run (outputs/run_v2, data/, paper/figures, paper/generated, frontend/public) is
 # never touched. The raw archive is read from the same place.
 data:
   archive_path: "small_encoder_final.tar"
@@ -67,6 +67,7 @@ output:
   figures_dir: "repro/outputs/run_v2/figures"
   report_path: "repro/outputs/run_v2/checkpoint_report.md"
   paper_figures_dir: "repro/paper_figures"
+  paper_results_tex: "repro/paper/generated/results.tex"
   frontend_payload: "repro/frontend/research_data.json"
 
 # ---------------------------------------------------------------------------

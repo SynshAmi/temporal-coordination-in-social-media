@@ -77,3 +77,21 @@ desktop.ini
 credentials*.json
 secrets*.json
 *token*.txt
+
+# Temporary writing/format reference material (never publish)
+reference/
+
+# LaTeX build by-products (the official PDF is paper/LEN_Small_Predictive_Information_Beyond_Scale.pdf;
+# paper/main.bbl is kept so the reference-list test runs on a fresh clone without TeX)
+paper/*.aux
+paper/*.bbl
+!paper/main.bbl
+paper/*.blg
+paper/*.out
+paper/*.toc
+paper/*.fls
+paper/*.fdb_latexmk
+paper/*.synctex.gz
+paper/main.pdf
+paper/build*.log
+paper/bib.log
