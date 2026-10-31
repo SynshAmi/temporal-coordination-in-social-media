@@ -1,0 +1,353 @@
+@import "tailwindcss";
+
+/* Retro IEEE & Editorial Research Design System
+ *
+ * All custom rules live inside cascade layers. Tailwind v4 emits utilities in
+ * `@layer utilities`; any *unlayered* rule (e.g. a `* { margin:0; padding:0 }`
+ * reset) would outrank every utility regardless of specificity and silently
+ * disable p-*, m-*, mx-auto, space-y-*, heading weights, etc.
+ */
+:root {
+  --bg-paper: #faf8f5;
+  --bg-subtle: #f4efe6;
+  --bg-highlight: #ece6d8;
+  --text-main: #181818;
+  --text-secondary: #2f2d2a;
+  --text-muted: #5e5a52;
+  --text-light: #7c776e;
+
+  --navy-primary: #15263a;
+  --navy-dark: #0d1a29;
+  --navy-soft: #233b54;
+  --campaign-red: #8f2626;
+  --campaign-light: #f7eded;
+  --comparison-blue: #23527c;
+  --comparison-light: #e8f0f7;
+  --neutral-rule: #dcd7ca;
+  --neutral-rule-subtle: #e8e3d5;
+  --neutral-rule-dark: #b5ad9e;
+
+  --font-serif: 'Newsreader', Georgia, 'Times New Roman', serif;
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'JetBrains Mono', 'SFMono-Regular', Consolas, monospace;
+
+  --content-max-width: 1400px;
+  --gutter: clamp(1.25rem, 4vw, 3rem);
+}
+
+@theme {
+  --font-serif: 'Newsreader', Georgia, 'Times New Roman', serif;
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'JetBrains Mono', 'SFMono-Regular', Consolas, monospace;
+}
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background-color: var(--bg-paper);
+    color: var(--text-main);
+    font-family: var(--font-sans);
+    font-size: 16px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: var(--font-serif);
+    font-weight: 400;
+    color: var(--navy-primary);
+    letter-spacing: -0.015em;
+    text-wrap: balance;
+  }
+
+  button, .tab-btn {
+    font-family: var(--font-sans);
+    cursor: pointer;
+    transition: all 0.15s ease-in-out;
+  }
+
+  button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible {
+    outline: 2px solid var(--navy-primary);
+    outline-offset: 2px;
+  }
+}
+
+@layer components {
+  /* Shared page container: one max width and one gutter for header, main, footer */
+  .site-container {
+    width: 100%;
+    max-width: var(--content-max-width);
+    margin-inline: auto;
+    padding-inline: var(--gutter);
+  }
+
+  .serif-heading {
+    font-family: var(--font-serif);
+    color: var(--navy-primary);
+    letter-spacing: -0.015em;
+  }
+
+  .mono {
+    font-family: var(--font-mono);
+    letter-spacing: -0.01em;
+  }
+
+  /* --- Type scale ------------------------------------------------------ */
+  .page-title {
+    font-family: var(--font-serif);
+    font-weight: 400;
+    color: var(--navy-primary);
+    font-size: clamp(1.75rem, 1.2rem + 1.8vw, 2.6rem);
+    line-height: 1.18;
+    letter-spacing: -0.02em;
+    text-wrap: balance;
+  }
+
+  .section-title {
+    font-family: var(--font-serif);
+    font-weight: 400;
+    color: var(--navy-primary);
+    font-size: clamp(1.4rem, 1.15rem + 0.8vw, 1.75rem);
+    line-height: 1.25;
+    letter-spacing: -0.015em;
+  }
+
+  .subsection-title {
+    font-family: var(--font-serif);
+    font-weight: 500;
+    color: var(--navy-primary);
+    font-size: 1.2rem;
+    line-height: 1.35;
+  }
+
+  .section-label {
+    font-family: var(--font-sans);
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--campaign-red);
+    display: inline-block;
+    margin-bottom: 0.5rem;
+  }
+
+  /* Section header row: title (left) + mono meta (right), ruled off from the body */
+  .section-head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 0.5rem 2rem;
+    padding-bottom: 1rem;
+    margin-bottom: 2rem;
+    border-bottom: 1px solid var(--navy-primary);
+  }
+
+  .section-head-meta {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--text-light);
+    padding-bottom: 0.2rem;
+  }
+
+  /* Supporting description under a section or figure heading */
+  .head-desc {
+    font-size: 0.875rem;
+    line-height: 1.6;
+    color: var(--text-muted);
+    max-width: 72ch;
+    margin-top: 0.5rem;
+  }
+
+  /* Heading block inside a bordered panel (figure, flowchart, table) */
+  .panel-head {
+    padding-bottom: 1.25rem;
+    margin-bottom: 1.75rem;
+    border-bottom: 1px solid #e5e0d4;
+  }
+
+  /* KaTeX display equations: ink colour, breathing room, overflow on narrow screens */
+  .tex-display {
+    color: var(--navy-primary);
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding-block: 0.25rem;
+  }
+
+  .tex-display .katex-display {
+    margin: 0;
+  }
+
+  .tex-display .katex-display > .katex {
+    font-size: 1.12em;
+  }
+
+  /* Scrollable chart frame: keeps SVG text legible on narrow screens */
+  .chart-frame {
+    overflow-x: auto;
+    margin-inline: -0.25rem;
+    padding-inline: 0.25rem;
+  }
+
+  .chart-frame > svg {
+    display: block;
+    width: 100%;
+    min-width: 500px;
+    max-width: 780px;
+    height: auto;
+    margin-inline: auto;
+  }
+
+  /* Reading column for comfortable long-form reading (65-72ch) */
+  .reading-prose {
+    max-width: 70ch;
+    line-height: 1.75;
+    font-size: 1rem;
+    color: var(--text-secondary);
+  }
+
+  .reading-prose p {
+    margin-bottom: 1.25rem;
+  }
+
+  .reading-prose p:last-child {
+    margin-bottom: 0;
+  }
+
+  /* Figure caption styling */
+  .fig-caption {
+    font-family: var(--font-sans);
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    line-height: 1.65;
+    margin-top: 1.25rem;
+    padding-top: 1rem;
+    border-top: 1px dashed var(--neutral-rule);
+  }
+
+  .fig-caption strong {
+    color: var(--navy-primary);
+    font-weight: 600;
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+  }
+
+  /* Editorial layout elements */
+  .paper-rule {
+    height: 1px;
+    background-color: var(--neutral-rule-subtle);
+    border: none;
+    margin: 2.5rem 0;
+  }
+
+  .paper-rule-thick {
+    height: 2px;
+    background-color: var(--navy-primary);
+    border: none;
+    margin: 3rem 0 2.5rem 0;
+  }
+
+  .pull-quote {
+    font-family: var(--font-serif);
+    font-size: 1.35rem;
+    font-style: italic;
+    color: var(--navy-primary);
+    line-height: 1.5;
+    border-left: 3px solid var(--navy-primary);
+    padding-left: 1.5rem;
+    margin: 2rem 0;
+  }
+
+  .margin-note {
+    font-family: var(--font-sans);
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    line-height: 1.55;
+    border-left: 2px solid var(--neutral-rule-dark);
+    padding-left: 0.85rem;
+  }
+
+  /* Academic Masthead */
+  .masthead-border {
+    border-top: 3px solid var(--navy-primary);
+    border-bottom: 1px solid var(--neutral-rule);
+  }
+
+  /* Standardized Panel & Card Container */
+  .panel-card {
+    background-color: var(--bg-paper);
+    border: 1px solid var(--neutral-rule);
+    padding: 1.5rem 1.25rem;
+  }
+
+  @media (min-width: 640px) {
+    .panel-card {
+      padding: 1.75rem 2rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .panel-card {
+      padding: 2rem 2.25rem;
+    }
+  }
+
+  /* Publication table styling */
+  .ieee-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.875rem;
+    font-family: var(--font-sans);
+  }
+
+  .ieee-table th {
+    border-top: 2px solid var(--navy-primary);
+    border-bottom: 1px solid var(--navy-primary);
+    padding: 12px 16px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--navy-primary);
+    background: var(--bg-subtle);
+    white-space: nowrap;
+  }
+
+  .ieee-table td {
+    padding: 14px 16px;
+    border-bottom: 1px solid var(--neutral-rule-subtle);
+    color: var(--text-main);
+    vertical-align: top;
+  }
+
+  .ieee-table tbody:hover td {
+    background-color: rgba(235, 230, 218, 0.45);
+  }
+
+  .ieee-table tfoot td {
+    border-bottom: 2px solid var(--navy-primary);
+    border-top: 1px solid var(--navy-primary);
+    padding: 12px 16px;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    font-style: italic;
+  }
+}
+
+/* Custom scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-paper);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--neutral-rule-dark);
+}

@@ -1,0 +1,12 @@
+{
+  "name": "len-small-paper",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Builds the IEEE-format research paper (DOCX) from verified pipeline outputs",
+  "scripts": {
+    "build": "node build_paper.js"
+  },
+  "dependencies": {
+    "docx": "9.5.1"
+  }
+}

@@ -1,0 +1,236 @@
+[
+  {
+    "reference": "data/manifests/duplicate_files.json",
+    "repro": "repro/data/manifests/duplicate_files.json",
+    "status": "identical",
+    "how": "byte-identical"
+  },
+  {
+    "reference": "data/manifests/edge_budget_eligibility.json",
+    "repro": "repro/data/manifests/edge_budget_eligibility.json",
+    "status": "identical",
+    "how": "byte-identical"
+  },
+  {
+    "reference": "data/manifests/manifest.parquet",
+    "repro": "repro/data/manifests/manifest.parquet",
+    "status": "identical",
+    "max_abs": 0.0,
+    "n_num": 0,
+    "other": [],
+    "how": "equal after ignoring run-specific fields"
+  },
+  {
+    "reference": "data/manifests/matched_manifest.parquet",
+    "repro": "repro/data/manifests/matched_manifest.parquet",
+    "status": "identical",
+    "max_abs": 0.0,
+    "n_num": 0,
+    "other": [],
+    "how": "equal after ignoring run-specific fields"
+  },
+  {
+    "reference": "data/manifests/matching_diagnostics.json",
+    "repro": "repro/data/manifests/matching_diagnostics.json",
+    "status": "identical",
+    "how": "byte-identical"
+  },
+  {
+    "reference": "data/manifests/validation_report.json",
+    "repro": "repro/data/manifests/validation_report.json",
+    "status": "identical",
+    "max_abs": 0.0,
+    "n_num": 0,
+    "other": [],
+    "how": "equal after ignoring run-specific fields"
+  },
+  {
+    "reference": "data/processed/edges.parquet",
+    "repro": "repro/data/processed/edges.parquet",
+    "status": "identical",
+    "how": "byte-identical"
+  },
+  {
+    "reference": "data/processed/nodes.parquet",
+    "repro": "repro/data/processed/nodes.parquet",
+    "status": "identical",
+    "how": "byte-identical"
+  },
+  {
+    "reference": "data/processed/sampled_views_v2.parquet",
+    "repro": "repro/data/processed/sampled_views_v2.parquet",
+    "status": "identical",
+    "how": "byte-identical"
+  },
+  {
+    "reference": "outputs/run_v2/checkpoint_report.md",
+    "repro": "repro/outputs/run_v2/checkpoint_report.md",
+    "status": "identical",
+    "how": "byte-identical"
+  },
+  {
+    "reference": "outputs/run_v2/d1_corrected_metrics.json",
+    "repro": "repro/outputs/run_v2/d1_corrected_metrics.json",
+    "status": "identical",
+    "how": "byte-identical"
+  },
+  {
+    "reference": "outputs/run_v2/d1_corrected_predictions.parquet",
+    "repro": "repro/outputs/run_v2/d1_corrected_predictions.parquet",
+    "status": "identical",
+    "how": "byte-identical"
+  },
+  {
+    "reference": "outputs/run_v2/figures/fig1_size_overlap.png",
+    "repro": "repro/outputs/run_v2/figures/fig1_size_overlap.png",
+    "status": "identical",
+    "how": "byte-identical"
+  },
+  {
+    "reference": "outputs/run_v2/figures/fig2_baseline_comparison.png",
+    "repro": "repro/outputs/run_v2/figures/fig2_baseline_comparison.png",
+    "status": "identical",
+    "how": "byte-identical"
+  },
+  {
+    "reference": "outputs/run_v2/figures/fig3_matched_cohort_comparison.png",
+    "repro": "repro/outputs/run_v2/figures/fig3_matched_cohort_comparison.png",
+    "status": "identical",
+    "how": "byte-identical"
+  },
+  {
+    "reference": "outputs/run_v2/figures/fig4_edge_budget_robustness.png",
+    "repro": "repro/outputs/run_v2/figures/fig4_edge_budget_robustness.png",
+    "status": "identical",
+    "how": "byte-identical"
+  },
+  {
+    "reference": "outputs/run_v2/metrics.json",
+    "repro": "repro/outputs/run_v2/metrics.json",
+    "status": "identical",
+    "how": "byte-identical"
+  },
+  {
+    "reference": "outputs/run_v2/paper_results.json",
+    "repro": "repro/outputs/run_v2/paper_results.json",
+    "status": "identical",
+    "max_abs": 0.0,
+    "n_num": 0,
+    "other": [],
+    "how": "equal after ignoring run-specific fields"
+  },
+  {
+    "reference": "outputs/run_v2/predictions.parquet",
+    "repro": "repro/outputs/run_v2/predictions.parquet",
+    "status": "identical",
+    "max_abs": 0.0,
+    "n_num": 0,
+    "other": [],
+    "how": "repro adds column(s) ['tuned_C']; shared columns compared"
+  },
+  {
+    "reference": "outputs/run_v2/study1/full_graph_features.parquet",
+    "repro": "repro/outputs/run_v2/study1/full_graph_features.parquet",
+    "status": "identical",
+    "how": "byte-identical"
+  },
+  {
+    "reference": "outputs/run_v2/study1/matching_sensitivity.json",
+    "repro": "repro/outputs/run_v2/study1/matching_sensitivity.json",
+    "status": "identical",
+    "how": "byte-identical"
+  },
+  {
+    "reference": "outputs/run_v2/study1/nested_results.json",
+    "repro": "repro/outputs/run_v2/study1/nested_results.json",
+    "status": "identical",
+    "how": "byte-identical"
+  },
+  {
+    "reference": "outputs/run_v2/study1/null_features.parquet",
+    "repro": "repro/outputs/run_v2/study1/null_features.parquet",
+    "status": "identical",
+    "how": "byte-identical"
+  },
+  {
+    "reference": "outputs/run_v2/study1/null_pilot.csv",
+    "repro": "repro/outputs/run_v2/study1/null_pilot.csv",
+    "status": "identical",
+    "how": "byte-identical"
+  },
+  {
+    "reference": "outputs/run_v2/study1/null_results.json",
+    "repro": "repro/outputs/run_v2/study1/null_results.json",
+    "status": "identical",
+    "how": "byte-identical"
+  },
+  {
+    "reference": "outputs/run_v2/study1/oof_predictions.parquet",
+    "repro": "repro/outputs/run_v2/study1/oof_predictions.parquet",
+    "status": "identical",
+    "how": "byte-identical"
+  },
+  {
+    "reference": "outputs/run_v2/study1/repeated_splits_lr.csv",
+    "repro": "repro/outputs/run_v2/study1/repeated_splits_lr.csv",
+    "status": "identical",
+    "how": "byte-identical"
+  },
+  {
+    "reference": "outputs/run_v2/study2/results.json",
+    "repro": "repro/outputs/run_v2/study2/results.json",
+    "status": "identical",
+    "how": "byte-identical"
+  },
+  {
+    "reference": "outputs/run_v2/study2/view_predictions.parquet",
+    "repro": "repro/outputs/run_v2/study2/view_predictions.parquet",
+    "status": "identical",
+    "how": "byte-identical"
+  },
+  {
+    "reference": "outputs/run_v2/tables.md",
+    "repro": "repro/outputs/run_v2/tables.md",
+    "status": "identical",
+    "how": "byte-identical"
+  },
+  {
+    "reference": "outputs/run_v2/verification/verification_report.json",
+    "repro": "repro/outputs/run_v2/verification/verification_report.json",
+    "status": "identical",
+    "how": "byte-identical"
+  },
+  {
+    "reference": "reports/paper/figures/fig1_size_distributions.png",
+    "repro": "repro/paper_figures/fig1_size_distributions.png",
+    "status": "identical",
+    "how": "byte-identical"
+  },
+  {
+    "reference": "reports/paper/figures/fig2_study1_contrasts.png",
+    "repro": "repro/paper_figures/fig2_study1_contrasts.png",
+    "status": "identical",
+    "how": "byte-identical"
+  },
+  {
+    "reference": "reports/paper/figures/fig3_study2_single_view.png",
+    "repro": "repro/paper_figures/fig3_study2_single_view.png",
+    "status": "identical",
+    "how": "byte-identical"
+  },
+  {
+    "reference": "reports/paper/figures/fig4_endpoint_mechanism.png",
+    "repro": "repro/paper_figures/fig4_endpoint_mechanism.png",
+    "status": "identical",
+    "how": "byte-identical"
+  },
+  {
+    "reference": "frontend/public/data/research_data.json",
+    "repro": "repro/frontend/research_data.json",
+    "status": "identical",
+    "max_abs": 0.0,
+    "n_num": 0,
+    "other": [],
+    "how": "equal after ignoring run-specific fields"
+  }
+]

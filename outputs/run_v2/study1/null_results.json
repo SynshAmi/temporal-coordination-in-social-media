@@ -1,0 +1,156 @@
+{
+  "swaps_per_edge": 10,
+  "realizations": 5,
+  "mean_frac_edges_unchanged": 0.20964879565445788,
+  "M2_real": {
+    "balanced_accuracy": 0.8642533936651584,
+    "log_loss": 0.3323949854719653,
+    "roc_auc": 0.9317496229260935,
+    "n_events": 103
+  },
+  "M1": {
+    "balanced_accuracy": 0.8740573152337858,
+    "log_loss": 0.3495555141016289,
+    "roc_auc": 0.9257164404223227,
+    "n_events": 103
+  },
+  "M2_null_per_realization": [
+    {
+      "balanced_accuracy": 0.8742458521870287,
+      "log_loss": 0.3733055077007882,
+      "roc_auc": 0.9385369532428356,
+      "n_events": 103
+    },
+    {
+      "balanced_accuracy": 0.8644419306184012,
+      "log_loss": 0.39775597021990333,
+      "roc_auc": 0.9279788838612368,
+      "n_events": 103
+    },
+    {
+      "balanced_accuracy": 0.8838612368024132,
+      "log_loss": 0.37813106291349696,
+      "roc_auc": 0.9347662141779789,
+      "n_events": 103
+    },
+    {
+      "balanced_accuracy": 0.8740573152337858,
+      "log_loss": 0.4109809679519508,
+      "roc_auc": 0.9238310708898944,
+      "n_events": 103
+    },
+    {
+      "balanced_accuracy": 0.8838612368024132,
+      "log_loss": 0.35354374573466085,
+      "roc_auc": 0.9411764705882353,
+      "n_events": 103
+    }
+  ],
+  "M2_null_ba_mean": 0.8760935143288083,
+  "M2_real_vs_null_avg": {
+    "delta_ba": -0.00018853695324283493,
+    "delta_ba_ci": [
+      -0.04806267535655838,
+      0.0466179245283019
+    ],
+    "p_ba_bootstrap": 1.0,
+    "delta_logloss": -0.039769718495084705,
+    "delta_logloss_ci": [
+      -0.17262043094775742,
+      0.05174067688297825
+    ],
+    "p_logloss_bootstrap": 0.637,
+    "delta_auc": -0.006787330316742057,
+    "delta_auc_ci": [
+      -0.03099546572609529,
+      0.012850314368171542
+    ],
+    "mcnemar_a_right_b_wrong": 3,
+    "mcnemar_b_right_a_wrong": 3,
+    "mcnemar_exact_p": 1.0,
+    "n_boot_used": 2000
+  },
+  "M2_null_avg_vs_M1": {
+    "delta_ba": -0.009615384615384581,
+    "delta_ba_ci": [
+      -0.04311281859070468,
+      0.021276595744680882
+    ],
+    "p_ba_bootstrap": 0.829,
+    "delta_logloss": 0.022609181406344436,
+    "delta_logloss_ci": [
+      -0.062556843652753,
+      0.14619586912501065
+    ],
+    "p_logloss_bootstrap": 0.823,
+    "delta_auc": 0.012820512820512886,
+    "delta_auc_ci": [
+      -0.011321182561074745,
+      0.03609710812987937
+    ],
+    "mcnemar_a_right_b_wrong": 1,
+    "mcnemar_b_right_a_wrong": 2,
+    "mcnemar_exact_p": 1.0,
+    "n_boot_used": 2000
+  },
+  "log_loss_estimand": {
+    "M2_real_ll_fit": {
+      "balanced_accuracy": 0.8642533936651584,
+      "log_loss": 0.35227625750089314,
+      "roc_auc": 0.9321266968325792,
+      "n_events": 103
+    },
+    "M1_ll_fit": {
+      "balanced_accuracy": 0.8836726998491704,
+      "log_loss": 0.36014259210566507,
+      "roc_auc": 0.9181749622926093,
+      "n_events": 103
+    },
+    "M2_real_vs_null_avg_ll_fit": {
+      "delta_ba": -0.00018853695324283493,
+      "delta_ba_ci": [
+        -0.04806267535655838,
+        0.0466179245283019
+      ],
+      "p_ba_bootstrap": 1.0,
+      "delta_logloss": -0.036714004349962026,
+      "delta_logloss_ci": [
+        -0.12306170339436963,
+        0.027527036857767216
+      ],
+      "p_logloss_bootstrap": 0.352,
+      "delta_auc": 0.00037707390648566985,
+      "delta_auc_ci": [
+        -0.01773584905660375,
+        0.019074536755968617
+      ],
+      "mcnemar_a_right_b_wrong": 3,
+      "mcnemar_b_right_a_wrong": 3,
+      "mcnemar_exact_p": 1.0,
+      "n_boot_used": 2000
+    }
+  },
+  "note": "BA fields use objective=ba fits; log_loss_estimand uses objective=ll fits.",
+  "observed_vs_null_z": {
+    "reciprocity": {
+      "median_z_campaign": 5.962366563370837,
+      "median_z_comparison": 26.110390514058565,
+      "share_undefined_sd0": 0.4563106796116505
+    },
+    "largest_wcc_fraction": {
+      "median_z_campaign": -21.584325969833053,
+      "median_z_comparison": -22.653477530868003,
+      "share_undefined_sd0": 0.06796116504854369
+    },
+    "coreness_median": {
+      "median_z_campaign": -2.921186973360886,
+      "median_z_comparison": NaN,
+      "share_undefined_sd0": 0.9902912621359223
+    },
+    "coreness_max": {
+      "median_z_campaign": 1.7888543819998326,
+      "median_z_comparison": 3.4730546664302535,
+      "share_undefined_sd0": 0.5048543689320388
+    }
+  }
+}

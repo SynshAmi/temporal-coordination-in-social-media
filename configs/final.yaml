@@ -1,0 +1,65 @@
+# configs/final.yaml
+# SUPERSEDED configuration of the original run (outputs/run_final), kept for the
+# correction history. Use configs/v2_coreness_fix.yaml for all current results.
+
+data:
+  archive_path: "small_encoder_final.tar"
+  raw_dir: "data/raw"
+  processed_dir: "data/processed"
+  manifests_dir: "data/manifests"
+  len_small_url: "https://erdemub.github.io/large-engagement-network/"
+  expected_events: 103
+  expected_campaign: 52
+  expected_comparison: 51
+
+features:
+  # Scale group
+  use_log_node_count: true
+  use_log_edge_count: true
+  # Structure group
+  use_density: true
+  use_reciprocity: true
+  use_largest_wcc_fraction: true
+  use_indegree_concentration: true   # Gini of in-degree distribution
+  use_outdegree_concentration: true  # Gini of out-degree distribution
+  use_coreness_summary: true         # median / max of k-core numbers
+  # Content group
+  use_text_features: true
+  use_exact_dup_proportion: true
+  use_text_concentration: true       # Gini of message-frequency distribution
+  use_msg_length_dispersion: true    # std of token counts
+  # Temporal: OFF until timestamp semantics are verified
+  use_temporal: false
+
+matching:
+  caliper_sd_fraction: 0.25          # nearest-neighbour caliper in SD units of log(node_count)
+  random_seed: 42
+
+edge_budgets:
+  K_values: [250, 500, 1000]         # K=2000 excluded due to only 4 campaign graphs meeting threshold
+  n_seeds: 10
+  base_seed: 100                     # seeds = base_seed + seed_index
+
+splits:
+  n_folds: 5
+  stratify: true
+  random_seed: 42
+
+models:
+  logreg:
+    C_values: [0.01, 0.1, 1.0, 10.0]
+    max_iter: 1000
+    solver: "lbfgs"
+  hgbt:
+    max_iter_values: [50, 100, 200]
+    max_depth: 4
+    random_state: 42
+
+evaluation:
+  bootstrap_n_resamples: 1000
+  bootstrap_seed: 7
+  primary_metrics: ["balanced_accuracy", "macro_f1"]
+
+output:
+  run_dir: "outputs/run_final"
+  figures_dir: "outputs/run_final/figures"

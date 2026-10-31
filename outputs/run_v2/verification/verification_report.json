@@ -1,0 +1,522 @@
+{
+  "s1_row_order_sensitivity": {
+    "ba:M0q": {
+      "study_order": 0.8836726998491704,
+      "permuted_order": 0.873868778280543
+    },
+    "ba:M1": {
+      "study_order": 0.8740573152337858,
+      "permuted_order": 0.8836726998491704
+    },
+    "ba:M2": {
+      "study_order": 0.8642533936651584,
+      "permuted_order": 0.8736802413273002
+    },
+    "ba:M3": {
+      "study_order": 0.8642533936651584,
+      "permuted_order": 0.8834841628959276
+    },
+    "ba:M4": {
+      "study_order": 0.8934766214177978,
+      "permuted_order": 0.9030920060331824
+    },
+    "ll:M0q": {
+      "study_order": 0.32618902948062545,
+      "permuted_order": 0.32618902948062534
+    },
+    "ll:M1": {
+      "study_order": 0.36014259210566507,
+      "permuted_order": 0.3566503292071005
+    },
+    "ll:M2": {
+      "study_order": 0.35227625750089314,
+      "permuted_order": 0.3197023193787464
+    },
+    "ll:M3": {
+      "study_order": 0.3072619399450458,
+      "permuted_order": 0.26611151132079225
+    },
+    "ll:M4": {
+      "study_order": 0.2163738701337429,
+      "permuted_order": 0.2163738701337428
+    },
+    "ba:C1": {
+      "delta_study_order": 0.009803921568627416,
+      "delta_permuted_order": 0.029223227752639414
+    },
+    "ll:C1": {
+      "delta_study_order": -0.10981515934688255,
+      "delta_permuted_order": -0.10981515934688255
+    },
+    "ba:C2": {
+      "delta_study_order": -0.009803921568627416,
+      "delta_permuted_order": -0.009992458521870251
+    },
+    "ll:C2": {
+      "delta_study_order": -0.00786633460477193,
+      "delta_permuted_order": -0.03694800982835411
+    },
+    "ba:C3": {
+      "delta_study_order": -0.019419306184011997,
+      "delta_permuted_order": 0.009615384615384581
+    },
+    "ll:C3": {
+      "delta_study_order": -0.018927089535579644,
+      "delta_permuted_order": -0.06007751815983309
+    }
+  },
+  "s1_tuned_C_examples": {
+    "M0q": {
+      "ba": [
+        1.0,
+        10.0
+      ],
+      "ll": [
+        10.0
+      ]
+    },
+    "M4": {
+      "ba": [
+        1.0,
+        10.0
+      ],
+      "ll": [
+        1.0
+      ]
+    }
+  },
+  "s1_confirmatory": [
+    {
+      "model": "logreg",
+      "contrast": "C1",
+      "a": "M4",
+      "b": "M0q",
+      "dBA_reported": 0.009803921568627416,
+      "dBA_recomputed": 0.009803921568627416,
+      "dBA_ci_reported": [
+        -0.04943396226415087,
+        0.07597554539056989
+      ],
+      "dBA_ci_independent": [
+        -0.05367249108169213,
+        0.07275835866261393
+      ],
+      "dLL_reported": -0.10981516048938972,
+      "dLL_recomputed": -0.10981515934688255,
+      "dLL_ci_reported": [
+        -0.18071600537230623,
+        -0.03926484149759151
+      ],
+      "dLL_ci_independent": [
+        -0.1828773233833558,
+        -0.03962597040064201
+      ],
+      "dAUC_reported": 0.038838612368023995,
+      "dAUC_recomputed": 0.038838612368023995,
+      "dAUC_ci_independent": [
+        0.009051683286333066,
+        0.07292140151515149
+      ],
+      "p_holm_ba_reported": 1.0,
+      "p_holm_ll_reported": 0.009000000000000001,
+      "p_ba_independent": 0.78,
+      "p_ll_independent": 0.001
+    },
+    {
+      "model": "logreg",
+      "contrast": "C2",
+      "a": "M2",
+      "b": "M1",
+      "dBA_reported": -0.009803921568627416,
+      "dBA_recomputed": -0.009803921568627416,
+      "dBA_ci_reported": [
+        -0.05306829298116902,
+        0.031931415215989585
+      ],
+      "dBA_ci_independent": [
+        -0.05208750476735309,
+        0.03125
+      ],
+      "dLL_reported": -0.00786634197048064,
+      "dLL_recomputed": -0.00786633460477193,
+      "dLL_ci_reported": [
+        -0.07926325940820089,
+        0.08121995482469917
+      ],
+      "dLL_ci_independent": [
+        -0.07484970077336513,
+        0.0734986901628095
+      ],
+      "dAUC_reported": 0.013951734539969896,
+      "dAUC_recomputed": 0.013951734539969896,
+      "dAUC_ci_independent": [
+        -0.017345726970033237,
+        0.04449556048834613
+      ],
+      "p_holm_ba_reported": 1.0,
+      "p_holm_ll_reported": 1.0,
+      "p_ba_independent": 0.7465,
+      "p_ll_independent": 0.8015
+    },
+    {
+      "model": "logreg",
+      "contrast": "C3",
+      "a": "M3",
+      "b": "M0q",
+      "dBA_reported": -0.019419306184011997,
+      "dBA_recomputed": -0.019419306184011997,
+      "dBA_ci_reported": [
+        -0.08604098746416818,
+        0.04636327657271795
+      ],
+      "dBA_ci_independent": [
+        -0.08711262282690857,
+        0.04679004073756444
+      ],
+      "dLL_reported": -0.018927089535579644,
+      "dLL_recomputed": -0.018927089535579644,
+      "dLL_ci_reported": [
+        -0.1360089156995291,
+        0.1181849311180951
+      ],
+      "dLL_ci_independent": [
+        -0.1330503140291479,
+        0.12061014921307774
+      ],
+      "dAUC_reported": 0.02224736048265441,
+      "dAUC_recomputed": 0.02224736048265441,
+      "dAUC_ci_independent": [
+        -0.012121212121212088,
+        0.05882639941222393
+      ],
+      "p_holm_ba_reported": 1.0,
+      "p_holm_ll_reported": 1.0,
+      "p_ba_independent": 0.6075,
+      "p_ll_independent": 0.704
+    },
+    {
+      "model": "hgbt",
+      "contrast": "C1",
+      "a": "M4",
+      "b": "M0q",
+      "dBA_reported": 0.12669683257918551,
+      "dBA_recomputed": 0.12669683257918551,
+      "dBA_ci_reported": [
+        0.056499005017720275,
+        0.20118014592241515
+      ],
+      "dBA_ci_independent": [
+        0.05306034482758623,
+        0.20289258066535434
+      ],
+      "dLL_reported": -0.01665466135280469,
+      "dLL_recomputed": -0.01665466135280469,
+      "dLL_ci_reported": [
+        -0.19328048594381972,
+        0.22843234532694098
+      ],
+      "dLL_ci_independent": [
+        -0.197360512069899,
+        0.23223334511503768
+      ],
+      "dAUC_reported": 0.024132730015083093,
+      "dAUC_recomputed": 0.024132730015083093,
+      "dAUC_ci_independent": [
+        -0.03533836451247165,
+        0.07919250705789788
+      ],
+      "p_holm_ba_reported": 0.0,
+      "p_holm_ll_reported": 1.0,
+      "p_ba_independent": 0.0,
+      "p_ll_independent": 0.802
+    },
+    {
+      "model": "hgbt",
+      "contrast": "C2",
+      "a": "M2",
+      "b": "M1",
+      "dBA_reported": -0.029600301659125083,
+      "dBA_recomputed": -0.029600301659125083,
+      "dBA_ci_reported": [
+        -0.09477041490486261,
+        0.030585106382978625
+      ],
+      "dBA_ci_independent": [
+        -0.09616858237547898,
+        0.03170719460237825
+      ],
+      "dLL_reported": 0.012714495905010337,
+      "dLL_recomputed": 0.012714495905010337,
+      "dLL_ci_reported": [
+        -0.0454735117320611,
+        0.07818533793385803
+      ],
+      "dLL_ci_independent": [
+        -0.045162268015065246,
+        0.08295591846682843
+      ],
+      "dAUC_reported": -0.008484162895927572,
+      "dAUC_recomputed": -0.008484162895927572,
+      "dAUC_ci_independent": [
+        -0.035444947209652966,
+        0.013951734539969788
+      ],
+      "p_holm_ba_reported": 0.348,
+      "p_holm_ll_reported": 1.0,
+      "p_ba_independent": 0.3515,
+      "p_ll_independent": 0.692
+    },
+    {
+      "model": "hgbt",
+      "contrast": "C3",
+      "a": "M3",
+      "b": "M0q",
+      "dBA_reported": 0.09709653092006032,
+      "dBA_recomputed": 0.09709653092006032,
+      "dBA_ci_reported": [
+        0.03678337872218443,
+        0.16515151515151516
+      ],
+      "dBA_ci_independent": [
+        0.03837033786748576,
+        0.16513453500522474
+      ],
+      "dLL_reported": -0.024488900638867772,
+      "dLL_recomputed": -0.024488900638867772,
+      "dLL_ci_reported": [
+        -0.17637661573155652,
+        0.1889866344264805
+      ],
+      "dLL_ci_independent": [
+        -0.17821616049879677,
+        0.19153787509546716
+      ],
+      "dAUC_reported": 0.024132730015083093,
+      "dAUC_recomputed": 0.024132730015083093,
+      "dAUC_ci_independent": [
+        -0.027277407946744284,
+        0.0696985122720418
+      ],
+      "p_holm_ba_reported": 0.0,
+      "p_holm_ll_reported": 1.0,
+      "p_ba_independent": 0.001,
+      "p_ll_independent": 0.738
+    }
+  ],
+  "null_real_minus_null_ba_independent": {
+    "delta": -0.00018853695324283493,
+    "ci": [
+      -0.0481060606060606,
+      0.046604353848457715
+    ]
+  },
+  "null_mixing": {
+    "pilot_mean_by_swaps_per_edge": [
+      {
+        "swaps_per_edge": 1,
+        "frac_edges_unchanged": 0.2685,
+        "reciprocity": 0.0127,
+        "largest_wcc_fraction": 0.9043,
+        "coreness_median": 1.0,
+        "coreness_max": 6.1667
+      },
+      {
+        "swaps_per_edge": 2,
+        "frac_edges_unchanged": 0.2032,
+        "reciprocity": 0.0143,
+        "largest_wcc_fraction": 0.898,
+        "coreness_median": 1.0,
+        "coreness_max": 6.0
+      },
+      {
+        "swaps_per_edge": 5,
+        "frac_edges_unchanged": 0.1902,
+        "reciprocity": 0.014,
+        "largest_wcc_fraction": 0.9032,
+        "coreness_median": 1.0,
+        "coreness_max": 6.5
+      },
+      {
+        "swaps_per_edge": 10,
+        "frac_edges_unchanged": 0.1944,
+        "reciprocity": 0.0148,
+        "largest_wcc_fraction": 0.904,
+        "coreness_median": 1.0,
+        "coreness_max": 5.8333
+      },
+      {
+        "swaps_per_edge": 20,
+        "frac_edges_unchanged": 0.1927,
+        "reciprocity": 0.0135,
+        "largest_wcc_fraction": 0.8945,
+        "coreness_median": 1.0,
+        "coreness_max": 6.3333
+      }
+    ],
+    "frac_edges_unchanged_quantiles": [
+      0.009,
+      0.061,
+      0.132,
+      0.329,
+      0.896
+    ],
+    "spearman_unchanged_vs_max_degree_gini": -0.27361288055177263,
+    "share_events_zero_null_variance": {
+      "reciprocity": 0.456,
+      "largest_wcc_fraction": 0.068,
+      "coreness_median": 0.99,
+      "coreness_max": 0.505
+    }
+  },
+  "s2_sign_agreement_budget_vs_common": {
+    "retrain_effect_struct6": true,
+    "retrain_effect_combined": true,
+    "structure_beyond_NK": true,
+    "content_beyond_NK_struct": true,
+    "ensemble_vs_single_combined": true,
+    "transfer_loss_struct6": true,
+    "density_effect_frozen": false
+  },
+  "mechanism": {
+    "monte_carlo": [
+      {
+        "event_id_crc": 3365774888,
+        "E": 664,
+        "formula": 114.19088375317645,
+        "monte_carlo_mean": 113.6825,
+        "mc_se": 0.27439472578540414
+      },
+      {
+        "event_id_crc": 241193604,
+        "E": 1641,
+        "formula": 301.5177718659533,
+        "monte_carlo_mean": 301.395,
+        "mc_se": 0.24761506527547644
+      },
+      {
+        "event_id_crc": 2182687378,
+        "E": 6701,
+        "formula": 334.7365195720659,
+        "monte_carlo_mean": 334.405,
+        "mc_se": 0.2734765273795338
+      }
+    ],
+    "r2_log_expected_NK_K250": {
+      "log N only": 0.7718781057750631,
+      "log E only": 0.28552507615429656,
+      "log N + log mean degree": 0.9300091729423704,
+      "size (log N, log E)": 0.9300091729423703,
+      "degree concentration (in/out Gini)": 0.6650900325932924,
+      "size + degree concentration": 0.9303003464084681
+    }
+  },
+  "checks": [
+    {
+      "check": "S1 every model uses all 103 events once",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "S1 outer folds identical to an independent StratifiedKFold(seed=42)",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "S1 reported BA/LL/AUC recomputed exactly from saved OOF predictions",
+      "pass": true,
+      "detail": "mismatches=[]"
+    },
+    {
+      "check": "S1 independent LR CV reproduces all saved LR OOF probabilities (both objectives)",
+      "pass": true,
+      "detail": "max |dp|=2.56e-14"
+    },
+    {
+      "check": "S1 log-loss estimands use separately tuned fits",
+      "pass": true,
+      "detail": "levels where both objectives chose identical C everywhere: ['M0']"
+    },
+    {
+      "check": "S1 [logreg] Holm adjustments recomputed exactly (BA and LL families separately)",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "S1 [hgbt] Holm adjustments recomputed exactly (BA and LL families separately)",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "S1 confirmatory point differences recomputed (BA, AUC exact; LL within clipping-convention tolerance 1e-5)",
+      "pass": true,
+      "detail": "max gaps BA=0.0e+00 LL=7.4e-09 AUC=0.0e+00"
+    },
+    {
+      "check": "S1 paired CIs agree with an independent bootstrap (4000 resamples, other seed) within 0.02",
+      "pass": true,
+      "detail": "max endpoint gap BA=0.004, LL=0.008"
+    },
+    {
+      "check": "S1 LR tuning uses no held-out-fold labels (label permutation in each outer fold leaves its C and predictions unchanged)",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "S1 HGBT tuning uses no held-out-fold labels (fold 0 permutation)",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "Null: degree Gini and density identical to observed in every realization",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "Null: M2 real and M2-null BA reproduced by independent LR CV",
+      "pass": true,
+      "detail": "M1=0.874 M2=0.864 M2null mean=0.876"
+    },
+    {
+      "check": "Null: mixing plateau (unchanged-edge fraction stable from 5 to 20 swaps/edge, within 0.02)",
+      "pass": true,
+      "detail": "unchanged=[0.269, 0.203, 0.19, 0.194, 0.193], rho(unchanged, degree Gini)=-0.27"
+    },
+    {
+      "check": "S2 single-view and ensemble BA / log loss recomputed exactly from saved view predictions",
+      "pass": true,
+      "detail": "mismatches=[]"
+    },
+    {
+      "check": "S2 each event has exactly 10 single-view predictions per condition",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "S2 all contrast point estimates recomputed exactly (BA and log loss)",
+      "pass": true,
+      "detail": "max gap=0.0e+00"
+    },
+    {
+      "check": "S2 common and budget-specific cohorts coincide at K=1000 and give identical results",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "S2 primary contrast directions agree between budget-specific and common cohorts (K=250, 500)",
+      "pass": true,
+      "detail": "exploratory diagnostic disagreeing: ['density_effect_frozen']"
+    },
+    {
+      "check": "Mechanism: closed-form E[N_K] matches Monte Carlo (400 draws, 3 events, K=250)",
+      "pass": true,
+      "detail": "114.2 vs 113.7\u00b10.3; 301.5 vs 301.4\u00b10.2; 334.7 vs 334.4\u00b10.3"
+    },
+    {
+      "check": "Mechanism: variance decomposition computed (interpretation reported separately)",
+      "pass": true,
+      "detail": ""
+    }
+  ],
+  "n_pass": 21,
+  "n_checks": 21
+}

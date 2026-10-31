@@ -1,0 +1,54 @@
+{
+  "protocol": "Frozen A_structure_logreg fold models; each sampled event scored only by the model whose full-cohort training fold excluded it; probabilities averaged over 10 seeds.",
+  "refit_check": {
+    "max_abs_prob_diff": 0.0,
+    "refit_balanced_accuracy": 0.7687
+  },
+  "results": {
+    "D1_K250_frozen_corrected": {
+      "balanced_accuracy": 0.5882,
+      "macro_f1": 0.5596,
+      "campaign_recall": 0.8431,
+      "comparison_recall": 0.3333,
+      "n_events": 102,
+      "roc_auc": 0.822,
+      "ba_ci_lower": 0.5069,
+      "ba_ci_upper": 0.6728,
+      "f1_ci_lower": 0.4653,
+      "f1_ci_upper": 0.6529,
+      "superseded_misaligned_balanced_accuracy": 0.598,
+      "n_events_previously_misaligned": 26,
+      "full_graph_same_models_same_events_balanced_accuracy": 0.7745
+    },
+    "D1_K500_frozen_corrected": {
+      "balanced_accuracy": 0.7358,
+      "macro_f1": 0.7343,
+      "campaign_recall": 0.7917,
+      "comparison_recall": 0.68,
+      "n_events": 98,
+      "roc_auc": 0.8487,
+      "ba_ci_lower": 0.6531,
+      "ba_ci_upper": 0.8163,
+      "f1_ci_lower": 0.6436,
+      "f1_ci_upper": 0.8151,
+      "superseded_misaligned_balanced_accuracy": 0.7562,
+      "n_events_previously_misaligned": 64,
+      "full_graph_same_models_same_events_balanced_accuracy": 0.7821
+    },
+    "D1_K1000_frozen_corrected": {
+      "balanced_accuracy": 0.7992,
+      "macro_f1": 0.8138,
+      "campaign_recall": 0.6429,
+      "comparison_recall": 0.9556,
+      "n_events": 73,
+      "roc_auc": 0.8365,
+      "ba_ci_lower": 0.7005,
+      "ba_ci_upper": 0.8885,
+      "f1_ci_lower": 0.7103,
+      "f1_ci_upper": 0.8997,
+      "superseded_misaligned_balanced_accuracy": 0.8171,
+      "n_events_previously_misaligned": 49,
+      "full_graph_same_models_same_events_balanced_accuracy": 0.7567
+    }
+  }
+}

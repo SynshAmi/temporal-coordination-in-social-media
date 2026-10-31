@@ -1,0 +1,80 @@
+{
+  "validated_at": "2026-10-31T18:45:04.790705+00:00",
+  "checks": {
+    "event_count": {
+      "status": "OK",
+      "detail": "103 events matches expected 103"
+    },
+    "campaign_count": {
+      "status": "OK",
+      "detail": "52 campaign events"
+    },
+    "comparison_count": {
+      "status": "OK",
+      "detail": "51 comparison events"
+    },
+    "no_duplicate_event_ids": {
+      "status": "OK",
+      "detail": ""
+    },
+    "no_empty_node_graphs": {
+      "status": "OK",
+      "detail": ""
+    },
+    "no_empty_edge_graphs": {
+      "status": "OK",
+      "detail": ""
+    },
+    "edge_col_source": {
+      "status": "OK",
+      "detail": ""
+    },
+    "edge_col_target": {
+      "status": "OK",
+      "detail": ""
+    },
+    "edge_col_event_id": {
+      "status": "OK",
+      "detail": ""
+    },
+    "text_column_present": {
+      "status": "OK",
+      "detail": "103/103 events have non-empty text"
+    },
+    "timestamp_column_present": {
+      "status": "OK",
+      "detail": "Timestamp present (288540/288540 non-null). Temporal features remain OFF per config."
+    },
+    "interaction_count_ge1": {
+      "status": "OK",
+      "detail": "Range [1, 290], all >= 1"
+    },
+    "no_duplicate_edges": {
+      "status": "OK",
+      "detail": ""
+    },
+    "node_id_scheme": {
+      "status": "OK",
+      "detail": "node IDs are per-graph indices 0..N-1 in every event; the release has no account identifiers"
+    }
+  },
+  "warnings": [],
+  "pass": true,
+  "edge_columns_present": [
+    "event_id",
+    "source",
+    "target",
+    "text",
+    "timestamp",
+    "interaction_count"
+  ],
+  "interaction_count_range": [
+    1.0,
+    290.0
+  ],
+  "duplicate_edges_count": 0,
+  "node_id_scheme": {
+    "per_graph_indices_0_to_n_minus_1": true,
+    "cross_event_account_overlap": "not measurable: node IDs are per-graph indices"
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "caliper_abs": 0.2859,
+  "caliper_sd_fraction": 0.25,
+  "n_campaign_total": 52,
+  "n_comparison_total": 51,
+  "n_matched_pairs": 16,
+  "n_campaign_matched": 16,
+  "n_comparison_matched": 16,
+  "n_excluded": 71,
+  "smd_before": -2.2374,
+  "smd_after": -0.0954,
+  "log_node_count_campaign_mean_before": 6.2142,
+  "log_node_count_comparison_mean_before": 7.9184,
+  "log_node_count_campaign_mean_after": 6.9842,
+  "log_node_count_comparison_mean_after": 7.0328
+}

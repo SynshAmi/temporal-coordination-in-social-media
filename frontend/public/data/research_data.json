@@ -1,0 +1,5436 @@
+{
+  "metadata": {
+    "project_identity": "Temporal Coordination in Social Media",
+    "paper_title": "What Does LEN-Small Measure? Predictive Information Beyond Scale in Retained Engagement Graphs",
+    "source_run": "outputs/run_v2",
+    "config": "configs/v2_coreness_fix.yaml",
+    "exported_at": "2026-10-31T18:52:37.112543+00:00"
+  },
+  "cohort_statistics": {
+    "campaign_nodes": {
+      "count": 52,
+      "mean": 662.2,
+      "median": 506.0,
+      "p25": 273.0,
+      "p75": 824.2,
+      "min": 100,
+      "max": 2519
+    },
+    "campaign_edges": {
+      "count": 52,
+      "mean": 1295.8,
+      "median": 1078.0,
+      "p25": 776.2,
+      "p75": 1547.5,
+      "min": 206,
+      "max": 6746
+    },
+    "comparison_nodes": {
+      "count": 51,
+      "mean": 3479.2,
+      "median": 3227.0,
+      "p25": 1621.5,
+      "p75": 4916.0,
+      "min": 433,
+      "max": 8352
+    },
+    "comparison_edges": {
+      "count": 51,
+      "mean": 4336.4,
+      "median": 3769.0,
+      "p25": 1799.0,
+      "p75": 6595.0,
+      "min": 427,
+      "max": 10682
+    }
+  },
+  "event_points": [
+    {
+      "event_id": "#ARMvTUR_noncampaign_fulldata",
+      "label": 0,
+      "label_str": "comparison",
+      "n_nodes": 3405,
+      "n_edges": 3769,
+      "log_nodes": 8.133,
+      "log_edges": 8.235
+    },
+    {
+      "event_id": "#Afittifakı___2023-05-23_campaign_fulldata",
+      "label": 1,
+      "label_str": "campaign",
+      "n_nodes": 288,
+      "n_edges": 1102,
+      "log_nodes": 5.666,
+      "log_edges": 7.006
+    },
+    {
+      "event_id": "#AsstanHekimeKalıcıNakil___2023-03-18_campaign_fulldata",
+      "label": 1,
+      "label_str": "campaign",
+      "n_nodes": 420,
+      "n_edges": 1398,
+      "log_nodes": 6.043,
+      "log_edges": 7.244
+    },
+    {
+      "event_id": "#BeşiktaşınMaçıVar_noncampaign_fulldata",
+      "label": 0,
+      "label_str": "comparison",
+      "n_nodes": 4735,
+      "n_edges": 6188,
+      "log_nodes": 8.463,
+      "log_edges": 8.731
+    },
+    {
+      "event_id": "#BirOyKemaleBirOyMerale___2023-05-13_campaign_fulldata",
+      "label": 1,
+      "label_str": "campaign",
+      "n_nodes": 815,
+      "n_edges": 800,
+      "log_nodes": 6.704,
+      "log_edges": 6.686
+    },
+    {
+      "event_id": "#BugünGünlerdenGALATASARAY_noncampaign_fulldata",
+      "label": 0,
+      "label_str": "comparison",
+      "n_nodes": 5496,
+      "n_edges": 7498,
+      "log_nodes": 8.612,
+      "log_edges": 8.923
+    },
+    {
+      "event_id": "#ChampionsLeague_noncampaign_fulldata",
+      "label": 0,
+      "label_str": "comparison",
+      "n_nodes": 631,
+      "n_edges": 619,
+      "log_nodes": 6.449,
+      "log_edges": 6.43
+    },
+    {
+      "event_id": "#Çarşamba_noncampaign_fulldata",
+      "label": 0,
+      "label_str": "comparison",
+      "n_nodes": 4961,
+      "n_edges": 6187,
+      "log_nodes": 8.51,
+      "log_edges": 8.73
+    },
+    {
+      "event_id": "#ErdenTimurSezonu_noncampaign_fulldata",
+      "label": 0,
+      "label_str": "comparison",
+      "n_nodes": 3422,
+      "n_edges": 4809,
+      "log_nodes": 8.138,
+      "log_edges": 8.478
+    },
+    {
+      "event_id": "#Eurovision2023_noncampaign_fulldata",
+      "label": 0,
+      "label_str": "comparison",
+      "n_nodes": 1477,
+      "n_edges": 1785,
+      "log_nodes": 7.298,
+      "log_edges": 7.488
+    },
+    {
+      "event_id": "#FetöİleUluslararasıMücadele___2023-04-12_campaign_fulldata",
+      "label": 1,
+      "label_str": "campaign",
+      "n_nodes": 1139,
+      "n_edges": 1741,
+      "log_nodes": 7.039,
+      "log_edges": 7.463
+    },
+    {
+      "event_id": "#FlokiCash___2023-04-12_campaign_fulldata",
+      "label": 1,
+      "label_str": "campaign",
+      "n_nodes": 584,
+      "n_edges": 745,
+      "log_nodes": 6.372,
+      "log_edges": 6.615
+    },
+    {
+      "event_id": "#GüldürGüldürShow_noncampaign_fulldata",
+      "label": 0,
+      "label_str": "comparison",
+      "n_nodes": 4923,
+      "n_edges": 6089,
+      "log_nodes": 8.502,
+      "log_edges": 8.714
+    },
+    {
+      "event_id": "#HaramBahçeKollanıyor_noncampaign_fulldata",
+      "label": 0,
+      "label_str": "comparison",
+      "n_nodes": 2880,
+      "n_edges": 4468,
+      "log_nodes": 7.966,
+      "log_edges": 8.405
+    },
+    {
+      "event_id": "#KadıköydeHaramPenaltılar_noncampaign_fulldata",
+      "label": 0,
+      "label_str": "comparison",
+      "n_nodes": 4661,
+      "n_edges": 7419,
+      "log_nodes": 8.447,
+      "log_edges": 8.912
+    },
+    {
+      "event_id": "#KalıcıNakilŞart___2023-03-24_campaign_fulldata",
+      "label": 1,
+      "label_str": "campaign",
+      "n_nodes": 235,
+      "n_edges": 966,
+      "log_nodes": 5.464,
+      "log_edges": 6.874
+    },
+    {
+      "event_id": "#KayıpCanlarımızNerede___2023-05-13_campaign_fulldata",
+      "label": 1,
+      "label_str": "campaign",
+      "n_nodes": 632,
+      "n_edges": 782,
+      "log_nodes": 6.45,
+      "log_edges": 6.663
+    },
+    {
+      "event_id": "#KocaAsistnHekimeSahipÇık___2023-03-21_campaign_fulldata",
+      "label": 1,
+      "label_str": "campaign",
+      "n_nodes": 405,
+      "n_edges": 813,
+      "log_nodes": 6.006,
+      "log_edges": 6.702
+    },
+    {
+      "event_id": "#LunaticsToken___2023-03-17_campaign_fulldata",
+      "label": 1,
+      "label_str": "campaign",
+      "n_nodes": 949,
+      "n_edges": 1361,
+      "log_nodes": 6.856,
+      "log_edges": 7.217
+    },
+    {
+      "event_id": "#MayThe4thBeWithYou_noncampaign_fulldata",
+      "label": 0,
+      "label_str": "comparison",
+      "n_nodes": 885,
+      "n_edges": 829,
+      "log_nodes": 6.787,
+      "log_edges": 6.721
+    },
+    {
+      "event_id": "#Mazi__2023-03-26_campaign_fulldata",
+      "label": 1,
+      "label_str": "campaign",
+      "n_nodes": 1255,
+      "n_edges": 1307,
+      "log_nodes": 7.136,
+      "log_edges": 7.176
+    },
+    {
+      "event_id": "#MetaAirdrop___2023-03-23_campaign_fulldata",
+      "label": 1,
+      "label_str": "campaign",
+      "n_nodes": 498,
+      "n_edges": 485,
+      "log_nodes": 6.213,
+      "log_edges": 6.186
+    },
+    {
+      "event_id": "#Metatime___2023-03-22_campaign_fulldata",
+      "label": 1,
+      "label_str": "campaign",
+      "n_nodes": 1590,
+      "n_edges": 1603,
+      "log_nodes": 7.372,
+      "log_edges": 7.38
+    },
+    {
+      "event_id": "#MilanInter_noncampaign_fulldata",
+      "label": 0,
+      "label_str": "comparison",
+      "n_nodes": 1390,
+      "n_edges": 1468,
+      "log_nodes": 7.238,
+      "log_edges": 7.292
+    },
+    {
+      "event_id": "#PerinçekCNNde___2023-03-18_campaign_fulldata",
+      "label": 1,
+      "label_str": "campaign",
+      "n_nodes": 546,
+      "n_edges": 1677,
+      "log_nodes": 6.304,
+      "log_edges": 7.425
+    },
+    {
+      "event_id": "#RealMadridManCity_noncampaign_fulldata",
+      "label": 0,
+      "label_str": "comparison",
+      "n_nodes": 468,
+      "n_edges": 427,
+      "log_nodes": 6.151,
+      "log_edges": 6.059
+    },
+    {
+      "event_id": "#ReisAiledekiEkDersliyeMüjde___2023-04-12_campaign_fulldata",
+      "label": 1,
+      "label_str": "campaign",
+      "n_nodes": 345,
+      "n_edges": 2049,
+      "log_nodes": 5.846,
+      "log_edges": 7.626
+    },
+    {
+      "event_id": "#SesimiziDuyanVarMi___2023-03-23_campaign_fulldata",
+      "label": 1,
+      "label_str": "campaign",
+      "n_nodes": 356,
+      "n_edges": 1435,
+      "log_nodes": 5.878,
+      "log_edges": 7.27
+    },
+    {
+      "event_id": "#SquidGrow___2023-05-13_campaign_fulldata",
+      "label": 1,
+      "label_str": "campaign",
+      "n_nodes": 273,
+      "n_edges": 918,
+      "log_nodes": 5.613,
+      "log_edges": 6.823
+    },
+    {
+      "event_id": "#TekeTek_noncampaign_fulldata",
+      "label": 0,
+      "label_str": "comparison",
+      "n_nodes": 7739,
+      "n_edges": 10682,
+      "log_nodes": 8.954,
+      "log_edges": 9.276
+    },
+    {
+      "event_id": "#Urfa_noncampaign_fulldata",
+      "label": 0,
+      "label_str": "comparison",
+      "n_nodes": 3227,
+      "n_edges": 3409,
+      "log_nodes": 8.08,
+      "log_edges": 8.134
+    },
+    {
+      "event_id": "#Yargı_noncampaign_fulldata",
+      "label": 0,
+      "label_str": "comparison",
+      "n_nodes": 5782,
+      "n_edges": 9429,
+      "log_nodes": 8.663,
+      "log_edges": 9.152
+    },
+    {
+      "event_id": "#YeniProfilResmi_noncampaign_fulldata",
+      "label": 0,
+      "label_str": "comparison",
+      "n_nodes": 1795,
+      "n_edges": 2286,
+      "log_nodes": 7.493,
+      "log_edges": 7.735
+    },
+    {
+      "event_id": "#ankaragücü_noncampaign_fulldata",
+      "label": 0,
+      "label_str": "comparison",
+      "n_nodes": 1567,
+      "n_edges": 1869,
+      "log_nodes": 7.358,
+      "log_edges": 7.534
+    },
+    {
+      "event_id": "#babalatv_noncampaign_fulldata",
+      "label": 0,
+      "label_str": "comparison",
+      "n_nodes": 4635,
+      "n_edges": 5560,
+      "log_nodes": 8.442,
+      "log_edges": 8.624
+    },
+    {
+      "event_id": "#cashgrab___2023-03-21_campaign_fulldata",
+      "label": 1,
+      "label_str": "campaign",
+      "n_nodes": 454,
+      "n_edges": 490,
+      "log_nodes": 6.12,
+      "log_edges": 6.196
+    },
+    {
+      "event_id": "#cumartesi_noncampaign_fulldata",
+      "label": 0,
+      "label_str": "comparison",
+      "n_nodes": 4909,
+      "n_edges": 6367,
+      "log_nodes": 8.499,
+      "log_edges": 8.759
+    },
+    {
+      "event_id": "#çekildi_noncampaign_fulldata",
+      "label": 0,
+      "label_str": "comparison",
+      "n_nodes": 1393,
+      "n_edges": 1641,
+      "log_nodes": 7.24,
+      "log_edges": 7.404
+    },
+    {
+      "event_id": "#izmirdeprem_noncampaign_fulldata",
+      "label": 0,
+      "label_str": "comparison",
+      "n_nodes": 818,
+      "n_edges": 735,
+      "log_nodes": 6.708,
+      "log_edges": 6.601
+    },
+    {
+      "event_id": "#lime___2023-03-17_campaign_fulldata",
+      "label": 1,
+      "label_str": "campaign",
+      "n_nodes": 806,
+      "n_edges": 877,
+      "log_nodes": 6.693,
+      "log_edges": 6.778
+    },
+    {
+      "event_id": "#mevzularaçıkmikrofon_noncampaign_fulldata",
+      "label": 0,
+      "label_str": "comparison",
+      "n_nodes": 2324,
+      "n_edges": 3013,
+      "log_nodes": 7.751,
+      "log_edges": 8.011
+    },
+    {
+      "event_id": "#reynmen_noncampaign_fulldata",
+      "label": 0,
+      "label_str": "comparison",
+      "n_nodes": 1743,
+      "n_edges": 1813,
+      "log_nodes": 7.464,
+      "log_edges": 7.503
+    },
+    {
+      "event_id": "#sabitkur__2023-03-26_campaign_fulldata",
+      "label": 1,
+      "label_str": "campaign",
+      "n_nodes": 100,
+      "n_edges": 539,
+      "log_nodes": 4.615,
+      "log_edges": 6.292
+    },
+    {
+      "event_id": "#uyuyamıyorum_noncampaign_fulldata",
+      "label": 0,
+      "label_str": "comparison",
+      "n_nodes": 1214,
+      "n_edges": 1302,
+      "log_nodes": 7.102,
+      "log_edges": 7.172
+    },
+    {
+      "event_id": "Abdulahat_Arvas___2023-05-13_campaign_fulldata",
+      "label": 1,
+      "label_str": "campaign",
+      "n_nodes": 1624,
+      "n_edges": 2016,
+      "log_nodes": 7.393,
+      "log_edges": 7.609
+    },
+    {
+      "event_id": "Akitavax___2023-03-24_campaign_fulldata",
+      "label": 1,
+      "label_str": "campaign",
+      "n_nodes": 390,
+      "n_edges": 741,
+      "log_nodes": 5.969,
+      "log_edges": 6.609
+    },
+    {
+      "event_id": "Ali_Koç_noncampaign_fulldata",
+      "label": 0,
+      "label_str": "comparison",
+      "n_nodes": 8352,
+      "n_edges": 10201,
+      "log_nodes": 9.03,
+      "log_edges": 9.23
+    },
+    {
+      "event_id": "Amazon_noncampaign_fulldata",
+      "label": 0,
+      "label_str": "comparison",
+      "n_nodes": 4308,
+      "n_edges": 4742,
+      "log_nodes": 8.368,
+      "log_edges": 8.464
+    },
+    {
+      "event_id": "Arsenal_noncampaign_fulldata",
+      "label": 0,
+      "label_str": "comparison",
+      "n_nodes": 4415,
+      "n_edges": 4638,
+      "log_nodes": 8.393,
+      "log_edges": 8.442
+    },
+    {
+      "event_id": "Asrın_Dayanışması___2023-03-21_campaign_fulldata",
+      "label": 1,
+      "label_str": "campaign",
+      "n_nodes": 721,
+      "n_edges": 854,
+      "log_nodes": 6.582,
+      "log_edges": 6.751
+    },
+    {
+      "event_id": "Atam_noncampaign_fulldata",
+      "label": 0,
+      "label_str": "comparison",
+      "n_nodes": 5981,
+      "n_edges": 6652,
+      "log_nodes": 8.697,
+      "log_edges": 8.803
+    },
+    {
+      "event_id": "Atilla_Karaoğlan_noncampaign_fulldata",
+      "label": 0,
+      "label_str": "comparison",
+      "n_nodes": 4564,
+      "n_edges": 6701,
+      "log_nodes": 8.426,
+      "log_edges": 8.81
+    },
+    {
+      "event_id": "Bakan_Soylu_noncampaign_fulldata",
+      "label": 0,
+      "label_str": "comparison",
+      "n_nodes": 6169,
+      "n_edges": 9146,
+      "log_nodes": 8.727,
+      "log_edges": 9.121
+    },
+    {
+      "event_id": "Betimar_noncampaign_fulldata",
+      "label": 0,
+      "label_str": "comparison",
+      "n_nodes": 1773,
+      "n_edges": 1988,
+      "log_nodes": 7.481,
+      "log_edges": 7.595
+    },
+    {
+      "event_id": "CHP_Sözcüsü_Faik_Öztrak_noncampaign_fulldata",
+      "label": 0,
+      "label_str": "comparison",
+      "n_nodes": 5787,
+      "n_edges": 7299,
+      "log_nodes": 8.664,
+      "log_edges": 8.896
+    },
+    {
+      "event_id": "Cumhurbaşkanı_Manisada___2023-04-22_campaign_fulldata",
+      "label": 1,
+      "label_str": "campaign",
+      "n_nodes": 1102,
+      "n_edges": 1718,
+      "log_nodes": 7.006,
+      "log_edges": 7.449
+    },
+    {
+      "event_id": "Daum_noncampaign_fulldata",
+      "label": 0,
+      "label_str": "comparison",
+      "n_nodes": 3193,
+      "n_edges": 4630,
+      "log_nodes": 8.069,
+      "log_edges": 8.441
+    },
+    {
+      "event_id": "Deniz_Gezmiş_noncampaign_fulldata",
+      "label": 0,
+      "label_str": "comparison",
+      "n_nodes": 5791,
+      "n_edges": 6538,
+      "log_nodes": 8.664,
+      "log_edges": 8.786
+    },
+    {
+      "event_id": "DenkliğimiziKimVerecek___2023-03-23_campaign_fulldata",
+      "label": 1,
+      "label_str": "campaign",
+      "n_nodes": 214,
+      "n_edges": 1389,
+      "log_nodes": 5.371,
+      "log_edges": 7.237
+    },
+    {
+      "event_id": "Dexgame___2023-03-26_campaign_fulldata",
+      "label": 1,
+      "label_str": "campaign",
+      "n_nodes": 273,
+      "n_edges": 710,
+      "log_nodes": 5.613,
+      "log_edges": 6.567
+    },
+    {
+      "event_id": "Dijital_Sandık___2023-04-12_campaign_fulldata",
+      "label": 1,
+      "label_str": "campaign",
+      "n_nodes": 1165,
+      "n_edges": 1868,
+      "log_nodes": 7.061,
+      "log_edges": 7.533
+    },
+    {
+      "event_id": "DiyanetYedeklerAkademiye___2023-03-23_campaign_fulldata",
+      "label": 1,
+      "label_str": "campaign",
+      "n_nodes": 224,
+      "n_edges": 1943,
+      "log_nodes": 5.416,
+      "log_edges": 7.573
+    },
+    {
+      "event_id": "Dünyanın_Sonu___2023-03-23_campaign_fulldata",
+      "label": 1,
+      "label_str": "campaign",
+      "n_nodes": 518,
+      "n_edges": 759,
+      "log_nodes": 6.252,
+      "log_edges": 6.633
+    },
+    {
+      "event_id": "Dzeko_noncampaign_fulldata",
+      "label": 0,
+      "label_str": "comparison",
+      "n_nodes": 796,
+      "n_edges": 740,
+      "log_nodes": 6.681,
+      "log_edges": 6.608
+    },
+    {
+      "event_id": "Emre_Belözoğlu_noncampaign_fulldata",
+      "label": 0,
+      "label_str": "comparison",
+      "n_nodes": 2482,
+      "n_edges": 3024,
+      "log_nodes": 7.817,
+      "log_edges": 8.015
+    },
+    {
+      "event_id": "Ertuğrul_Altun23___2023-03-18_campaign_fulldata",
+      "label": 1,
+      "label_str": "campaign",
+      "n_nodes": 747,
+      "n_edges": 1206,
+      "log_nodes": 6.617,
+      "log_edges": 7.096
+    },
+    {
+      "event_id": "Esenyurt_noncampaign_fulldata",
+      "label": 0,
+      "label_str": "comparison",
+      "n_nodes": 3397,
+      "n_edges": 3719,
+      "log_nodes": 8.131,
+      "log_edges": 8.221
+    },
+    {
+      "event_id": "GSBtayiniOlumluAçıkla___2023-03-21_campaign_fulldata",
+      "label": 1,
+      "label_str": "campaign",
+      "n_nodes": 178,
+      "n_edges": 630,
+      "log_nodes": 5.187,
+      "log_edges": 6.447
+    },
+    {
+      "event_id": "GSBtayinlerOLUMLUolsun___2023-03-23_campaign_fulldata",
+      "label": 1,
+      "label_str": "campaign",
+      "n_nodes": 267,
+      "n_edges": 1537,
+      "log_nodes": 5.591,
+      "log_edges": 7.338
+    },
+    {
+      "event_id": "Gelenekten_Geleceğe___2023-05-13_campaign_fulldata",
+      "label": 1,
+      "label_str": "campaign",
+      "n_nodes": 214,
+      "n_edges": 206,
+      "log_nodes": 5.371,
+      "log_edges": 5.333
+    },
+    {
+      "event_id": "Gomis_noncampaign_fulldata",
+      "label": 0,
+      "label_str": "comparison",
+      "n_nodes": 7323,
+      "n_edges": 9755,
+      "log_nodes": 8.899,
+      "log_edges": 9.186
+    },
+    {
+      "event_id": "Güzel_Kızlar__2023-03-26_campaign_fulldata",
+      "label": 1,
+      "label_str": "campaign",
+      "n_nodes": 701,
+      "n_edges": 995,
+      "log_nodes": 6.554,
+      "log_edges": 6.904
+    },
+    {
+      "event_id": "Haaland_noncampaign_fulldata",
+      "label": 0,
+      "label_str": "comparison",
+      "n_nodes": 1654,
+      "n_edges": 1645,
+      "log_nodes": 7.412,
+      "log_edges": 7.406
+    },
+    {
+      "event_id": "Icardi_noncampaign_fulldata",
+      "label": 0,
+      "label_str": "comparison",
+      "n_nodes": 2195,
+      "n_edges": 1676,
+      "log_nodes": 7.694,
+      "log_edges": 7.425
+    },
+    {
+      "event_id": "İletişim_Başkanlığı___2023-05-13_campaign_fulldata",
+      "label": 1,
+      "label_str": "campaign",
+      "n_nodes": 1546,
+      "n_edges": 1504,
+      "log_nodes": 7.344,
+      "log_edges": 7.317
+    },
+    {
+      "event_id": "Jesus_noncampaign_fulldata",
+      "label": 0,
+      "label_str": "comparison",
+      "n_nodes": 7589,
+      "n_edges": 9541,
+      "log_nodes": 8.935,
+      "log_edges": 9.163
+    },
+    {
+      "event_id": "Kudüs_noncampaign_fulldata",
+      "label": 0,
+      "label_str": "comparison",
+      "n_nodes": 4185,
+      "n_edges": 4423,
+      "log_nodes": 8.34,
+      "log_edges": 8.395
+    },
+    {
+      "event_id": "Kızlara_Tehdit___2023-03-20_campaign_fulldata",
+      "label": 1,
+      "label_str": "campaign",
+      "n_nodes": 514,
+      "n_edges": 1054,
+      "log_nodes": 6.244,
+      "log_edges": 6.961
+    },
+    {
+      "event_id": "Malatyanın_Kahramanı___2023-03-24_campaign_fulldata",
+      "label": 1,
+      "label_str": "campaign",
+      "n_nodes": 175,
+      "n_edges": 459,
+      "log_nodes": 5.17,
+      "log_edges": 6.131
+    },
+    {
+      "event_id": "Manchester_noncampaign_fulldata",
+      "label": 0,
+      "label_str": "comparison",
+      "n_nodes": 1720,
+      "n_edges": 1862,
+      "log_nodes": 7.451,
+      "log_edges": 7.53
+    },
+    {
+      "event_id": "Maradona_noncampaign_fulldata",
+      "label": 0,
+      "label_str": "comparison",
+      "n_nodes": 1589,
+      "n_edges": 1600,
+      "log_nodes": 7.371,
+      "log_edges": 7.378
+    },
+    {
+      "event_id": "MebHazirandaDepremeTayin___2023-05-23_campaign_fulldata",
+      "label": 1,
+      "label_str": "campaign",
+      "n_nodes": 775,
+      "n_edges": 6746,
+      "log_nodes": 6.654,
+      "log_edges": 8.817
+    },
+    {
+      "event_id": "MilliYolPartisi_RemziÇayır___2023-05-13_campaign_fulldata",
+      "label": 1,
+      "label_str": "campaign",
+      "n_nodes": 208,
+      "n_edges": 664,
+      "log_nodes": 5.342,
+      "log_edges": 6.5
+    },
+    {
+      "event_id": "Milliyol_Partisi_noncampaign_fulldata",
+      "label": 0,
+      "label_str": "comparison",
+      "n_nodes": 433,
+      "n_edges": 547,
+      "log_nodes": 6.073,
+      "log_edges": 6.306
+    },
+    {
+      "event_id": "Murat_Bardakçı_noncampaign_fulldata",
+      "label": 0,
+      "label_str": "comparison",
+      "n_nodes": 4909,
+      "n_edges": 7053,
+      "log_nodes": 8.499,
+      "log_edges": 8.861
+    },
+    {
+      "event_id": "Napoli_noncampaign_fulldata",
+      "label": 0,
+      "label_str": "comparison",
+      "n_nodes": 6128,
+      "n_edges": 7174,
+      "log_nodes": 8.721,
+      "log_edges": 8.878
+    },
+    {
+      "event_id": "Osman_Gökçek___2023-03-21_campaign_fulldata",
+      "label": 1,
+      "label_str": "campaign",
+      "n_nodes": 852,
+      "n_edges": 884,
+      "log_nodes": 6.749,
+      "log_edges": 6.786
+    },
+    {
+      "event_id": "Özür_Dilerim___2023-03-26_campaign_fulldata",
+      "label": 1,
+      "label_str": "campaign",
+      "n_nodes": 2519,
+      "n_edges": 1749,
+      "log_nodes": 7.832,
+      "log_edges": 7.467
+    },
+    {
+      "event_id": "PopiGram_Açıldı__2023-03-20_campaign_fulldata",
+      "label": 1,
+      "label_str": "campaign",
+      "n_nodes": 773,
+      "n_edges": 1230,
+      "log_nodes": 6.652,
+      "log_edges": 7.116
+    },
+    {
+      "event_id": "Sevilla_noncampaign_fulldata",
+      "label": 0,
+      "label_str": "comparison",
+      "n_nodes": 2613,
+      "n_edges": 2409,
+      "log_nodes": 7.869,
+      "log_edges": 7.787
+    },
+    {
+      "event_id": "Sloukas_noncampaign_fulldata",
+      "label": 0,
+      "label_str": "comparison",
+      "n_nodes": 1550,
+      "n_edges": 1899,
+      "log_nodes": 7.347,
+      "log_edges": 7.55
+    },
+    {
+      "event_id": "Sonuçlar_Açıklandı___2023-03-24_campaign_fulldata",
+      "label": 1,
+      "label_str": "campaign",
+      "n_nodes": 313,
+      "n_edges": 665,
+      "log_nodes": 5.749,
+      "log_edges": 6.501
+    },
+    {
+      "event_id": "ŞartsızTayin_Şart___2023-03-23_campaign_fulldata",
+      "label": 1,
+      "label_str": "campaign",
+      "n_nodes": 351,
+      "n_edges": 4178,
+      "log_nodes": 5.864,
+      "log_edges": 8.338
+    },
+    {
+      "event_id": "ŞartsızTayin_Şart___2023-03-24_campaign_fulldata",
+      "label": 1,
+      "label_str": "campaign",
+      "n_nodes": 333,
+      "n_edges": 853,
+      "log_nodes": 5.811,
+      "log_edges": 6.75
+    },
+    {
+      "event_id": "Tapuma_YapıKayıt___2023-04-19_campaign_fulldata",
+      "label": 1,
+      "label_str": "campaign",
+      "n_nodes": 169,
+      "n_edges": 1186,
+      "log_nodes": 5.136,
+      "log_edges": 7.079
+    },
+    {
+      "event_id": "Tapuma_YapıKayıt___2023-04-22_campaign_fulldata",
+      "label": 1,
+      "label_str": "campaign",
+      "n_nodes": 200,
+      "n_edges": 1182,
+      "log_nodes": 5.303,
+      "log_edges": 7.076
+    },
+    {
+      "event_id": "Ters_Kelepçe___2023-03-22_campaign_fulldata",
+      "label": 1,
+      "label_str": "campaign",
+      "n_nodes": 581,
+      "n_edges": 972,
+      "log_nodes": 6.366,
+      "log_edges": 6.88
+    },
+    {
+      "event_id": "Teşekkür_Etti___2023-05-01_campaign_fulldata",
+      "label": 1,
+      "label_str": "campaign",
+      "n_nodes": 1671,
+      "n_edges": 1579,
+      "log_nodes": 7.422,
+      "log_edges": 7.365
+    },
+    {
+      "event_id": "Tüm_İslam_noncampaign_fulldata",
+      "label": 0,
+      "label_str": "comparison",
+      "n_nodes": 2065,
+      "n_edges": 1894,
+      "log_nodes": 7.633,
+      "log_edges": 7.547
+    },
+    {
+      "event_id": "Yakup_Türkal___2023-03-22_campaign_fulldata",
+      "label": 1,
+      "label_str": "campaign",
+      "n_nodes": 1093,
+      "n_edges": 1287,
+      "log_nodes": 6.998,
+      "log_edges": 7.161
+    },
+    {
+      "event_id": "YapıKayıt_YoksaOyyok___2023-05-01_campaign_fulldata",
+      "label": 1,
+      "label_str": "campaign",
+      "n_nodes": 131,
+      "n_edges": 546,
+      "log_nodes": 4.883,
+      "log_edges": 6.304
+    },
+    {
+      "event_id": "Yarısı_Bizden___2023-05-01_campaign_fulldata",
+      "label": 1,
+      "label_str": "campaign",
+      "n_nodes": 1908,
+      "n_edges": 1976,
+      "log_nodes": 7.554,
+      "log_edges": 7.589
+    },
+    {
+      "event_id": "Yunus_Filiz___2023-03-22_campaign_fulldata",
+      "label": 1,
+      "label_str": "campaign",
+      "n_nodes": 294,
+      "n_edges": 1009,
+      "log_nodes": 5.687,
+      "log_edges": 6.918
+    }
+  ],
+  "paper": {
+    "source_run": "outputs/run_v2",
+    "config": "configs/v2_coreness_fix.yaml",
+    "dataset": {
+      "_source": "data/manifests/{manifest.parquet,duplicate_files.json}, data/processed/edges.parquet",
+      "archive_json_files": 104,
+      "duplicates_removed": 1,
+      "duplicate_sha256": "57da6c1942138f0549c87a9cf696b8c306d32bc1f7aa7b51de9f49b10a313b88",
+      "n_events": 103,
+      "n_campaign": 52,
+      "n_comparison": 51,
+      "n_edges_total": 288540,
+      "n_self_loops": 4212,
+      "events_with_self_loops": 103,
+      "nodes": {
+        "campaign": {
+          "median": 506.0,
+          "q25": 273.0,
+          "q75": 824.25,
+          "mean": 662.1923076923077
+        },
+        "comparison": {
+          "median": 3227.0,
+          "q25": 1621.5,
+          "q75": 4916.0,
+          "mean": 3479.235294117647
+        }
+      },
+      "edges": {
+        "campaign": {
+          "median": 1078.0,
+          "q25": 776.25,
+          "q75": 1547.5,
+          "mean": 1295.826923076923
+        },
+        "comparison": {
+          "median": 3769.0,
+          "q25": 1799.0,
+          "q75": 6595.0,
+          "mean": 4336.411764705882
+        }
+      },
+      "official_len_small": {
+        "n_graphs": 100,
+        "n_campaign": 51,
+        "n_noncampaign": 49,
+        "selection_rule": "smallest 100 of 314 LEN graphs by node count",
+        "_source": "Gopalakrishnan et al., ICWSM 2025 (arXiv:2503.00599), Table 3 caption"
+      },
+      "full_len": {
+        "n_graphs": 314,
+        "n_campaign": 179,
+        "n_noncampaign": 135
+      },
+      "smd_log_nodes_full_cohort": -2.2374
+    },
+    "eligibility": {
+      "250": {
+        "total_eligible": 102,
+        "campaign_eligible": 51,
+        "comparison_eligible": 51,
+        "feasible_for_5fold_cv": true
+      },
+      "500": {
+        "total_eligible": 98,
+        "campaign_eligible": 48,
+        "comparison_eligible": 50,
+        "feasible_for_5fold_cv": true
+      },
+      "1000": {
+        "total_eligible": 73,
+        "campaign_eligible": 28,
+        "comparison_eligible": 45,
+        "feasible_for_5fold_cv": true
+      },
+      "2000": {
+        "total_eligible": 36,
+        "campaign_eligible": 4,
+        "comparison_eligible": 32,
+        "feasible_for_5fold_cv": false
+      }
+    },
+    "study1": {
+      "_source": "outputs/run_v2/study1/{nested_results.json, oof_predictions.parquet}",
+      "levels": {
+        "M0": [
+          "log_node_count",
+          "log_edge_count"
+        ],
+        "M0q": [
+          "log_node_count",
+          "log_edge_count",
+          "log_n_sq",
+          "log_e_sq",
+          "log_n_x_log_e"
+        ],
+        "M1": [
+          "log_node_count",
+          "log_edge_count",
+          "log_n_sq",
+          "log_e_sq",
+          "log_n_x_log_e",
+          "indegree_gini",
+          "outdegree_gini"
+        ],
+        "M2": [
+          "log_node_count",
+          "log_edge_count",
+          "log_n_sq",
+          "log_e_sq",
+          "log_n_x_log_e",
+          "indegree_gini",
+          "outdegree_gini",
+          "reciprocity",
+          "largest_wcc_fraction",
+          "coreness_median",
+          "coreness_max"
+        ],
+        "M3": [
+          "log_node_count",
+          "log_edge_count",
+          "log_n_sq",
+          "log_e_sq",
+          "log_n_x_log_e",
+          "exact_dup_proportion",
+          "text_concentration",
+          "msg_length_dispersion"
+        ],
+        "M4": [
+          "log_node_count",
+          "log_edge_count",
+          "log_n_sq",
+          "log_e_sq",
+          "log_n_x_log_e",
+          "indegree_gini",
+          "outdegree_gini",
+          "reciprocity",
+          "largest_wcc_fraction",
+          "coreness_median",
+          "coreness_max",
+          "exact_dup_proportion",
+          "text_concentration",
+          "msg_length_dispersion"
+        ],
+        "M4d": [
+          "log_node_count",
+          "log_edge_count",
+          "log_n_sq",
+          "log_e_sq",
+          "log_n_x_log_e",
+          "indegree_gini",
+          "outdegree_gini",
+          "reciprocity",
+          "largest_wcc_fraction",
+          "coreness_median",
+          "coreness_max",
+          "exact_dup_proportion",
+          "text_concentration",
+          "msg_length_dispersion",
+          "density"
+        ]
+      },
+      "estimand_rule": "BA from objective=ba fits; log loss from objective=ll fits",
+      "performance": {
+        "logreg": {
+          "M0": {
+            "balanced_accuracy": 0.8836726998491704,
+            "log_loss": 0.33112729541175134,
+            "roc_auc_ba_fit": 0.9306184012066365,
+            "roc_auc_ll_fit": 0.9306184012066365
+          },
+          "M0q": {
+            "balanced_accuracy": 0.8836726998491704,
+            "log_loss": 0.32618902948062545,
+            "roc_auc_ba_fit": 0.9294871794871795,
+            "roc_auc_ll_fit": 0.9321266968325792
+          },
+          "M1": {
+            "balanced_accuracy": 0.8740573152337858,
+            "log_loss": 0.36014259210566507,
+            "roc_auc_ba_fit": 0.9257164404223227,
+            "roc_auc_ll_fit": 0.9181749622926093
+          },
+          "M2": {
+            "balanced_accuracy": 0.8642533936651584,
+            "log_loss": 0.35227625750089314,
+            "roc_auc_ba_fit": 0.9317496229260935,
+            "roc_auc_ll_fit": 0.9321266968325792
+          },
+          "M3": {
+            "balanced_accuracy": 0.8642533936651584,
+            "log_loss": 0.3072619399450458,
+            "roc_auc_ba_fit": 0.9377828054298641,
+            "roc_auc_ll_fit": 0.9543740573152336
+          },
+          "M4": {
+            "balanced_accuracy": 0.8934766214177978,
+            "log_loss": 0.2163738701337429,
+            "roc_auc_ba_fit": 0.9694570135746605,
+            "roc_auc_ll_fit": 0.9709653092006032
+          },
+          "M4d": {
+            "balanced_accuracy": 0.9030920060331824,
+            "log_loss": 0.2157868709159125,
+            "roc_auc_ba_fit": 0.972473604826546,
+            "roc_auc_ll_fit": 0.9709653092006032
+          }
+        },
+        "hgbt": {
+          "M0": {
+            "balanced_accuracy": 0.8248491704374057,
+            "log_loss": 0.3440775651916251,
+            "roc_auc_ba_fit": 0.9338235294117647,
+            "roc_auc_ll_fit": 0.9347662141779789
+          },
+          "M0q": {
+            "balanced_accuracy": 0.8054298642533937,
+            "log_loss": 0.3683162959413557,
+            "roc_auc_ba_fit": 0.9206259426847662,
+            "roc_auc_ll_fit": 0.9159125188536952
+          },
+          "M1": {
+            "balanced_accuracy": 0.8936651583710407,
+            "log_loss": 0.2959768901511344,
+            "roc_auc_ba_fit": 0.9423076923076923,
+            "roc_auc_ll_fit": 0.9477752639517345
+          },
+          "M2": {
+            "balanced_accuracy": 0.8640648567119156,
+            "log_loss": 0.3086913860561447,
+            "roc_auc_ba_fit": 0.94947209653092,
+            "roc_auc_ll_fit": 0.9392911010558069
+          },
+          "M3": {
+            "balanced_accuracy": 0.902526395173454,
+            "log_loss": 0.3438273953024879,
+            "roc_auc_ba_fit": 0.9413650075414781,
+            "roc_auc_ll_fit": 0.9400452488687783
+          },
+          "M4": {
+            "balanced_accuracy": 0.9321266968325792,
+            "log_loss": 0.351661634588551,
+            "roc_auc_ba_fit": 0.970211161387632,
+            "roc_auc_ll_fit": 0.9400452488687783
+          },
+          "M4d": {
+            "balanced_accuracy": 0.9125188536953244,
+            "log_loss": 0.28530628305519934,
+            "roc_auc_ba_fit": 0.9521116138763198,
+            "roc_auc_ll_fit": 0.9457013574660633
+          }
+        }
+      },
+      "confirmatory": {
+        "logreg": {
+          "C1": {
+            "a": "M4",
+            "b": "M0q",
+            "ba": {
+              "delta_ba": 0.009803921568627416,
+              "delta_ba_ci": [
+                -0.04943396226415087,
+                0.07597554539056989
+              ],
+              "p_ba_bootstrap": 0.824,
+              "mcnemar_a_right_b_wrong": 6,
+              "mcnemar_b_right_a_wrong": 5,
+              "mcnemar_exact_p": 1.0,
+              "p_holm": 1.0
+            },
+            "log_loss": {
+              "delta_logloss": -0.10981516048938972,
+              "delta_logloss_ci": [
+                -0.18071600537230623,
+                -0.03926484149759151
+              ],
+              "p_logloss_bootstrap": 0.003,
+              "p_holm": 0.009000000000000001
+            },
+            "auc_ba_fit": {
+              "delta_auc": 0.039969834087481004,
+              "delta_auc_ci": [
+                0.009574751651323741,
+                0.07844028520499098
+              ]
+            },
+            "auc_ll_fit": {
+              "delta_auc": 0.038838612368023995,
+              "delta_auc_ci": [
+                0.009419139996423962,
+                0.07537878787878782
+              ]
+            }
+          },
+          "C2": {
+            "a": "M2",
+            "b": "M1",
+            "ba": {
+              "delta_ba": -0.009803921568627416,
+              "delta_ba_ci": [
+                -0.05306829298116902,
+                0.031931415215989585
+              ],
+              "p_ba_bootstrap": 0.744,
+              "mcnemar_a_right_b_wrong": 2,
+              "mcnemar_b_right_a_wrong": 3,
+              "mcnemar_exact_p": 1.0,
+              "p_holm": 1.0
+            },
+            "log_loss": {
+              "delta_logloss": -0.00786634197048064,
+              "delta_logloss_ci": [
+                -0.07926325940820089,
+                0.08121995482469917
+              ],
+              "p_logloss_bootstrap": 0.757,
+              "p_holm": 1.0
+            },
+            "auc_ba_fit": {
+              "delta_auc": 0.006033182503770829,
+              "delta_auc_ci": [
+                -0.020786092214663546,
+                0.030511858413493798
+              ]
+            },
+            "auc_ll_fit": {
+              "delta_auc": 0.013951734539969896,
+              "delta_auc_ci": [
+                -0.018876995645863565,
+                0.044622425629290426
+              ]
+            }
+          },
+          "C3": {
+            "a": "M3",
+            "b": "M0q",
+            "ba": {
+              "delta_ba": -0.019419306184011997,
+              "delta_ba_ci": [
+                -0.08604098746416818,
+                0.04636327657271795
+              ],
+              "p_ba_bootstrap": 0.575,
+              "mcnemar_a_right_b_wrong": 5,
+              "mcnemar_b_right_a_wrong": 7,
+              "mcnemar_exact_p": 0.7744140625,
+              "p_holm": 1.0
+            },
+            "log_loss": {
+              "delta_logloss": -0.018927089535579644,
+              "delta_logloss_ci": [
+                -0.1360089156995291,
+                0.1181849311180951
+              ],
+              "p_logloss_bootstrap": 0.684,
+              "p_holm": 1.0
+            },
+            "auc_ba_fit": {
+              "delta_auc": 0.008295625942684626,
+              "delta_auc_ci": [
+                -0.030309029206088113,
+                0.047389252696456045
+              ]
+            },
+            "auc_ll_fit": {
+              "delta_auc": 0.02224736048265441,
+              "delta_auc_ci": [
+                -0.012093726379440617,
+                0.06092117293625918
+              ]
+            }
+          }
+        },
+        "hgbt": {
+          "C1": {
+            "a": "M4",
+            "b": "M0q",
+            "ba": {
+              "delta_ba": 0.12669683257918551,
+              "delta_ba_ci": [
+                0.056499005017720275,
+                0.20118014592241515
+              ],
+              "p_ba_bootstrap": 0.0,
+              "mcnemar_a_right_b_wrong": 15,
+              "mcnemar_b_right_a_wrong": 2,
+              "mcnemar_exact_p": 0.002349853515625,
+              "p_holm": 0.0
+            },
+            "log_loss": {
+              "delta_logloss": -0.01665466135280469,
+              "delta_logloss_ci": [
+                -0.19328048594381972,
+                0.22843234532694098
+              ],
+              "p_logloss_bootstrap": 0.822,
+              "p_holm": 1.0
+            },
+            "auc_ba_fit": {
+              "delta_auc": 0.04958521870286581,
+              "delta_auc_ci": [
+                0.013600718065003792,
+                0.09118879394391241
+              ]
+            },
+            "auc_ll_fit": {
+              "delta_auc": 0.024132730015083093,
+              "delta_auc_ci": [
+                -0.03396548027444253,
+                0.07461262332628625
+              ]
+            }
+          },
+          "C2": {
+            "a": "M2",
+            "b": "M1",
+            "ba": {
+              "delta_ba": -0.029600301659125083,
+              "delta_ba_ci": [
+                -0.09477041490486261,
+                0.030585106382978625
+              ],
+              "p_ba_bootstrap": 0.348,
+              "mcnemar_a_right_b_wrong": 4,
+              "mcnemar_b_right_a_wrong": 7,
+              "mcnemar_exact_p": 0.548828125,
+              "p_holm": 0.348
+            },
+            "log_loss": {
+              "delta_logloss": 0.012714495905010337,
+              "delta_logloss_ci": [
+                -0.0454735117320611,
+                0.07818533793385803
+              ],
+              "p_logloss_bootstrap": 0.672,
+              "p_holm": 1.0
+            },
+            "auc_ba_fit": {
+              "delta_auc": 0.007164404223227727,
+              "delta_auc_ci": [
+                -0.030566037735849094,
+                0.045781240218956264
+              ]
+            },
+            "auc_ll_fit": {
+              "delta_auc": -0.008484162895927572,
+              "delta_auc_ci": [
+                -0.03457682441071366,
+                0.013614362726222533
+              ]
+            }
+          },
+          "C3": {
+            "a": "M3",
+            "b": "M0q",
+            "ba": {
+              "delta_ba": 0.09709653092006032,
+              "delta_ba_ci": [
+                0.03678337872218443,
+                0.16515151515151516
+              ],
+              "p_ba_bootstrap": 0.0,
+              "mcnemar_a_right_b_wrong": 11,
+              "mcnemar_b_right_a_wrong": 1,
+              "mcnemar_exact_p": 0.00634765625,
+              "p_holm": 0.0
+            },
+            "log_loss": {
+              "delta_logloss": -0.024488900638867772,
+              "delta_logloss_ci": [
+                -0.17637661573155652,
+                0.1889866344264805
+              ],
+              "p_logloss_bootstrap": 0.766,
+              "p_holm": 1.0
+            },
+            "auc_ba_fit": {
+              "delta_auc": 0.020739064856711953,
+              "delta_auc_ci": [
+                -0.03242835595776761,
+                0.06666761148904014
+              ]
+            },
+            "auc_ll_fit": {
+              "delta_auc": 0.024132730015083093,
+              "delta_auc_ci": [
+                -0.026969179872968478,
+                0.06896140749555547
+              ]
+            }
+          }
+        }
+      },
+      "exploratory": {
+        "logreg": {
+          "E1": {
+            "a": "M1",
+            "b": "M0q",
+            "delta_ba": -0.009615384615384581,
+            "delta_ba_ci": [
+              -0.03260869565217395,
+              0.0
+            ],
+            "delta_logloss": 0.033953562625039624,
+            "delta_logloss_ci": [
+              0.00574978108107429,
+              0.07135186326377971
+            ],
+            "delta_auc_ll_fit": -0.013951734539969896,
+            "delta_auc_ll_fit_ci": [
+              -0.027841342486651377,
+              -0.0018767560953503542
+            ]
+          },
+          "E2": {
+            "a": "M4",
+            "b": "M3",
+            "delta_ba": 0.029223227752639414,
+            "delta_ba_ci": [
+              0.0,
+              0.06716981132075461
+            ],
+            "delta_logloss": -0.09088807095381007,
+            "delta_logloss_ci": [
+              -0.1823862424823847,
+              -0.018285522708720185
+            ],
+            "delta_auc_ll_fit": 0.016591251885369585,
+            "delta_auc_ll_fit_ci": [
+              0.0011362992166564334,
+              0.03736642191545338
+            ]
+          },
+          "E3": {
+            "a": "M4",
+            "b": "M2",
+            "delta_ba": 0.029223227752639414,
+            "delta_ba_ci": [
+              -0.034962609816239776,
+              0.09073690424980516
+            ],
+            "delta_logloss": -0.1359023811439487,
+            "delta_logloss_ci": [
+              -0.2346991050742185,
+              -0.05511894484722711
+            ],
+            "delta_auc_ll_fit": 0.038838612368023995,
+            "delta_auc_ll_fit_ci": [
+              0.009469696969697013,
+              0.080124364231153
+            ]
+          },
+          "E4": {
+            "a": "M0q",
+            "b": "M0",
+            "delta_ba": 0.0,
+            "delta_ba_ci": [
+              0.0,
+              0.0
+            ],
+            "delta_logloss": -0.004938265931125896,
+            "delta_logloss_ci": [
+              -0.015514616402557763,
+              0.009027625144760658
+            ],
+            "delta_auc_ll_fit": 0.0015082956259426794,
+            "delta_auc_ll_fit_ci": [
+              -0.004905845776465742,
+              0.007558578987150291
+            ]
+          },
+          "E5": {
+            "a": "M4d",
+            "b": "M4",
+            "delta_ba": 0.009615384615384581,
+            "delta_ba_ci": [
+              -0.02083333333333337,
+              0.04347826086956519
+            ],
+            "delta_logloss": -0.0005870068573995135,
+            "delta_logloss_ci": [
+              -0.00249015991808871,
+              0.0012886366102534813
+            ],
+            "delta_auc_ll_fit": 0.0,
+            "delta_auc_ll_fit_ci": [
+              -0.0018939393939393396,
+              0.0018867924528301883
+            ]
+          }
+        },
+        "hgbt": {
+          "E1": {
+            "a": "M1",
+            "b": "M0q",
+            "delta_ba": 0.08823529411764697,
+            "delta_ba_ci": [
+              0.012248244844229978,
+              0.1664857383452179
+            ],
+            "delta_logloss": -0.0723394057902213,
+            "delta_logloss_ci": [
+              -0.13733125473591168,
+              -0.006785225234843926
+            ],
+            "delta_auc_ll_fit": 0.031862745098039325,
+            "delta_auc_ll_fit_ci": [
+              0.004147812971342366,
+              0.06379789272030656
+            ]
+          },
+          "E2": {
+            "a": "M4",
+            "b": "M3",
+            "delta_ba": 0.029600301659125194,
+            "delta_ba_ci": [
+              -0.027743253745520575,
+              0.08660377358490567
+            ],
+            "delta_logloss": 0.007834239286063083,
+            "delta_logloss_ci": [
+              -0.08793528107826516,
+              0.12162650906315176
+            ],
+            "delta_auc_ll_fit": 0.0,
+            "delta_auc_ll_fit_ci": [
+              -0.03280728958249966,
+              0.029035238623751503
+            ]
+          },
+          "E3": {
+            "a": "M4",
+            "b": "M2",
+            "delta_ba": 0.06806184012066363,
+            "delta_ba_ci": [
+              0.001695285169467218,
+              0.13547169811320747
+            ],
+            "delta_logloss": 0.042970248532406274,
+            "delta_logloss_ci": [
+              -0.14444546696330007,
+              0.2923511714653979
+            ],
+            "delta_auc_ll_fit": 0.0007541478129713397,
+            "delta_auc_ll_fit_ci": [
+              -0.058044869989674334,
+              0.05072211431742488
+            ]
+          },
+          "E4": {
+            "a": "M0q",
+            "b": "M0",
+            "delta_ba": -0.019419306184011997,
+            "delta_ba_ci": [
+              -0.049130763416477596,
+              0.0
+            ],
+            "delta_logloss": 0.024238730749730597,
+            "delta_logloss_ci": [
+              -0.014944395364672347,
+              0.06475069597093293
+            ],
+            "delta_auc_ll_fit": -0.018853695324283715,
+            "delta_auc_ll_fit_ci": [
+              -0.04885452010836684,
+              0.004409099183439844
+            ]
+          },
+          "E5": {
+            "a": "M4d",
+            "b": "M4",
+            "delta_ba": -0.019607843137254832,
+            "delta_ba_ci": [
+              -0.050000000000000044,
+              0.0
+            ],
+            "delta_logloss": -0.06635535153335165,
+            "delta_logloss_ci": [
+              -0.23832118234380376,
+              0.08741246806126426
+            ],
+            "delta_auc_ll_fit": 0.005656108597285048,
+            "delta_auc_ll_fit_ci": [
+              -0.03948908730158738,
+              0.052800776914539375
+            ]
+          }
+        }
+      },
+      "repeated_splits_lr": {
+        "C1": {
+          "dBA_mean": 0.029374057315233747,
+          "dBA_min": 0.009803921568627416,
+          "dBA_max": 0.04883107088989436,
+          "dLL_mean": -0.08629212664262302,
+          "dLL_min": -0.12220027562271546,
+          "dLL_max": 0.028123500591802353,
+          "dAUC_mean": 0.033295625942684745,
+          "dAUC_min": 0.013574660633484226,
+          "dAUC_max": 0.041855203619909465
+        },
+        "C2": {
+          "dBA_mean": 0.014649321266968319,
+          "dBA_min": -0.009803921568627416,
+          "dBA_max": 0.03865007541478127,
+          "dLL_mean": -0.04170232313682308,
+          "dLL_min": -0.10533227605549172,
+          "dLL_max": -0.00786633460477193,
+          "dAUC_mean": 0.017948717948717975,
+          "dAUC_min": 0.009803921568627416,
+          "dAUC_max": 0.02526395173453988
+        },
+        "C3": {
+          "dBA_mean": 0.008766968325791834,
+          "dBA_min": -0.019419306184011997,
+          "dBA_max": 0.03902714932126683,
+          "dLL_mean": -0.018530120273502714,
+          "dLL_min": -0.05870892558839952,
+          "dLL_max": 0.03971516351109622,
+          "dAUC_mean": 0.018024132730014998,
+          "dAUC_min": 0.006787330316741946,
+          "dAUC_max": 0.02564102564102555
+        }
+      },
+      "n_split_seeds": 10,
+      "hgbt_vs_best_count_baseline": {
+        "HGBT_M3_vs_LR_M0q_ba": {
+          "delta_ba": 0.018853695324283604,
+          "delta_ba_ci": [
+            -0.03610560697147073,
+            0.07057865874930953
+          ],
+          "delta_logloss": -0.0021893192477039913,
+          "delta_logloss_ci": [
+            -0.15765196589410452,
+            0.20240634787144157
+          ],
+          "delta_auc": 0.0118778280542986,
+          "delta_auc_ci": [
+            -0.03997219079939665,
+            0.05745718350233176
+          ]
+        },
+        "HGBT_M3_vs_LR_M0q_ll": {
+          "delta_ba": 0.009049773755656076,
+          "delta_ba_ci": [
+            -0.04807692307692313,
+            0.06302900278885502
+          ],
+          "delta_logloss": 0.017638365821862456,
+          "delta_logloss_ci": [
+            -0.13944282296515792,
+            0.24016466843720835
+          ],
+          "delta_auc": 0.007918552036199067,
+          "delta_auc_ci": [
+            -0.045257779728807006,
+            0.05358627918745037
+          ]
+        },
+        "HGBT_M4_vs_LR_M0q_ba": {
+          "delta_ba": 0.0484539969834088,
+          "delta_ba_ci": [
+            -0.017573696145124718,
+            0.11689291101055799
+          ],
+          "delta_logloss": -0.07222194669716059,
+          "delta_logloss_ci": [
+            -0.20532924161468044,
+            0.080047101706232
+          ],
+          "delta_auc": 0.040723981900452455,
+          "delta_auc_ci": [
+            0.00607856682324773,
+            0.08184857276243822
+          ]
+        },
+        "HGBT_M4_vs_LR_M0q_ll": {
+          "delta_ba": 0.02903469079939669,
+          "delta_ba_ci": [
+            -0.029223227752639414,
+            0.09073690424980516
+          ],
+          "delta_logloss": 0.02547260510792554,
+          "delta_logloss_ci": [
+            -0.15653513426110058,
+            0.27780573335227904
+          ],
+          "delta_auc": 0.007918552036199067,
+          "delta_auc_ci": [
+            -0.04989892547928249,
+            0.05849209233363373
+          ]
+        }
+      },
+      "row_order_sensitivity": {
+        "ba:C1": {
+          "delta_study_order": 0.009803921568627416,
+          "delta_permuted_order": 0.029223227752639414
+        },
+        "ll:C1": {
+          "delta_study_order": -0.10981515934688255,
+          "delta_permuted_order": -0.10981515934688255
+        },
+        "ba:C2": {
+          "delta_study_order": -0.009803921568627416,
+          "delta_permuted_order": -0.009992458521870251
+        },
+        "ll:C2": {
+          "delta_study_order": -0.00786633460477193,
+          "delta_permuted_order": -0.03694800982835411
+        },
+        "ba:C3": {
+          "delta_study_order": -0.019419306184011997,
+          "delta_permuted_order": 0.009615384615384581
+        },
+        "ll:C3": {
+          "delta_study_order": -0.018927089535579644,
+          "delta_permuted_order": -0.06007751815983309
+        }
+      },
+      "_row_order_source": "outputs/run_v2/verification/verification_report.json",
+      "n_bootstrap": 2000
+    },
+    "null_model": {
+      "_source": "outputs/run_v2/study1/{null_results.json, null_pilot.csv, null_features.parquet}; verification_report.json",
+      "swaps_per_edge": 10,
+      "realizations": 5,
+      "M1_ba": 0.8740573152337858,
+      "M2_real_ba": 0.8642533936651584,
+      "M2_null_ba_mean": 0.8760935143288083,
+      "M2_null_ba_range": [
+        0.8644419306184012,
+        0.8838612368024132
+      ],
+      "real_minus_null_ba": {
+        "delta_ba": -0.00018853695324283493,
+        "delta_ba_ci": [
+          -0.04806267535655838,
+          0.0466179245283019
+        ]
+      },
+      "real_minus_null_logloss": {
+        "delta_logloss": -0.036714004349962026,
+        "delta_logloss_ci": [
+          -0.12306170339436963,
+          0.027527036857767216
+        ]
+      },
+      "M2_real_logloss": 0.35227625750089314,
+      "mean_frac_edges_unchanged": 0.20964879565445788,
+      "frac_edges_unchanged_quantiles": [
+        0.009,
+        0.061,
+        0.132,
+        0.329,
+        0.896
+      ],
+      "pilot": [
+        {
+          "swaps_per_edge": 1,
+          "frac_edges_unchanged": 0.2685,
+          "reciprocity": 0.0127,
+          "largest_wcc_fraction": 0.9043,
+          "coreness_median": 1.0,
+          "coreness_max": 6.1667
+        },
+        {
+          "swaps_per_edge": 2,
+          "frac_edges_unchanged": 0.2032,
+          "reciprocity": 0.0143,
+          "largest_wcc_fraction": 0.898,
+          "coreness_median": 1.0,
+          "coreness_max": 6.0
+        },
+        {
+          "swaps_per_edge": 5,
+          "frac_edges_unchanged": 0.1902,
+          "reciprocity": 0.014,
+          "largest_wcc_fraction": 0.9032,
+          "coreness_median": 1.0,
+          "coreness_max": 6.5
+        },
+        {
+          "swaps_per_edge": 10,
+          "frac_edges_unchanged": 0.1944,
+          "reciprocity": 0.0148,
+          "largest_wcc_fraction": 0.904,
+          "coreness_median": 1.0,
+          "coreness_max": 5.8333
+        },
+        {
+          "swaps_per_edge": 20,
+          "frac_edges_unchanged": 0.1927,
+          "reciprocity": 0.0135,
+          "largest_wcc_fraction": 0.8945,
+          "coreness_median": 1.0,
+          "coreness_max": 6.3333
+        }
+      ],
+      "share_events_zero_null_variance": {
+        "reciprocity": 0.456,
+        "largest_wcc_fraction": 0.068,
+        "coreness_median": 0.99,
+        "coreness_max": 0.505
+      },
+      "observed_vs_null_median_z": {
+        "reciprocity": {
+          "median_z_campaign": 5.962366563370837,
+          "median_z_comparison": 26.110390514058565,
+          "share_undefined_sd0": 0.4563106796116505
+        },
+        "largest_wcc_fraction": {
+          "median_z_campaign": -21.584325969833053,
+          "median_z_comparison": -22.653477530868003,
+          "share_undefined_sd0": 0.06796116504854369
+        },
+        "coreness_median": {
+          "median_z_campaign": -2.921186973360886,
+          "median_z_comparison": null,
+          "share_undefined_sd0": 0.9902912621359223
+        },
+        "coreness_max": {
+          "median_z_campaign": 1.7888543819998326,
+          "median_z_comparison": 3.4730546664302535,
+          "share_undefined_sd0": 0.5048543689320388
+        }
+      }
+    },
+    "matching": {
+      "_source": "outputs/run_v2/study1/matching_sensitivity.json; data/manifests/matching_diagnostics.json",
+      "caliper_sd_fraction": 0.25,
+      "caliper_abs": 0.2859,
+      "primary_pairs": 16,
+      "n_excluded": 71,
+      "smd_before": -2.2374,
+      "smd_after": -0.0954,
+      "node_only": {
+        "n_order_seeds": 20,
+        "n_pairs_range": [
+          15,
+          17
+        ],
+        "smd_log_nodes_median": -0.0957893055185118,
+        "smd_log_edges_median": 0.3211727162658954,
+        "smd_log_edges_range": [
+          0.13587695982574277,
+          0.6131686963896307
+        ],
+        "ba": {
+          "M0": {
+            "median": 0.53125,
+            "min": 0.46875,
+            "max": 0.65625
+          },
+          "M1": {
+            "median": 0.6056985294117647,
+            "min": 0.5,
+            "max": 0.75
+          },
+          "M2": {
+            "median": 0.6819852941176471,
+            "min": 0.5625,
+            "max": 0.78125
+          },
+          "M3": {
+            "median": 0.78125,
+            "min": 0.65625,
+            "max": 0.8125
+          },
+          "M4": {
+            "median": 0.75,
+            "min": 0.65625,
+            "max": 0.875
+          }
+        }
+      },
+      "node_edge": {
+        "n_order_seeds": 20,
+        "n_pairs_range": [
+          15,
+          17
+        ],
+        "smd_log_nodes_median": -0.10805296820675031,
+        "smd_log_edges_median": 0.05774076565397223,
+        "smd_log_edges_range": [
+          0.029177556051336297,
+          0.11065639919910618
+        ],
+        "ba": {
+          "M0": {
+            "median": 0.5625,
+            "min": 0.5,
+            "max": 0.625
+          },
+          "M1": {
+            "median": 0.59375,
+            "min": 0.46875,
+            "max": 0.65625
+          },
+          "M2": {
+            "median": 0.625,
+            "min": 0.4,
+            "max": 0.71875
+          },
+          "M3": {
+            "median": 0.7729779411764706,
+            "min": 0.6875,
+            "max": 0.84375
+          },
+          "M4": {
+            "median": 0.6875,
+            "min": 0.6,
+            "max": 0.84375
+          }
+        }
+      }
+    },
+    "study2": {
+      "_source": "outputs/run_v2/study2/{results.json, view_predictions.parquet}",
+      "feature_sets": {
+        "NK": [
+          "log_node_count"
+        ],
+        "struct7": [
+          "density",
+          "reciprocity",
+          "largest_wcc_fraction",
+          "indegree_gini",
+          "outdegree_gini",
+          "coreness_median",
+          "coreness_max"
+        ],
+        "struct6": [
+          "reciprocity",
+          "largest_wcc_fraction",
+          "indegree_gini",
+          "outdegree_gini",
+          "coreness_median",
+          "coreness_max"
+        ],
+        "NK_struct6": [
+          "log_node_count",
+          "reciprocity",
+          "largest_wcc_fraction",
+          "indegree_gini",
+          "outdegree_gini",
+          "coreness_median",
+          "coreness_max"
+        ],
+        "content": [
+          "exact_dup_proportion",
+          "text_concentration",
+          "msg_length_dispersion"
+        ],
+        "combined": [
+          "log_node_count",
+          "reciprocity",
+          "largest_wcc_fraction",
+          "indegree_gini",
+          "outdegree_gini",
+          "coreness_median",
+          "coreness_max",
+          "exact_dup_proportion",
+          "text_concentration",
+          "msg_length_dispersion"
+        ]
+      },
+      "results": {
+        "budget_specific_K250": {
+          "n_events": 102,
+          "n_campaign": 51,
+          "n_comparison": 51,
+          "estimand_rule": "BA from objective=ba fits; log loss and AUC from objective=ll fits",
+          "conditions": {
+            "FF|NK": {
+              "single_view_ba_mean": 0.8725490196078433,
+              "single_view_ba_min": 0.8725490196078431,
+              "single_view_ba_max": 0.8725490196078431,
+              "single_view_logloss_mean": 0.33145077393332734,
+              "single_view_auc_mean": 0.9311803152633603,
+              "ensemble_ba": 0.8725490196078431,
+              "ensemble_logloss": 0.3314507739333274,
+              "ensemble_auc": 0.9311803152633603
+            },
+            "FK|NK": {
+              "single_view_ba_mean": 0.5,
+              "single_view_ba_min": 0.5,
+              "single_view_ba_max": 0.5,
+              "single_view_logloss_mean": 1.5842518310091434,
+              "single_view_auc_mean": 0.9424836601307189,
+              "ensemble_ba": 0.5,
+              "ensemble_logloss": 1.5838995219944467,
+              "ensemble_auc": 0.9423298731257209
+            },
+            "KK|NK": {
+              "single_view_ba_mean": 0.9215686274509804,
+              "single_view_ba_min": 0.8823529411764706,
+              "single_view_ba_max": 0.9411764705882353,
+              "single_view_logloss_mean": 0.278665552236376,
+              "single_view_auc_mean": 0.960553633217993,
+              "ensemble_ba": 0.9313725490196079,
+              "ensemble_logloss": 0.2756623622686236,
+              "ensemble_auc": 0.9607843137254902
+            },
+            "FF|struct7": {
+              "single_view_ba_mean": 0.803921568627451,
+              "single_view_ba_min": 0.803921568627451,
+              "single_view_ba_max": 0.803921568627451,
+              "single_view_logloss_mean": 0.4307307205944447,
+              "single_view_auc_mean": 0.8608227604767397,
+              "ensemble_ba": 0.803921568627451,
+              "ensemble_logloss": 0.4307307205944447,
+              "ensemble_auc": 0.8608227604767397
+            },
+            "FK|struct7": {
+              "single_view_ba_mean": 0.6323529411764705,
+              "single_view_ba_min": 0.6078431372549019,
+              "single_view_ba_max": 0.6568627450980392,
+              "single_view_logloss_mean": 0.5913751753743659,
+              "single_view_auc_mean": 0.8740484429065745,
+              "ensemble_ba": 0.6372549019607843,
+              "ensemble_logloss": 0.5891604946094604,
+              "ensemble_auc": 0.879277201076509
+            },
+            "KK|struct7": {
+              "single_view_ba_mean": 0.9039215686274511,
+              "single_view_ba_min": 0.8627450980392157,
+              "single_view_ba_max": 0.9215686274509804,
+              "single_view_logloss_mean": 0.2723764649741841,
+              "single_view_auc_mean": 0.9501730103806227,
+              "ensemble_ba": 0.9215686274509804,
+              "ensemble_logloss": 0.255998705635865,
+              "ensemble_auc": 0.9596309111880046
+            },
+            "FF|struct6": {
+              "single_view_ba_mean": 0.7745098039215685,
+              "single_view_ba_min": 0.7745098039215685,
+              "single_view_ba_max": 0.7745098039215685,
+              "single_view_logloss_mean": 0.5102259941782336,
+              "single_view_auc_mean": 0.7666282199154172,
+              "ensemble_ba": 0.7745098039215685,
+              "ensemble_logloss": 0.5102259941782337,
+              "ensemble_auc": 0.7666282199154172
+            },
+            "FK|struct6": {
+              "single_view_ba_mean": 0.6480392156862744,
+              "single_view_ba_min": 0.6176470588235294,
+              "single_view_ba_max": 0.6764705882352942,
+              "single_view_logloss_mean": 0.6161991815831305,
+              "single_view_auc_mean": 0.6934640522875817,
+              "ensemble_ba": 0.6470588235294117,
+              "ensemble_logloss": 0.6131309257233162,
+              "ensemble_auc": 0.6958861976163015
+            },
+            "KK|struct6": {
+              "single_view_ba_mean": 0.9019607843137255,
+              "single_view_ba_min": 0.8823529411764706,
+              "single_view_ba_max": 0.911764705882353,
+              "single_view_logloss_mean": 0.2784305887750357,
+              "single_view_auc_mean": 0.9470203767781621,
+              "ensemble_ba": 0.9215686274509804,
+              "ensemble_logloss": 0.26336731091984106,
+              "ensemble_auc": 0.956555171088043
+            },
+            "FF|NK_struct6": {
+              "single_view_ba_mean": 0.8627450980392158,
+              "single_view_ba_min": 0.8627450980392157,
+              "single_view_ba_max": 0.8627450980392157,
+              "single_view_logloss_mean": 0.3630020838322193,
+              "single_view_auc_mean": 0.9304113802383698,
+              "ensemble_ba": 0.8627450980392157,
+              "ensemble_logloss": 0.3630020838322193,
+              "ensemble_auc": 0.9304113802383699
+            },
+            "FK|NK_struct6": {
+              "single_view_ba_mean": 0.5,
+              "single_view_ba_min": 0.5,
+              "single_view_ba_max": 0.5,
+              "single_view_logloss_mean": 1.0316296603276998,
+              "single_view_auc_mean": 0.9004229142637448,
+              "ensemble_ba": 0.5,
+              "ensemble_logloss": 1.026050413534538,
+              "ensemble_auc": 0.9011918492887352
+            },
+            "KK|NK_struct6": {
+              "single_view_ba_mean": 0.9137254901960785,
+              "single_view_ba_min": 0.9019607843137255,
+              "single_view_ba_max": 0.9313725490196079,
+              "single_view_logloss_mean": 0.2730959652399469,
+              "single_view_auc_mean": 0.9460207612456747,
+              "ensemble_ba": 0.9313725490196079,
+              "ensemble_logloss": 0.2542727757143825,
+              "ensemble_auc": 0.9507881584006153
+            },
+            "FF|content": {
+              "single_view_ba_mean": 0.7843137254901961,
+              "single_view_ba_min": 0.7843137254901961,
+              "single_view_ba_max": 0.7843137254901961,
+              "single_view_logloss_mean": 0.47765660248236647,
+              "single_view_auc_mean": 0.8523644752018456,
+              "ensemble_ba": 0.7843137254901961,
+              "ensemble_logloss": 0.47765660248236647,
+              "ensemble_auc": 0.8523644752018456
+            },
+            "FK|content": {
+              "single_view_ba_mean": 0.4852941176470589,
+              "single_view_ba_min": 0.4607843137254902,
+              "single_view_ba_max": 0.5,
+              "single_view_logloss_mean": 1.287233584864177,
+              "single_view_auc_mean": 0.606651287966167,
+              "ensemble_ba": 0.4901960784313726,
+              "ensemble_logloss": 1.2677177817234413,
+              "ensemble_auc": 0.6047673971549403
+            },
+            "KK|content": {
+              "single_view_ba_mean": 0.7166666666666667,
+              "single_view_ba_min": 0.6862745098039216,
+              "single_view_ba_max": 0.7352941176470589,
+              "single_view_logloss_mean": 0.5976361471094226,
+              "single_view_auc_mean": 0.7769319492502883,
+              "ensemble_ba": 0.7058823529411764,
+              "ensemble_logloss": 0.5833434414927986,
+              "ensemble_auc": 0.7908496732026143
+            },
+            "FF|combined": {
+              "single_view_ba_mean": 0.9313725490196079,
+              "single_view_ba_min": 0.9313725490196079,
+              "single_view_ba_max": 0.9313725490196079,
+              "single_view_logloss_mean": 0.22752829763973353,
+              "single_view_auc_mean": 0.9650134563629373,
+              "ensemble_ba": 0.9313725490196079,
+              "ensemble_logloss": 0.2275282976397334,
+              "ensemble_auc": 0.9650134563629374
+            },
+            "FK|combined": {
+              "single_view_ba_mean": 0.6313725490196077,
+              "single_view_ba_min": 0.6078431372549019,
+              "single_view_ba_max": 0.6568627450980392,
+              "single_view_logloss_mean": 0.7676041684583399,
+              "single_view_auc_mean": 0.8978469819300269,
+              "ensemble_ba": 0.6176470588235294,
+              "ensemble_logloss": 0.736608049224879,
+              "ensemble_auc": 0.9046520569011918
+            },
+            "KK|combined": {
+              "single_view_ba_mean": 0.9333333333333333,
+              "single_view_ba_min": 0.9117647058823529,
+              "single_view_ba_max": 0.9411764705882353,
+              "single_view_logloss_mean": 0.20598247465979108,
+              "single_view_auc_mean": 0.9673971549404075,
+              "ensemble_ba": 0.9313725490196079,
+              "ensemble_logloss": 0.18369366711119384,
+              "ensemble_auc": 0.9746251441753171
+            }
+          }
+        },
+        "budget_specific_K500": {
+          "n_events": 98,
+          "n_campaign": 48,
+          "n_comparison": 50,
+          "estimand_rule": "BA from objective=ba fits; log loss and AUC from objective=ll fits",
+          "conditions": {
+            "FF|NK": {
+              "single_view_ba_mean": 0.8875,
+              "single_view_ba_min": 0.8875,
+              "single_view_ba_max": 0.8875,
+              "single_view_logloss_mean": 0.3365555038738136,
+              "single_view_auc_mean": 0.9304166666666667,
+              "ensemble_ba": 0.8875,
+              "ensemble_logloss": 0.3365555038738135,
+              "ensemble_auc": 0.9304166666666668
+            },
+            "FK|NK": {
+              "single_view_ba_mean": 0.5,
+              "single_view_ba_min": 0.5,
+              "single_view_ba_max": 0.5,
+              "single_view_logloss_mean": 1.1192151589065296,
+              "single_view_auc_mean": 0.8850624999999999,
+              "ensemble_ba": 0.5,
+              "ensemble_logloss": 1.1189988007016582,
+              "ensemble_auc": 0.8866666666666667
+            },
+            "KK|NK": {
+              "single_view_ba_mean": 0.8796250000000001,
+              "single_view_ba_min": 0.8445833333333332,
+              "single_view_ba_max": 0.89625,
+              "single_view_logloss_mean": 0.3147076864394062,
+              "single_view_auc_mean": 0.9523125,
+              "ensemble_ba": 0.8858333333333333,
+              "ensemble_logloss": 0.31380473321703606,
+              "ensemble_auc": 0.9529166666666669
+            },
+            "FF|struct7": {
+              "single_view_ba_mean": 0.8033333333333331,
+              "single_view_ba_min": 0.8033333333333332,
+              "single_view_ba_max": 0.8033333333333332,
+              "single_view_logloss_mean": 0.46031791582876214,
+              "single_view_auc_mean": 0.8479166666666668,
+              "ensemble_ba": 0.8033333333333332,
+              "ensemble_logloss": 0.46031791582876214,
+              "ensemble_auc": 0.8479166666666668
+            },
+            "FK|struct7": {
+              "single_view_ba_mean": 0.7812083333333334,
+              "single_view_ba_min": 0.7570833333333333,
+              "single_view_ba_max": 0.8070833333333334,
+              "single_view_logloss_mean": 0.455191514684601,
+              "single_view_auc_mean": 0.8766666666666666,
+              "ensemble_ba": 0.7870833333333334,
+              "ensemble_logloss": 0.45317314190052876,
+              "ensemble_auc": 0.8808333333333334
+            },
+            "KK|struct7": {
+              "single_view_ba_mean": 0.8980416666666665,
+              "single_view_ba_min": 0.87625,
+              "single_view_ba_max": 0.9170833333333333,
+              "single_view_logloss_mean": 0.33167658012615986,
+              "single_view_auc_mean": 0.9401666666666667,
+              "ensemble_ba": 0.9170833333333333,
+              "ensemble_logloss": 0.3084179151921888,
+              "ensemble_auc": 0.9450000000000001
+            },
+            "FF|struct6": {
+              "single_view_ba_mean": 0.7716666666666667,
+              "single_view_ba_min": 0.7716666666666667,
+              "single_view_ba_max": 0.7716666666666667,
+              "single_view_logloss_mean": 0.5148834755369179,
+              "single_view_auc_mean": 0.7420833333333332,
+              "ensemble_ba": 0.7716666666666667,
+              "ensemble_logloss": 0.5148834755369182,
+              "ensemble_auc": 0.7420833333333332
+            },
+            "FK|struct6": {
+              "single_view_ba_mean": 0.7425833333333333,
+              "single_view_ba_min": 0.7404166666666667,
+              "single_view_ba_max": 0.7508333333333332,
+              "single_view_logloss_mean": 0.5360374714102608,
+              "single_view_auc_mean": 0.7556666666666666,
+              "ensemble_ba": 0.7404166666666667,
+              "ensemble_logloss": 0.5344803475508118,
+              "ensemble_auc": 0.7533333333333333
+            },
+            "KK|struct6": {
+              "single_view_ba_mean": 0.8949583333333331,
+              "single_view_ba_min": 0.87625,
+              "single_view_ba_max": 0.9170833333333333,
+              "single_view_logloss_mean": 0.3309339900454289,
+              "single_view_auc_mean": 0.939125,
+              "ensemble_ba": 0.9170833333333333,
+              "ensemble_logloss": 0.3084565229327672,
+              "ensemble_auc": 0.9441666666666666
+            },
+            "FF|NK_struct6": {
+              "single_view_ba_mean": 0.8774999999999998,
+              "single_view_ba_min": 0.8775,
+              "single_view_ba_max": 0.8775,
+              "single_view_logloss_mean": 0.3948833814790943,
+              "single_view_auc_mean": 0.9270833333333334,
+              "ensemble_ba": 0.8775,
+              "ensemble_logloss": 0.3948833814790943,
+              "ensemble_auc": 0.9270833333333333
+            },
+            "FK|NK_struct6": {
+              "single_view_ba_mean": 0.5713333333333334,
+              "single_view_ba_min": 0.5491666666666667,
+              "single_view_ba_max": 0.5895833333333333,
+              "single_view_logloss_mean": 0.6760059296815994,
+              "single_view_auc_mean": 0.9101666666666667,
+              "ensemble_ba": 0.5591666666666667,
+              "ensemble_logloss": 0.6693071263624646,
+              "ensemble_auc": 0.9158333333333333
+            },
+            "KK|NK_struct6": {
+              "single_view_ba_mean": 0.90525,
+              "single_view_ba_min": 0.8870833333333333,
+              "single_view_ba_max": 0.9275,
+              "single_view_logloss_mean": 0.3276405494162979,
+              "single_view_auc_mean": 0.9440416666666668,
+              "ensemble_ba": 0.9170833333333333,
+              "ensemble_logloss": 0.3053232829170405,
+              "ensemble_auc": 0.9479166666666667
+            },
+            "FF|content": {
+              "single_view_ba_mean": 0.7433333333333333,
+              "single_view_ba_min": 0.7433333333333333,
+              "single_view_ba_max": 0.7433333333333333,
+              "single_view_logloss_mean": 0.49046349772915676,
+              "single_view_auc_mean": 0.8387499999999999,
+              "ensemble_ba": 0.7433333333333333,
+              "ensemble_logloss": 0.4904634977291567,
+              "ensemble_auc": 0.83875
+            },
+            "FK|content": {
+              "single_view_ba_mean": 0.4791666666666667,
+              "single_view_ba_min": 0.4658333333333333,
+              "single_view_ba_max": 0.49624999999999997,
+              "single_view_logloss_mean": 0.9809698649298049,
+              "single_view_auc_mean": 0.6272916666666667,
+              "ensemble_ba": 0.4866666666666667,
+              "ensemble_logloss": 0.9740376032084077,
+              "ensemble_auc": 0.62625
+            },
+            "KK|content": {
+              "single_view_ba_mean": 0.6927083333333334,
+              "single_view_ba_min": 0.6629166666666667,
+              "single_view_ba_max": 0.7145833333333333,
+              "single_view_logloss_mean": 0.5754425134363255,
+              "single_view_auc_mean": 0.7815833333333333,
+              "ensemble_ba": 0.7241666666666666,
+              "ensemble_logloss": 0.5607761404707517,
+              "ensemble_auc": 0.78625
+            },
+            "FF|combined": {
+              "single_view_ba_mean": 0.9070833333333331,
+              "single_view_ba_min": 0.9070833333333332,
+              "single_view_ba_max": 0.9070833333333332,
+              "single_view_logloss_mean": 0.23199444699762622,
+              "single_view_auc_mean": 0.9650000000000001,
+              "ensemble_ba": 0.9070833333333332,
+              "ensemble_logloss": 0.23199444699762622,
+              "ensemble_auc": 0.965
+            },
+            "FK|combined": {
+              "single_view_ba_mean": 0.7790000000000001,
+              "single_view_ba_min": 0.7679166666666667,
+              "single_view_ba_max": 0.7979166666666666,
+              "single_view_logloss_mean": 0.38073064186730904,
+              "single_view_auc_mean": 0.9402916666666666,
+              "ensemble_ba": 0.7679166666666667,
+              "ensemble_logloss": 0.3779546255918731,
+              "ensemble_auc": 0.9383333333333334
+            },
+            "KK|combined": {
+              "single_view_ba_mean": 0.9338749999999999,
+              "single_view_ba_min": 0.9075,
+              "single_view_ba_max": 0.9379166666666667,
+              "single_view_logloss_mean": 0.2003172726468486,
+              "single_view_auc_mean": 0.9690833333333334,
+              "ensemble_ba": 0.9379166666666667,
+              "ensemble_logloss": 0.19427021756722748,
+              "ensemble_auc": 0.9704166666666666
+            }
+          }
+        },
+        "budget_specific_K1000": {
+          "n_events": 73,
+          "n_campaign": 28,
+          "n_comparison": 45,
+          "estimand_rule": "BA from objective=ba fits; log loss and AUC from objective=ll fits",
+          "conditions": {
+            "FF|NK": {
+              "single_view_ba_mean": 0.85515873015873,
+              "single_view_ba_min": 0.8551587301587301,
+              "single_view_ba_max": 0.8551587301587301,
+              "single_view_logloss_mean": 0.26197029402823785,
+              "single_view_auc_mean": 0.9515873015873014,
+              "ensemble_ba": 0.8551587301587301,
+              "ensemble_logloss": 0.2619702940282378,
+              "ensemble_auc": 0.9515873015873015
+            },
+            "FK|NK": {
+              "single_view_ba_mean": 0.4821428571428571,
+              "single_view_ba_min": 0.48214285714285715,
+              "single_view_ba_max": 0.48214285714285715,
+              "single_view_logloss_mean": 1.1230062768391256,
+              "single_view_auc_mean": 0.90515873015873,
+              "ensemble_ba": 0.48214285714285715,
+              "ensemble_logloss": 1.1227203061657312,
+              "ensemble_auc": 0.907142857142857
+            },
+            "KK|NK": {
+              "single_view_ba_mean": 0.8513492063492064,
+              "single_view_ba_min": 0.8392857142857143,
+              "single_view_ba_max": 0.8571428571428572,
+              "single_view_logloss_mean": 0.3816596218518676,
+              "single_view_auc_mean": 0.8896825396825395,
+              "ensemble_ba": 0.8571428571428572,
+              "ensemble_logloss": 0.3814280521830947,
+              "ensemble_auc": 0.8896825396825397
+            },
+            "FF|struct7": {
+              "single_view_ba_mean": 0.7456349206349205,
+              "single_view_ba_min": 0.7456349206349207,
+              "single_view_ba_max": 0.7456349206349207,
+              "single_view_logloss_mean": 0.6086365733375881,
+              "single_view_auc_mean": 0.7642857142857143,
+              "ensemble_ba": 0.7456349206349207,
+              "ensemble_logloss": 0.6086365733375882,
+              "ensemble_auc": 0.7642857142857143
+            },
+            "FK|struct7": {
+              "single_view_ba_mean": 0.7357142857142858,
+              "single_view_ba_min": 0.7011904761904761,
+              "single_view_ba_max": 0.748015873015873,
+              "single_view_logloss_mean": 0.6431165066040061,
+              "single_view_auc_mean": 0.7033333333333334,
+              "ensemble_ba": 0.7412698412698413,
+              "ensemble_logloss": 0.6422842494934147,
+              "ensemble_auc": 0.7055555555555556
+            },
+            "KK|struct7": {
+              "single_view_ba_mean": 0.8829365079365079,
+              "single_view_ba_min": 0.8484126984126984,
+              "single_view_ba_max": 0.9174603174603174,
+              "single_view_logloss_mean": 0.421390082495572,
+              "single_view_auc_mean": 0.8915079365079365,
+              "ensemble_ba": 0.9174603174603174,
+              "ensemble_logloss": 0.4173131339995125,
+              "ensemble_auc": 0.8960317460317461
+            },
+            "FF|struct6": {
+              "single_view_ba_mean": 0.7388888888888889,
+              "single_view_ba_min": 0.7388888888888889,
+              "single_view_ba_max": 0.7388888888888889,
+              "single_view_logloss_mean": 0.5925789098641883,
+              "single_view_auc_mean": 0.6563492063492065,
+              "ensemble_ba": 0.7388888888888889,
+              "ensemble_logloss": 0.5925789098641884,
+              "ensemble_auc": 0.6563492063492063
+            },
+            "FK|struct6": {
+              "single_view_ba_mean": 0.7284126984126984,
+              "single_view_ba_min": 0.709920634920635,
+              "single_view_ba_max": 0.7388888888888889,
+              "single_view_logloss_mean": 0.5654399033961384,
+              "single_view_auc_mean": 0.717857142857143,
+              "ensemble_ba": 0.721031746031746,
+              "ensemble_logloss": 0.5646032833595936,
+              "ensemble_auc": 0.7238095238095239
+            },
+            "KK|struct6": {
+              "single_view_ba_mean": 0.8731349206349206,
+              "single_view_ba_min": 0.8373015873015872,
+              "single_view_ba_max": 0.9174603174603174,
+              "single_view_logloss_mean": 0.4176657246940376,
+              "single_view_auc_mean": 0.8911111111111112,
+              "ensemble_ba": 0.9174603174603174,
+              "ensemble_logloss": 0.41328152750057007,
+              "ensemble_auc": 0.8952380952380953
+            },
+            "FF|NK_struct6": {
+              "single_view_ba_mean": 0.8686507936507937,
+              "single_view_ba_min": 0.8686507936507937,
+              "single_view_ba_max": 0.8686507936507937,
+              "single_view_logloss_mean": 0.4371481816858383,
+              "single_view_auc_mean": 0.9253968253968253,
+              "ensemble_ba": 0.8686507936507937,
+              "ensemble_logloss": 0.43714818168583824,
+              "ensemble_auc": 0.9253968253968253
+            },
+            "FK|NK_struct6": {
+              "single_view_ba_mean": 0.5353968253968254,
+              "single_view_ba_min": 0.530952380952381,
+              "single_view_ba_max": 0.5420634920634921,
+              "single_view_logloss_mean": 0.8774997187297539,
+              "single_view_auc_mean": 0.8680952380952383,
+              "ensemble_ba": 0.530952380952381,
+              "ensemble_logloss": 0.87111893742628,
+              "ensemble_auc": 0.8706349206349207
+            },
+            "KK|NK_struct6": {
+              "single_view_ba_mean": 0.8853968253968254,
+              "single_view_ba_min": 0.8595238095238096,
+              "single_view_ba_max": 0.9063492063492063,
+              "single_view_logloss_mean": 0.4228997422092299,
+              "single_view_auc_mean": 0.8986507936507936,
+              "ensemble_ba": 0.9174603174603174,
+              "ensemble_logloss": 0.4197523571790505,
+              "ensemble_auc": 0.9007936507936508
+            },
+            "FF|content": {
+              "single_view_ba_mean": 0.7726190476190478,
+              "single_view_ba_min": 0.7726190476190476,
+              "single_view_ba_max": 0.7726190476190476,
+              "single_view_logloss_mean": 0.5095043502218488,
+              "single_view_auc_mean": 0.8222222222222222,
+              "ensemble_ba": 0.7726190476190476,
+              "ensemble_logloss": 0.5095043502218488,
+              "ensemble_auc": 0.8222222222222222
+            },
+            "FK|content": {
+              "single_view_ba_mean": 0.566031746031746,
+              "single_view_ba_min": 0.5460317460317461,
+              "single_view_ba_max": 0.5904761904761905,
+              "single_view_logloss_mean": 0.9470408239310839,
+              "single_view_auc_mean": 0.6810317460317461,
+              "ensemble_ba": 0.5571428571428572,
+              "ensemble_logloss": 0.9411788415243845,
+              "ensemble_auc": 0.676984126984127
+            },
+            "KK|content": {
+              "single_view_ba_mean": 0.7139285714285715,
+              "single_view_ba_min": 0.6880952380952381,
+              "single_view_ba_max": 0.746031746031746,
+              "single_view_logloss_mean": 0.5505565342464651,
+              "single_view_auc_mean": 0.7985714285714286,
+              "ensemble_ba": 0.7170634920634921,
+              "ensemble_logloss": 0.5325249296838005,
+              "ensemble_auc": 0.8015873015873015
+            },
+            "FF|combined": {
+              "single_view_ba_mean": 0.8595238095238095,
+              "single_view_ba_min": 0.8595238095238096,
+              "single_view_ba_max": 0.8595238095238096,
+              "single_view_logloss_mean": 0.25517812886871283,
+              "single_view_auc_mean": 0.9507936507936507,
+              "ensemble_ba": 0.8595238095238096,
+              "ensemble_logloss": 0.2551781288687127,
+              "ensemble_auc": 0.9507936507936507
+            },
+            "FK|combined": {
+              "single_view_ba_mean": 0.852936507936508,
+              "single_view_ba_min": 0.8174603174603174,
+              "single_view_ba_max": 0.8753968253968254,
+              "single_view_logloss_mean": 0.3933105798183126,
+              "single_view_auc_mean": 0.9314285714285715,
+              "ensemble_ba": 0.8531746031746033,
+              "ensemble_logloss": 0.39236320457933926,
+              "ensemble_auc": 0.9317460317460318
+            },
+            "KK|combined": {
+              "single_view_ba_mean": 0.9154365079365079,
+              "single_view_ba_min": 0.8884920634920634,
+              "single_view_ba_max": 0.9285714285714286,
+              "single_view_logloss_mean": 0.24977164758336431,
+              "single_view_auc_mean": 0.9526984126984125,
+              "ensemble_ba": 0.9174603174603174,
+              "ensemble_logloss": 0.2474389234908081,
+              "ensemble_auc": 0.9531746031746031
+            }
+          }
+        },
+        "common_K250": {
+          "n_events": 73,
+          "n_campaign": 28,
+          "n_comparison": 45,
+          "estimand_rule": "BA from objective=ba fits; log loss and AUC from objective=ll fits",
+          "conditions": {
+            "FF|NK": {
+              "single_view_ba_mean": 0.85515873015873,
+              "single_view_ba_min": 0.8551587301587301,
+              "single_view_ba_max": 0.8551587301587301,
+              "single_view_logloss_mean": 0.26197029402823785,
+              "single_view_auc_mean": 0.9515873015873014,
+              "ensemble_ba": 0.8551587301587301,
+              "ensemble_logloss": 0.2619702940282378,
+              "ensemble_auc": 0.9515873015873015
+            },
+            "FK|NK": {
+              "single_view_ba_mean": 0.5,
+              "single_view_ba_min": 0.5,
+              "single_view_ba_max": 0.5,
+              "single_view_logloss_mean": 3.893104467342475,
+              "single_view_auc_mean": 0.9054761904761905,
+              "ensemble_ba": 0.5,
+              "ensemble_logloss": 3.8918363417682307,
+              "ensemble_auc": 0.9071428571428571
+            },
+            "KK|NK": {
+              "single_view_ba_mean": 0.932420634920635,
+              "single_view_ba_min": 0.9130952380952382,
+              "single_view_ba_max": 0.9464285714285714,
+              "single_view_logloss_mean": 0.29164567636900096,
+              "single_view_auc_mean": 0.9523015873015872,
+              "ensemble_ba": 0.9353174603174603,
+              "ensemble_logloss": 0.28836574225310313,
+              "ensemble_auc": 0.9531746031746031
+            },
+            "FF|struct7": {
+              "single_view_ba_mean": 0.7456349206349205,
+              "single_view_ba_min": 0.7456349206349207,
+              "single_view_ba_max": 0.7456349206349207,
+              "single_view_logloss_mean": 0.6086365733375881,
+              "single_view_auc_mean": 0.7642857142857143,
+              "ensemble_ba": 0.7456349206349207,
+              "ensemble_logloss": 0.6086365733375882,
+              "ensemble_auc": 0.7642857142857143
+            },
+            "FK|struct7": {
+              "single_view_ba_mean": 0.5054365079365079,
+              "single_view_ba_min": 0.4992063492063492,
+              "single_view_ba_max": 0.5170634920634921,
+              "single_view_logloss_mean": 0.940925840650983,
+              "single_view_auc_mean": 0.6827777777777778,
+              "ensemble_ba": 0.4992063492063492,
+              "ensemble_logloss": 0.923555987134204,
+              "ensemble_auc": 0.680952380952381
+            },
+            "KK|struct7": {
+              "single_view_ba_mean": 0.9078571428571429,
+              "single_view_ba_min": 0.8884920634920634,
+              "single_view_ba_max": 0.9285714285714286,
+              "single_view_logloss_mean": 0.32682974685936894,
+              "single_view_auc_mean": 0.9326190476190476,
+              "ensemble_ba": 0.9285714285714286,
+              "ensemble_logloss": 0.2847696484485835,
+              "ensemble_auc": 0.9365079365079366
+            },
+            "FF|struct6": {
+              "single_view_ba_mean": 0.7388888888888889,
+              "single_view_ba_min": 0.7388888888888889,
+              "single_view_ba_max": 0.7388888888888889,
+              "single_view_logloss_mean": 0.5925789098641883,
+              "single_view_auc_mean": 0.6563492063492065,
+              "ensemble_ba": 0.7388888888888889,
+              "ensemble_logloss": 0.5925789098641884,
+              "ensemble_auc": 0.6563492063492063
+            },
+            "FK|struct6": {
+              "single_view_ba_mean": 0.6116666666666666,
+              "single_view_ba_min": 0.582936507936508,
+              "single_view_ba_max": 0.6341269841269841,
+              "single_view_logloss_mean": 0.6868618590139197,
+              "single_view_auc_mean": 0.585079365079365,
+              "ensemble_ba": 0.611904761904762,
+              "ensemble_logloss": 0.6844933788025743,
+              "ensemble_auc": 0.5825396825396826
+            },
+            "KK|struct6": {
+              "single_view_ba_mean": 0.9092063492063491,
+              "single_view_ba_min": 0.8773809523809524,
+              "single_view_ba_max": 0.9353174603174603,
+              "single_view_logloss_mean": 0.3116130123055302,
+              "single_view_auc_mean": 0.9346825396825397,
+              "ensemble_ba": 0.9285714285714286,
+              "ensemble_logloss": 0.2768635865147608,
+              "ensemble_auc": 0.938095238095238
+            },
+            "FF|NK_struct6": {
+              "single_view_ba_mean": 0.8686507936507937,
+              "single_view_ba_min": 0.8686507936507937,
+              "single_view_ba_max": 0.8686507936507937,
+              "single_view_logloss_mean": 0.4371481816858383,
+              "single_view_auc_mean": 0.9253968253968253,
+              "ensemble_ba": 0.8686507936507937,
+              "ensemble_logloss": 0.43714818168583824,
+              "ensemble_auc": 0.9253968253968253
+            },
+            "FK|NK_struct6": {
+              "single_view_ba_mean": 0.49103174603174604,
+              "single_view_ba_min": 0.48214285714285715,
+              "single_view_ba_max": 0.4932539682539683,
+              "single_view_logloss_mean": 2.39718007430126,
+              "single_view_auc_mean": 0.8762698412698413,
+              "ensemble_ba": 0.4932539682539683,
+              "ensemble_logloss": 2.385354923636335,
+              "ensemble_auc": 0.8817460317460317
+            },
+            "KK|NK_struct6": {
+              "single_view_ba_mean": 0.9132142857142856,
+              "single_view_ba_min": 0.8996031746031745,
+              "single_view_ba_max": 0.9285714285714286,
+              "single_view_logloss_mean": 0.34054299425116963,
+              "single_view_auc_mean": 0.9344444444444445,
+              "ensemble_ba": 0.9285714285714286,
+              "ensemble_logloss": 0.2997027961508536,
+              "ensemble_auc": 0.9380952380952381
+            },
+            "FF|content": {
+              "single_view_ba_mean": 0.7726190476190478,
+              "single_view_ba_min": 0.7726190476190476,
+              "single_view_ba_max": 0.7726190476190476,
+              "single_view_logloss_mean": 0.5095043502218488,
+              "single_view_auc_mean": 0.8222222222222222,
+              "ensemble_ba": 0.7726190476190476,
+              "ensemble_logloss": 0.5095043502218488,
+              "ensemble_auc": 0.8222222222222222
+            },
+            "FK|content": {
+              "single_view_ba_mean": 0.5381349206349207,
+              "single_view_ba_min": 0.4884920634920635,
+              "single_view_ba_max": 0.5797619047619048,
+              "single_view_logloss_mean": 1.8239772317843532,
+              "single_view_auc_mean": 0.6611904761904763,
+              "ensemble_ba": 0.5464285714285715,
+              "ensemble_logloss": 1.7836935357821417,
+              "ensemble_auc": 0.6650793650793652
+            },
+            "KK|content": {
+              "single_view_ba_mean": 0.7304365079365079,
+              "single_view_ba_min": 0.6992063492063492,
+              "single_view_ba_max": 0.7861111111111111,
+              "single_view_logloss_mean": 0.5446082082148106,
+              "single_view_auc_mean": 0.798968253968254,
+              "ensemble_ba": 0.775,
+              "ensemble_logloss": 0.5256465570527082,
+              "ensemble_auc": 0.8095238095238095
+            },
+            "FF|combined": {
+              "single_view_ba_mean": 0.8595238095238095,
+              "single_view_ba_min": 0.8595238095238096,
+              "single_view_ba_max": 0.8595238095238096,
+              "single_view_logloss_mean": 0.25517812886871283,
+              "single_view_auc_mean": 0.9507936507936507,
+              "ensemble_ba": 0.8595238095238096,
+              "ensemble_logloss": 0.2551781288687127,
+              "ensemble_auc": 0.9507936507936507
+            },
+            "FK|combined": {
+              "single_view_ba_mean": 0.6476984126984127,
+              "single_view_ba_min": 0.6265873015873016,
+              "single_view_ba_max": 0.6710317460317461,
+              "single_view_logloss_mean": 1.0174772369303198,
+              "single_view_auc_mean": 0.8726190476190476,
+              "ensemble_ba": 0.6599206349206349,
+              "ensemble_logloss": 1.0034075698687612,
+              "ensemble_auc": 0.873015873015873
+            },
+            "KK|combined": {
+              "single_view_ba_mean": 0.9364285714285714,
+              "single_view_ba_min": 0.9107142857142857,
+              "single_view_ba_max": 0.9642857142857143,
+              "single_view_logloss_mean": 0.26804484872054773,
+              "single_view_auc_mean": 0.9546825396825396,
+              "ensemble_ba": 0.9242063492063493,
+              "ensemble_logloss": 0.22893611028469524,
+              "ensemble_auc": 0.9587301587301588
+            }
+          }
+        },
+        "common_K500": {
+          "n_events": 73,
+          "n_campaign": 28,
+          "n_comparison": 45,
+          "estimand_rule": "BA from objective=ba fits; log loss and AUC from objective=ll fits",
+          "conditions": {
+            "FF|NK": {
+              "single_view_ba_mean": 0.85515873015873,
+              "single_view_ba_min": 0.8551587301587301,
+              "single_view_ba_max": 0.8551587301587301,
+              "single_view_logloss_mean": 0.26197029402823785,
+              "single_view_auc_mean": 0.9515873015873014,
+              "ensemble_ba": 0.8551587301587301,
+              "ensemble_logloss": 0.2619702940282378,
+              "ensemble_auc": 0.9515873015873015
+            },
+            "FK|NK": {
+              "single_view_ba_mean": 0.5,
+              "single_view_ba_min": 0.5,
+              "single_view_ba_max": 0.5,
+              "single_view_logloss_mean": 2.4375717323129518,
+              "single_view_auc_mean": 0.9184920634920635,
+              "ensemble_ba": 0.5,
+              "ensemble_logloss": 2.4368075398383753,
+              "ensemble_auc": 0.9182539682539682
+            },
+            "KK|NK": {
+              "single_view_ba_mean": 0.8683333333333334,
+              "single_view_ba_min": 0.8571428571428572,
+              "single_view_ba_max": 0.8817460317460317,
+              "single_view_logloss_mean": 0.33825028270623664,
+              "single_view_auc_mean": 0.9393650793650794,
+              "ensemble_ba": 0.875,
+              "ensemble_logloss": 0.33730105949879036,
+              "ensemble_auc": 0.9388888888888891
+            },
+            "FF|struct7": {
+              "single_view_ba_mean": 0.7456349206349205,
+              "single_view_ba_min": 0.7456349206349207,
+              "single_view_ba_max": 0.7456349206349207,
+              "single_view_logloss_mean": 0.6086365733375881,
+              "single_view_auc_mean": 0.7642857142857143,
+              "ensemble_ba": 0.7456349206349207,
+              "ensemble_logloss": 0.6086365733375882,
+              "ensemble_auc": 0.7642857142857143
+            },
+            "FK|struct7": {
+              "single_view_ba_mean": 0.5576587301587301,
+              "single_view_ba_min": 0.5436507936507937,
+              "single_view_ba_max": 0.5726190476190476,
+              "single_view_logloss_mean": 0.7110338821328197,
+              "single_view_auc_mean": 0.7107936507936509,
+              "ensemble_ba": 0.5547619047619048,
+              "ensemble_logloss": 0.7062511942446486,
+              "ensemble_auc": 0.7095238095238096
+            },
+            "KK|struct7": {
+              "single_view_ba_mean": 0.8947222222222223,
+              "single_view_ba_min": 0.8773809523809524,
+              "single_view_ba_max": 0.9174603174603174,
+              "single_view_logloss_mean": 0.34211026096527897,
+              "single_view_auc_mean": 0.9228571428571429,
+              "ensemble_ba": 0.9107142857142857,
+              "ensemble_logloss": 0.31865679714329076,
+              "ensemble_auc": 0.9293650793650793
+            },
+            "FF|struct6": {
+              "single_view_ba_mean": 0.7388888888888889,
+              "single_view_ba_min": 0.7388888888888889,
+              "single_view_ba_max": 0.7388888888888889,
+              "single_view_logloss_mean": 0.5925789098641883,
+              "single_view_auc_mean": 0.6563492063492065,
+              "ensemble_ba": 0.7388888888888889,
+              "ensemble_logloss": 0.5925789098641884,
+              "ensemble_auc": 0.6563492063492063
+            },
+            "FK|struct6": {
+              "single_view_ba_mean": 0.672420634920635,
+              "single_view_ba_min": 0.6563492063492063,
+              "single_view_ba_max": 0.6742063492063493,
+              "single_view_logloss_mean": 0.6075050128683994,
+              "single_view_auc_mean": 0.650952380952381,
+              "ensemble_ba": 0.6742063492063493,
+              "ensemble_logloss": 0.6062509806578941,
+              "ensemble_auc": 0.6507936507936508
+            },
+            "KK|struct6": {
+              "single_view_ba_mean": 0.8902777777777778,
+              "single_view_ba_min": 0.8706349206349207,
+              "single_view_ba_max": 0.9174603174603174,
+              "single_view_logloss_mean": 0.3421383754193243,
+              "single_view_auc_mean": 0.9217460317460316,
+              "ensemble_ba": 0.9107142857142857,
+              "ensemble_logloss": 0.3178857061963538,
+              "ensemble_auc": 0.9277777777777778
+            },
+            "FF|NK_struct6": {
+              "single_view_ba_mean": 0.8686507936507937,
+              "single_view_ba_min": 0.8686507936507937,
+              "single_view_ba_max": 0.8686507936507937,
+              "single_view_logloss_mean": 0.4371481816858383,
+              "single_view_auc_mean": 0.9253968253968253,
+              "ensemble_ba": 0.8686507936507937,
+              "ensemble_logloss": 0.43714818168583824,
+              "ensemble_auc": 0.9253968253968253
+            },
+            "FK|NK_struct6": {
+              "single_view_ba_mean": 0.5176984126984128,
+              "single_view_ba_min": 0.5043650793650793,
+              "single_view_ba_max": 0.5265873015873016,
+              "single_view_logloss_mean": 1.4941693946327181,
+              "single_view_auc_mean": 0.8920634920634921,
+              "ensemble_ba": 0.5154761904761905,
+              "ensemble_logloss": 1.4817292893530858,
+              "ensemble_auc": 0.9015873015873016
+            },
+            "KK|NK_struct6": {
+              "single_view_ba_mean": 0.9018650793650794,
+              "single_view_ba_min": 0.8841269841269841,
+              "single_view_ba_max": 0.9174603174603174,
+              "single_view_logloss_mean": 0.3454184396165728,
+              "single_view_auc_mean": 0.9301587301587301,
+              "ensemble_ba": 0.9285714285714286,
+              "ensemble_logloss": 0.31894767928359397,
+              "ensemble_auc": 0.930952380952381
+            },
+            "FF|content": {
+              "single_view_ba_mean": 0.7726190476190478,
+              "single_view_ba_min": 0.7726190476190476,
+              "single_view_ba_max": 0.7726190476190476,
+              "single_view_logloss_mean": 0.5095043502218488,
+              "single_view_auc_mean": 0.8222222222222222,
+              "ensemble_ba": 0.7726190476190476,
+              "ensemble_logloss": 0.5095043502218488,
+              "ensemble_auc": 0.8222222222222222
+            },
+            "FK|content": {
+              "single_view_ba_mean": 0.531984126984127,
+              "single_view_ba_min": 0.5083333333333333,
+              "single_view_ba_max": 0.5551587301587302,
+              "single_view_logloss_mean": 1.3253562350014865,
+              "single_view_auc_mean": 0.6689682539682541,
+              "ensemble_ba": 0.5551587301587302,
+              "ensemble_logloss": 1.3071146071317232,
+              "ensemble_auc": 0.6714285714285715
+            },
+            "KK|content": {
+              "single_view_ba_mean": 0.7253571428571429,
+              "single_view_ba_min": 0.6948412698412698,
+              "single_view_ba_max": 0.7638888888888888,
+              "single_view_logloss_mean": 0.5399520093725203,
+              "single_view_auc_mean": 0.8021428571428573,
+              "ensemble_ba": 0.734920634920635,
+              "ensemble_logloss": 0.5165070073935886,
+              "ensemble_auc": 0.8174603174603174
+            },
+            "FF|combined": {
+              "single_view_ba_mean": 0.8595238095238095,
+              "single_view_ba_min": 0.8595238095238096,
+              "single_view_ba_max": 0.8595238095238096,
+              "single_view_logloss_mean": 0.25517812886871283,
+              "single_view_auc_mean": 0.9507936507936507,
+              "ensemble_ba": 0.8595238095238096,
+              "ensemble_logloss": 0.2551781288687127,
+              "ensemble_auc": 0.9507936507936507
+            },
+            "FK|combined": {
+              "single_view_ba_mean": 0.7532539682539682,
+              "single_view_ba_min": 0.7376984126984127,
+              "single_view_ba_max": 0.7821428571428571,
+              "single_view_logloss_mean": 0.6171513736681848,
+              "single_view_auc_mean": 0.9133333333333333,
+              "ensemble_ba": 0.7376984126984127,
+              "ensemble_logloss": 0.6130197384042428,
+              "ensemble_auc": 0.9150793650793652
+            },
+            "KK|combined": {
+              "single_view_ba_mean": 0.9408730158730159,
+              "single_view_ba_min": 0.9242063492063493,
+              "single_view_ba_max": 0.9642857142857143,
+              "single_view_logloss_mean": 0.24713838009141548,
+              "single_view_auc_mean": 0.9565873015873014,
+              "ensemble_ba": 0.9464285714285714,
+              "ensemble_logloss": 0.22642371953642085,
+              "ensemble_auc": 0.9571428571428572
+            }
+          }
+        },
+        "common_K1000": {
+          "n_events": 73,
+          "n_campaign": 28,
+          "n_comparison": 45,
+          "estimand_rule": "BA from objective=ba fits; log loss and AUC from objective=ll fits",
+          "conditions": {
+            "FF|NK": {
+              "single_view_ba_mean": 0.85515873015873,
+              "single_view_ba_min": 0.8551587301587301,
+              "single_view_ba_max": 0.8551587301587301,
+              "single_view_logloss_mean": 0.26197029402823785,
+              "single_view_auc_mean": 0.9515873015873014,
+              "ensemble_ba": 0.8551587301587301,
+              "ensemble_logloss": 0.2619702940282378,
+              "ensemble_auc": 0.9515873015873015
+            },
+            "FK|NK": {
+              "single_view_ba_mean": 0.4821428571428571,
+              "single_view_ba_min": 0.48214285714285715,
+              "single_view_ba_max": 0.48214285714285715,
+              "single_view_logloss_mean": 1.1230062768391256,
+              "single_view_auc_mean": 0.90515873015873,
+              "ensemble_ba": 0.48214285714285715,
+              "ensemble_logloss": 1.1227203061657312,
+              "ensemble_auc": 0.907142857142857
+            },
+            "KK|NK": {
+              "single_view_ba_mean": 0.8513492063492064,
+              "single_view_ba_min": 0.8392857142857143,
+              "single_view_ba_max": 0.8571428571428572,
+              "single_view_logloss_mean": 0.3816596218518676,
+              "single_view_auc_mean": 0.8896825396825395,
+              "ensemble_ba": 0.8571428571428572,
+              "ensemble_logloss": 0.3814280521830947,
+              "ensemble_auc": 0.8896825396825397
+            },
+            "FF|struct7": {
+              "single_view_ba_mean": 0.7456349206349205,
+              "single_view_ba_min": 0.7456349206349207,
+              "single_view_ba_max": 0.7456349206349207,
+              "single_view_logloss_mean": 0.6086365733375881,
+              "single_view_auc_mean": 0.7642857142857143,
+              "ensemble_ba": 0.7456349206349207,
+              "ensemble_logloss": 0.6086365733375882,
+              "ensemble_auc": 0.7642857142857143
+            },
+            "FK|struct7": {
+              "single_view_ba_mean": 0.7357142857142858,
+              "single_view_ba_min": 0.7011904761904761,
+              "single_view_ba_max": 0.748015873015873,
+              "single_view_logloss_mean": 0.6431165066040061,
+              "single_view_auc_mean": 0.7033333333333334,
+              "ensemble_ba": 0.7412698412698413,
+              "ensemble_logloss": 0.6422842494934147,
+              "ensemble_auc": 0.7055555555555556
+            },
+            "KK|struct7": {
+              "single_view_ba_mean": 0.8829365079365079,
+              "single_view_ba_min": 0.8484126984126984,
+              "single_view_ba_max": 0.9174603174603174,
+              "single_view_logloss_mean": 0.421390082495572,
+              "single_view_auc_mean": 0.8915079365079365,
+              "ensemble_ba": 0.9174603174603174,
+              "ensemble_logloss": 0.4173131339995125,
+              "ensemble_auc": 0.8960317460317461
+            },
+            "FF|struct6": {
+              "single_view_ba_mean": 0.7388888888888889,
+              "single_view_ba_min": 0.7388888888888889,
+              "single_view_ba_max": 0.7388888888888889,
+              "single_view_logloss_mean": 0.5925789098641883,
+              "single_view_auc_mean": 0.6563492063492065,
+              "ensemble_ba": 0.7388888888888889,
+              "ensemble_logloss": 0.5925789098641884,
+              "ensemble_auc": 0.6563492063492063
+            },
+            "FK|struct6": {
+              "single_view_ba_mean": 0.7284126984126984,
+              "single_view_ba_min": 0.709920634920635,
+              "single_view_ba_max": 0.7388888888888889,
+              "single_view_logloss_mean": 0.5654399033961384,
+              "single_view_auc_mean": 0.717857142857143,
+              "ensemble_ba": 0.721031746031746,
+              "ensemble_logloss": 0.5646032833595936,
+              "ensemble_auc": 0.7238095238095239
+            },
+            "KK|struct6": {
+              "single_view_ba_mean": 0.8731349206349206,
+              "single_view_ba_min": 0.8373015873015872,
+              "single_view_ba_max": 0.9174603174603174,
+              "single_view_logloss_mean": 0.4176657246940376,
+              "single_view_auc_mean": 0.8911111111111112,
+              "ensemble_ba": 0.9174603174603174,
+              "ensemble_logloss": 0.41328152750057007,
+              "ensemble_auc": 0.8952380952380953
+            },
+            "FF|NK_struct6": {
+              "single_view_ba_mean": 0.8686507936507937,
+              "single_view_ba_min": 0.8686507936507937,
+              "single_view_ba_max": 0.8686507936507937,
+              "single_view_logloss_mean": 0.4371481816858383,
+              "single_view_auc_mean": 0.9253968253968253,
+              "ensemble_ba": 0.8686507936507937,
+              "ensemble_logloss": 0.43714818168583824,
+              "ensemble_auc": 0.9253968253968253
+            },
+            "FK|NK_struct6": {
+              "single_view_ba_mean": 0.5353968253968254,
+              "single_view_ba_min": 0.530952380952381,
+              "single_view_ba_max": 0.5420634920634921,
+              "single_view_logloss_mean": 0.8774997187297539,
+              "single_view_auc_mean": 0.8680952380952383,
+              "ensemble_ba": 0.530952380952381,
+              "ensemble_logloss": 0.87111893742628,
+              "ensemble_auc": 0.8706349206349207
+            },
+            "KK|NK_struct6": {
+              "single_view_ba_mean": 0.8853968253968254,
+              "single_view_ba_min": 0.8595238095238096,
+              "single_view_ba_max": 0.9063492063492063,
+              "single_view_logloss_mean": 0.4228997422092299,
+              "single_view_auc_mean": 0.8986507936507936,
+              "ensemble_ba": 0.9174603174603174,
+              "ensemble_logloss": 0.4197523571790505,
+              "ensemble_auc": 0.9007936507936508
+            },
+            "FF|content": {
+              "single_view_ba_mean": 0.7726190476190478,
+              "single_view_ba_min": 0.7726190476190476,
+              "single_view_ba_max": 0.7726190476190476,
+              "single_view_logloss_mean": 0.5095043502218488,
+              "single_view_auc_mean": 0.8222222222222222,
+              "ensemble_ba": 0.7726190476190476,
+              "ensemble_logloss": 0.5095043502218488,
+              "ensemble_auc": 0.8222222222222222
+            },
+            "FK|content": {
+              "single_view_ba_mean": 0.566031746031746,
+              "single_view_ba_min": 0.5460317460317461,
+              "single_view_ba_max": 0.5904761904761905,
+              "single_view_logloss_mean": 0.9470408239310839,
+              "single_view_auc_mean": 0.6810317460317461,
+              "ensemble_ba": 0.5571428571428572,
+              "ensemble_logloss": 0.9411788415243845,
+              "ensemble_auc": 0.676984126984127
+            },
+            "KK|content": {
+              "single_view_ba_mean": 0.7139285714285715,
+              "single_view_ba_min": 0.6880952380952381,
+              "single_view_ba_max": 0.746031746031746,
+              "single_view_logloss_mean": 0.5505565342464651,
+              "single_view_auc_mean": 0.7985714285714286,
+              "ensemble_ba": 0.7170634920634921,
+              "ensemble_logloss": 0.5325249296838005,
+              "ensemble_auc": 0.8015873015873015
+            },
+            "FF|combined": {
+              "single_view_ba_mean": 0.8595238095238095,
+              "single_view_ba_min": 0.8595238095238096,
+              "single_view_ba_max": 0.8595238095238096,
+              "single_view_logloss_mean": 0.25517812886871283,
+              "single_view_auc_mean": 0.9507936507936507,
+              "ensemble_ba": 0.8595238095238096,
+              "ensemble_logloss": 0.2551781288687127,
+              "ensemble_auc": 0.9507936507936507
+            },
+            "FK|combined": {
+              "single_view_ba_mean": 0.852936507936508,
+              "single_view_ba_min": 0.8174603174603174,
+              "single_view_ba_max": 0.8753968253968254,
+              "single_view_logloss_mean": 0.3933105798183126,
+              "single_view_auc_mean": 0.9314285714285715,
+              "ensemble_ba": 0.8531746031746033,
+              "ensemble_logloss": 0.39236320457933926,
+              "ensemble_auc": 0.9317460317460318
+            },
+            "KK|combined": {
+              "single_view_ba_mean": 0.9154365079365079,
+              "single_view_ba_min": 0.8884920634920634,
+              "single_view_ba_max": 0.9285714285714286,
+              "single_view_logloss_mean": 0.24977164758336431,
+              "single_view_auc_mean": 0.9526984126984125,
+              "ensemble_ba": 0.9174603174603174,
+              "ensemble_logloss": 0.2474389234908081,
+              "ensemble_auc": 0.9531746031746031
+            }
+          }
+        }
+      },
+      "contrasts": {
+        "budget_specific_K250": {
+          "retrain_effect_struct6": {
+            "ba": {
+              "delta": 0.2539215686274511,
+              "ci": [
+                0.16226700750029283,
+                0.34801774766283955
+              ],
+              "p_bootstrap": 0.0
+            },
+            "log_loss": {
+              "delta": -0.3377685928080948,
+              "ci": [
+                -0.46404132497976,
+                -0.21303123832185406
+              ],
+              "p_bootstrap": 0.0
+            }
+          },
+          "retrain_effect_combined": {
+            "ba": {
+              "delta": 0.30196078431372564,
+              "ci": [
+                0.23464836229303054,
+                0.3677170773969964
+              ],
+              "p_bootstrap": 0.0
+            },
+            "log_loss": {
+              "delta": -0.5616216937985488,
+              "ci": [
+                -0.8338886010874043,
+                -0.32923665269067365
+              ],
+              "p_bootstrap": 0.0
+            }
+          },
+          "structure_beyond_NK": {
+            "ba": {
+              "delta": -0.007843137254901933,
+              "ci": [
+                -0.03254029262443294,
+                0.018852474008471416
+              ],
+              "p_bootstrap": 0.518
+            },
+            "log_loss": {
+              "delta": -0.005569586996429121,
+              "ci": [
+                -0.07921532899442517,
+                0.062255160472195446
+              ],
+              "p_bootstrap": 0.912
+            }
+          },
+          "content_beyond_NK_struct": {
+            "ba": {
+              "delta": 0.019607843137254832,
+              "ci": [
+                -0.009770098039215452,
+                0.04873894624673749
+              ],
+              "p_bootstrap": 0.202
+            },
+            "log_loss": {
+              "delta": -0.06711349058015581,
+              "ci": [
+                -0.1447150066524235,
+                0.005445563208460031
+              ],
+              "p_bootstrap": 0.058
+            }
+          },
+          "ensemble_vs_single_combined": {
+            "ba": {
+              "delta": -0.0019607843137254832,
+              "ci": [
+                -0.018616374269005927,
+                0.010785173718610213
+              ],
+              "p_bootstrap": 0.866
+            },
+            "log_loss": {
+              "delta": -0.022288807548597245,
+              "ci": [
+                -0.04352807945522729,
+                -0.007410746469290866
+              ],
+              "p_bootstrap": 0.0
+            }
+          },
+          "transfer_loss_struct6": {
+            "ba": {
+              "delta": -0.1264705882352941,
+              "ci": [
+                -0.1973702852998067,
+                -0.0677353327265725
+              ],
+              "p_bootstrap": 0.0
+            },
+            "log_loss": {
+              "delta": 0.10597318740489692,
+              "ci": [
+                0.05616961148871359,
+                0.16464857344841025
+              ],
+              "p_bootstrap": 0.0
+            }
+          },
+          "density_effect_frozen": {
+            "ba": {
+              "delta": -0.015686274509803977,
+              "ci": [
+                -0.0918157407407408,
+                0.06270011645962724
+              ],
+              "p_bootstrap": 0.694
+            },
+            "log_loss": {
+              "delta": -0.02482400620876457,
+              "ci": [
+                -0.13023247838122254,
+                0.08474919805370287
+              ],
+              "p_bootstrap": 0.622
+            }
+          }
+        },
+        "budget_specific_K500": {
+          "retrain_effect_struct6": {
+            "ba": {
+              "delta": 0.15237499999999982,
+              "ci": [
+                0.08362458193979937,
+                0.2255424331103678
+              ],
+              "p_bootstrap": 0.0
+            },
+            "log_loss": {
+              "delta": -0.20510348136483192,
+              "ci": [
+                -0.3407712223054542,
+                -0.05878313310447702
+              ],
+              "p_bootstrap": 0.01
+            }
+          },
+          "retrain_effect_combined": {
+            "ba": {
+              "delta": 0.15487499999999976,
+              "ci": [
+                0.08828083407275952,
+                0.22763825340670854
+              ],
+              "p_bootstrap": 0.0
+            },
+            "log_loss": {
+              "delta": -0.18041336922046045,
+              "ci": [
+                -0.2762403551898755,
+                -0.07884260060544217
+              ],
+              "p_bootstrap": 0.0
+            }
+          },
+          "structure_beyond_NK": {
+            "ba": {
+              "delta": 0.025624999999999898,
+              "ci": [
+                -0.013458209029630911,
+                0.07581716729244879
+              ],
+              "p_bootstrap": 0.262
+            },
+            "log_loss": {
+              "delta": 0.012932862976891668,
+              "ci": [
+                -0.04934438294347952,
+                0.08848245954973746
+              ],
+              "p_bootstrap": 0.768
+            }
+          },
+          "content_beyond_NK_struct": {
+            "ba": {
+              "delta": 0.0286249999999999,
+              "ci": [
+                -0.002577059866499463,
+                0.062203443877551126
+              ],
+              "p_bootstrap": 0.078
+            },
+            "log_loss": {
+              "delta": -0.1273232767694493,
+              "ci": [
+                -0.22598442991795006,
+                -0.03608592746643018
+              ],
+              "p_bootstrap": 0.0
+            }
+          },
+          "ensemble_vs_single_combined": {
+            "ba": {
+              "delta": 0.004041666666666832,
+              "ci": [
+                -2.7755575615627336e-18,
+                0.00940929089026921
+              ],
+              "p_bootstrap": 0.086
+            },
+            "log_loss": {
+              "delta": -0.006047055079621111,
+              "ci": [
+                -0.010594344373583765,
+                -0.0024087627662190652
+              ],
+              "p_bootstrap": 0.0
+            }
+          },
+          "transfer_loss_struct6": {
+            "ba": {
+              "delta": -0.02908333333333346,
+              "ci": [
+                -0.07072016843176843,
+                0.009307610993657477
+              ],
+              "p_bootstrap": 0.164
+            },
+            "log_loss": {
+              "delta": 0.02115399587334288,
+              "ci": [
+                -0.01594753126526798,
+                0.05726409322782308
+              ],
+              "p_bootstrap": 0.268
+            }
+          },
+          "density_effect_frozen": {
+            "ba": {
+              "delta": 0.03862500000000013,
+              "ci": [
+                -0.04901760204081646,
+                0.1282841544013884
+              ],
+              "p_bootstrap": 0.414
+            },
+            "log_loss": {
+              "delta": -0.0808459567256598,
+              "ci": [
+                -0.16848184488331325,
+                0.007203998900261492
+              ],
+              "p_bootstrap": 0.08
+            }
+          }
+        },
+        "budget_specific_K1000": {
+          "retrain_effect_struct6": {
+            "ba": {
+              "delta": 0.1447222222222222,
+              "ci": [
+                0.05805672115492657,
+                0.2362763220662397
+              ],
+              "p_bootstrap": 0.0
+            },
+            "log_loss": {
+              "delta": -0.14777417870210074,
+              "ci": [
+                -0.2590516639795035,
+                -0.015973818515667124
+              ],
+              "p_bootstrap": 0.032
+            }
+          },
+          "retrain_effect_combined": {
+            "ba": {
+              "delta": 0.06249999999999989,
+              "ci": [
+                -0.009106691919191974,
+                0.13304360465116274
+              ],
+              "p_bootstrap": 0.09
+            },
+            "log_loss": {
+              "delta": -0.14353893223494826,
+              "ci": [
+                -0.23631958040639595,
+                -0.04526848202083125
+              ],
+              "p_bootstrap": 0.008
+            }
+          },
+          "structure_beyond_NK": {
+            "ba": {
+              "delta": 0.03404761904761899,
+              "ci": [
+                -0.046147959183673634,
+                0.11327787698412682
+              ],
+              "p_bootstrap": 0.402
+            },
+            "log_loss": {
+              "delta": 0.0412401203573623,
+              "ci": [
+                -0.03276108741302015,
+                0.12885441654729107
+              ],
+              "p_bootstrap": 0.288
+            }
+          },
+          "content_beyond_NK_struct": {
+            "ba": {
+              "delta": 0.030039682539682477,
+              "ci": [
+                -0.013416452917137597,
+                0.08438158510022986
+              ],
+              "p_bootstrap": 0.194
+            },
+            "log_loss": {
+              "delta": -0.17312809462586556,
+              "ci": [
+                -0.24744656017596,
+                -0.10500723382127247
+              ],
+              "p_bootstrap": 0.0
+            }
+          },
+          "ensemble_vs_single_combined": {
+            "ba": {
+              "delta": 0.002023809523809539,
+              "ci": [
+                -0.01154255319148921,
+                0.015796522556391013
+              ],
+              "p_bootstrap": 0.812
+            },
+            "log_loss": {
+              "delta": -0.002332724092556221,
+              "ci": [
+                -0.004350588488223661,
+                -0.0007200039981890572
+              ],
+              "p_bootstrap": 0.0
+            }
+          },
+          "transfer_loss_struct6": {
+            "ba": {
+              "delta": -0.010476190476190528,
+              "ci": [
+                -0.02909422961330391,
+                0.0
+              ],
+              "p_bootstrap": 0.27
+            },
+            "log_loss": {
+              "delta": -0.027139006468049898,
+              "ci": [
+                -0.06071993556764399,
+                0.002872645849193307
+              ],
+              "p_bootstrap": 0.076
+            }
+          },
+          "density_effect_frozen": {
+            "ba": {
+              "delta": 0.0073015873015873645,
+              "ci": [
+                -0.06437773629296242,
+                0.08428604094076644
+              ],
+              "p_bootstrap": 0.87
+            },
+            "log_loss": {
+              "delta": 0.07767660320786773,
+              "ci": [
+                -0.05198602458600628,
+                0.2781956546156276
+              ],
+              "p_bootstrap": 0.494
+            }
+          }
+        },
+        "common_K250": {
+          "retrain_effect_struct6": {
+            "ba": {
+              "delta": 0.29753968253968255,
+              "ci": [
+                0.202936737194878,
+                0.4018543449197861
+              ],
+              "p_bootstrap": 0.0
+            },
+            "log_loss": {
+              "delta": -0.37524884670838954,
+              "ci": [
+                -0.5464647332744738,
+                -0.1978618238572323
+              ],
+              "p_bootstrap": 0.0
+            }
+          },
+          "retrain_effect_combined": {
+            "ba": {
+              "delta": 0.2887301587301587,
+              "ci": [
+                0.20685557545902356,
+                0.3619994239631336
+              ],
+              "p_bootstrap": 0.0
+            },
+            "log_loss": {
+              "delta": -0.749432388209772,
+              "ci": [
+                -1.0563898319712401,
+                -0.4107247117728109
+              ],
+              "p_bootstrap": 0.0
+            }
+          },
+          "structure_beyond_NK": {
+            "ba": {
+              "delta": -0.019206349206349338,
+              "ci": [
+                -0.0598082992588809,
+                0.006758490011751032
+              ],
+              "p_bootstrap": 0.248
+            },
+            "log_loss": {
+              "delta": 0.04889731788216867,
+              "ci": [
+                -0.014862620470462587,
+                0.13698621418829926
+              ],
+              "p_bootstrap": 0.216
+            }
+          },
+          "content_beyond_NK_struct": {
+            "ba": {
+              "delta": 0.023214285714285743,
+              "ci": [
+                -0.005732354039234863,
+                0.06425254785708769
+              ],
+              "p_bootstrap": 0.142
+            },
+            "log_loss": {
+              "delta": -0.0724981455306219,
+              "ci": [
+                -0.1587203702778038,
+                0.0017311474024374663
+              ],
+              "p_bootstrap": 0.056
+            }
+          },
+          "ensemble_vs_single_combined": {
+            "ba": {
+              "delta": -0.012222222222222134,
+              "ci": [
+                -0.0390151951543081,
+                0.007770635130373538
+              ],
+              "p_bootstrap": 0.312
+            },
+            "log_loss": {
+              "delta": -0.0391087384358525,
+              "ci": [
+                -0.09741867071707766,
+                -0.006107787413897514
+              ],
+              "p_bootstrap": 0.0
+            }
+          },
+          "transfer_loss_struct6": {
+            "ba": {
+              "delta": -0.12722222222222235,
+              "ci": [
+                -0.2077823490177055,
+                -0.058689931984524116
+              ],
+              "p_bootstrap": 0.0
+            },
+            "log_loss": {
+              "delta": 0.09428294914973145,
+              "ci": [
+                0.01275071285170862,
+                0.17710495313144436
+              ],
+              "p_bootstrap": 0.026
+            }
+          },
+          "density_effect_frozen": {
+            "ba": {
+              "delta": -0.10623015873015873,
+              "ci": [
+                -0.2123082880434781,
+                0.015045677361853691
+              ],
+              "p_bootstrap": 0.076
+            },
+            "log_loss": {
+              "delta": 0.25406398163706323,
+              "ci": [
+                0.05774462455236397,
+                0.5202862056141584
+              ],
+              "p_bootstrap": 0.008
+            }
+          }
+        },
+        "common_K500": {
+          "retrain_effect_struct6": {
+            "ba": {
+              "delta": 0.21785714285714286,
+              "ci": [
+                0.12506459639498443,
+                0.31033589349718366
+              ],
+              "p_bootstrap": 0.0
+            },
+            "log_loss": {
+              "delta": -0.2653666374490751,
+              "ci": [
+                -0.397177182344583,
+                -0.12315965327842908
+              ],
+              "p_bootstrap": 0.0
+            }
+          },
+          "retrain_effect_combined": {
+            "ba": {
+              "delta": 0.18761904761904769,
+              "ci": [
+                0.10826485747752396,
+                0.2682239846991207
+              ],
+              "p_bootstrap": 0.0
+            },
+            "log_loss": {
+              "delta": -0.37001299357676937,
+              "ci": [
+                -0.5542366043267771,
+                -0.1664105746286541
+              ],
+              "p_bootstrap": 0.0
+            }
+          },
+          "structure_beyond_NK": {
+            "ba": {
+              "delta": 0.033531746031746024,
+              "ci": [
+                -0.04416021575678319,
+                0.11086431277056266
+              ],
+              "p_bootstrap": 0.418
+            },
+            "log_loss": {
+              "delta": 0.007168156910336176,
+              "ci": [
+                -0.04653700486318592,
+                0.0637565499121635
+              ],
+              "p_bootstrap": 0.8
+            }
+          },
+          "content_beyond_NK_struct": {
+            "ba": {
+              "delta": 0.039007936507936436,
+              "ci": [
+                0.005716866945315052,
+                0.08631182359307372
+              ],
+              "p_bootstrap": 0.016
+            },
+            "log_loss": {
+              "delta": -0.09828005952515734,
+              "ci": [
+                -0.16250951471344968,
+                -0.04040034457679434
+              ],
+              "p_bootstrap": 0.0
+            }
+          },
+          "ensemble_vs_single_combined": {
+            "ba": {
+              "delta": 0.005555555555555536,
+              "ci": [
+                -0.005750254702194496,
+                0.01754180424528292
+              ],
+              "p_bootstrap": 0.38
+            },
+            "log_loss": {
+              "delta": -0.02071466055499463,
+              "ci": [
+                -0.05429961082200173,
+                -0.001977150513022413
+              ],
+              "p_bootstrap": 0.0
+            }
+          },
+          "transfer_loss_struct6": {
+            "ba": {
+              "delta": -0.06646825396825395,
+              "ci": [
+                -0.1347346014492752,
+                -0.016166795665634625
+              ],
+              "p_bootstrap": 0.01
+            },
+            "log_loss": {
+              "delta": 0.014926103004211155,
+              "ci": [
+                -0.03581762560515092,
+                0.06528676352115993
+              ],
+              "p_bootstrap": 0.584
+            }
+          },
+          "density_effect_frozen": {
+            "ba": {
+              "delta": -0.11476190476190484,
+              "ci": [
+                -0.21805059523809522,
+                -0.0038190070496802505
+              ],
+              "p_bootstrap": 0.048
+            },
+            "log_loss": {
+              "delta": 0.10352886926442029,
+              "ci": [
+                -0.04981372668538392,
+                0.33362625354719444
+              ],
+              "p_bootstrap": 0.324
+            }
+          }
+        },
+        "common_K1000": {
+          "retrain_effect_struct6": {
+            "ba": {
+              "delta": 0.1447222222222222,
+              "ci": [
+                0.05805672115492657,
+                0.2362763220662397
+              ],
+              "p_bootstrap": 0.0
+            },
+            "log_loss": {
+              "delta": -0.14777417870210074,
+              "ci": [
+                -0.2590516639795035,
+                -0.015973818515667124
+              ],
+              "p_bootstrap": 0.032
+            }
+          },
+          "retrain_effect_combined": {
+            "ba": {
+              "delta": 0.06249999999999989,
+              "ci": [
+                -0.009106691919191974,
+                0.13304360465116274
+              ],
+              "p_bootstrap": 0.09
+            },
+            "log_loss": {
+              "delta": -0.14353893223494826,
+              "ci": [
+                -0.23631958040639595,
+                -0.04526848202083125
+              ],
+              "p_bootstrap": 0.008
+            }
+          },
+          "structure_beyond_NK": {
+            "ba": {
+              "delta": 0.03404761904761899,
+              "ci": [
+                -0.046147959183673634,
+                0.11327787698412682
+              ],
+              "p_bootstrap": 0.402
+            },
+            "log_loss": {
+              "delta": 0.0412401203573623,
+              "ci": [
+                -0.03276108741302015,
+                0.12885441654729107
+              ],
+              "p_bootstrap": 0.288
+            }
+          },
+          "content_beyond_NK_struct": {
+            "ba": {
+              "delta": 0.030039682539682477,
+              "ci": [
+                -0.013416452917137597,
+                0.08438158510022986
+              ],
+              "p_bootstrap": 0.194
+            },
+            "log_loss": {
+              "delta": -0.17312809462586556,
+              "ci": [
+                -0.24744656017596,
+                -0.10500723382127247
+              ],
+              "p_bootstrap": 0.0
+            }
+          },
+          "ensemble_vs_single_combined": {
+            "ba": {
+              "delta": 0.002023809523809539,
+              "ci": [
+                -0.01154255319148921,
+                0.015796522556391013
+              ],
+              "p_bootstrap": 0.812
+            },
+            "log_loss": {
+              "delta": -0.002332724092556221,
+              "ci": [
+                -0.004350588488223661,
+                -0.0007200039981890572
+              ],
+              "p_bootstrap": 0.0
+            }
+          },
+          "transfer_loss_struct6": {
+            "ba": {
+              "delta": -0.010476190476190528,
+              "ci": [
+                -0.02909422961330391,
+                0.0
+              ],
+              "p_bootstrap": 0.27
+            },
+            "log_loss": {
+              "delta": -0.027139006468049898,
+              "ci": [
+                -0.06071993556764399,
+                0.002872645849193307
+              ],
+              "p_bootstrap": 0.076
+            }
+          },
+          "density_effect_frozen": {
+            "ba": {
+              "delta": 0.0073015873015873645,
+              "ci": [
+                -0.06437773629296242,
+                0.08428604094076644
+              ],
+              "p_bootstrap": 0.87
+            },
+            "log_loss": {
+              "delta": 0.07767660320786773,
+              "ci": [
+                -0.05198602458600628,
+                0.2781956546156276
+              ],
+              "p_bootstrap": 0.494
+            }
+          }
+        }
+      },
+      "mechanism": {
+        "K250": {
+          "n": 102,
+          "max_abs_rel_error_expected_vs_observed": 0.03510889937141791,
+          "spearman_expectedNK_vs_logN_full": 0.910093299420826,
+          "auc_expectedNK_label": 0.964628988850442,
+          "auc_log_N_full_label": 0.9342560553633218,
+          "median_expectedNK_campaign": 208.44757444489335,
+          "median_expectedNK_comparison": 322.2406746711435
+        },
+        "K500": {
+          "n": 98,
+          "max_abs_rel_error_expected_vs_observed": 0.018070569149547897,
+          "spearman_expectedNK_vs_logN_full": 0.9186919820649839,
+          "auc_expectedNK_label": 0.9612499999999999,
+          "auc_log_N_full_label": 0.9408333333333334,
+          "median_expectedNK_campaign": 319.5853462033416,
+          "median_expectedNK_comparison": 590.5511491762624
+        },
+        "K1000": {
+          "n": 73,
+          "max_abs_rel_error_expected_vs_observed": 0.02008339141553976,
+          "spearman_expectedNK_vs_logN_full": 0.8591020232115919,
+          "auc_expectedNK_label": 0.9063492063492065,
+          "auc_log_N_full_label": 0.9563492063492064,
+          "median_expectedNK_campaign": 576.3237135481957,
+          "median_expectedNK_comparison": 1074.0069146440967
+        }
+      },
+      "mechanism_r2_K250": {
+        "log N only": 0.7718781057750631,
+        "log E only": 0.28552507615429656,
+        "log N + log mean degree": 0.9300091729423704,
+        "size (log N, log E)": 0.9300091729423703,
+        "degree concentration (in/out Gini)": 0.6650900325932924,
+        "size + degree concentration": 0.9303003464084681
+      },
+      "mechanism_monte_carlo": [
+        {
+          "event_id_crc": 3365774888,
+          "E": 664,
+          "formula": 114.19088375317645,
+          "monte_carlo_mean": 113.6825,
+          "mc_se": 0.27439472578540414
+        },
+        {
+          "event_id_crc": 241193604,
+          "E": 1641,
+          "formula": 301.5177718659533,
+          "monte_carlo_mean": 301.395,
+          "mc_se": 0.24761506527547644
+        },
+        {
+          "event_id_crc": 2182687378,
+          "E": 6701,
+          "formula": 334.7365195720659,
+          "monte_carlo_mean": 334.405,
+          "mc_se": 0.2734765273795338
+        }
+      ]
+    },
+    "run_v2_metrics": {
+      "_source": "outputs/run_v2/metrics.json",
+      "A_scale_logreg": {
+        "balanced_accuracy": 0.8837,
+        "macro_f1": 0.8835,
+        "campaign_recall": 0.8654,
+        "comparison_recall": 0.902,
+        "n_events": 103,
+        "roc_auc": 0.9306,
+        "ba_ci_lower": 0.8165,
+        "ba_ci_upper": 0.9408,
+        "f1_ci_lower": 0.8149,
+        "f1_ci_upper": 0.9408
+      },
+      "A_scale_hgbt": {
+        "balanced_accuracy": 0.8156,
+        "macro_f1": 0.8155,
+        "campaign_recall": 0.8077,
+        "comparison_recall": 0.8235,
+        "n_events": 103,
+        "roc_auc": 0.9135,
+        "ba_ci_lower": 0.7329,
+        "ba_ci_upper": 0.8831,
+        "f1_ci_lower": 0.7281,
+        "f1_ci_upper": 0.883
+      },
+      "A_structure_logreg": {
+        "balanced_accuracy": 0.7687,
+        "macro_f1": 0.7605,
+        "campaign_recall": 0.5962,
+        "comparison_recall": 0.9412,
+        "n_events": 103,
+        "roc_auc": 0.8654,
+        "ba_ci_lower": 0.6913,
+        "ba_ci_upper": 0.8415,
+        "f1_ci_lower": 0.6696,
+        "f1_ci_upper": 0.8403
+      },
+      "A_structure_hgbt": {
+        "balanced_accuracy": 0.8737,
+        "macro_f1": 0.8737,
+        "campaign_recall": 0.8846,
+        "comparison_recall": 0.8627,
+        "n_events": 103,
+        "roc_auc": 0.9376,
+        "ba_ci_lower": 0.8062,
+        "ba_ci_upper": 0.9307,
+        "f1_ci_lower": 0.8057,
+        "f1_ci_upper": 0.9314
+      },
+      "A_content_logreg": {
+        "balanced_accuracy": 0.7866,
+        "macro_f1": 0.7864,
+        "campaign_recall": 0.7692,
+        "comparison_recall": 0.8039,
+        "n_events": 103,
+        "roc_auc": 0.859,
+        "ba_ci_lower": 0.7096,
+        "ba_ci_upper": 0.8619,
+        "f1_ci_lower": 0.708,
+        "f1_ci_upper": 0.8619
+      },
+      "A_content_hgbt": {
+        "balanced_accuracy": 0.796,
+        "macro_f1": 0.796,
+        "campaign_recall": 0.8077,
+        "comparison_recall": 0.7843,
+        "n_events": 103,
+        "roc_auc": 0.8616,
+        "ba_ci_lower": 0.7115,
+        "ba_ci_upper": 0.8648,
+        "f1_ci_lower": 0.7114,
+        "f1_ci_upper": 0.8638
+      },
+      "A_combined_logreg": {
+        "balanced_accuracy": 0.8937,
+        "macro_f1": 0.893,
+        "campaign_recall": 0.8462,
+        "comparison_recall": 0.9412,
+        "n_events": 103,
+        "roc_auc": 0.9793,
+        "ba_ci_lower": 0.8311,
+        "ba_ci_upper": 0.9478,
+        "f1_ci_lower": 0.8251,
+        "f1_ci_upper": 0.9503
+      },
+      "A_combined_hgbt": {
+        "balanced_accuracy": 0.9319,
+        "macro_f1": 0.932,
+        "campaign_recall": 0.9423,
+        "comparison_recall": 0.9216,
+        "n_events": 103,
+        "roc_auc": 0.9525,
+        "ba_ci_lower": 0.8822,
+        "ba_ci_upper": 0.9773,
+        "f1_ci_lower": 0.8822,
+        "f1_ci_upper": 0.9796
+      },
+      "B0a_log_node_logreg": {
+        "balanced_accuracy": 0.8739,
+        "macro_f1": 0.8738,
+        "campaign_recall": 0.8654,
+        "comparison_recall": 0.8824,
+        "n_events": 103,
+        "roc_auc": 0.934,
+        "ba_ci_lower": 0.805,
+        "ba_ci_upper": 0.9317,
+        "f1_ci_lower": 0.8043,
+        "f1_ci_upper": 0.9314
+      },
+      "B0a_log_node_hgbt": {
+        "balanced_accuracy": 0.8446,
+        "macro_f1": 0.8446,
+        "campaign_recall": 0.8462,
+        "comparison_recall": 0.8431,
+        "n_events": 103,
+        "roc_auc": 0.9021,
+        "ba_ci_lower": 0.7685,
+        "ba_ci_upper": 0.9085,
+        "f1_ci_lower": 0.7668,
+        "f1_ci_upper": 0.9092
+      },
+      "B0b_log_node_edge_logreg": {
+        "balanced_accuracy": 0.8837,
+        "macro_f1": 0.8835,
+        "campaign_recall": 0.8654,
+        "comparison_recall": 0.902,
+        "n_events": 103,
+        "roc_auc": 0.9306,
+        "ba_ci_lower": 0.8165,
+        "ba_ci_upper": 0.9408,
+        "f1_ci_lower": 0.8149,
+        "f1_ci_upper": 0.9408
+      },
+      "B0b_log_node_edge_hgbt": {
+        "balanced_accuracy": 0.8156,
+        "macro_f1": 0.8155,
+        "campaign_recall": 0.8077,
+        "comparison_recall": 0.8235,
+        "n_events": 103,
+        "roc_auc": 0.9135,
+        "ba_ci_lower": 0.7329,
+        "ba_ci_upper": 0.8831,
+        "f1_ci_lower": 0.7281,
+        "f1_ci_upper": 0.883
+      },
+      "C_matched_scale_logreg": {
+        "balanced_accuracy": 0.5938,
+        "macro_f1": 0.5934,
+        "campaign_recall": 0.5625,
+        "comparison_recall": 0.625,
+        "n_events": 32,
+        "roc_auc": 0.5703,
+        "ba_ci_lower": 0.417,
+        "ba_ci_upper": 0.7529,
+        "f1_ci_lower": 0.4057,
+        "f1_ci_upper": 0.749
+      },
+      "C_matched_scale_hgbt": {
+        "balanced_accuracy": 0.5,
+        "macro_f1": 0.3333,
+        "campaign_recall": 1.0,
+        "comparison_recall": 0.0,
+        "n_events": 32,
+        "roc_auc": 0.5,
+        "ba_ci_lower": 0.5,
+        "ba_ci_upper": 0.5,
+        "f1_ci_lower": 0.2381,
+        "f1_ci_upper": 0.3962
+      },
+      "C_matched_structure_logreg": {
+        "balanced_accuracy": 0.6875,
+        "macro_f1": 0.6875,
+        "campaign_recall": 0.6875,
+        "comparison_recall": 0.6875,
+        "n_events": 32,
+        "roc_auc": 0.6836,
+        "ba_ci_lower": 0.5238,
+        "ba_ci_upper": 0.8572,
+        "f1_ci_lower": 0.5077,
+        "f1_ci_upper": 0.8436
+      },
+      "C_matched_structure_hgbt": {
+        "balanced_accuracy": 0.5,
+        "macro_f1": 0.3333,
+        "campaign_recall": 1.0,
+        "comparison_recall": 0.0,
+        "n_events": 32,
+        "roc_auc": 0.5,
+        "ba_ci_lower": 0.5,
+        "ba_ci_upper": 0.5,
+        "f1_ci_lower": 0.2381,
+        "f1_ci_upper": 0.3962
+      },
+      "C_matched_content_logreg": {
+        "balanced_accuracy": 0.75,
+        "macro_f1": 0.749,
+        "campaign_recall": 0.6875,
+        "comparison_recall": 0.8125,
+        "n_events": 32,
+        "roc_auc": 0.7734,
+        "ba_ci_lower": 0.598,
+        "ba_ci_upper": 0.9062,
+        "f1_ci_lower": 0.5901,
+        "f1_ci_upper": 0.9054
+      },
+      "C_matched_content_hgbt": {
+        "balanced_accuracy": 0.5,
+        "macro_f1": 0.3333,
+        "campaign_recall": 1.0,
+        "comparison_recall": 0.0,
+        "n_events": 32,
+        "roc_auc": 0.5,
+        "ba_ci_lower": 0.5,
+        "ba_ci_upper": 0.5,
+        "f1_ci_lower": 0.2381,
+        "f1_ci_upper": 0.3962
+      },
+      "C_matched_combined_logreg": {
+        "balanced_accuracy": 0.6562,
+        "macro_f1": 0.6532,
+        "campaign_recall": 0.5625,
+        "comparison_recall": 0.75,
+        "n_events": 32,
+        "roc_auc": 0.6758,
+        "ba_ci_lower": 0.4959,
+        "ba_ci_upper": 0.8158,
+        "f1_ci_lower": 0.4684,
+        "f1_ci_upper": 0.8118
+      },
+      "C_matched_combined_hgbt": {
+        "balanced_accuracy": 0.5,
+        "macro_f1": 0.3333,
+        "campaign_recall": 1.0,
+        "comparison_recall": 0.0,
+        "n_events": 32,
+        "roc_auc": 0.5,
+        "ba_ci_lower": 0.5,
+        "ba_ci_upper": 0.5,
+        "f1_ci_lower": 0.2381,
+        "f1_ci_upper": 0.3962
+      },
+      "D2_K250": {
+        "balanced_accuracy": 0.9412,
+        "macro_f1": 0.9412,
+        "campaign_recall": 0.9216,
+        "comparison_recall": 0.9608,
+        "n_events": 102,
+        "roc_auc": 0.98,
+        "ba_ci_lower": 0.8942,
+        "ba_ci_upper": 0.9839,
+        "f1_ci_lower": 0.8921,
+        "f1_ci_upper": 0.9804
+      },
+      "D1_K250_frozen": {
+        "balanced_accuracy": 0.5882,
+        "macro_f1": 0.5596,
+        "campaign_recall": 0.8431,
+        "comparison_recall": 0.3333,
+        "n_events": 102,
+        "roc_auc": 0.822,
+        "ba_ci_lower": 0.5069,
+        "ba_ci_upper": 0.6728,
+        "f1_ci_lower": 0.4653,
+        "f1_ci_upper": 0.6529,
+        "fold_aligned": true,
+        "full_graph_reference_balanced_accuracy": 0.7745
+      },
+      "D2_K500": {
+        "balanced_accuracy": 0.9279,
+        "macro_f1": 0.9284,
+        "campaign_recall": 0.8958,
+        "comparison_recall": 0.96,
+        "n_events": 98,
+        "roc_auc": 0.9621,
+        "ba_ci_lower": 0.8712,
+        "ba_ci_upper": 0.9706,
+        "f1_ci_lower": 0.871,
+        "f1_ci_upper": 0.9694
+      },
+      "D1_K500_frozen": {
+        "balanced_accuracy": 0.7358,
+        "macro_f1": 0.7343,
+        "campaign_recall": 0.7917,
+        "comparison_recall": 0.68,
+        "n_events": 98,
+        "roc_auc": 0.8487,
+        "ba_ci_lower": 0.6531,
+        "ba_ci_upper": 0.8163,
+        "f1_ci_lower": 0.6436,
+        "f1_ci_upper": 0.8151,
+        "fold_aligned": true,
+        "full_graph_reference_balanced_accuracy": 0.7821
+      },
+      "D2_K1000": {
+        "balanced_accuracy": 0.9063,
+        "macro_f1": 0.9118,
+        "campaign_recall": 0.8571,
+        "comparison_recall": 0.9556,
+        "n_events": 73,
+        "roc_auc": 0.9421,
+        "ba_ci_lower": 0.8287,
+        "ba_ci_upper": 0.9697,
+        "f1_ci_lower": 0.8371,
+        "f1_ci_upper": 0.9706
+      },
+      "D1_K1000_frozen": {
+        "balanced_accuracy": 0.7992,
+        "macro_f1": 0.8138,
+        "campaign_recall": 0.6429,
+        "comparison_recall": 0.9556,
+        "n_events": 73,
+        "roc_auc": 0.8365,
+        "ba_ci_lower": 0.7005,
+        "ba_ci_upper": 0.8885,
+        "f1_ci_lower": 0.7103,
+        "f1_ci_upper": 0.8997,
+        "fold_aligned": true,
+        "full_graph_reference_balanced_accuracy": 0.7567
+      }
+    },
+    "verification": {
+      "_source": "outputs/run_v2/verification/verification_report.json",
+      "n_pass": 21,
+      "n_checks": 21,
+      "checks": [
+        "S1 every model uses all 103 events once",
+        "S1 outer folds identical to an independent StratifiedKFold(seed=42)",
+        "S1 reported BA/LL/AUC recomputed exactly from saved OOF predictions",
+        "S1 independent LR CV reproduces all saved LR OOF probabilities (both objectives)",
+        "S1 log-loss estimands use separately tuned fits",
+        "S1 [logreg] Holm adjustments recomputed exactly (BA and LL families separately)",
+        "S1 [hgbt] Holm adjustments recomputed exactly (BA and LL families separately)",
+        "S1 confirmatory point differences recomputed (BA, AUC exact; LL within clipping-convention tolerance 1e-5)",
+        "S1 paired CIs agree with an independent bootstrap (4000 resamples, other seed) within 0.02",
+        "S1 LR tuning uses no held-out-fold labels (label permutation in each outer fold leaves its C and predictions unchanged)",
+        "S1 HGBT tuning uses no held-out-fold labels (fold 0 permutation)",
+        "Null: degree Gini and density identical to observed in every realization",
+        "Null: M2 real and M2-null BA reproduced by independent LR CV",
+        "Null: mixing plateau (unchanged-edge fraction stable from 5 to 20 swaps/edge, within 0.02)",
+        "S2 single-view and ensemble BA / log loss recomputed exactly from saved view predictions",
+        "S2 each event has exactly 10 single-view predictions per condition",
+        "S2 all contrast point estimates recomputed exactly (BA and log loss)",
+        "S2 common and budget-specific cohorts coincide at K=1000 and give identical results",
+        "S2 primary contrast directions agree between budget-specific and common cohorts (K=250, 500)",
+        "Mechanism: closed-form E[N_K] matches Monte Carlo (400 draws, 3 events, K=250)",
+        "Mechanism: variance decomposition computed (interpretation reported separately)"
+      ]
+    },
+    "superseded_run_final": {
+      "_note": "SUPERSEDED: pre-correction run, kept for the correction history only; not a current result",
+      "_source": "outputs/run_final/metrics.json",
+      "A_combined_logreg_ba": 0.9229
+    }
+  },
+  "experiments": [
+    {
+      "experiment_id": "S1_LogReg_M0",
+      "study": "Study 1",
+      "category": "Study 1: full cohort",
+      "feature_group": "Counts: log node and edge count",
+      "model": "LogReg",
+      "balanced_accuracy": 0.8836726998491704,
+      "ba_ci_lower": 0.8156775263831147,
+      "ba_ci_upper": 0.9426274528067561,
+      "interval_kind": "95% CI",
+      "log_loss": 0.33112729541175134,
+      "roc_auc": 0.9306184012066365,
+      "n_events": 103,
+      "note": "BA from BA-tuned fits; log loss and AUC from log-loss-tuned fits (same outer folds)."
+    },
+    {
+      "experiment_id": "S1_LogReg_M0q",
+      "study": "Study 1",
+      "category": "Study 1: full cohort",
+      "feature_group": "Counts with squared/interaction terms (nonlinear count control)",
+      "model": "LogReg",
+      "balanced_accuracy": 0.8836726998491704,
+      "ba_ci_lower": 0.8156775263831147,
+      "ba_ci_upper": 0.9426274528067561,
+      "interval_kind": "95% CI",
+      "log_loss": 0.32618902948062545,
+      "roc_auc": 0.9321266968325792,
+      "n_events": 103,
+      "note": "BA from BA-tuned fits; log loss and AUC from log-loss-tuned fits (same outer folds)."
+    },
+    {
+      "experiment_id": "S1_LogReg_M1",
+      "study": "Study 1",
+      "category": "Study 1: full cohort",
+      "feature_group": "M0q + in/out-degree Gini",
+      "model": "LogReg",
+      "balanced_accuracy": 0.8740573152337858,
+      "ba_ci_lower": 0.8056647195047727,
+      "ba_ci_upper": 0.9358372518286311,
+      "interval_kind": "95% CI",
+      "log_loss": 0.36014259210566507,
+      "roc_auc": 0.9181749622926093,
+      "n_events": 103,
+      "note": "BA from BA-tuned fits; log loss and AUC from log-loss-tuned fits (same outer folds)."
+    },
+    {
+      "experiment_id": "S1_LogReg_M2",
+      "study": "Study 1",
+      "category": "Study 1: full cohort",
+      "feature_group": "M1 + reciprocity, largest WCC, coreness (arrangement)",
+      "model": "LogReg",
+      "balanced_accuracy": 0.8642533936651584,
+      "ba_ci_lower": 0.7927154843630817,
+      "ba_ci_upper": 0.9275352784134248,
+      "interval_kind": "95% CI",
+      "log_loss": 0.35227625750089314,
+      "roc_auc": 0.9321266968325792,
+      "n_events": 103,
+      "note": "BA from BA-tuned fits; log loss and AUC from log-loss-tuned fits (same outer folds)."
+    },
+    {
+      "experiment_id": "S1_LogReg_M3",
+      "study": "Study 1",
+      "category": "Study 1: full cohort",
+      "feature_group": "M0q + content (duplicates, text concentration, length dispersion)",
+      "model": "LogReg",
+      "balanced_accuracy": 0.8642533936651584,
+      "ba_ci_lower": 0.794527783733562,
+      "ba_ci_upper": 0.9230965586992373,
+      "interval_kind": "95% CI",
+      "log_loss": 0.3072619399450458,
+      "roc_auc": 0.9543740573152336,
+      "n_events": 103,
+      "note": "BA from BA-tuned fits; log loss and AUC from log-loss-tuned fits (same outer folds)."
+    },
+    {
+      "experiment_id": "S1_LogReg_M4",
+      "study": "Study 1",
+      "category": "Study 1: full cohort",
+      "feature_group": "M2 + content (all features)",
+      "model": "LogReg",
+      "balanced_accuracy": 0.8934766214177978,
+      "ba_ci_lower": 0.8345362698572002,
+      "ba_ci_upper": 0.9481270184270517,
+      "interval_kind": "95% CI",
+      "log_loss": 0.2163738701337429,
+      "roc_auc": 0.9709653092006032,
+      "n_events": 103,
+      "note": "BA from BA-tuned fits; log loss and AUC from log-loss-tuned fits (same outer folds)."
+    },
+    {
+      "experiment_id": "S1_LogReg_M4d",
+      "study": "Study 1",
+      "category": "Study 1: full cohort",
+      "feature_group": "M4 + density (diagnostic; density is fixed by the counts)",
+      "model": "LogReg",
+      "balanced_accuracy": 0.9030920060331824,
+      "ba_ci_lower": 0.8439275352307267,
+      "ba_ci_upper": 0.9550454995189078,
+      "interval_kind": "95% CI",
+      "log_loss": 0.2157868709159125,
+      "roc_auc": 0.9709653092006032,
+      "n_events": 103,
+      "note": "BA from BA-tuned fits; log loss and AUC from log-loss-tuned fits (same outer folds)."
+    },
+    {
+      "experiment_id": "S1_HGBT_M0",
+      "study": "Study 1",
+      "category": "Study 1: full cohort",
+      "feature_group": "Counts: log node and edge count",
+      "model": "HGBT",
+      "balanced_accuracy": 0.8248491704374057,
+      "ba_ci_lower": 0.7490201857568661,
+      "ba_ci_upper": 0.8938564095449499,
+      "interval_kind": "95% CI",
+      "log_loss": 0.3440775651916251,
+      "roc_auc": 0.9347662141779789,
+      "n_events": 103,
+      "note": "BA from BA-tuned fits; log loss and AUC from log-loss-tuned fits (same outer folds). HGBT is secondary: its own count model is weak (BA 0.805); against the best count model (LR M0q) HGBT M4 changes BA by +0.048 [-0.018, +0.117]."
+    },
+    {
+      "experiment_id": "S1_HGBT_M0q",
+      "study": "Study 1",
+      "category": "Study 1: full cohort",
+      "feature_group": "Counts with squared/interaction terms (nonlinear count control)",
+      "model": "HGBT",
+      "balanced_accuracy": 0.8054298642533937,
+      "ba_ci_lower": 0.7285032049798676,
+      "ba_ci_upper": 0.8817829457364341,
+      "interval_kind": "95% CI",
+      "log_loss": 0.3683162959413557,
+      "roc_auc": 0.9159125188536952,
+      "n_events": 103,
+      "note": "BA from BA-tuned fits; log loss and AUC from log-loss-tuned fits (same outer folds). HGBT is secondary: its own count model is weak (BA 0.805); against the best count model (LR M0q) HGBT M4 changes BA by +0.048 [-0.018, +0.117]."
+    },
+    {
+      "experiment_id": "S1_HGBT_M1",
+      "study": "Study 1",
+      "category": "Study 1: full cohort",
+      "feature_group": "M0q + in/out-degree Gini",
+      "model": "HGBT",
+      "balanced_accuracy": 0.8936651583710407,
+      "ba_ci_lower": 0.8297332434514638,
+      "ba_ci_upper": 0.9505660913379075,
+      "interval_kind": "95% CI",
+      "log_loss": 0.2959768901511344,
+      "roc_auc": 0.9477752639517345,
+      "n_events": 103,
+      "note": "BA from BA-tuned fits; log loss and AUC from log-loss-tuned fits (same outer folds). HGBT is secondary: its own count model is weak (BA 0.805); against the best count model (LR M0q) HGBT M4 changes BA by +0.048 [-0.018, +0.117]."
+    },
+    {
+      "experiment_id": "S1_HGBT_M2",
+      "study": "Study 1",
+      "category": "Study 1: full cohort",
+      "feature_group": "M1 + reciprocity, largest WCC, coreness (arrangement)",
+      "model": "HGBT",
+      "balanced_accuracy": 0.8640648567119156,
+      "ba_ci_lower": 0.7951162734597386,
+      "ba_ci_upper": 0.9311320754716981,
+      "interval_kind": "95% CI",
+      "log_loss": 0.3086913860561447,
+      "roc_auc": 0.9392911010558069,
+      "n_events": 103,
+      "note": "BA from BA-tuned fits; log loss and AUC from log-loss-tuned fits (same outer folds). HGBT is secondary: its own count model is weak (BA 0.805); against the best count model (LR M0q) HGBT M4 changes BA by +0.048 [-0.018, +0.117]."
+    },
+    {
+      "experiment_id": "S1_HGBT_M3",
+      "study": "Study 1",
+      "category": "Study 1: full cohort",
+      "feature_group": "M0q + content (duplicates, text concentration, length dispersion)",
+      "model": "HGBT",
+      "balanced_accuracy": 0.902526395173454,
+      "ba_ci_lower": 0.8435143288084465,
+      "ba_ci_upper": 0.953721264367816,
+      "interval_kind": "95% CI",
+      "log_loss": 0.3438273953024879,
+      "roc_auc": 0.9400452488687783,
+      "n_events": 103,
+      "note": "BA from BA-tuned fits; log loss and AUC from log-loss-tuned fits (same outer folds). HGBT is secondary: its own count model is weak (BA 0.805); against the best count model (LR M0q) HGBT M4 changes BA by +0.048 [-0.018, +0.117]."
+    },
+    {
+      "experiment_id": "S1_HGBT_M4",
+      "study": "Study 1",
+      "category": "Study 1: full cohort",
+      "feature_group": "M2 + content (all features)",
+      "model": "HGBT",
+      "balanced_accuracy": 0.9321266968325792,
+      "ba_ci_lower": 0.8804558516196448,
+      "ba_ci_upper": 0.9787344858156029,
+      "interval_kind": "95% CI",
+      "log_loss": 0.351661634588551,
+      "roc_auc": 0.9400452488687783,
+      "n_events": 103,
+      "note": "BA from BA-tuned fits; log loss and AUC from log-loss-tuned fits (same outer folds). HGBT is secondary: its own count model is weak (BA 0.805); against the best count model (LR M0q) HGBT M4 changes BA by +0.048 [-0.018, +0.117]."
+    },
+    {
+      "experiment_id": "S1_HGBT_M4d",
+      "study": "Study 1",
+      "category": "Study 1: full cohort",
+      "feature_group": "M4 + density (diagnostic; density is fixed by the counts)",
+      "model": "HGBT",
+      "balanced_accuracy": 0.9125188536953244,
+      "ba_ci_lower": 0.8543501339192843,
+      "ba_ci_upper": 0.9615424528301887,
+      "interval_kind": "95% CI",
+      "log_loss": 0.28530628305519934,
+      "roc_auc": 0.9457013574660633,
+      "n_events": 103,
+      "note": "BA from BA-tuned fits; log loss and AUC from log-loss-tuned fits (same outer folds). HGBT is secondary: its own count model is weak (BA 0.805); against the best count model (LR M0q) HGBT M4 changes BA by +0.048 [-0.018, +0.117]."
+    },
+    {
+      "experiment_id": "S2_K250_FF_NK",
+      "study": "Study 2",
+      "category": "Study 2: K = 250",
+      "feature_group": "Full graph -> full graph; Sampled endpoint count N_K only",
+      "model": "LogReg",
+      "balanced_accuracy": 0.8725490196078433,
+      "ba_ci_lower": null,
+      "ba_ci_upper": null,
+      "interval_kind": "full graphs, no sampling",
+      "ensemble_ba": null,
+      "log_loss": 0.33145077393332734,
+      "roc_auc": 0.9311803152633603,
+      "n_events": 102,
+      "note": "Trained and evaluated on full graphs of the events eligible at this budget (reference for FK and KK); log loss and AUC from log-loss-tuned fits. Budget-specific cohort: 51 campaign / 51 comparison events."
+    },
+    {
+      "experiment_id": "S2_K250_FK_NK",
+      "study": "Study 2",
+      "category": "Study 2: K = 250",
+      "feature_group": "Full graph -> single view (frozen); Sampled endpoint count N_K only",
+      "model": "LogReg",
+      "balanced_accuracy": 0.5,
+      "ba_ci_lower": 0.5,
+      "ba_ci_upper": 0.5,
+      "interval_kind": "seed range",
+      "ensemble_ba": 0.5,
+      "log_loss": 1.5842518310091434,
+      "roc_auc": 0.9424836601307189,
+      "n_events": 102,
+      "note": "Single-view BA, mean over 10 sampling seeds (10-view ensemble BA 0.500); log loss and AUC from log-loss-tuned fits. Budget-specific cohort: 51 campaign / 51 comparison events."
+    },
+    {
+      "experiment_id": "S2_K250_KK_NK",
+      "study": "Study 2",
+      "category": "Study 2: K = 250",
+      "feature_group": "Single view -> single view (retrained); Sampled endpoint count N_K only",
+      "model": "LogReg",
+      "balanced_accuracy": 0.9215686274509804,
+      "ba_ci_lower": 0.8823529411764706,
+      "ba_ci_upper": 0.9411764705882353,
+      "interval_kind": "seed range",
+      "ensemble_ba": 0.9313725490196079,
+      "log_loss": 0.278665552236376,
+      "roc_auc": 0.960553633217993,
+      "n_events": 102,
+      "note": "Single-view BA, mean over 10 sampling seeds (10-view ensemble BA 0.931); log loss and AUC from log-loss-tuned fits. Budget-specific cohort: 51 campaign / 51 comparison events."
+    },
+    {
+      "experiment_id": "S2_K250_FF_struct7",
+      "study": "Study 2",
+      "category": "Study 2: K = 250",
+      "feature_group": "Full graph -> full graph; Structure incl. density (7)",
+      "model": "LogReg",
+      "balanced_accuracy": 0.803921568627451,
+      "ba_ci_lower": null,
+      "ba_ci_upper": null,
+      "interval_kind": "full graphs, no sampling",
+      "ensemble_ba": null,
+      "log_loss": 0.4307307205944447,
+      "roc_auc": 0.8608227604767397,
+      "n_events": 102,
+      "note": "Trained and evaluated on full graphs of the events eligible at this budget (reference for FK and KK); log loss and AUC from log-loss-tuned fits. Budget-specific cohort: 51 campaign / 51 comparison events."
+    },
+    {
+      "experiment_id": "S2_K250_FK_struct7",
+      "study": "Study 2",
+      "category": "Study 2: K = 250",
+      "feature_group": "Full graph -> single view (frozen); Structure incl. density (7)",
+      "model": "LogReg",
+      "balanced_accuracy": 0.6323529411764705,
+      "ba_ci_lower": 0.6078431372549019,
+      "ba_ci_upper": 0.6568627450980392,
+      "interval_kind": "seed range",
+      "ensemble_ba": 0.6372549019607843,
+      "log_loss": 0.5913751753743659,
+      "roc_auc": 0.8740484429065745,
+      "n_events": 102,
+      "note": "Single-view BA, mean over 10 sampling seeds (10-view ensemble BA 0.637); log loss and AUC from log-loss-tuned fits. Budget-specific cohort: 51 campaign / 51 comparison events."
+    },
+    {
+      "experiment_id": "S2_K250_KK_struct7",
+      "study": "Study 2",
+      "category": "Study 2: K = 250",
+      "feature_group": "Single view -> single view (retrained); Structure incl. density (7)",
+      "model": "LogReg",
+      "balanced_accuracy": 0.9039215686274511,
+      "ba_ci_lower": 0.8627450980392157,
+      "ba_ci_upper": 0.9215686274509804,
+      "interval_kind": "seed range",
+      "ensemble_ba": 0.9215686274509804,
+      "log_loss": 0.2723764649741841,
+      "roc_auc": 0.9501730103806227,
+      "n_events": 102,
+      "note": "Single-view BA, mean over 10 sampling seeds (10-view ensemble BA 0.922); log loss and AUC from log-loss-tuned fits. Budget-specific cohort: 51 campaign / 51 comparison events."
+    },
+    {
+      "experiment_id": "S2_K250_FF_struct6",
+      "study": "Study 2",
+      "category": "Study 2: K = 250",
+      "feature_group": "Full graph -> full graph; Structure without density (6)",
+      "model": "LogReg",
+      "balanced_accuracy": 0.7745098039215685,
+      "ba_ci_lower": null,
+      "ba_ci_upper": null,
+      "interval_kind": "full graphs, no sampling",
+      "ensemble_ba": null,
+      "log_loss": 0.5102259941782336,
+      "roc_auc": 0.7666282199154172,
+      "n_events": 102,
+      "note": "Trained and evaluated on full graphs of the events eligible at this budget (reference for FK and KK); log loss and AUC from log-loss-tuned fits. Budget-specific cohort: 51 campaign / 51 comparison events."
+    },
+    {
+      "experiment_id": "S2_K250_FK_struct6",
+      "study": "Study 2",
+      "category": "Study 2: K = 250",
+      "feature_group": "Full graph -> single view (frozen); Structure without density (6)",
+      "model": "LogReg",
+      "balanced_accuracy": 0.6480392156862744,
+      "ba_ci_lower": 0.6176470588235294,
+      "ba_ci_upper": 0.6764705882352942,
+      "interval_kind": "seed range",
+      "ensemble_ba": 0.6470588235294117,
+      "log_loss": 0.6161991815831305,
+      "roc_auc": 0.6934640522875817,
+      "n_events": 102,
+      "note": "Single-view BA, mean over 10 sampling seeds (10-view ensemble BA 0.647); log loss and AUC from log-loss-tuned fits. Budget-specific cohort: 51 campaign / 51 comparison events."
+    },
+    {
+      "experiment_id": "S2_K250_KK_struct6",
+      "study": "Study 2",
+      "category": "Study 2: K = 250",
+      "feature_group": "Single view -> single view (retrained); Structure without density (6)",
+      "model": "LogReg",
+      "balanced_accuracy": 0.9019607843137255,
+      "ba_ci_lower": 0.8823529411764706,
+      "ba_ci_upper": 0.911764705882353,
+      "interval_kind": "seed range",
+      "ensemble_ba": 0.9215686274509804,
+      "log_loss": 0.2784305887750357,
+      "roc_auc": 0.9470203767781621,
+      "n_events": 102,
+      "note": "Single-view BA, mean over 10 sampling seeds (10-view ensemble BA 0.922); log loss and AUC from log-loss-tuned fits. Budget-specific cohort: 51 campaign / 51 comparison events."
+    },
+    {
+      "experiment_id": "S2_K250_FF_NK_struct6",
+      "study": "Study 2",
+      "category": "Study 2: K = 250",
+      "feature_group": "Full graph -> full graph; N_K + structure (6)",
+      "model": "LogReg",
+      "balanced_accuracy": 0.8627450980392158,
+      "ba_ci_lower": null,
+      "ba_ci_upper": null,
+      "interval_kind": "full graphs, no sampling",
+      "ensemble_ba": null,
+      "log_loss": 0.3630020838322193,
+      "roc_auc": 0.9304113802383698,
+      "n_events": 102,
+      "note": "Trained and evaluated on full graphs of the events eligible at this budget (reference for FK and KK); log loss and AUC from log-loss-tuned fits. Budget-specific cohort: 51 campaign / 51 comparison events."
+    },
+    {
+      "experiment_id": "S2_K250_FK_NK_struct6",
+      "study": "Study 2",
+      "category": "Study 2: K = 250",
+      "feature_group": "Full graph -> single view (frozen); N_K + structure (6)",
+      "model": "LogReg",
+      "balanced_accuracy": 0.5,
+      "ba_ci_lower": 0.5,
+      "ba_ci_upper": 0.5,
+      "interval_kind": "seed range",
+      "ensemble_ba": 0.5,
+      "log_loss": 1.0316296603276998,
+      "roc_auc": 0.9004229142637448,
+      "n_events": 102,
+      "note": "Single-view BA, mean over 10 sampling seeds (10-view ensemble BA 0.500); log loss and AUC from log-loss-tuned fits. Budget-specific cohort: 51 campaign / 51 comparison events."
+    },
+    {
+      "experiment_id": "S2_K250_KK_NK_struct6",
+      "study": "Study 2",
+      "category": "Study 2: K = 250",
+      "feature_group": "Single view -> single view (retrained); N_K + structure (6)",
+      "model": "LogReg",
+      "balanced_accuracy": 0.9137254901960785,
+      "ba_ci_lower": 0.9019607843137255,
+      "ba_ci_upper": 0.9313725490196079,
+      "interval_kind": "seed range",
+      "ensemble_ba": 0.9313725490196079,
+      "log_loss": 0.2730959652399469,
+      "roc_auc": 0.9460207612456747,
+      "n_events": 102,
+      "note": "Single-view BA, mean over 10 sampling seeds (10-view ensemble BA 0.931); log loss and AUC from log-loss-tuned fits. Budget-specific cohort: 51 campaign / 51 comparison events."
+    },
+    {
+      "experiment_id": "S2_K250_FF_content",
+      "study": "Study 2",
+      "category": "Study 2: K = 250",
+      "feature_group": "Full graph -> full graph; Content (3)",
+      "model": "LogReg",
+      "balanced_accuracy": 0.7843137254901961,
+      "ba_ci_lower": null,
+      "ba_ci_upper": null,
+      "interval_kind": "full graphs, no sampling",
+      "ensemble_ba": null,
+      "log_loss": 0.47765660248236647,
+      "roc_auc": 0.8523644752018456,
+      "n_events": 102,
+      "note": "Trained and evaluated on full graphs of the events eligible at this budget (reference for FK and KK); log loss and AUC from log-loss-tuned fits. Budget-specific cohort: 51 campaign / 51 comparison events."
+    },
+    {
+      "experiment_id": "S2_K250_FK_content",
+      "study": "Study 2",
+      "category": "Study 2: K = 250",
+      "feature_group": "Full graph -> single view (frozen); Content (3)",
+      "model": "LogReg",
+      "balanced_accuracy": 0.4852941176470589,
+      "ba_ci_lower": 0.4607843137254902,
+      "ba_ci_upper": 0.5,
+      "interval_kind": "seed range",
+      "ensemble_ba": 0.4901960784313726,
+      "log_loss": 1.287233584864177,
+      "roc_auc": 0.606651287966167,
+      "n_events": 102,
+      "note": "Single-view BA, mean over 10 sampling seeds (10-view ensemble BA 0.490); log loss and AUC from log-loss-tuned fits. Budget-specific cohort: 51 campaign / 51 comparison events."
+    },
+    {
+      "experiment_id": "S2_K250_KK_content",
+      "study": "Study 2",
+      "category": "Study 2: K = 250",
+      "feature_group": "Single view -> single view (retrained); Content (3)",
+      "model": "LogReg",
+      "balanced_accuracy": 0.7166666666666667,
+      "ba_ci_lower": 0.6862745098039216,
+      "ba_ci_upper": 0.7352941176470589,
+      "interval_kind": "seed range",
+      "ensemble_ba": 0.7058823529411764,
+      "log_loss": 0.5976361471094226,
+      "roc_auc": 0.7769319492502883,
+      "n_events": 102,
+      "note": "Single-view BA, mean over 10 sampling seeds (10-view ensemble BA 0.706); log loss and AUC from log-loss-tuned fits. Budget-specific cohort: 51 campaign / 51 comparison events."
+    },
+    {
+      "experiment_id": "S2_K250_FF_combined",
+      "study": "Study 2",
+      "category": "Study 2: K = 250",
+      "feature_group": "Full graph -> full graph; N_K + structure + content",
+      "model": "LogReg",
+      "balanced_accuracy": 0.9313725490196079,
+      "ba_ci_lower": null,
+      "ba_ci_upper": null,
+      "interval_kind": "full graphs, no sampling",
+      "ensemble_ba": null,
+      "log_loss": 0.22752829763973353,
+      "roc_auc": 0.9650134563629373,
+      "n_events": 102,
+      "note": "Trained and evaluated on full graphs of the events eligible at this budget (reference for FK and KK); log loss and AUC from log-loss-tuned fits. Budget-specific cohort: 51 campaign / 51 comparison events."
+    },
+    {
+      "experiment_id": "S2_K250_FK_combined",
+      "study": "Study 2",
+      "category": "Study 2: K = 250",
+      "feature_group": "Full graph -> single view (frozen); N_K + structure + content",
+      "model": "LogReg",
+      "balanced_accuracy": 0.6313725490196077,
+      "ba_ci_lower": 0.6078431372549019,
+      "ba_ci_upper": 0.6568627450980392,
+      "interval_kind": "seed range",
+      "ensemble_ba": 0.6176470588235294,
+      "log_loss": 0.7676041684583399,
+      "roc_auc": 0.8978469819300269,
+      "n_events": 102,
+      "note": "Single-view BA, mean over 10 sampling seeds (10-view ensemble BA 0.618); log loss and AUC from log-loss-tuned fits. Budget-specific cohort: 51 campaign / 51 comparison events."
+    },
+    {
+      "experiment_id": "S2_K250_KK_combined",
+      "study": "Study 2",
+      "category": "Study 2: K = 250",
+      "feature_group": "Single view -> single view (retrained); N_K + structure + content",
+      "model": "LogReg",
+      "balanced_accuracy": 0.9333333333333333,
+      "ba_ci_lower": 0.9117647058823529,
+      "ba_ci_upper": 0.9411764705882353,
+      "interval_kind": "seed range",
+      "ensemble_ba": 0.9313725490196079,
+      "log_loss": 0.20598247465979108,
+      "roc_auc": 0.9673971549404075,
+      "n_events": 102,
+      "note": "Single-view BA, mean over 10 sampling seeds (10-view ensemble BA 0.931); log loss and AUC from log-loss-tuned fits. Budget-specific cohort: 51 campaign / 51 comparison events."
+    },
+    {
+      "experiment_id": "S2_K500_FF_NK",
+      "study": "Study 2",
+      "category": "Study 2: K = 500",
+      "feature_group": "Full graph -> full graph; Sampled endpoint count N_K only",
+      "model": "LogReg",
+      "balanced_accuracy": 0.8875,
+      "ba_ci_lower": null,
+      "ba_ci_upper": null,
+      "interval_kind": "full graphs, no sampling",
+      "ensemble_ba": null,
+      "log_loss": 0.3365555038738136,
+      "roc_auc": 0.9304166666666667,
+      "n_events": 98,
+      "note": "Trained and evaluated on full graphs of the events eligible at this budget (reference for FK and KK); log loss and AUC from log-loss-tuned fits. Budget-specific cohort: 48 campaign / 50 comparison events."
+    },
+    {
+      "experiment_id": "S2_K500_FK_NK",
+      "study": "Study 2",
+      "category": "Study 2: K = 500",
+      "feature_group": "Full graph -> single view (frozen); Sampled endpoint count N_K only",
+      "model": "LogReg",
+      "balanced_accuracy": 0.5,
+      "ba_ci_lower": 0.5,
+      "ba_ci_upper": 0.5,
+      "interval_kind": "seed range",
+      "ensemble_ba": 0.5,
+      "log_loss": 1.1192151589065296,
+      "roc_auc": 0.8850624999999999,
+      "n_events": 98,
+      "note": "Single-view BA, mean over 10 sampling seeds (10-view ensemble BA 0.500); log loss and AUC from log-loss-tuned fits. Budget-specific cohort: 48 campaign / 50 comparison events."
+    },
+    {
+      "experiment_id": "S2_K500_KK_NK",
+      "study": "Study 2",
+      "category": "Study 2: K = 500",
+      "feature_group": "Single view -> single view (retrained); Sampled endpoint count N_K only",
+      "model": "LogReg",
+      "balanced_accuracy": 0.8796250000000001,
+      "ba_ci_lower": 0.8445833333333332,
+      "ba_ci_upper": 0.89625,
+      "interval_kind": "seed range",
+      "ensemble_ba": 0.8858333333333333,
+      "log_loss": 0.3147076864394062,
+      "roc_auc": 0.9523125,
+      "n_events": 98,
+      "note": "Single-view BA, mean over 10 sampling seeds (10-view ensemble BA 0.886); log loss and AUC from log-loss-tuned fits. Budget-specific cohort: 48 campaign / 50 comparison events."
+    },
+    {
+      "experiment_id": "S2_K500_FF_struct7",
+      "study": "Study 2",
+      "category": "Study 2: K = 500",
+      "feature_group": "Full graph -> full graph; Structure incl. density (7)",
+      "model": "LogReg",
+      "balanced_accuracy": 0.8033333333333331,
+      "ba_ci_lower": null,
+      "ba_ci_upper": null,
+      "interval_kind": "full graphs, no sampling",
+      "ensemble_ba": null,
+      "log_loss": 0.46031791582876214,
+      "roc_auc": 0.8479166666666668,
+      "n_events": 98,
+      "note": "Trained and evaluated on full graphs of the events eligible at this budget (reference for FK and KK); log loss and AUC from log-loss-tuned fits. Budget-specific cohort: 48 campaign / 50 comparison events."
+    },
+    {
+      "experiment_id": "S2_K500_FK_struct7",
+      "study": "Study 2",
+      "category": "Study 2: K = 500",
+      "feature_group": "Full graph -> single view (frozen); Structure incl. density (7)",
+      "model": "LogReg",
+      "balanced_accuracy": 0.7812083333333334,
+      "ba_ci_lower": 0.7570833333333333,
+      "ba_ci_upper": 0.8070833333333334,
+      "interval_kind": "seed range",
+      "ensemble_ba": 0.7870833333333334,
+      "log_loss": 0.455191514684601,
+      "roc_auc": 0.8766666666666666,
+      "n_events": 98,
+      "note": "Single-view BA, mean over 10 sampling seeds (10-view ensemble BA 0.787); log loss and AUC from log-loss-tuned fits. Budget-specific cohort: 48 campaign / 50 comparison events."
+    },
+    {
+      "experiment_id": "S2_K500_KK_struct7",
+      "study": "Study 2",
+      "category": "Study 2: K = 500",
+      "feature_group": "Single view -> single view (retrained); Structure incl. density (7)",
+      "model": "LogReg",
+      "balanced_accuracy": 0.8980416666666665,
+      "ba_ci_lower": 0.87625,
+      "ba_ci_upper": 0.9170833333333333,
+      "interval_kind": "seed range",
+      "ensemble_ba": 0.9170833333333333,
+      "log_loss": 0.33167658012615986,
+      "roc_auc": 0.9401666666666667,
+      "n_events": 98,
+      "note": "Single-view BA, mean over 10 sampling seeds (10-view ensemble BA 0.917); log loss and AUC from log-loss-tuned fits. Budget-specific cohort: 48 campaign / 50 comparison events."
+    },
+    {
+      "experiment_id": "S2_K500_FF_struct6",
+      "study": "Study 2",
+      "category": "Study 2: K = 500",
+      "feature_group": "Full graph -> full graph; Structure without density (6)",
+      "model": "LogReg",
+      "balanced_accuracy": 0.7716666666666667,
+      "ba_ci_lower": null,
+      "ba_ci_upper": null,
+      "interval_kind": "full graphs, no sampling",
+      "ensemble_ba": null,
+      "log_loss": 0.5148834755369179,
+      "roc_auc": 0.7420833333333332,
+      "n_events": 98,
+      "note": "Trained and evaluated on full graphs of the events eligible at this budget (reference for FK and KK); log loss and AUC from log-loss-tuned fits. Budget-specific cohort: 48 campaign / 50 comparison events."
+    },
+    {
+      "experiment_id": "S2_K500_FK_struct6",
+      "study": "Study 2",
+      "category": "Study 2: K = 500",
+      "feature_group": "Full graph -> single view (frozen); Structure without density (6)",
+      "model": "LogReg",
+      "balanced_accuracy": 0.7425833333333333,
+      "ba_ci_lower": 0.7404166666666667,
+      "ba_ci_upper": 0.7508333333333332,
+      "interval_kind": "seed range",
+      "ensemble_ba": 0.7404166666666667,
+      "log_loss": 0.5360374714102608,
+      "roc_auc": 0.7556666666666666,
+      "n_events": 98,
+      "note": "Single-view BA, mean over 10 sampling seeds (10-view ensemble BA 0.740); log loss and AUC from log-loss-tuned fits. Budget-specific cohort: 48 campaign / 50 comparison events."
+    },
+    {
+      "experiment_id": "S2_K500_KK_struct6",
+      "study": "Study 2",
+      "category": "Study 2: K = 500",
+      "feature_group": "Single view -> single view (retrained); Structure without density (6)",
+      "model": "LogReg",
+      "balanced_accuracy": 0.8949583333333331,
+      "ba_ci_lower": 0.87625,
+      "ba_ci_upper": 0.9170833333333333,
+      "interval_kind": "seed range",
+      "ensemble_ba": 0.9170833333333333,
+      "log_loss": 0.3309339900454289,
+      "roc_auc": 0.939125,
+      "n_events": 98,
+      "note": "Single-view BA, mean over 10 sampling seeds (10-view ensemble BA 0.917); log loss and AUC from log-loss-tuned fits. Budget-specific cohort: 48 campaign / 50 comparison events."
+    },
+    {
+      "experiment_id": "S2_K500_FF_NK_struct6",
+      "study": "Study 2",
+      "category": "Study 2: K = 500",
+      "feature_group": "Full graph -> full graph; N_K + structure (6)",
+      "model": "LogReg",
+      "balanced_accuracy": 0.8774999999999998,
+      "ba_ci_lower": null,
+      "ba_ci_upper": null,
+      "interval_kind": "full graphs, no sampling",
+      "ensemble_ba": null,
+      "log_loss": 0.3948833814790943,
+      "roc_auc": 0.9270833333333334,
+      "n_events": 98,
+      "note": "Trained and evaluated on full graphs of the events eligible at this budget (reference for FK and KK); log loss and AUC from log-loss-tuned fits. Budget-specific cohort: 48 campaign / 50 comparison events."
+    },
+    {
+      "experiment_id": "S2_K500_FK_NK_struct6",
+      "study": "Study 2",
+      "category": "Study 2: K = 500",
+      "feature_group": "Full graph -> single view (frozen); N_K + structure (6)",
+      "model": "LogReg",
+      "balanced_accuracy": 0.5713333333333334,
+      "ba_ci_lower": 0.5491666666666667,
+      "ba_ci_upper": 0.5895833333333333,
+      "interval_kind": "seed range",
+      "ensemble_ba": 0.5591666666666667,
+      "log_loss": 0.6760059296815994,
+      "roc_auc": 0.9101666666666667,
+      "n_events": 98,
+      "note": "Single-view BA, mean over 10 sampling seeds (10-view ensemble BA 0.559); log loss and AUC from log-loss-tuned fits. Budget-specific cohort: 48 campaign / 50 comparison events."
+    },
+    {
+      "experiment_id": "S2_K500_KK_NK_struct6",
+      "study": "Study 2",
+      "category": "Study 2: K = 500",
+      "feature_group": "Single view -> single view (retrained); N_K + structure (6)",
+      "model": "LogReg",
+      "balanced_accuracy": 0.90525,
+      "ba_ci_lower": 0.8870833333333333,
+      "ba_ci_upper": 0.9275,
+      "interval_kind": "seed range",
+      "ensemble_ba": 0.9170833333333333,
+      "log_loss": 0.3276405494162979,
+      "roc_auc": 0.9440416666666668,
+      "n_events": 98,
+      "note": "Single-view BA, mean over 10 sampling seeds (10-view ensemble BA 0.917); log loss and AUC from log-loss-tuned fits. Budget-specific cohort: 48 campaign / 50 comparison events."
+    },
+    {
+      "experiment_id": "S2_K500_FF_content",
+      "study": "Study 2",
+      "category": "Study 2: K = 500",
+      "feature_group": "Full graph -> full graph; Content (3)",
+      "model": "LogReg",
+      "balanced_accuracy": 0.7433333333333333,
+      "ba_ci_lower": null,
+      "ba_ci_upper": null,
+      "interval_kind": "full graphs, no sampling",
+      "ensemble_ba": null,
+      "log_loss": 0.49046349772915676,
+      "roc_auc": 0.8387499999999999,
+      "n_events": 98,
+      "note": "Trained and evaluated on full graphs of the events eligible at this budget (reference for FK and KK); log loss and AUC from log-loss-tuned fits. Budget-specific cohort: 48 campaign / 50 comparison events."
+    },
+    {
+      "experiment_id": "S2_K500_FK_content",
+      "study": "Study 2",
+      "category": "Study 2: K = 500",
+      "feature_group": "Full graph -> single view (frozen); Content (3)",
+      "model": "LogReg",
+      "balanced_accuracy": 0.4791666666666667,
+      "ba_ci_lower": 0.4658333333333333,
+      "ba_ci_upper": 0.49624999999999997,
+      "interval_kind": "seed range",
+      "ensemble_ba": 0.4866666666666667,
+      "log_loss": 0.9809698649298049,
+      "roc_auc": 0.6272916666666667,
+      "n_events": 98,
+      "note": "Single-view BA, mean over 10 sampling seeds (10-view ensemble BA 0.487); log loss and AUC from log-loss-tuned fits. Budget-specific cohort: 48 campaign / 50 comparison events."
+    },
+    {
+      "experiment_id": "S2_K500_KK_content",
+      "study": "Study 2",
+      "category": "Study 2: K = 500",
+      "feature_group": "Single view -> single view (retrained); Content (3)",
+      "model": "LogReg",
+      "balanced_accuracy": 0.6927083333333334,
+      "ba_ci_lower": 0.6629166666666667,
+      "ba_ci_upper": 0.7145833333333333,
+      "interval_kind": "seed range",
+      "ensemble_ba": 0.7241666666666666,
+      "log_loss": 0.5754425134363255,
+      "roc_auc": 0.7815833333333333,
+      "n_events": 98,
+      "note": "Single-view BA, mean over 10 sampling seeds (10-view ensemble BA 0.724); log loss and AUC from log-loss-tuned fits. Budget-specific cohort: 48 campaign / 50 comparison events."
+    },
+    {
+      "experiment_id": "S2_K500_FF_combined",
+      "study": "Study 2",
+      "category": "Study 2: K = 500",
+      "feature_group": "Full graph -> full graph; N_K + structure + content",
+      "model": "LogReg",
+      "balanced_accuracy": 0.9070833333333331,
+      "ba_ci_lower": null,
+      "ba_ci_upper": null,
+      "interval_kind": "full graphs, no sampling",
+      "ensemble_ba": null,
+      "log_loss": 0.23199444699762622,
+      "roc_auc": 0.9650000000000001,
+      "n_events": 98,
+      "note": "Trained and evaluated on full graphs of the events eligible at this budget (reference for FK and KK); log loss and AUC from log-loss-tuned fits. Budget-specific cohort: 48 campaign / 50 comparison events."
+    },
+    {
+      "experiment_id": "S2_K500_FK_combined",
+      "study": "Study 2",
+      "category": "Study 2: K = 500",
+      "feature_group": "Full graph -> single view (frozen); N_K + structure + content",
+      "model": "LogReg",
+      "balanced_accuracy": 0.7790000000000001,
+      "ba_ci_lower": 0.7679166666666667,
+      "ba_ci_upper": 0.7979166666666666,
+      "interval_kind": "seed range",
+      "ensemble_ba": 0.7679166666666667,
+      "log_loss": 0.38073064186730904,
+      "roc_auc": 0.9402916666666666,
+      "n_events": 98,
+      "note": "Single-view BA, mean over 10 sampling seeds (10-view ensemble BA 0.768); log loss and AUC from log-loss-tuned fits. Budget-specific cohort: 48 campaign / 50 comparison events."
+    },
+    {
+      "experiment_id": "S2_K500_KK_combined",
+      "study": "Study 2",
+      "category": "Study 2: K = 500",
+      "feature_group": "Single view -> single view (retrained); N_K + structure + content",
+      "model": "LogReg",
+      "balanced_accuracy": 0.9338749999999999,
+      "ba_ci_lower": 0.9075,
+      "ba_ci_upper": 0.9379166666666667,
+      "interval_kind": "seed range",
+      "ensemble_ba": 0.9379166666666667,
+      "log_loss": 0.2003172726468486,
+      "roc_auc": 0.9690833333333334,
+      "n_events": 98,
+      "note": "Single-view BA, mean over 10 sampling seeds (10-view ensemble BA 0.938); log loss and AUC from log-loss-tuned fits. Budget-specific cohort: 48 campaign / 50 comparison events."
+    },
+    {
+      "experiment_id": "S2_K1000_FF_NK",
+      "study": "Study 2",
+      "category": "Study 2: K = 1000",
+      "feature_group": "Full graph -> full graph; Sampled endpoint count N_K only",
+      "model": "LogReg",
+      "balanced_accuracy": 0.85515873015873,
+      "ba_ci_lower": null,
+      "ba_ci_upper": null,
+      "interval_kind": "full graphs, no sampling",
+      "ensemble_ba": null,
+      "log_loss": 0.26197029402823785,
+      "roc_auc": 0.9515873015873014,
+      "n_events": 73,
+      "note": "Trained and evaluated on full graphs of the events eligible at this budget (reference for FK and KK); log loss and AUC from log-loss-tuned fits. Budget-specific cohort: 28 campaign / 45 comparison events."
+    },
+    {
+      "experiment_id": "S2_K1000_FK_NK",
+      "study": "Study 2",
+      "category": "Study 2: K = 1000",
+      "feature_group": "Full graph -> single view (frozen); Sampled endpoint count N_K only",
+      "model": "LogReg",
+      "balanced_accuracy": 0.4821428571428571,
+      "ba_ci_lower": 0.48214285714285715,
+      "ba_ci_upper": 0.48214285714285715,
+      "interval_kind": "seed range",
+      "ensemble_ba": 0.48214285714285715,
+      "log_loss": 1.1230062768391256,
+      "roc_auc": 0.90515873015873,
+      "n_events": 73,
+      "note": "Single-view BA, mean over 10 sampling seeds (10-view ensemble BA 0.482); log loss and AUC from log-loss-tuned fits. Budget-specific cohort: 28 campaign / 45 comparison events."
+    },
+    {
+      "experiment_id": "S2_K1000_KK_NK",
+      "study": "Study 2",
+      "category": "Study 2: K = 1000",
+      "feature_group": "Single view -> single view (retrained); Sampled endpoint count N_K only",
+      "model": "LogReg",
+      "balanced_accuracy": 0.8513492063492064,
+      "ba_ci_lower": 0.8392857142857143,
+      "ba_ci_upper": 0.8571428571428572,
+      "interval_kind": "seed range",
+      "ensemble_ba": 0.8571428571428572,
+      "log_loss": 0.3816596218518676,
+      "roc_auc": 0.8896825396825395,
+      "n_events": 73,
+      "note": "Single-view BA, mean over 10 sampling seeds (10-view ensemble BA 0.857); log loss and AUC from log-loss-tuned fits. Budget-specific cohort: 28 campaign / 45 comparison events."
+    },
+    {
+      "experiment_id": "S2_K1000_FF_struct7",
+      "study": "Study 2",
+      "category": "Study 2: K = 1000",
+      "feature_group": "Full graph -> full graph; Structure incl. density (7)",
+      "model": "LogReg",
+      "balanced_accuracy": 0.7456349206349205,
+      "ba_ci_lower": null,
+      "ba_ci_upper": null,
+      "interval_kind": "full graphs, no sampling",
+      "ensemble_ba": null,
+      "log_loss": 0.6086365733375881,
+      "roc_auc": 0.7642857142857143,
+      "n_events": 73,
+      "note": "Trained and evaluated on full graphs of the events eligible at this budget (reference for FK and KK); log loss and AUC from log-loss-tuned fits. Budget-specific cohort: 28 campaign / 45 comparison events."
+    },
+    {
+      "experiment_id": "S2_K1000_FK_struct7",
+      "study": "Study 2",
+      "category": "Study 2: K = 1000",
+      "feature_group": "Full graph -> single view (frozen); Structure incl. density (7)",
+      "model": "LogReg",
+      "balanced_accuracy": 0.7357142857142858,
+      "ba_ci_lower": 0.7011904761904761,
+      "ba_ci_upper": 0.748015873015873,
+      "interval_kind": "seed range",
+      "ensemble_ba": 0.7412698412698413,
+      "log_loss": 0.6431165066040061,
+      "roc_auc": 0.7033333333333334,
+      "n_events": 73,
+      "note": "Single-view BA, mean over 10 sampling seeds (10-view ensemble BA 0.741); log loss and AUC from log-loss-tuned fits. Budget-specific cohort: 28 campaign / 45 comparison events."
+    },
+    {
+      "experiment_id": "S2_K1000_KK_struct7",
+      "study": "Study 2",
+      "category": "Study 2: K = 1000",
+      "feature_group": "Single view -> single view (retrained); Structure incl. density (7)",
+      "model": "LogReg",
+      "balanced_accuracy": 0.8829365079365079,
+      "ba_ci_lower": 0.8484126984126984,
+      "ba_ci_upper": 0.9174603174603174,
+      "interval_kind": "seed range",
+      "ensemble_ba": 0.9174603174603174,
+      "log_loss": 0.421390082495572,
+      "roc_auc": 0.8915079365079365,
+      "n_events": 73,
+      "note": "Single-view BA, mean over 10 sampling seeds (10-view ensemble BA 0.917); log loss and AUC from log-loss-tuned fits. Budget-specific cohort: 28 campaign / 45 comparison events."
+    },
+    {
+      "experiment_id": "S2_K1000_FF_struct6",
+      "study": "Study 2",
+      "category": "Study 2: K = 1000",
+      "feature_group": "Full graph -> full graph; Structure without density (6)",
+      "model": "LogReg",
+      "balanced_accuracy": 0.7388888888888889,
+      "ba_ci_lower": null,
+      "ba_ci_upper": null,
+      "interval_kind": "full graphs, no sampling",
+      "ensemble_ba": null,
+      "log_loss": 0.5925789098641883,
+      "roc_auc": 0.6563492063492065,
+      "n_events": 73,
+      "note": "Trained and evaluated on full graphs of the events eligible at this budget (reference for FK and KK); log loss and AUC from log-loss-tuned fits. Budget-specific cohort: 28 campaign / 45 comparison events."
+    },
+    {
+      "experiment_id": "S2_K1000_FK_struct6",
+      "study": "Study 2",
+      "category": "Study 2: K = 1000",
+      "feature_group": "Full graph -> single view (frozen); Structure without density (6)",
+      "model": "LogReg",
+      "balanced_accuracy": 0.7284126984126984,
+      "ba_ci_lower": 0.709920634920635,
+      "ba_ci_upper": 0.7388888888888889,
+      "interval_kind": "seed range",
+      "ensemble_ba": 0.721031746031746,
+      "log_loss": 0.5654399033961384,
+      "roc_auc": 0.717857142857143,
+      "n_events": 73,
+      "note": "Single-view BA, mean over 10 sampling seeds (10-view ensemble BA 0.721); log loss and AUC from log-loss-tuned fits. Budget-specific cohort: 28 campaign / 45 comparison events."
+    },
+    {
+      "experiment_id": "S2_K1000_KK_struct6",
+      "study": "Study 2",
+      "category": "Study 2: K = 1000",
+      "feature_group": "Single view -> single view (retrained); Structure without density (6)",
+      "model": "LogReg",
+      "balanced_accuracy": 0.8731349206349206,
+      "ba_ci_lower": 0.8373015873015872,
+      "ba_ci_upper": 0.9174603174603174,
+      "interval_kind": "seed range",
+      "ensemble_ba": 0.9174603174603174,
+      "log_loss": 0.4176657246940376,
+      "roc_auc": 0.8911111111111112,
+      "n_events": 73,
+      "note": "Single-view BA, mean over 10 sampling seeds (10-view ensemble BA 0.917); log loss and AUC from log-loss-tuned fits. Budget-specific cohort: 28 campaign / 45 comparison events."
+    },
+    {
+      "experiment_id": "S2_K1000_FF_NK_struct6",
+      "study": "Study 2",
+      "category": "Study 2: K = 1000",
+      "feature_group": "Full graph -> full graph; N_K + structure (6)",
+      "model": "LogReg",
+      "balanced_accuracy": 0.8686507936507937,
+      "ba_ci_lower": null,
+      "ba_ci_upper": null,
+      "interval_kind": "full graphs, no sampling",
+      "ensemble_ba": null,
+      "log_loss": 0.4371481816858383,
+      "roc_auc": 0.9253968253968253,
+      "n_events": 73,
+      "note": "Trained and evaluated on full graphs of the events eligible at this budget (reference for FK and KK); log loss and AUC from log-loss-tuned fits. Budget-specific cohort: 28 campaign / 45 comparison events."
+    },
+    {
+      "experiment_id": "S2_K1000_FK_NK_struct6",
+      "study": "Study 2",
+      "category": "Study 2: K = 1000",
+      "feature_group": "Full graph -> single view (frozen); N_K + structure (6)",
+      "model": "LogReg",
+      "balanced_accuracy": 0.5353968253968254,
+      "ba_ci_lower": 0.530952380952381,
+      "ba_ci_upper": 0.5420634920634921,
+      "interval_kind": "seed range",
+      "ensemble_ba": 0.530952380952381,
+      "log_loss": 0.8774997187297539,
+      "roc_auc": 0.8680952380952383,
+      "n_events": 73,
+      "note": "Single-view BA, mean over 10 sampling seeds (10-view ensemble BA 0.531); log loss and AUC from log-loss-tuned fits. Budget-specific cohort: 28 campaign / 45 comparison events."
+    },
+    {
+      "experiment_id": "S2_K1000_KK_NK_struct6",
+      "study": "Study 2",
+      "category": "Study 2: K = 1000",
+      "feature_group": "Single view -> single view (retrained); N_K + structure (6)",
+      "model": "LogReg",
+      "balanced_accuracy": 0.8853968253968254,
+      "ba_ci_lower": 0.8595238095238096,
+      "ba_ci_upper": 0.9063492063492063,
+      "interval_kind": "seed range",
+      "ensemble_ba": 0.9174603174603174,
+      "log_loss": 0.4228997422092299,
+      "roc_auc": 0.8986507936507936,
+      "n_events": 73,
+      "note": "Single-view BA, mean over 10 sampling seeds (10-view ensemble BA 0.917); log loss and AUC from log-loss-tuned fits. Budget-specific cohort: 28 campaign / 45 comparison events."
+    },
+    {
+      "experiment_id": "S2_K1000_FF_content",
+      "study": "Study 2",
+      "category": "Study 2: K = 1000",
+      "feature_group": "Full graph -> full graph; Content (3)",
+      "model": "LogReg",
+      "balanced_accuracy": 0.7726190476190478,
+      "ba_ci_lower": null,
+      "ba_ci_upper": null,
+      "interval_kind": "full graphs, no sampling",
+      "ensemble_ba": null,
+      "log_loss": 0.5095043502218488,
+      "roc_auc": 0.8222222222222222,
+      "n_events": 73,
+      "note": "Trained and evaluated on full graphs of the events eligible at this budget (reference for FK and KK); log loss and AUC from log-loss-tuned fits. Budget-specific cohort: 28 campaign / 45 comparison events."
+    },
+    {
+      "experiment_id": "S2_K1000_FK_content",
+      "study": "Study 2",
+      "category": "Study 2: K = 1000",
+      "feature_group": "Full graph -> single view (frozen); Content (3)",
+      "model": "LogReg",
+      "balanced_accuracy": 0.566031746031746,
+      "ba_ci_lower": 0.5460317460317461,
+      "ba_ci_upper": 0.5904761904761905,
+      "interval_kind": "seed range",
+      "ensemble_ba": 0.5571428571428572,
+      "log_loss": 0.9470408239310839,
+      "roc_auc": 0.6810317460317461,
+      "n_events": 73,
+      "note": "Single-view BA, mean over 10 sampling seeds (10-view ensemble BA 0.557); log loss and AUC from log-loss-tuned fits. Budget-specific cohort: 28 campaign / 45 comparison events."
+    },
+    {
+      "experiment_id": "S2_K1000_KK_content",
+      "study": "Study 2",
+      "category": "Study 2: K = 1000",
+      "feature_group": "Single view -> single view (retrained); Content (3)",
+      "model": "LogReg",
+      "balanced_accuracy": 0.7139285714285715,
+      "ba_ci_lower": 0.6880952380952381,
+      "ba_ci_upper": 0.746031746031746,
+      "interval_kind": "seed range",
+      "ensemble_ba": 0.7170634920634921,
+      "log_loss": 0.5505565342464651,
+      "roc_auc": 0.7985714285714286,
+      "n_events": 73,
+      "note": "Single-view BA, mean over 10 sampling seeds (10-view ensemble BA 0.717); log loss and AUC from log-loss-tuned fits. Budget-specific cohort: 28 campaign / 45 comparison events."
+    },
+    {
+      "experiment_id": "S2_K1000_FF_combined",
+      "study": "Study 2",
+      "category": "Study 2: K = 1000",
+      "feature_group": "Full graph -> full graph; N_K + structure + content",
+      "model": "LogReg",
+      "balanced_accuracy": 0.8595238095238095,
+      "ba_ci_lower": null,
+      "ba_ci_upper": null,
+      "interval_kind": "full graphs, no sampling",
+      "ensemble_ba": null,
+      "log_loss": 0.25517812886871283,
+      "roc_auc": 0.9507936507936507,
+      "n_events": 73,
+      "note": "Trained and evaluated on full graphs of the events eligible at this budget (reference for FK and KK); log loss and AUC from log-loss-tuned fits. Budget-specific cohort: 28 campaign / 45 comparison events."
+    },
+    {
+      "experiment_id": "S2_K1000_FK_combined",
+      "study": "Study 2",
+      "category": "Study 2: K = 1000",
+      "feature_group": "Full graph -> single view (frozen); N_K + structure + content",
+      "model": "LogReg",
+      "balanced_accuracy": 0.852936507936508,
+      "ba_ci_lower": 0.8174603174603174,
+      "ba_ci_upper": 0.8753968253968254,
+      "interval_kind": "seed range",
+      "ensemble_ba": 0.8531746031746033,
+      "log_loss": 0.3933105798183126,
+      "roc_auc": 0.9314285714285715,
+      "n_events": 73,
+      "note": "Single-view BA, mean over 10 sampling seeds (10-view ensemble BA 0.853); log loss and AUC from log-loss-tuned fits. Budget-specific cohort: 28 campaign / 45 comparison events."
+    },
+    {
+      "experiment_id": "S2_K1000_KK_combined",
+      "study": "Study 2",
+      "category": "Study 2: K = 1000",
+      "feature_group": "Single view -> single view (retrained); N_K + structure + content",
+      "model": "LogReg",
+      "balanced_accuracy": 0.9154365079365079,
+      "ba_ci_lower": 0.8884920634920634,
+      "ba_ci_upper": 0.9285714285714286,
+      "interval_kind": "seed range",
+      "ensemble_ba": 0.9174603174603174,
+      "log_loss": 0.24977164758336431,
+      "roc_auc": 0.9526984126984125,
+      "n_events": 73,
+      "note": "Single-view BA, mean over 10 sampling seeds (10-view ensemble BA 0.917); log loss and AUC from log-loss-tuned fits. Budget-specific cohort: 28 campaign / 45 comparison events."
+    }
+  ]
+}

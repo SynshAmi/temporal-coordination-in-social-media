@@ -1,0 +1,18 @@
+[
+  "A. A. Gopalakrishnan, J. Hossain, T. Elmas, and A. E. Sarıyüce, \"Large engagement networks for classifying coordinated campaigns and organic Twitter trends,\" in *Proc. Int. AAAI Conf. Web and Social Media (ICWSM)*, vol. 19, no. 1, pp. 688–702, 2025, doi: 10.1609/icwsm.v19i1.35839.",
+  "A. A. Gopalakrishnan, J. Hossain, T. Elmas, and A. E. Sarıyüce, \"Density-aware walks for coordinated campaign detection,\" in *Proc. European Conf. Machine Learning and Principles and Practice of Knowledge Discovery in Databases (ECML PKDD)*, 2025, pp. 283–298, arXiv:2506.13912.",
+  "A. Z. Jacobs and H. Wallach, \"Measurement and fairness,\" in *Proc. ACM Conf. Fairness, Accountability, and Transparency (FAccT)*, 2021, pp. 375–385, doi: 10.1145/3442188.3445901.",
+  "Z. Li, Y. Cao, K. Shuai, Y. Miao, and K. Hwang, \"Rethinking the effectiveness of graph classification datasets in benchmarks for assessing GNNs,\" in *Proc. Int. Joint Conf. Artificial Intelligence (IJCAI)*, 2024, pp. 2144–2152, doi: 10.24963/ijcai.2024/237.",
+  "F. Errica, M. Podda, D. Bacciu, and A. Micheli, \"A fair comparison of graph neural networks for graph classification,\" in *Proc. Int. Conf. Learning Representations (ICLR)*, 2020.",
+  "C. Coupette, J. Wayland, E. Simons, and B. Rieck, \"No metric to rule them all: Toward principled evaluations of graph-learning datasets,\" in *Proc. Int. Conf. Machine Learning (ICML)*, PMLR, vol. 267, 2025, pp. 11405–11434.",
+  "\"LEN: Large Engagement Networks,\" dataset repository. [Online]. Available: https://erdemub.github.io/large-engagement-network/",
+  "S. Maslov and K. Sneppen, \"Specificity and stability in topology of protein networks,\" *Science*, vol. 296, no. 5569, pp. 910–913, 2002.",
+  "J. Leskovec and C. Faloutsos, \"Sampling from large graphs,\" in *Proc. ACM SIGKDD Int. Conf. Knowledge Discovery and Data Mining*, 2006, pp. 631–636, doi: 10.1145/1150402.1150479.",
+  "G. Varoquaux, \"Cross-validation failure: Small sample sizes lead to large error bars,\" *NeuroImage*, vol. 180, pp. 68–77, 2018.",
+  "A. A. Hagberg, D. A. Schult, and P. J. Swart, \"Exploring network structure, dynamics, and function using NetworkX,\" in *Proc. 7th Python in Science Conf. (SciPy)*, 2008, pp. 11–15.",
+  "F. Pedregosa et al., \"Scikit-learn: Machine learning in Python,\" *J. Mach. Learn. Res.*, vol. 12, pp. 2825–2830, 2011.",
+  "B. Efron and R. J. Tibshirani, *An Introduction to the Bootstrap*. New York, NY, USA: Chapman & Hall, 1993.",
+  "S. Holm, \"A simple sequentially rejective multiple test procedure,\" *Scandinavian J. Statistics*, vol. 6, no. 2, pp. 65–70, 1979.",
+  "P. C. Austin, \"Balance diagnostics for comparing the distribution of baseline covariates between treatment groups in propensity-score matched samples,\" *Statistics in Medicine*, vol. 28, no. 25, pp. 3083–3107, 2009, doi: 10.1002/sim.3697.",
+  "E. A. Stuart, \"Matching methods for causal inference: A review and a look forward,\" *Statistical Science*, vol. 25, no. 1, pp. 1–21, 2010."
+]
