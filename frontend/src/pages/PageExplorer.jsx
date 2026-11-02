@@ -4,7 +4,7 @@ import Fig4ObservationBudgets from "../components/Fig4ObservationBudgets";
 import CohortFlowDiagram from "../components/CohortFlowDiagram";
 import ResultsTable from "../components/ResultsTable";
 import NK from "../components/NK";
-import { ShieldAlert } from "lucide-react";
+import { ResearchNotes } from "../dataset/ui";
 import { f3, sg, ci, pct, nkVsStruct, proxyR2 } from "../lib/fmt";
 
 export default function PageExplorer({ data }) {
@@ -61,21 +61,6 @@ export default function PageExplorer({ data }) {
         </section>
       )}
 
-      <section className="p-5 sm:p-8 lg:px-10 bg-[#f4efe6] border border-[#d8d3c5] border-l-4 border-l-[#8f2626] grid grid-cols-1 lg:grid-cols-12 gap-x-10 gap-y-3">
-        <div className="lg:col-span-4 flex items-start gap-2 text-[#8f2626] font-mono font-bold uppercase tracking-wider text-xs leading-relaxed">
-          <ShieldAlert size={15} className="shrink-0 mt-0.5" />
-          <span>Uncertainty and Scope</span>
-        </div>
-        <div className="lg:col-span-8 text-[15px] leading-relaxed text-[#3c3a37] max-w-[80ch] space-y-3">
-          <p>
-            Size matching keeps {MT.node_only.n_pairs_range[0]}–{MT.node_only.n_pairs_range[1]} pairs, changes the evaluated population and does not balance every size measure; it is exploratory sensitivity evidence, not a causal estimate. Study 1 intervals are percentile bootstraps over fixed out-of-fold predictions; they exclude refitting and fold-split variability and cannot account for dependence between events that share accounts, which the release does not allow us to measure.
-          </p>
-          <p>
-            The expected number of distinct endpoints <NK /> in a 250-edge sample matches the observed mean within {pct(mech.max_abs_rel_error_expected_vs_observed)}% and has AUC {f3(mech.auc_expectedNK_label)} for the label (full-graph log node count: {f3(mech.auc_log_N_full_label)}). It is strongly associated with full-graph node count and mean degree, which together explain {pct(r2["log N + log mean degree"])}% of its variation at K = 250; in/out-degree Gini adds no measurable explanatory power. Within sampled views, <NK /> alone and the six structural features did not differ detectably (<NK /> minus structure at K = 250: ΔBA {sg(nkVsStruct(V, 250).NK_minus_structure.delta)} {ci(nkVsStruct(V, 250).NK_minus_structure.ci)}), and structure predicts log <NK /> with cross-validated R² of {f3(proxyR2(V, 250))}, so the two carry largely overlapping, size-like information; this does not establish that <NK />, rather than structure, is responsible for the signal.
-          </p>
-        </div>
-      </section>
-
       {(activeExplorerSection === "all" || activeExplorerSection === "flow") && (
         <section>
           <CohortFlowDiagram paper={P} revision={V} />
@@ -87,6 +72,13 @@ export default function PageExplorer({ data }) {
           <ResultsTable experiments={experiments} />
         </section>
       )}
+
+      <ResearchNotes items={[
+        ["Size matching", <>Size matching keeps {MT.node_only.n_pairs_range[0]}–{MT.node_only.n_pairs_range[1]} pairs, changes the evaluated population and does not balance every size measure; it is exploratory sensitivity evidence, not a causal estimate.</>],
+        ["Study 1 intervals", "Study 1 intervals are percentile bootstraps over fixed out-of-fold predictions; they exclude refitting and fold-split variability and cannot account for dependence between events that share accounts, which the release does not allow us to measure."],
+        ["Sampled endpoint count", <>The expected number of distinct endpoints <NK /> in a 250-edge sample matches the observed mean within {pct(mech.max_abs_rel_error_expected_vs_observed)}% and has AUC {f3(mech.auc_expectedNK_label)} for the label (full-graph log node count: {f3(mech.auc_log_N_full_label)}). It is strongly associated with full-graph node count and mean degree, which together explain {pct(r2["log N + log mean degree"])}% of its variation at K = 250; in/out-degree Gini adds no measurable explanatory power.</>],
+        ["Endpoint count and structure", <>Within sampled views, <NK /> alone and the six structural features did not differ detectably (<NK /> minus structure at K = 250: ΔBA {sg(nkVsStruct(V, 250).NK_minus_structure.delta)} {ci(nkVsStruct(V, 250).NK_minus_structure.ci)}), and structure predicts log <NK /> with cross-validated R² of {f3(proxyR2(V, 250))}, so the two carry largely overlapping, size-like information; this does not establish that <NK />, rather than structure, is responsible for the signal.</>],
+      ]} />
     </div>
   );
 }
