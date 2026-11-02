@@ -1,7 +1,7 @@
 import React from "react";
 import { ArrowDown, ArrowRight, GitBranch, ShieldCheck, BarChart3 } from "lucide-react";
 import NK from "./NK";
-import { f2, f3, sg, ci, ciu, con, cond } from "../lib/fmt";
+import { f2, f3, sg, ci, ciu, con, cond, vmf } from "../lib/fmt";
 
 // Vertical connector between flowchart tiers
 function Connector({ label, icon: Icon = ArrowDown }) {
@@ -36,7 +36,7 @@ function BranchCard({ tag, tagColor, count, title, body, findingLabel, finding, 
   );
 }
 
-export default function CohortFlowDiagram({ paper }) {
+export default function CohortFlowDiagram({ paper, revision: V }) {
   const D = paper.dataset, EL = paper.eligibility, MT = paper.matching, NM = paper.null_model;
   const LC = paper.study1.confirmatory.logreg, lr = paper.study1.performance.logreg;
   const rt = con(paper, 250, "retrain_effect_struct6");
@@ -102,7 +102,7 @@ export default function CohortFlowDiagram({ paper }) {
         </div>
       </div>
 
-      <Connector label="Two primary studies and one exploratory analysis" icon={GitBranch} />
+      <Connector label="Two studies and one exploratory sensitivity analysis" icon={GitBranch} />
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-5 lg:gap-6 items-stretch">
         <BranchCard
@@ -110,9 +110,9 @@ export default function CohortFlowDiagram({ paper }) {
           tagColor="#15263a"
           count={`N = ${D.n_events}`}
           title="Incremental Information Beyond Counts"
-          body="Seven nested feature levels on identical folds, from counts (M0) to all features (M4); three confirmatory paired contrasts; a degree-preserving rewiring null for arrangement features."
+          body="Seven feature sets in two nested chains on identical folds, from counts (M0) to all features (M4); three primary paired contrasts; a degree-preserving rewiring null for arrangement features."
           findingLabel="Finding"
-          finding={`Counts reach BA ${f3(lr.M0.balanced_accuracy)}. All features vs counts: ΔBA ${sg(LC.C1.ba.delta_ba)} ${ci(LC.C1.ba.delta_ba_ci)} (inconclusive), Δ log loss ${sg(LC.C1.log_loss.delta_logloss)}. Real vs rewired arrangement: ΔBA ${sg(NM.real_minus_null_ba.delta_ba)} ${ci(NM.real_minus_null_ba.delta_ba_ci)}.`}
+          finding={`Counts reach BA ${f3(lr.M0.balanced_accuracy)}. All features vs counts: ΔBA ${sg(LC.C1.ba.delta_ba)} ${ci(LC.C1.ba.delta_ba_ci)} (inconclusive), Δ log loss ${sg(LC.C1.log_loss.delta_logloss)}. Real vs rewired arrangement: ΔBA ${sg(NM.real_minus_null_ba.delta_ba)} ${ci(NM.real_minus_null_ba.delta_ba_ci)} (no detectable improvement).`}
           footer={<>{D.n_campaign} campaign &bull; {D.n_comparison} comparison</>}
         />
         <BranchCard
@@ -122,7 +122,7 @@ export default function CohortFlowDiagram({ paper }) {
           title="Size-Matching Sensitivity"
           body={`1:1 greedy matching on log node count (caliper ${MT.caliper_sd_fraction} SD), with and without log edge count, repeated over ${MT.node_only.n_order_seeds} visiting orders. |SMD| ${f2(Math.abs(MT.smd_before))} → ${f2(Math.abs(MT.smd_after))} in the primary ordering.`}
           findingLabel="Sensitivity"
-          finding={`Counts fall to near chance within matched cohorts (median BA ${f3(MT.node_only.ba.M0.median)}); content stays above chance (median ${f3(MT.node_only.ba.M3.median)}). Imprecise; changes the evaluated population.`}
+          finding={`Counts fall to near chance within matched cohorts (median BA ${f3(MT.node_only.ba.M0.median)}); content median ${f3(MT.node_only.ba.M3.median)}. Point estimates without intervals; changes the evaluated population.`}
           footer={<>{MT.primary_pairs} pairs in the primary ordering &bull; {MT.n_excluded} excluded</>}
         />
         <BranchCard
@@ -130,9 +130,9 @@ export default function CohortFlowDiagram({ paper }) {
           tagColor="#23527c"
           count="K ∈ {250, 500, 1000}"
           title="Single-View Observation Validity"
-          body="Each eligible event is reduced to K uniformly sampled edges (10 seeds) and every feature is recomputed from the sample. Full-graph, frozen-transfer and retrained conditions share events, folds and feature definitions."
+          body="Each eligible event is reduced to K uniformly sampled edges (10 seeds) and every feature is recomputed from the sample. Full-graph, frozen-transfer and retrained conditions share events, folds and feature definitions; the paired contrasts are exploratory."
           findingLabel="Finding"
-          finding={<>Single views stay predictive, mostly through the sampled endpoint count (KK, <NK /> only: {f3(cond(paper, 250, "KK|NK").single_view_ba_mean)} at K = 250). Retraining on views vs frozen transfer, same structural features, K = 250: +{f3(rt.ba.delta)} {ciu(rt.ba.ci)}. K = 2000 infeasible ({EL["2000"].campaign_eligible} campaign events).</>}
+          finding={<>On the same events, view-trained models were not detectably less accurate than full-graph models (all features, K = 250: ΔBA {sg(vmf(V, 250).ba.delta)} {ci(vmf(V, 250).ba.ci)}); <NK /> (alone {f3(cond(paper, 250, "KK|NK").single_view_ba_mean)}) and structure overlap. Retraining on views vs frozen transfer, same structural features, K = 250: +{f3(rt.ba.delta)} {ciu(rt.ba.ci)}. K = 2000 infeasible ({EL["2000"].campaign_eligible} campaign events).</>}
           footer={<>n = {EL["250"].total_eligible} (K250) &bull; {EL["500"].total_eligible} (K500) &bull; {EL["1000"].total_eligible} (K1000)</>}
         />
       </div>
@@ -145,7 +145,7 @@ export default function CohortFlowDiagram({ paper }) {
           <span>Stage 3: Evaluation</span>
         </div>
         <p className="text-sm text-[#4a4740] leading-relaxed">
-          Event-level stratified 5-fold cross-validation with hyperparameters tuned by inner 3-fold cross-validation inside each training fold. Balanced accuracy and log loss are separate estimands with separately tuned fits; AUC is secondary. Differences use an event-level paired bootstrap ({paper.study1.n_bootstrap.toLocaleString("en-US")} resamples) of fixed out-of-fold predictions, with Holm correction for the confirmatory contrasts.
+          Event-level stratified 5-fold cross-validation with hyperparameters tuned by inner 3-fold cross-validation inside each training fold. Balanced accuracy and log loss are separate estimands with separately tuned fits; AUC is secondary. Differences use an event-level paired bootstrap ({paper.study1.n_bootstrap.toLocaleString("en-US")} resamples) of fixed out-of-fold predictions, with Holm correction for the primary contrasts.
         </p>
       </div>
 

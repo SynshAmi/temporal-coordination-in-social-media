@@ -15,11 +15,14 @@ Executes:
    8. Study 1: incremental information, null model, matching (src/study1_incremental.py)
    9. Study 2: single-view observation (src/study2_observation.py)
   10. Independent verification (src/verify_studies.py)
-  11. Paper results file (src/export_paper_results.py)
-  12. Paper inputs: figures (paper/make_paper_figures.py) and LaTeX result macros
+  11. Revision analyses: count-model regularization grid (src/h1_c_grid.py) and
+      supplementary analyses (src/revision_supplement.py); they read the run
+      directory and write output.revision_h1_dir and output.revision_supplement
+  12. Paper results file (src/export_paper_results.py)
+  13. Paper inputs: figures (paper/make_paper_figures.py) and LaTeX result macros
       (src/export_latex_results.py)
-  13. Website payload (src/export_frontend_data.py)
-  14. Test Suite (pytest tests/ -v)
+  14. Website payload (src/export_frontend_data.py)
+  15. Test Suite (pytest tests/ -v)
 
 The paper PDF itself is compiled separately with LaTeX: python paper/build.py (see README).
 """
@@ -80,20 +83,25 @@ def main():
         ("8. Study 1: Incremental Information", [py, "src/study1_incremental.py", *c]),
         ("9. Study 2: Single-View Observation", [py, "src/study2_observation.py", *c]),
         ("10. Independent Verification", [py, "src/verify_studies.py", *c]),
-        ("11. Export Paper Results", [py, "src/export_paper_results.py", *c]),
-        ("12. Paper Inputs (Figures & LaTeX Result Macros)", [
+        ("11. Revision Analyses (Regularization Grid & Supplement)", [
+            [py, "src/h1_c_grid.py", *c],
+            [py, "src/revision_supplement.py", *c],
+        ]),
+        ("12. Export Paper Results", [py, "src/export_paper_results.py", *c]),
+        ("13. Paper Inputs (Figures & LaTeX Result Macros)", [
             [py, "paper/make_paper_figures.py", *c, "--out-dir", out_cfg.get("paper_figures_dir", "paper/figures")],
             [py, "src/export_latex_results.py", *c],
         ]),
-        ("13. Export Website Payload", [py, "src/export_frontend_data.py", *c]),
+        ("14. Export Website Payload", [py, "src/export_frontend_data.py", *c]),
     ]
+    test_stage = "15. Run Test Suite"
     if not args.skip_tests:
-        stages.append(("14. Run Test Suite", [py, "-m", "pytest", "tests/", "-v"]))
+        stages.append((test_stage, [py, "-m", "pytest", "tests/", "-v"]))
 
     log, t_start = [], time.time()
     for name, cmd in stages:
         try:
-            secs = run_stage(cmd, name, env=test_env if name.startswith("14.") else None)
+            secs = run_stage(cmd, name, env=test_env if name == test_stage else None)
             log.append({"stage": name, "status": "ok", "seconds": round(secs, 1)})
         except RuntimeError as e:
             log.append({"stage": name, "status": "failed", "error": str(e)})

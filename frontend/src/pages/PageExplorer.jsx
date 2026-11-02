@@ -5,10 +5,10 @@ import CohortFlowDiagram from "../components/CohortFlowDiagram";
 import ResultsTable from "../components/ResultsTable";
 import NK from "../components/NK";
 import { ShieldAlert } from "lucide-react";
-import { f3, sg, ci, pct, con } from "../lib/fmt";
+import { f3, sg, ci, pct, nkVsStruct, proxyR2 } from "../lib/fmt";
 
 export default function PageExplorer({ data }) {
-  const P = data.paper;
+  const P = data.paper, V = data.revision;
   const experiments = data.experiments || [];
   const MT = P.matching;
   const mech = P.study2.mechanism.K250, r2 = P.study2.mechanism_r2_K250;
@@ -56,7 +56,7 @@ export default function PageExplorer({ data }) {
         <section>
           <div className={`grid grid-cols-1 gap-8 lg:gap-10 items-start ${activeExplorerSection === "all" ? "xl:grid-cols-2" : "max-w-[900px]"}`}>
             {(activeExplorerSection === "all" || activeExplorerSection === "matched") && <Fig3MatchedCohort paper={P} />}
-            {(activeExplorerSection === "all" || activeExplorerSection === "budgets") && <Fig4ObservationBudgets paper={P} />}
+            {(activeExplorerSection === "all" || activeExplorerSection === "budgets") && <Fig4ObservationBudgets paper={P} revision={V} />}
           </div>
         </section>
       )}
@@ -71,14 +71,14 @@ export default function PageExplorer({ data }) {
             Size matching keeps {MT.node_only.n_pairs_range[0]}–{MT.node_only.n_pairs_range[1]} pairs, changes the evaluated population and does not balance every size measure; it is exploratory sensitivity evidence, not a causal estimate. Study 1 intervals are percentile bootstraps over fixed out-of-fold predictions; they exclude refitting and fold-split variability and cannot account for dependence between events that share accounts, which the release does not allow us to measure.
           </p>
           <p>
-            The expected number of distinct endpoints <NK /> in a 250-edge sample matches the observed mean within {pct(mech.max_abs_rel_error_expected_vs_observed)}% and has AUC {f3(mech.auc_expectedNK_label)} for the label (full-graph log node count: {f3(mech.auc_log_N_full_label)}). It is strongly associated with full-graph node count and mean degree, which together explain {pct(r2["log N + log mean degree"])}% of its variation at K = 250; in/out-degree Gini adds no measurable explanatory power. Structure did not detectably improve on <NK /> at K = 250 (ΔBA {sg(con(P, 250, "structure_beyond_NK").ba.delta)} {ci(con(P, 250, "structure_beyond_NK").ba.ci)}).
+            The expected number of distinct endpoints <NK /> in a 250-edge sample matches the observed mean within {pct(mech.max_abs_rel_error_expected_vs_observed)}% and has AUC {f3(mech.auc_expectedNK_label)} for the label (full-graph log node count: {f3(mech.auc_log_N_full_label)}). It is strongly associated with full-graph node count and mean degree, which together explain {pct(r2["log N + log mean degree"])}% of its variation at K = 250; in/out-degree Gini adds no measurable explanatory power. Within sampled views, <NK /> alone and the six structural features did not differ detectably (<NK /> minus structure at K = 250: ΔBA {sg(nkVsStruct(V, 250).NK_minus_structure.delta)} {ci(nkVsStruct(V, 250).NK_minus_structure.ci)}), and structure predicts log <NK /> with cross-validated R² of {f3(proxyR2(V, 250))}, so the two carry largely overlapping, size-like information; this does not establish that <NK />, rather than structure, is responsible for the signal.
           </p>
         </div>
       </section>
 
       {(activeExplorerSection === "all" || activeExplorerSection === "flow") && (
         <section>
-          <CohortFlowDiagram paper={P} />
+          <CohortFlowDiagram paper={P} revision={V} />
         </section>
       )}
 

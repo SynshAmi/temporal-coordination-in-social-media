@@ -99,25 +99,30 @@ for ax, lab in zip(axes, ["Δ BA", "Δ log loss", "Δ AUC"]):
 fig.tight_layout(w_pad=0.4)
 save(fig, "fig2_study1_contrasts")
 
-# Fig. 3 - Study 2 single-view BA by budget (budget-specific cohorts)
+# Fig. 3 - Study 2 single-view BA by budget on the COMMON cohort (the events eligible at every
+# budget), so that every line compares the same events. Full-graph (FF) values do not depend on K.
 ks = [250, 500, 1000]
-series = [("FF|struct6", "Full graph → full graph (6 structural)", MUTE, ":", "s"),
+series = [("FF|combined", "Full graph → full graph (all features)", MUTE, "-.", "x"),
+          ("FF|struct6", "Full graph → full graph (6 structural)", MUTE, ":", "s"),
           ("FK|struct6", "Full graph → single view (frozen, 6 structural)", COMP, "--", "s"),
           ("KK|struct6", "View-trained (6 structural)", ACC, "-", "^"),
           ("KK|NK", "View-trained (sampled node count only)", INK, "-", "o"),
           ("KK|combined", "View-trained (node count + structure + content)", CAMP, "-", "D")]
-fig, ax = plt.subplots(figsize=(W, 2.55))
+fig, ax = plt.subplots(figsize=(W, 2.75))
 x = np.arange(3)
 for key, label, color, ls, mk in series:
-    rr = [R["study2"]["results"][f"budget_specific_K{k}"]["conditions"][key] for k in ks]
+    rr = [R["study2"]["results"][f"common_K{k}"]["conditions"][key] for k in ks]
     m = np.array([r["single_view_ba_mean"] for r in rr])
     lo = np.array([r["single_view_ba_min"] for r in rr])
     hi = np.array([r["single_view_ba_max"] for r in rr])
-    ax.errorbar(x, m, yerr=[m - lo, hi - m], color=color, ls=ls, marker=mk, ms=3.2, lw=1.0, capsize=1.8, label=label)
+    # full-graph rows have no sampling, so their seed range is zero (clip rounding noise)
+    ax.errorbar(x, m, yerr=[np.maximum(m - lo, 0), np.maximum(hi - m, 0)], color=color, ls=ls, marker=mk, ms=3.2, lw=1.0,
+                capsize=1.8, label=label)
 ax.axhline(0.5, color=CAMP, ls="--", lw=0.4)
 ax.set_xticks(x)
-el = R["eligibility"]
-ax.set_xticklabels([f"K={k}\n(n={el[str(k)]['total_eligible']}; {el[str(k)]['campaign_eligible']}/{el[str(k)]['comparison_eligible']})" for k in ks])
+el = R["eligibility"]["1000"]   # the common cohort is the set eligible at the largest budget
+ax.set_xticklabels([f"K={k}" for k in ks])
+ax.set_xlabel(f"Edge budget (common cohort: n={el['total_eligible']}; {el['campaign_eligible']}/{el['comparison_eligible']})")
 ax.set_ylabel("Single-view balanced accuracy")
 ax.set_ylim(0.5, 1.0)
 ax.legend(loc="upper center", bbox_to_anchor=(0.5, -0.32), ncol=1, frameon=False)

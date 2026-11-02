@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import FigureCaption from "./FigureCaption";
 import { f2, f3, sg, ci, pv, baMaxHi } from "../lib/fmt";
 
-// Study 1 confirmatory contrasts (LR, N = 103): paired differences A − B on identical events
+// Study 1 primary contrasts (LR, N = 103): paired differences A − B on identical events
 const CONTRASTS = [
   { id: "C1", label: "all features vs counts", short: "M4 − M0q" },
   { id: "C2", label: "arrangement beyond degree", short: "M2 − M1" },
@@ -48,7 +48,7 @@ export default function Fig2Baselines({ paper }) {
             What Do Richer Features Add Beyond Counts?
           </h3>
           <p className="head-desc">
-            Confirmatory paired contrasts, logistic regression, full cohort (N = {paper.dataset.n_events}).
+            Primary paired contrasts, logistic regression, full cohort (N = {paper.dataset.n_events}).
           </p>
         </div>
         <div className="flex items-center gap-2 text-xs font-mono">
@@ -111,7 +111,7 @@ export default function Fig2Baselines({ paper }) {
 
       <FigureCaption
         figNumber="FIG. 2"
-        title="Confirmatory Paired Contrasts (LR)"
+        title="Primary Paired Contrasts (LR)"
         takeaway={`Counts alone reach BA ${f3(lr.M0.balanced_accuracy)}. Adding degree, arrangement and content features did not detectably improve classification decisions (C1 ΔBA ${sg(LC.C1.ba.delta_ba)} ${ci(LC.C1.ba.delta_ba_ci)}), but improved log loss by ${f3(-LC.C1.log_loss.delta_logloss)} and AUC by ${f3(LC.C1.auc_ll_fit.delta_auc)}.`}
         details={
           <div className="space-y-2.5">
@@ -123,7 +123,7 @@ export default function Fig2Baselines({ paper }) {
               <strong>Inconclusive, not equivalent:</strong> the BA intervals admit gains of up to about {f2(baMaxHi(paper))}, so the absence of a detectable BA gain is not evidence that the features are useless. Neither arrangement beyond degree (C2) nor content alone (C3) reproduces the C1 log-loss gain.
             </p>
             <p>
-              <strong>Estimands:</strong> BA uses fits tuned for BA; log loss and AUC use separately tuned log-loss fits on the same outer folds. Intervals exclude refitting and split variability: across {S1.n_split_seeds} re-drawn fold splits the C1 BA difference ranged from {sg(S1.repeated_splits_lr.C1.dBA_min)} to {sg(S1.repeated_splits_lr.C1.dBA_max)} and the log-loss difference from {sg(S1.repeated_splits_lr.C1.dLL_min)} to {sg(S1.repeated_splits_lr.C1.dLL_max)}.
+              <strong>Estimands:</strong> BA uses fits tuned for BA; log loss and AUC use separately tuned log-loss fits on the same outer folds. Intervals resample events for one fixed set of predictions and exclude refitting and split variability: across {S1.n_split_seeds} fold splits the C1 BA difference ranged from {sg(S1.repeated_splits_lr.C1.dBA_min)} to {sg(S1.repeated_splits_lr.C1.dBA_max)} and the log-loss difference from {sg(S1.repeated_splits_lr.C1.dLL_min)} to {sg(S1.repeated_splits_lr.C1.dLL_max)}. Positive BA point estimates in every split are not a significance result, because the splits reuse the same events.
             </p>
           </div>
         }

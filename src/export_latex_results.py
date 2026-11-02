@@ -2,7 +2,9 @@
 export_latex_results.py
 -----------------------
 Writes the LaTeX macros that carry every number in the paper,
-paper/generated/results.tex, from <run_dir>/paper_results.json. The paper
+paper/generated/results.tex, from <run_dir>/paper_results.json and the
+revision supplement (output.revision_supplement in the config, written by
+src/revision_supplement.py). The paper
 (paper/main.tex) never contains a hand-typed result: inline values are macros
 such as \\RCountsBA, and table bodies are macros such as \\RTabLevels.
 
@@ -63,15 +65,21 @@ def intc(v):
     return f"{round(v):,}"
 
 
+NUMWORDS = ["zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten"]
+
+
 def rows(lines):
     """Table body: cells joined by &, rows ended by \\\\ and a rule."""
     return "\n".join(" & ".join(r) + r" \\ \hline" for r in lines)
 
 
-def build(R):
+def build(R, S):
     D, S1, S2, NM, MT, EL = R["dataset"], R["study1"], R["study2"], R["null_model"], R["matching"], R["eligibility"]
     lr, hg, LC = S1["performance"]["logreg"], S1["performance"]["hgbt"], S1["confirmatory"]["logreg"]
     rep, ro, X = S1["repeated_splits_lr"], S1["row_order_sensitivity"], S1["hgbt_vs_best_count_baseline"]["HGBT_M4_vs_LR_M0q_ba"]
+    # AUC follows the paper's estimand rule: log-loss-tuned fits (BA stays with BA-tuned fits)
+    XL = S1["hgbt_vs_best_count_baseline"]["HGBT_M4_vs_LR_M0q_ll"]
+    EX = S1["exploratory"]["logreg"]
     cond = lambda k, key: S2["results"][f"budget_specific_K{k}"]["conditions"][key]
     con = lambda k, n: S2["contrasts"][f"budget_specific_K{k}"][n]
     r2, mech = S2["mechanism_r2_K250"], S2["mechanism"]["K250"]
@@ -106,7 +114,25 @@ def build(R):
              RowThreeStudy=sg(ro["ba:C3"]["delta_study_order"]), RowThreePerm=sg(ro["ba:C3"]["delta_permuted_order"]),
              RowOneLL=sg(ro["ll:C1"]["delta_study_order"]),
              HGBTCountsBA=f3(hg["M0q"]["balanced_accuracy"]), HGBTvsLRBA=sg(X["delta_ba"]), HGBTvsLRBACI=ci(X["delta_ba_ci"]),
-             HGBTvsLRAUC=sg(X["delta_auc"]), HGBTvsLRAUCCI=ci(X["delta_auc_ci"]), HGBTAllLL=f3(hg["M4"]["log_loss"]))
+             HGBTvsLRAUC=sg(XL["delta_auc"]), HGBTvsLRAUCCI=ci(XL["delta_auc_ci"]), HGBTAllLL=f3(hg["M4"]["log_loss"]),
+             ETwoLL=sg(EX["E2"]["delta_logloss"]), ETwoLLCI=ci(EX["E2"]["delta_logloss_ci"]),
+             EThreeLL=sg(EX["E3"]["delta_logloss"]), EThreeLLCI=ci(EX["E3"]["delta_logloss_ci"]))
+
+    # repeated splits: sign counts (supplement)
+    sp = S["repeated_splits_signs"]
+    m.update(SplitLLNeg=NUMWORDS[sp["C1"]["n_dLL_negative"]], SplitBAPos=NUMWORDS[sp["C1"]["n_dBA_positive"]],
+             SplitNWord=NUMWORDS[sp["n_splits"]], SplitBAMean=sg(sp["C1"]["dBA_mean"]), SplitLLMedian=sg(sp["C1"]["dLL_median"]),
+             SplitETwoNeg=NUMWORDS[sp["E2_M4_minus_M3_n_dLL_negative"]], SplitEThreeNeg=NUMWORDS[sp["E3_M4_minus_M2_n_dLL_negative"]])
+
+    # H1: wider regularisation grid for logistic regression (supplement)
+    h = S["h1"]
+    gfmt = lambda v: f"{v:g}" if v < 1000 else f"10^{{{len(str(int(v))) - 1}}}"
+    m.update(HOrigGrid=", ".join(gfmt(v) for v in h["original_grid"]),
+             HGridMin=gfmt(min(h["grid"])), HGridMax=gfmt(max(h["grid"])),
+             HCountsLL=f3(h["M0q"]["log_loss"]), HAllLL=f3(h["M4"]["log_loss"]),
+             HCOneLL=sg(h["C1"]["delta_logloss"]), HCOneLLCI=ci(h["C1"]["delta_logloss_ci"]),
+             HCOneBA=sg(h["C1"]["delta_ba"]), HCOneBACI=ci(h["C1"]["delta_ba_ci"]),
+             HSplitLLNeg=NUMWORDS[h["repeated_splits_C1"]["n_dLL_negative"]])
 
     # degree-preserving null
     m.update(Swaps=str(NM["swaps_per_edge"]), Realizations=str(NM["realizations"]),
@@ -117,7 +143,14 @@ def build(R):
              NullDBA=sg(NM["real_minus_null_ba"]["delta_ba"]), NullDBACI=ci(NM["real_minus_null_ba"]["delta_ba_ci"]),
              NullDLL=sg(NM["real_minus_null_logloss"]["delta_logloss"]), NullDLLCI=ci(NM["real_minus_null_logloss"]["delta_logloss_ci"]),
              UnmovedPct=str(round(100 * NM["frac_edges_unchanged_quantiles"][2])),
-             CoreZeroVarPct=str(round(100 * NM["share_events_zero_null_variance"]["coreness_median"])))
+             CoreZeroVarPct=str(round(100 * NM["share_events_zero_null_variance"]["coreness_median"])),
+             ZUndefRecipPct=str(round(100 * z["reciprocity"]["share_undefined_sd0"])),
+             NullMeanMinusReal=sg(NM["M2_real_ba"] - NM["M2_null_ba_mean"]))
+    ch = S["null_feature_change"]
+    m.update(ChRecipPct=str(round(100 * ch["reciprocity"]["share_events_changed_in_some_realization"])),
+             ChWCCPct=str(round(100 * ch["largest_wcc_fraction"]["share_events_changed_in_some_realization"])),
+             ChCoreMedPct=str(round(100 * ch["coreness_median"]["share_events_changed_in_some_realization"])),
+             ChCoreMaxPct=str(round(100 * ch["coreness_max"]["share_events_changed_in_some_realization"])))
 
     # matching
     no = MT["node_only"]
@@ -138,12 +171,33 @@ def build(R):
         m[f"KKNK{name}"] = f3(cond(k, "KK|NK")["single_view_ba_mean"])
         m[f"KKAll{name}"] = f3(cond(k, "KK|combined")["single_view_ba_mean"])
         m[f"Retrain{name}"] = f3(con(k, "retrain_effect_struct6")["ba"]["delta"])
+        rq = S["rq2_baselines"][f"budget_specific_K{k}"]
+        m[f"FFAll{name}"] = f3(cond(k, "FF|combined")["single_view_ba_mean"])
+        m[f"ViewMinusFull{name}"] = sg(rq["KK_minus_FF_combined"]["ba"]["delta"])
+        m[f"ViewMinusFull{name}CI"] = ci(rq["KK_minus_FF_combined"]["ba"]["ci"])
+        m[f"ViewMinusFullLL{name}"] = sg(rq["KK_minus_FF_combined"]["log_loss"]["delta"])
+        m[f"ViewMinusFullLL{name}CI"] = ci(rq["KK_minus_FF_combined"]["log_loss"]["ci"])
+        nk = S["nk_vs_structure"][f"K{k}"]
+        m[f"NKMinusStruct{name}"] = sg(nk["NK_minus_structure"]["delta"])
+        m[f"NKMinusStruct{name}CI"] = ci(nk["NK_minus_structure"]["ci"])
+        m[f"NKAdded{name}"] = sg(nk["NK_added_to_structure"]["delta"])
+        m[f"NKAdded{name}CI"] = ci(nk["NK_added_to_structure"]["ci"])
+        m[f"ProxyRTwo{name}"] = f3(S["structure_predicts_log_NK"][f"K{k}"]["r2_event_grouped_cv"])
+        m[f"RetrainAll{name}"] = sg(con(k, "retrain_effect_combined")["ba"]["delta"])
+        m[f"RetrainAll{name}CI"] = ci(con(k, "retrain_effect_combined")["ba"]["ci"])
     m.update(TwoThousandCamp=str(EL["2000"]["campaign_eligible"]),
              NViewEvents=str(S2["results"]["budget_specific_K250"]["n_events"]),
              RetrainTwoFiftyCI=ciu(con(250, "retrain_effect_struct6")["ba"]["ci"]),
              TransferLossTwoFifty=f3(-con(250, "transfer_loss_struct6")["ba"]["delta"]),
              EnsembleMax=f3(max(abs(con(k, "ensemble_vs_single_combined")["ba"]["delta"]) for k in (250, 500, 1000))),
              CommonRetrainTwoFifty=f3(S2["contrasts"]["common_K250"]["retrain_effect_struct6"]["ba"]["delta"]),
+             STwoNBoot=intc(S["study2_n_bootstrap"]),
+             CommonN=str(S["rq2_baselines"]["common_K250"]["n_events"]),
+             CommonCamp=str(S["rq2_baselines"]["common_K250"]["n_campaign"]),
+             CommonComp=str(S["rq2_baselines"]["common_K250"]["n_comparison"]),
+             HashtagPairs=NUMWORDS[S["n_repeated_hashtag_pairs"]],
+             HashtagPairsCap=NUMWORDS[S["n_repeated_hashtag_pairs"]].capitalize(),
+             HashtagPairsSplit=NUMWORDS[S["n_repeated_hashtag_pairs_split_across_folds"]],
              MechRelErr=pct(mech["max_abs_rel_error_expected_vs_observed"]), MechAUC=f3(mech["auc_expectedNK_label"]),
              MechAUCNodes=f3(mech["auc_log_N_full_label"]), RTwoSizeDegree=pct(r2["log N + log mean degree"]),
              RTwoNodes=pct(r2["log N only"]), RTwoWithGini=pct(r2["size + degree concentration"]))
@@ -176,16 +230,17 @@ def build(R):
     T["TabNull"] = rows([
         ["M1 (counts + degree), BA", f3(NM["M1_ba"])],
         ["M2 real arrangement, BA", f3(NM["M2_real_ba"])],
-        [f"M2 rewired arrangement, BA (mean of {NM['realizations']})", f"{f3(NM['M2_null_ba_mean'])} [{f3(NM['M2_null_ba_range'][0])}--{f3(NM['M2_null_ba_range'][1])}]"],
-        [r"Real $-$ rewired, $\Delta$BA [95\% CI]", f"{sg(NM['real_minus_null_ba']['delta_ba'])} {ci(NM['real_minus_null_ba']['delta_ba_ci'])}"],
-        [r"Real $-$ rewired, $\Delta$log loss [95\% CI]", f"{sg(NM['real_minus_null_logloss']['delta_logloss'])} {ci(NM['real_minus_null_logloss']['delta_logloss_ci'])}"],
+        [f"M2 rewired, BA: mean [range] of the {NM['realizations']} per-realization fits$^{{\\mathrm{{a}}}}$", f"{f3(NM['M2_null_ba_mean'])} [{f3(NM['M2_null_ba_range'][0])}--{f3(NM['M2_null_ba_range'][1])}]"],
+        [r"Real $-$ rewired ensemble$^{\mathrm{b}}$, $\Delta$BA [95\% CI]", f"{sg(NM['real_minus_null_ba']['delta_ba'])} {ci(NM['real_minus_null_ba']['delta_ba_ci'])}"],
+        [r"Real $-$ rewired ensemble$^{\mathrm{b}}$, $\Delta$log loss [95\% CI]", f"{sg(NM['real_minus_null_logloss']['delta_logloss'])} {ci(NM['real_minus_null_logloss']['delta_logloss_ci'])}"],
         ["Unmoved non-loop edges, median [IQR]", f"{f2(q[2])} [{f2(q[1])}--{f2(q[3])}]"],
     ])
     T["TabMatching"] = rows([[("Log node count" if k == "node_only" else "Log node + edge count"),
                               f"{MT[k]['n_pairs_range'][0]}--{MT[k]['n_pairs_range'][1]}",
                               *[rf"\shortstack{{{f3(MT[k]['ba'][lv]['median'])}\\[{f3(MT[k]['ba'][lv]['min'])}--{f3(MT[k]['ba'][lv]['max'])}]}}" for lv in ("M0", "M3", "M4")]]
                              for k in ("node_only", "node_edge")])
-    s2 = [("FF|struct6", r"FF: full $\to$ full, structure"), ("FK|struct6", r"FK: full $\to$ view, structure"),
+    s2 = [("FF|combined", r"FF: full $\to$ full, all features"), ("FF|NK", r"FF: full $\to$ full, node count"),
+          ("FF|struct6", r"FF: full $\to$ full, structure"), ("FK|struct6", r"FK: full $\to$ view, structure"),
           ("KK|struct6", r"KK: view $\to$ view, structure"), ("KK|NK", r"KK: $N_K$ only"),
           ("KK|NK_struct6", r"KK: $N_K$ + structure"), ("KK|combined", r"KK: $N_K$ + structure + content")]
     T["TabSingleView"] = rows([[label, *[f3(cond(k, key)["single_view_ba_mean"]) for k in (250, 500, 1000)]] for key, label in s2]
@@ -193,10 +248,12 @@ def build(R):
     s2c = [("retrain_effect_struct6", r"Retraining (KK $-$ FK), structure"), ("transfer_loss_struct6", r"Transfer (FK $-$ FF), structure"),
            ("structure_beyond_NK", r"Structure beyond $N_K$ (KK)"), ("content_beyond_NK_struct", r"Content beyond $N_K$ + structure"),
            ("ensemble_vs_single_combined", r"Ensemble $-$ single view (KK, all)")]
-    T["TabSTwoContrasts"] = rows([[label, *[rf"\shortstack{{{sg(con(k, n)['ba']['delta'])}\\{ci(con(k, n)['ba']['ci'])}}}" for k in (250, 500, 1000)]]
-                                  for n, label in s2c])
+    rq2 = lambda k: S["rq2_baselines"][f"budget_specific_K{k}"]["KK_minus_FF_combined"]["ba"]
+    T["TabSTwoContrasts"] = rows([[r"Single view $-$ full graph (KK $-$ FF), all", *[rf"\shortstack{{{sg(rq2(k)['delta'])}\\{ci(rq2(k)['ci'])}}}" for k in (250, 500, 1000)]]]
+                                 + [[label, *[rf"\shortstack{{{sg(con(k, n)['ba']['delta'])}\\{ci(con(k, n)['ba']['ci'])}}}" for k in (250, 500, 1000)]]
+                                    for n, label in s2c])
 
-    out = ["% Generated by src/export_latex_results.py from paper_results.json. Do not edit by hand.",
+    out = ["% Generated by src/export_latex_results.py from paper_results.json and the revision supplement. Do not edit by hand.",
            f"% Source run: {R['source_run']}", ""]
     out += [rf"\newcommand{{\R{k}}}{{{v}}}" for k, v in m.items()]
     # A line break followed by "[" would be read as \\[<length>]; an empty group prevents that.
@@ -207,8 +264,9 @@ def build(R):
 def main(config_path, out_path):
     cfg = yaml.safe_load(open(config_path, encoding="utf-8"))
     R = json.loads((Path(cfg["output"]["run_dir"]) / "paper_results.json").read_text(encoding="utf-8"))
+    S = json.loads(Path(cfg["output"]["revision_supplement"]).read_text(encoding="utf-8"))
     out = Path(out_path or cfg["output"].get("paper_results_tex", "paper/generated/results.tex"))
-    text, n_inline, n_tables = build(R)
+    text, n_inline, n_tables = build(R, S)
     out.parent.mkdir(parents=True, exist_ok=True)
     out.write_text(text, encoding="utf-8", newline="\n")
     print(f"LaTeX results -> {out} ({n_inline} inline values, {n_tables} tables)")

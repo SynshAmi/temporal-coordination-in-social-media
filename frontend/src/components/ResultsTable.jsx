@@ -4,7 +4,7 @@ import { f3 } from "../lib/fmt";
 
 const CORE_IDS = [
   "S1_LogReg_M0", "S1_LogReg_M0q", "S1_LogReg_M2", "S1_LogReg_M3", "S1_LogReg_M4", "S1_HGBT_M4",
-  "S2_K250_FF_struct6", "S2_K250_FK_struct6", "S2_K250_KK_struct6", "S2_K250_KK_NK", "S2_K250_KK_combined",
+  "S2_K250_FF_combined", "S2_K250_FF_struct6", "S2_K250_FK_struct6", "S2_K250_KK_struct6", "S2_K250_KK_NK", "S2_K250_KK_combined",
 ];
 
 // Readable row label from the internal row ID, e.g. S1_LogReg_M4d -> "LR · M4 + density",

@@ -99,7 +99,7 @@ export default function Fig3MatchedCohort({ paper }) {
       <FigureCaption
         figNumber="FIG. 3"
         title="Exploratory Matching Sensitivity"
-        takeaway={`Within matched cohorts the count model falls to near chance (median BA ${f3(MT.node_only.ba.M0.median)}), while content stays above chance in every ordering (median ${f3(MT.node_only.ba.M3.median)}, range ${f3(MT.node_only.ba.M3.min)}–${f3(MT.node_only.ba.M3.max)}). With about 16 pairs this is sensitivity evidence only.`}
+        takeaway={`Within matched cohorts the count model falls to near chance (median BA ${f3(MT.node_only.ba.M0.median)}), while the content model's point estimates stay above 0.5 in every ordering (median ${f3(MT.node_only.ba.M3.median)}, range ${f3(MT.node_only.ba.M3.min)}–${f3(MT.node_only.ba.M3.max)}). With about 16 pairs and no sampling intervals, this is not evidence of above-chance performance; it is sensitivity evidence only.`}
         details={
           <div className="space-y-2.5">
             <p>
@@ -109,7 +109,7 @@ export default function Fig3MatchedCohort({ paper }) {
               <strong>Why two schemes:</strong> node-only matching leaves edge counts imbalanced (|SMD| of log edge count {f2(MT.node_only.smd_log_edges_range[0])}–{f2(MT.node_only.smd_log_edges_range[1])}); adding edge count reduces this to {f2(MT.node_edge.smd_log_edges_range[0])}–{f2(MT.node_edge.smd_log_edges_range[1])}.
             </p>
             <p>
-              <strong>Caveats:</strong> points are medians and bars span the minimum and maximum over orderings; they are not confidence intervals. Matching changes the evaluated population, and with 15–17 pairs each estimate is imprecise. Not a causal estimate.
+              <strong>Caveats:</strong> points are medians and bars span the minimum and maximum over orderings; they are not confidence intervals. Matching changes the evaluated population, and with {MT.node_only.n_pairs_range[0]}–{MT.node_only.n_pairs_range[1]} pairs each estimate is imprecise. Not a causal estimate.
             </p>
           </div>
         }

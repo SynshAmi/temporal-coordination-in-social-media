@@ -3,7 +3,7 @@ import { Terminal, Copy, Check, ShieldCheck, AlertTriangle, BookMarked, FileText
 import Tex from "../components/Tex";
 import NK from "../components/NK";
 import REFERENCES from "../lib/references.json";
-import { f2, f3, int, sg, ci, ciu, con } from "../lib/fmt";
+import { f2, f3, int, sg, ci, ciu, con, pct0 } from "../lib/fmt";
 
 const REPO_URL = "https://github.com/SynshAmi/temporal-coordination-in-social-media";
 
@@ -19,6 +19,12 @@ const commands = [
     title: "Run the test suite",
     cmd: "python -m pytest tests/ -v",
     note: "Ingestion and deduplication, fold leakage, sampling determinism, the coreness convention, degree preservation under rewiring, and agreement between the paper and this website.",
+  },
+  {
+    id: "c4",
+    title: "Run the revision analyses on their own",
+    cmd: "python src/h1_c_grid.py && python src/revision_supplement.py",
+    note: "The wider regularization search for the count model and the supplementary analyses. Both only read the verified run and write to the output.revision_* locations in the config; the full pipeline runs them as stage 11.",
   },
   {
     id: "c3",
@@ -83,7 +89,7 @@ function RefText({ text }) {
 }
 
 export default function PageMethods({ data }) {
-  const P = data.paper;
+  const P = data.paper, V = data.revision, CH = V.null_feature_change;
   const D = P.dataset, EL = P.eligibility, MT = P.matching, NM = P.null_model, S1 = P.study1;
   const [copiedCmd, setCopiedCmd] = useState(null);
 
@@ -101,7 +107,7 @@ export default function PageMethods({ data }) {
       body: "Counts, in/out-degree Gini, reciprocity, largest weakly connected component, coreness, and three content statistics. Density is treated as scale-encoding.",
       output: "Per-event feature table" },
     { step: "Step 3", tag: "Study 1", color: "#15263a", title: "Nested Models & Paired Contrasts",
-      body: "Seven nested feature levels on identical event-level folds; three confirmatory contrasts (C1–C3); LR primary, HGBT secondary.",
+      body: "Seven feature sets in two nested chains on identical event-level folds; three primary contrasts (C1–C3), specified before the corrected run but not preregistered; LR primary, HGBT secondary.",
       output: "Out-of-fold predictions for BA and log-loss fits" },
     { step: "Step 4", tag: "Null Model", color: "#8f2626", title: "Degree-Preserving Rewiring",
       body: `Directed double-edge swaps with self-loops held fixed; ${NM.swaps_per_edge} swaps per edge, ${NM.realizations} realizations per event.`,
@@ -263,7 +269,7 @@ export default function PageMethods({ data }) {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-5 lg:gap-6">
           <ProtocolBlock title="Cross-Validation & Tuning">
             <p>
-              Event-level stratified 5-fold cross-validation; all sampled views of an event share its fold. Logistic regression (median imputation, standardization, balanced class weights, C ∈ &#123;0.01, 0.1, 1, 10&#125;) and HGBT are tuned by inner 3-fold cross-validation inside each outer training fold.
+              Event-level stratified 5-fold cross-validation; all sampled views of an event share its fold. Logistic regression (median imputation, standardization, balanced class weights, C ∈ &#123;{V.h1.original_grid.join(", ")}&#125;) and HGBT are tuned by inner 3-fold cross-validation inside each outer training fold. A wider grid ({V.h1.grid[0]} to {V.h1.grid[V.h1.grid.length - 1].toLocaleString("en-US")}) was examined as a sensitivity analysis.
             </p>
             <p>
               <strong>Separate estimands:</strong> balanced accuracy uses fits tuned for BA; log loss and AUC use fits tuned for log loss on the same outer folds.
@@ -271,7 +277,7 @@ export default function PageMethods({ data }) {
           </ProtocolBlock>
           <ProtocolBlock title="Paired Inference">
             <p>
-              Differences are estimated on identical events with an event-level paired bootstrap of fixed out-of-fold predictions ({S1.n_bootstrap.toLocaleString("en-US")} resamples). Holm correction is applied separately to the three BA and the three log-loss confirmatory tests.
+              Differences are estimated on identical events with an event-level paired bootstrap of fixed out-of-fold predictions ({S1.n_bootstrap.toLocaleString("en-US")} resamples). Holm correction is applied separately to the three BA and the three log-loss primary tests. Study 2 contrasts are exploratory: an event-level bootstrap of the single-view estimand ({V.study2_n_bootstrap.toLocaleString("en-US")} resamples) with no multiplicity correction.
             </p>
             <p>
               These intervals exclude refitting and split variability, which is reported separately from {S1.n_split_seeds} re-drawn fold splits (not independent replicates). Hyperparameter selection was sensitive to row order (C1 ΔBA {sg(S1.row_order_sensitivity["ba:C1"].delta_study_order)} vs {sg(S1.row_order_sensitivity["ba:C1"].delta_permuted_order)} with permuted rows).
@@ -282,7 +288,7 @@ export default function PageMethods({ data }) {
               1:1 greedy matching on log node count with a {MT.caliper_sd_fraction} SD caliper ({f3(MT.caliper_abs)}): {MT.primary_pairs} pairs, |SMD| {f2(Math.abs(MT.smd_before))} → {f2(Math.abs(MT.smd_after))}. Repeated over {MT.node_only.n_order_seeds} visiting orders, with and without log edge count.
             </p>
             <Tex display>{String.raw`\mathrm{SMD} = \frac{\bar{x}_{\mathrm{camp}} - \bar{x}_{\mathrm{comp}}}{\sqrt{\bigl(s^{2}_{\mathrm{camp}} + s^{2}_{\mathrm{comp}}\bigr)/2}}`}</Tex>
-            <p>With about 16 pairs, this is sensitivity evidence only.</p>
+            <p>With about 16 pairs, results are point estimates without sampling intervals: sensitivity evidence only.</p>
           </ProtocolBlock>
         </div>
       </section>
@@ -295,7 +301,7 @@ export default function PageMethods({ data }) {
             <div className="font-mono text-xs font-bold uppercase tracking-wider text-[#8f2626]">Study 1</div>
             <h3 className="subsection-title mt-2">Degree-Preserving Rewiring</h3>
             <p className="mt-3 text-sm text-[#3c3a37] leading-relaxed">
-              Directed double-edge swaps (a, b), (c, d) → (a, d), (c, b) on non-loop edges, rejecting swaps that create self-loops or repeated edges, preserve every node's in- and out-degree, |V|, |E|, density and the degree Gini coefficients exactly. Directed double-edge swaps do not reach every digraph with the given degrees, so this is a degree-preserving null rather than a uniform sample. Real minus rewired arrangement: ΔBA {sg(NM.real_minus_null_ba.delta_ba)} {ci(NM.real_minus_null_ba.delta_ba_ci)}, Δ log loss {sg(NM.real_minus_null_logloss.delta_logloss)} {ci(NM.real_minus_null_logloss.delta_logloss_ci)}. This does not show that topology is uninformative.
+              Directed double-edge swaps (a, b), (c, d) → (a, d), (c, b) on non-loop edges, rejecting swaps that create self-loops or repeated edges, preserve every node's in- and out-degree, |V|, |E|, density and the degree Gini coefficients exactly. Directed double-edge swaps do not reach every digraph with the given degrees, so this is not a uniform sample. It changed reciprocity in {pct0(CH.reciprocity.share_events_changed_in_some_realization)}% of events, the largest-component fraction in {pct0(CH.largest_wcc_fraction.share_events_changed_in_some_realization)}% and the maximum core number in {pct0(CH.coreness_max.share_events_changed_in_some_realization)}%, but the median core number in only {pct0(CH.coreness_median.share_events_changed_in_some_realization)}%, so it is a constrained comparison rather than a randomization of all structure. Real arrangement minus the rewired ensemble (probabilities of the {NM.realizations} rewired fits averaged per event): ΔBA {sg(NM.real_minus_null_ba.delta_ba)} {ci(NM.real_minus_null_ba.delta_ba_ci)}, Δ log loss {sg(NM.real_minus_null_logloss.delta_logloss)} {ci(NM.real_minus_null_logloss.delta_logloss_ci)}: no detectable improvement, which is not evidence of equivalence and does not show that topology is uninformative.
             </p>
           </div>
           <div className="bg-[#fbfaf6] border border-[#e5e0d4] border-t-2 border-t-[#23527c] p-5 sm:p-6">
@@ -324,7 +330,7 @@ export default function PageMethods({ data }) {
               A complete rerun from the raw archive reproduced every reported value on the original machine; reproduction on other hardware has not been tested.
             </p>
             <p>
-              The LEN-Small data are not redistributed and must be obtained from the LEN project, whose release states no licence or redistribution terms that we could identify. The repository's derived files (event names, counts, file digests, features and predictions) are provided for reproducibility only and are not endorsed by the LEN authors.
+              LEN-Small is part of LEN (Large Engagement Networks; Gopalakrishnan, Hossain, Elmas and Sarıyüce, ICWSM 2025), which its authors release under a CC-BY licence. We do not redistribute the raw archive; it must be obtained from the LEN project. The repository's derived files (event names, counts, file digests, features and predictions) are shared with attribution for reproducibility and are not endorsed by the LEN authors.
             </p>
           </ProtocolBlock>
           <ProtocolBlock title="Methodological Corrections">

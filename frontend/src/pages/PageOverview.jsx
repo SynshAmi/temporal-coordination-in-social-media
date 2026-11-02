@@ -3,10 +3,12 @@ import Fig1SizeConfounding from "../components/Fig1SizeConfounding";
 import Fig2Baselines from "../components/Fig2Baselines";
 import NK from "../components/NK";
 import { ArrowRight, ChevronDown, ChevronUp, FileText, CheckCircle2, ShieldCheck, AlertTriangle } from "lucide-react";
-import { f2, f3, sg, ci, ciu, pct, con, cond, baMaxHi } from "../lib/fmt";
+import { f2, f3, sg, ci, ciu, pct, pct0, con, cond, baMaxHi, vmf, proxyR2 } from "../lib/fmt";
 
 export default function PageOverview({ data, setActiveTab }) {
-  const P = data.paper;
+  const P = data.paper, V = data.revision;
+  const SP = V.repeated_splits_signs, H1 = V.h1, CH = V.null_feature_change;
+  const k1000 = V.rq2_baselines.budget_specific_K1000;
   const stats = data.cohort_statistics;
   const eventPoints = data.event_points;
   const D = P.dataset, NM = P.null_model, MT = P.matching, EL = P.eligibility;
@@ -135,17 +137,17 @@ export default function PageOverview({ data, setActiveTab }) {
           <div className="lg:col-span-7 xl:col-span-8">
             <div className="text-[17px] text-[#2a2825] font-sans leading-[1.75] max-w-[68ch]">
               <p>
-                On this archive, the released labels are predictable to a large degree from how large an event graph is. Richer features improve probability quality and ranking, but not classification decisions in any detectable way. In fixed-size edge samples, most label information is carried by the number of distinct endpoints a sample touches, and training on observations of the kind being scored matters far more than averaging many views.
+                On this archive, the released labels are highly predictable from how large an event graph is. Richer features improve probability quality and ranking, without a reliable improvement in classification decisions. In fixed-size edge samples, a model trained on single samples was not detectably less accurate than the full-graph model on the same events; the number of distinct endpoints a sample touches and its structural features carry largely overlapping, size-like information. Training on observations of the kind being scored matters far more than averaging many views.
               </p>
             </div>
 
             {showFullAbstract && (
               <div className="mt-6 pt-6 border-t border-[#e2dcd0] text-[15px] text-[#3c3a37] space-y-4 font-sans leading-relaxed max-w-[72ch]">
                 <p>
-                  LEN-Small is a benchmark of Twitter engagement graphs labeled as campaign-associated or comparison events. We ask what its labels can be predicted from. On a distributed archive of {D.n_events} canonical event graphs, {extra} more than the official {D.official_len_small.n_graphs}-graph release, logistic regression given only node and edge counts reaches a balanced accuracy of {f3(lr.M0.balanced_accuracy)}. Adding degree, higher-order arrangement and content features did not detectably improve balanced accuracy in paired event-level comparisons (difference {sg(LC.C1.ba.delta_ba)}, 95 percent interval {sg(LC.C1.ba.delta_ba_ci[0])} to {sg(LC.C1.ba.delta_ba_ci[1])}), but improved log loss by {f3(-LC.C1.log_loss.delta_logloss)} and ranking quality by {f3(LC.C1.auc_ll_fit.delta_auc)} in area under the curve.
+                  LEN-Small is a benchmark of Twitter engagement graphs labeled as campaign-associated or comparison events. We ask what its labels can be predicted from. On a distributed archive of {D.n_events} canonical event graphs, {extra} more than the official {D.official_len_small.n_graphs}-graph release, logistic regression given only node and edge counts reaches a balanced accuracy of {f3(lr.M0.balanced_accuracy)}. Adding degree, higher-order arrangement and content features did not detectably improve balanced accuracy on the primary fold split (paired difference {sg(LC.C1.ba.delta_ba)}, 95 percent interval {sg(LC.C1.ba.delta_ba_ci[0])} to {sg(LC.C1.ba.delta_ba_ci[1])}), although its point estimate was positive, and small, in all {SP.n_splits} fold splits examined. The same features improved log loss by {f3(-LC.C1.log_loss.delta_logloss)} (in {SP.C1.n_dLL_negative} of {SP.n_splits} splits) and ranking quality by {f3(LC.C1.auc_ll_fit.delta_auc)} in area under the curve.
                 </p>
                 <p>
-                  The arrangement features did not outperform the same features computed on degree-preserving rewired graphs. In fixed-budget edge samples, a single view retains strong label information, carried largely by the number of distinct sampled endpoints, whose expectation is strongly associated with full-graph node count and mean degree. Training on observations of the kind being scored matters far more than averaging repeated views. The results describe what the released labels are predictable from; they do not detect coordinating accounts.
+                  The arrangement features showed no detectable improvement over the same features computed on degree-preserving rewired graphs. In fixed-budget edge samples, a model trained on single views was not detectably less accurate than the full-graph model on the same events. Much of the information in a view is size-like: the number of distinct sampled endpoints, whose expectation is strongly associated with full-graph node count and mean degree, is also closely encoded by the structural features. Training on observations of the kind being scored matters far more than averaging repeated views. The results describe what the released labels are predictable from; they do not detect coordinating accounts.
                 </p>
               </div>
             )}
@@ -157,7 +159,7 @@ export default function PageOverview({ data, setActiveTab }) {
       <section>
         <div className="section-head">
           <h2 className="section-title">Research Questions</h2>
-          <span className="section-head-meta">Two Primary Studies</span>
+          <span className="section-head-meta">Two Studies</span>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10">
@@ -171,10 +173,10 @@ export default function PageOverview({ data, setActiveTab }) {
                 What do degree concentration, higher-order arrangement and retained content add beyond node and edge counts?
               </h3>
               <p className="text-[15px] text-[#4a4740] font-sans mt-3 leading-relaxed">
-                Seven nested feature levels on identical folds, three confirmatory paired contrasts, and a degree-preserving rewiring null for arrangement features.
+                Seven feature sets in two nested chains on identical folds, three primary paired contrasts, and a degree-preserving rewiring null for arrangement features.
               </p>
               <div className="mt-5 p-4 bg-[#fbfaf6] border border-[#e5e0d4] text-xs font-mono text-[#8f2626] leading-relaxed">
-                <strong>Finding:</strong> No contrast shows a detectable BA gain. All features vs counts improve log loss by {f3(-LC.C1.log_loss.delta_logloss)} {ci(LC.C1.log_loss.delta_logloss_ci)} and AUC by {f3(LC.C1.auc_ll_fit.delta_auc)}. Real vs rewired arrangement: ΔBA {sg(NM.real_minus_null_ba.delta_ba)} {ci(NM.real_minus_null_ba.delta_ba_ci)}.
+                <strong>Finding:</strong> No contrast shows a detectable BA gain. All features vs counts improve log loss by {f3(-LC.C1.log_loss.delta_logloss)} {ci(LC.C1.log_loss.delta_logloss_ci)} and AUC by {f3(LC.C1.auc_ll_fit.delta_auc)}. Real vs rewired arrangement: ΔBA {sg(NM.real_minus_null_ba.delta_ba)} {ci(NM.real_minus_null_ba.delta_ba_ci)}, no detectable improvement.
               </div>
             </div>
 
@@ -191,8 +193,9 @@ export default function PageOverview({ data, setActiveTab }) {
               {openRq === "rq1" && (
                 <div className="mt-4 p-4 sm:p-5 bg-[#f4efe6] text-[13px] text-[#3c3a37] space-y-2.5 leading-relaxed font-sans">
                   <p><strong>Inconclusive, not equivalent:</strong> the BA intervals admit gains of up to about {f2(baMaxHi(P))}. With {D.n_events} events, a null BA result is not evidence that the features are useless.</p>
-                  <p><strong>Null model:</strong> real graphs differ strongly from their rewired counterparts, so their arrangement is not random; it simply did not carry label information beyond the degree sequences for the features and model tested. This does not show that topology is uninformative.</p>
-                  <p><strong>Stability:</strong> across {P.study1.n_split_seeds} re-drawn fold splits the C1 BA difference ranged from {sg(P.study1.repeated_splits_lr.C1.dBA_min)} to {sg(P.study1.repeated_splits_lr.C1.dBA_max)}; directions are stable, magnitudes are not.</p>
+                  <p><strong>Null model:</strong> real graphs differ strongly from their rewired counterparts, so their arrangement is not random, but the tested arrangement features showed no detectable improvement over the degree sequences. The rewiring is a constrained comparison: it changed reciprocity in {pct0(CH.reciprocity.share_events_changed_in_some_realization)}% of events and the largest-component fraction in {pct0(CH.largest_wcc_fraction.share_events_changed_in_some_realization)}%, but the median core number in only {pct0(CH.coreness_median.share_events_changed_in_some_realization)}%. This is neither evidence of equivalence nor evidence that topology is uninformative.</p>
+                  <p><strong>Fold splits:</strong> the bootstrap intervals resample events for one fixed set of predictions; refitting on {SP.n_splits} fold splits measures a different source of variation. The C1 BA difference was positive in all {SP.C1.n_dBA_positive} ({sg(P.study1.repeated_splits_lr.C1.dBA_min)} to {sg(P.study1.repeated_splits_lr.C1.dBA_max)}), but the splits reuse the same events, so this does not establish a reliable gain.</p>
+                  <p><strong>Regularization grid:</strong> widening the count model's C grid to {H1.grid[0]}–{H1.grid[H1.grid.length - 1].toLocaleString("en-US")} made its log loss worse ({f3(lr.M0q.log_loss)} → {f3(H1.M0q.log_loss)}), and C1 log loss became {sg(H1.C1.delta_logloss)} {ci(H1.C1.delta_logloss_ci)}, so under-tuning does not explain the gap. Some other fits still chose the largest C in some folds.</p>
                 </div>
               )}
             </div>
@@ -211,7 +214,7 @@ export default function PageOverview({ data, setActiveTab }) {
                 Single K-edge views (K ∈ &#123;250, 500, 1000&#125;) with full-graph, frozen-transfer and retrained conditions sharing events, folds and feature definitions.
               </p>
               <div className="mt-5 p-4 bg-[#fbfaf6] border border-[#e5e0d4] text-xs font-mono text-[#23527c] leading-relaxed">
-                <strong>Finding:</strong> With the sampled endpoint count <NK /> alone, retrained single-view BA is {f3(cond(P, 250, "KK|NK").single_view_ba_mean)}, {f3(cond(P, 500, "KK|NK").single_view_ba_mean)} and {f3(cond(P, 1000, "KK|NK").single_view_ba_mean)} at K = 250, 500, 1000. Retraining on views vs frozen transfer, same structural features, K = 250: +{f3(rt.ba.delta)} {ciu(rt.ba.ci)}.
+                <strong>Finding:</strong> On the same events, view-trained models with all features were not detectably less accurate than full-graph models (ΔBA, view − full: {sg(vmf(V, 250).ba.delta)} {ci(vmf(V, 250).ba.ci)} at K = 250, {sg(vmf(V, 500).ba.delta)} {ci(vmf(V, 500).ba.ci)} at K = 500). <NK /> alone ({f3(cond(P, 250, "KK|NK").single_view_ba_mean)} at K = 250) and structure alone did not differ detectably. Retraining on views vs frozen transfer, same structural features, K = 250: +{f3(rt.ba.delta)} {ciu(rt.ba.ci)}.
               </div>
             </div>
 
@@ -228,6 +231,8 @@ export default function PageOverview({ data, setActiveTab }) {
               {openRq === "rq2" && (
                 <div className="mt-4 p-4 sm:p-5 bg-[#f4efe6] text-[13px] text-[#3c3a37] space-y-2.5 leading-relaxed font-sans">
                   <p>The expected number of distinct endpoints in a fixed-budget edge sample is strongly associated with full-graph node count and mean degree. Together, these variables explain {pct(r2["log N + log mean degree"])}% of its variation at K = 250 in the analysed archive. Adding in/out-degree Gini provides no measurable additional explanatory power.</p>
+                  <p><strong>Overlap with structure:</strong> the six structural features predict log <NK /> with cross-validated R² of {f3(proxyR2(V, 250))}, {f3(proxyR2(V, 500))} and {f3(proxyR2(V, 1000))} at K = 250, 500 and 1000, so <NK /> and structure carry largely overlapping, size-like information; the analysis does not attribute the signal to <NK /> rather than structure.</p>
+                  <p><strong>K = 1000:</strong> the view-trained model was ahead of the full-graph model (ΔBA {sg(vmf(V, 1000).ba.delta)} {ci(vmf(V, 1000).ba.ci)}; Δ log loss {sg(vmf(V, 1000).log_loss.delta)} {ci(vmf(V, 1000).log_loss.ci)}), but on a small, imbalanced cohort ({k1000.n_events} events, {k1000.n_campaign}/{k1000.n_comparison}) in an exploratory, uncorrected comparison. It does not indicate that sampling generally improves classification.</p>
                   <p><strong>Ensembling:</strong> averaging ten views changes BA by at most {f3(Math.max(...[250, 500, 1000].map((k) => Math.abs(con(P, k, "ensemble_vs_single_combined").ba.delta))))}.</p>
                   <p><strong>K = 2000:</strong> infeasible for five-fold stratified evaluation; only {EL["2000"].campaign_eligible} campaign events have at least 2,000 edges.</p>
                 </div>
@@ -293,10 +298,10 @@ export default function PageOverview({ data, setActiveTab }) {
                     Counts Carry Most of the Decision-Relevant Signal
                   </div>
                   <p>
-                    Counts reach most of the attainable balanced accuracy, and richer features did not produce a detectable improvement in classification decisions. They did improve probability quality and ranking (log loss {f3(lr.M0q.log_loss)} → {f3(lr.M4.log_loss)}; AUC {f3(lr.M0q.roc_auc_ll_fit)} → {f3(lr.M4.roc_auc_ll_fit)}), but the source of this gain is not isolated: neither arrangement beyond degree nor content alone reproduces it.
+                    Counts reach most of the balanced accuracy reached by the evaluated models, and richer features did not produce a detectable improvement in classification decisions. They did improve probability quality and ranking (log loss {f3(lr.M0q.log_loss)} → {f3(lr.M4.log_loss)}; AUC {f3(lr.M0q.roc_auc_ll_fit)} → {f3(lr.M4.roc_auc_ll_fit)}), but the source of this gain is not isolated: neither arrangement beyond degree nor content alone reproduces it.
                   </p>
                   <p>
-                    Under restricted observation, most label information in a single view is carried by the number of distinct endpoints it touches. A model needs to be trained on observations like those it will see: frozen transfer from full graphs loses accuracy at small budgets, while averaging many views adds almost nothing.
+                    Under restricted observation, a single view was not detectably less informative than the full graph with the same features. Much of that information is size-like: the number of distinct endpoints a view touches is strongly associated with the full graph's node count and mean degree, and is itself closely encoded by the structural features. A model needs to be trained on observations like those it will see: frozen transfer from full graphs loses accuracy at small budgets, while averaging many views adds almost nothing.
                   </p>
                 </>
               )}
@@ -315,10 +320,10 @@ export default function PageOverview({ data, setActiveTab }) {
                   <div className="font-mono font-bold text-xs uppercase tracking-wider text-[#15263a] pb-3 border-b border-[#e5e0d4]">
                     Limits of the Evidence
                   </div>
-                  <p><strong>1. Sample size.</strong> With {D.n_events} events, null BA results are inconclusive. Paired intervals exclude refitting and split variability, and hyperparameter selection in small inner folds was sensitive to row order.</p>
-                  <p><strong>2. Provenance.</strong> The archive differs from the official release for an unknown reason. Labels come from file names; account identifiers and campaign subtypes are not available, so dependence between events through shared accounts and subtype heterogeneity cannot be assessed. Timestamp semantics are unverified, so no temporal features are used.</p>
-                  <p><strong>3. Null model and matching.</strong> Rewiring mixes incompletely in hub-dominated graphs (median {Math.round(100 * NM.frac_edges_unchanged_quantiles[2])}% of non-loop edges unmoved). Matching keeps {MT.node_only.n_pairs_range[0]}–{MT.node_only.n_pairs_range[1]} pairs and is exploratory.</p>
-                  <p><strong>4. Scope.</strong> Only LR and HGBT on hand-crafted features were evaluated; graph neural networks and the LEN and DECODE methods were not re-run, and published LEN-Small accuracies use a different protocol and metric. Uniform edge sampling is one observation mechanism among many. Nothing here establishes that any model detects coordinated behavior, accounts or intent, or any causal effect.</p>
+                  <p><strong>1. Sample size.</strong> With {D.n_events} events, null BA results are inconclusive. Paired intervals exclude refitting and split variability; the primary split shows the smallest C1 BA gain of the {SP.n_splits} splits. Hyperparameter selection in small inner folds was sensitive to row order and, for log loss, to the width of the regularization grid.</p>
+                  <p><strong>2. Provenance.</strong> The archive differs from the official release for an unknown reason. Labels come from file names; account identifiers and campaign subtypes are not available, so dependence between events through shared accounts and subtype heterogeneity cannot be assessed. Repeated hashtags: {V.n_repeated_hashtag_pairs} campaign hashtags each appear as two events on nearby dates ({V.n_repeated_hashtag_pairs_split_across_folds} pair split across folds). LEN-Small is selected by node count, so size–label associations here need not hold in the full LEN dataset. Timestamp semantics are unverified, so no temporal features are used.</p>
+                  <p><strong>3. Null model and matching.</strong> Rewiring mixes incompletely in hub-dominated graphs (median {Math.round(100 * NM.frac_edges_unchanged_quantiles[2])}% of non-loop edges unmoved), leaves the median core number almost unchanged and uses only {NM.realizations} realizations. Matching keeps {MT.node_only.n_pairs_range[0]}–{MT.node_only.n_pairs_range[1]} pairs, is exploratory and is reported without sampling intervals.</p>
+                  <p><strong>4. Scope.</strong> Only LR and HGBT on hand-crafted features were evaluated; graph neural networks and the LEN and DECODE methods were not re-run, and published LEN-Small accuracies use a different protocol and metric. Uniform edge sampling is one observation mechanism among many, and the Study 2 contrasts are exploratory ({V.study2_n_bootstrap.toLocaleString("en-US")} bootstrap resamples, no multiplicity correction). Nothing here establishes that any model detects coordinated behavior, accounts or intent, or any causal effect.</p>
                 </>
               )}
             </div>

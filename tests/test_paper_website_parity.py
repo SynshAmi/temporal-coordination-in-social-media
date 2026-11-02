@@ -25,7 +25,7 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "src"))
 sys.path.insert(0, str(ROOT / "paper"))
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from _paths import CFG, RUN_DIR, PAYLOAD_PATH  # noqa: E402
+from _paths import CFG, RUN_DIR, PAYLOAD_PATH, SUPPLEMENT_PATH as SUPPLEMENT  # noqa: E402
 
 PAPER = ROOT / "paper"
 PDF = PAPER / "LEN_Small_Predictive_Information_Beyond_Scale.pdf"
@@ -53,9 +53,10 @@ def test_every_headline_claim_appears_in_paper_pdf():
 
 
 @need_results
+@pytest.mark.skipif(not SUPPLEMENT.exists(), reason="run src/revision_supplement.py first")
 def test_paper_result_macros_are_current():
     from export_latex_results import build
-    expected, _, _ = build(load(RESULTS))
+    expected, _, _ = build(load(RESULTS), load(SUPPLEMENT))
     current = ROOT / CFG["output"].get("paper_results_tex", "paper/generated/results.tex")
     assert current.read_text(encoding="utf-8") == expected, "run `python src/export_latex_results.py`"
 

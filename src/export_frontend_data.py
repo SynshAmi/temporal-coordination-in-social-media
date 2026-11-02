@@ -5,9 +5,10 @@ Exports the website payload, frontend/public/data/research_data.json, from the
 corrected run selected by the config (default: configs/v2_coreness_fix.yaml ->
 outputs/run_v2).
 
-All result values come from <run_dir>/paper_results.json (the same file the
-paper is built from), so the website and the paper cannot disagree. Run
-src/export_paper_results.py first.
+All result values come from <run_dir>/paper_results.json and the revision
+supplement (output.revision_supplement), the same files the paper is built
+from, so the website and the paper cannot disagree. Run
+src/export_paper_results.py and src/revision_supplement.py first.
 """
 
 import sys
@@ -63,6 +64,10 @@ def export_data(config_path: str, output_path: Path) -> None:
     if not paper_path.exists():
         raise FileNotFoundError(f"{paper_path} missing; run src/export_paper_results.py first.")
     R = json.loads(paper_path.read_text(encoding="utf-8"))
+    sup_path = Path(cfg["output"]["revision_supplement"])
+    if not sup_path.exists():
+        raise FileNotFoundError(f"{sup_path} missing; run src/revision_supplement.py first.")
+    S = json.loads(sup_path.read_text(encoding="utf-8"))
     oof = pd.read_parquet(run / "study1" / "oof_predictions.parquet")
 
     def summarize(arr):
@@ -123,6 +128,7 @@ def export_data(config_path: str, output_path: Path) -> None:
         "cohort_statistics": cohort_stats,
         "event_points": event_points,
         "paper": R,
+        "revision": S,
         "experiments": rows,
     }
     output_path.parent.mkdir(parents=True, exist_ok=True)

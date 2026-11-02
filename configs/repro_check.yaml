@@ -69,6 +69,8 @@ output:
   paper_figures_dir: "repro/paper_figures"
   paper_results_tex: "repro/paper/generated/results.tex"
   frontend_payload: "repro/frontend/research_data.json"
+  revision_h1_dir: "repro/outputs/revision_h1_cgrid"
+  revision_supplement: "repro/outputs/revision_supplement/supplement.json"
 
 # ---------------------------------------------------------------------------
 # Study 1: incremental information beyond scale and degree (src/study1_incremental.py)

@@ -1,10 +1,13 @@
 import React from "react";
 import FigureCaption from "./FigureCaption";
 import NK from "./NK";
-import { f3, ciu, cond, con } from "../lib/fmt";
+import { f3, sg, ci, ciu, cond, con, vmf } from "../lib/fmt";
 
-// Study 2: single-view BA by edge budget (budget-specific cohorts); bars span min–max over 10 sampling seeds
+// Study 2: single-view BA by edge budget on the common cohort (events eligible at every budget, as in the
+// paper's Fig. 3), so every line compares the same events; bars span min–max over 10 sampling seeds
+const COHORT = "common";
 const SERIES = [
+  { key: "FF|combined", label: "FF: full → full, all features", color: "#a8a396", dash: "6,3,1,3" },
   { key: "FF|struct6", label: "FF: full → full, structure", color: "#757065", dash: "2,3" },
   { key: "FK|struct6", label: "FK: full → view (frozen), structure", color: "#8f2626", dash: "" },
   { key: "KK|struct6", label: "KK: view → view (retrained), structure", color: "#23527c", dash: "" },
@@ -13,8 +16,9 @@ const SERIES = [
 ];
 const BUDGETS = [250, 500, 1000];
 
-export default function Fig4ObservationBudgets({ paper }) {
+export default function Fig4ObservationBudgets({ paper, revision: V }) {
   const EL = paper.eligibility;
+  const common = paper.study2.results[`${COHORT}_K1000`];
   const svgWidth = 640;
   const svgHeight = 360;
   const margin = { top: 28, right: 40, bottom: 52, left: 56 };
@@ -35,7 +39,7 @@ export default function Fig4ObservationBudgets({ paper }) {
           Single-View Performance Under Edge Budgets
         </h3>
         <p className="head-desc">
-          Balanced accuracy of models scored on one K-edge sample per event; all conditions at a given K share events, folds and feature definitions.
+          Balanced accuracy of models scored on one K-edge sample per event, on the {common.n_events} events eligible at every budget; all conditions share events, folds and feature definitions.
         </p>
       </div>
 
@@ -50,7 +54,7 @@ export default function Fig4ObservationBudgets({ paper }) {
 
       <div className="chart-frame">
         <svg viewBox={`0 0 ${svgWidth} ${svgHeight}`} className="select-none overflow-visible" role="img"
-          aria-label="Line chart of single-view balanced accuracy at K = 250, 500 and 1000 for five training and feature conditions">
+          aria-label="Line chart of single-view balanced accuracy at K = 250, 500 and 1000 for six training and feature conditions on the common cohort">
           <g transform={`translate(${margin.left}, ${margin.top})`}>
             <line x1={0} y1={0} x2={0} y2={innerHeight} stroke="#15263a" strokeWidth="1.5" />
             {[0.5, 0.6, 0.7, 0.8, 0.9, 1.0].map((v) => {
@@ -67,7 +71,7 @@ export default function Fig4ObservationBudgets({ paper }) {
             })}
 
             {SERIES.map((s) => {
-              const pts = BUDGETS.map((k, i) => ({ x: xScale(i), c: cond(paper, k, s.key), k }));
+              const pts = BUDGETS.map((k, i) => ({ x: xScale(i), c: cond(paper, k, s.key, COHORT), k }));
               const path = pts.map((p, i) => `${i ? "L" : "M"} ${p.x} ${yScale(p.c.single_view_ba_mean)}`).join(" ");
               return (
                 <g key={s.key}>
@@ -94,7 +98,7 @@ export default function Fig4ObservationBudgets({ paper }) {
               <g key={k}>
                 <line x1={xScale(i)} y1={innerHeight} x2={xScale(i)} y2={innerHeight + 6} stroke="#15263a" strokeWidth="1.5" />
                 <text x={xScale(i)} y={innerHeight + 22} textAnchor="middle" fontSize="12" fill="#15263a" fontFamily="var(--font-mono)" fontWeight="bold">K = {k}</text>
-                <text x={xScale(i)} y={innerHeight + 38} textAnchor="middle" fontSize="10.5" fill="#5e5a52" fontFamily="var(--font-mono)">n = {EL[String(k)].total_eligible}</text>
+                <text x={xScale(i)} y={innerHeight + 38} textAnchor="middle" fontSize="10.5" fill="#5e5a52" fontFamily="var(--font-mono)">n = {k === 2000 ? EL["2000"].total_eligible : paper.study2.results[`${COHORT}_K${k}`].n_events}</text>
               </g>
             ))}
           </g>
@@ -104,7 +108,7 @@ export default function Fig4ObservationBudgets({ paper }) {
       <FigureCaption
         figNumber="FIG. 4"
         title="Training Regime Matters More Than Feature Choice"
-        takeaway={<>A model trained on single K-edge views stays highly predictive at every budget, mostly through the sampled endpoint count <NK /> ({f3(cond(paper, 250, "KK|NK").single_view_ba_mean)} at K = 250). With the same structural features, events and folds, training on views instead of full graphs raised single-view BA at K = 250 by {f3(rt.ba.delta)} {ciu(rt.ba.ci)}.</>}
+        takeaway={<>On the same events, a model trained on single K-edge views was not detectably less accurate than the full-graph model with the same features (budget-specific cohorts, ΔBA view − full: {sg(vmf(V, 250).ba.delta)} {ci(vmf(V, 250).ba.ci)} at K = 250). With the same structural features, events and folds, training on views instead of applying the full-graph model raised single-view BA at K = 250 by {f3(rt.ba.delta)} {ciu(rt.ba.ci)}.</>}
         details={
           <div className="space-y-2.5">
             <p>
@@ -114,7 +118,13 @@ export default function Fig4ObservationBudgets({ paper }) {
               <strong>Estimand:</strong> points are single-view BA averaged over 10 sampling seeds; bars span the minimum and maximum over seeds and are <em>not</em> confidence intervals. The 10-view ensemble changes BA by at most {f3(Math.max(...BUDGETS.map((k) => Math.abs(con(paper, k, "ensemble_vs_single_combined").ba.delta))))}, so averaging views contributes little.
             </p>
             <p>
-              <strong>Cohorts:</strong> budget-specific (K = 250: {EL["250"].total_eligible} events; K = 500: {EL["500"].total_eligible}; K = 1000: {EL["1000"].total_eligible}). A common cohort of the {EL["1000"].total_eligible} events eligible at every budget gives the same directions for all primary contrasts. K = 2000 is infeasible for five-fold stratified evaluation because only {EL["2000"].campaign_eligible} campaign events have at least 2,000 edges.
+              <strong>Cohorts:</strong> the plot shows the common cohort of the {common.n_events} events eligible at every budget ({common.n_campaign}/{common.n_comparison}), so full-graph (FF) values do not depend on K. The results table and the contrasts in the takeaway use budget-specific cohorts (K = 250: {EL["250"].total_eligible} events; K = 500: {EL["500"].total_eligible}; K = 1000: {EL["1000"].total_eligible}); on the common cohort the contrasts have the same directions at K = 250 and 500, although there the content interval at K = 500 excludes zero.
+            </p>
+            <p>
+              <strong>K = 1000:</strong> the view-trained model was ahead of the full-graph model with all features (ΔBA {sg(vmf(V, 1000).ba.delta)} {ci(vmf(V, 1000).ba.ci)}; Δ log loss {sg(vmf(V, 1000).log_loss.delta)} {ci(vmf(V, 1000).log_loss.ci)}). This exploratory, uncorrected result comes from a small, imbalanced cohort and does not indicate that sampling generally improves classification. Study 2 contrasts use {V.study2_n_bootstrap.toLocaleString("en-US")} bootstrap resamples with no multiplicity correction.
+            </p>
+            <p>
+              K = 2000 is infeasible for five-fold stratified evaluation because only {EL["2000"].campaign_eligible} campaign events have at least 2,000 edges.
             </p>
           </div>
         }

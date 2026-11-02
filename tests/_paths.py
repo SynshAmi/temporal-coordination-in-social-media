@@ -18,6 +18,7 @@ MANIFESTS_DIR = ROOT / CFG["data"]["manifests_dir"]
 RUN_DIR = ROOT / CFG["output"]["run_dir"]
 VIEWS_PATH = PROCESSED_DIR / CFG["edge_budgets"].get("views_file", "sampled_views.parquet")
 PAYLOAD_PATH = ROOT / CFG["output"].get("frontend_payload", "frontend/public/data/research_data.json")
+SUPPLEMENT_PATH = ROOT / CFG["output"]["revision_supplement"]
 
 
 def require(path, what):

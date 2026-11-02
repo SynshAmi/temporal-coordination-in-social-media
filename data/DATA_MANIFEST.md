@@ -31,9 +31,9 @@ The digest must equal the SHA-256 above. After `run_pipeline.py` (stage 1), `tes
 
 ## Licence and Redistribution
 
-- We could not identify an explicit licence or redistribution terms for LEN or LEN-Small. As of 2026-11-01, the project page, download page and GitHub repository (`erdemUB/large-engagement-network`) state none.
-- Therefore **no raw LEN data is included**: no graph structures, edge lists, message texts, node or account identifiers, timestamps or embeddings.
-- This repository does include derived event-level research outputs: event names (the archive's file names), per-event node and edge counts, file SHA-256 digests, per-event features and model predictions. They are the authors' own computations, published only so the results can be checked and reproduced. They are **not** officially licensed or endorsed by the LEN authors, and they are excluded from the repository's MIT licence (see `NOTICE.md`).
+- The LEN paper (Introduction and Author statement) states: "The dataset is released under a CC-BY license, enabling free sharing and adaptation for research or development purpose." It does not give a licence version. As of 2026-11-03, the project page, download page and GitHub repositories (`erdemUB/large-engagement-network`, `erdemUB/LEN`) carry no separate licence file or terms, and none gives terms specific to LEN-Small.
+- **No raw LEN data is included**: no graph structures, edge lists, message texts, node or account identifiers, timestamps or embeddings. The LEN project is the source for the archive.
+- This repository does include derived event-level research outputs: event names (the archive's file names), per-event node and edge counts, file SHA-256 digests, per-event features and model predictions. They are adaptations of LEN-Small, computed as described in the paper and shared with attribution to the LEN authors so the results can be checked and reproduced. They are not endorsed by the LEN authors, and they are excluded from the repository's MIT licence (see `NOTICE.md`).
 - To use the data itself, obtain it from the LEN project and cite the LEN paper above.
 
 ## Contents and Provenance Notes

@@ -12,7 +12,7 @@ from pathlib import Path
 import pytest
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from _paths import CFG, PAYLOAD_PATH as PAYLOAD, RUN_DIR  # noqa: E402
+from _paths import CFG, PAYLOAD_PATH as PAYLOAD, RUN_DIR, SUPPLEMENT_PATH  # noqa: E402
 
 RESULTS = RUN_DIR / "paper_results.json"
 
@@ -28,6 +28,10 @@ def test_payload_embeds_paper_results_unchanged():
     assert data["paper"] == R
     assert data["metadata"]["source_run"] == CFG["output"]["run_dir"]
     assert R["verification"]["n_pass"] == R["verification"]["n_checks"]
+
+
+def test_payload_embeds_revision_supplement_unchanged():
+    assert load(PAYLOAD)["revision"] == load(SUPPLEMENT_PATH)
 
 
 def test_payload_has_no_legacy_run_final_sections():

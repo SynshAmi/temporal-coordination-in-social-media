@@ -66,6 +66,9 @@ output:
   run_dir: "outputs/run_v2"
   figures_dir: "outputs/run_v2/figures"
   report_path: "outputs/run_v2/checkpoint_report.md"
+  # Revision analyses (stage 11), stored apart from run_v2, which they only read
+  revision_h1_dir: "outputs/revision_h1_cgrid"                        # src/h1_c_grid.py
+  revision_supplement: "outputs/revision_supplement/supplement.json"  # src/revision_supplement.py
 
 # ---------------------------------------------------------------------------
 # Study 1: incremental information beyond scale and degree (src/study1_incremental.py)
