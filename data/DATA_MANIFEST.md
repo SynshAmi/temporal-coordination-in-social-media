@@ -32,7 +32,7 @@ The digest must equal the SHA-256 above. After `run_pipeline.py` (stage 1), `tes
 ## Licence and Redistribution
 
 - The LEN paper (Introduction and Author statement) states: "The dataset is released under a CC-BY license, enabling free sharing and adaptation for research or development purpose." It does not give a licence version. As of 2026-11-03, the project page, download page and GitHub repositories (`erdemUB/large-engagement-network`, `erdemUB/LEN`) carry no separate licence file or terms, and none gives terms specific to LEN-Small.
-- **No raw LEN data is included**: no graph structures, edge lists, message texts, node or account identifiers, timestamps or embeddings. The LEN project is the source for the archive.
+- **The raw archive is not included.** The repository contains no message texts, account identifiers, timestamps or embeddings. It does share the **graph structure** of the 103 analysed events (directed edges between per-graph node indices, with interaction counts), in `frontend/public/data/len/`, for the website's dataset explorer, under the LEN authors' CC-BY statement and with attribution. The LEN project is the source for the archive.
 - This repository does include derived event-level research outputs: event names (the archive's file names), per-event node and edge counts, file SHA-256 digests, per-event features and model predictions. They are adaptations of LEN-Small, computed as described in the paper and shared with attribution to the LEN authors so the results can be checked and reproduced. They are not endorsed by the LEN authors, and they are excluded from the repository's MIT licence (see `NOTICE.md`).
 - To use the data itself, obtain it from the LEN project and cite the LEN paper above.
 
@@ -57,6 +57,7 @@ None of these contain message text, node or account identifiers, edges or timest
 | `data/manifests/edge_budget_eligibility.json` | Events with at least K edges, per budget K |
 | `outputs/run_v2/` | Per-event features and out-of-fold predictions, summary metrics, verification report |
 | `frontend/public/data/research_data.json` | Website payload: results file plus per-event node and edge counts |
+| `frontend/public/data/len/` | Dataset explorer (`src/export_dataset_explorer.py`): `index.json` (attribution and per-event statistics), `events/eNNN.json` (node count, directed edges as node-index pairs, interaction counts, core numbers) and `samples/eNNN.json` (edge indices and stored features of the Study 2 observations). Graph structure only: no message text, timestamps, embeddings or account identifiers |
 
 ## Regenerated, Never Committed: `data/processed/`
 

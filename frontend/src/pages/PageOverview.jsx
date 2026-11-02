@@ -61,6 +61,8 @@ export default function PageOverview({ data, setActiveTab }) {
                 <span>{P.verification.n_pass}/{P.verification.n_checks} Independent Checks Pass</span>
               </span>
             </div>
+
+            <DatasetInvite eventPoints={eventPoints} onOpen={() => setActiveTab("dataset")} />
           </div>
 
           <div className="lg:col-span-5 space-y-5 lg:pt-1">
@@ -349,6 +351,48 @@ export default function PageOverview({ data, setActiveTab }) {
           </div>
         </div>
       </section>
+    </div>
+  );
+}
+
+// Landing-page entry to the dataset explorer: one row per event, placed by node count (log scale)
+function DatasetInvite({ eventPoints, onOpen }) {
+  const W = 560, H = 64;
+  const xs = eventPoints.map((e) => e.log_nodes);
+  const lo = Math.min(...xs), hi = Math.max(...xs);
+  const X = (v) => 6 + ((v - lo) / (hi - lo)) * (W - 12);
+  const ticks = [100, 300, 1000, 3000].filter((t) => Math.log1p(t) >= lo && Math.log1p(t) <= hi);
+  return (
+    <div className="pt-8 mt-4 border-t border-[#dcd7ca] max-w-[64ch]">
+      <div className="flex items-baseline justify-between gap-4">
+        <span className="section-label !mb-0">Explore the dataset</span>
+        <span className="text-[11px] font-mono text-[#757065]">{eventPoints.length} engagement graphs</span>
+      </div>
+      <p className="mt-3 font-serif text-[22px] sm:text-2xl leading-snug text-[#15263a]">
+        Go beyond the findings. Explore actual engagement networks, compare events, and investigate how graph structure changes under fixed-budget sampling.
+      </p>
+      <svg viewBox={`0 0 ${W} ${H}`} className="mt-5 w-full h-auto" role="img" aria-label="Every event in the archive, placed by node count; campaign events above, comparison events below">
+        <line x1="0" x2={W} y1={H / 2 - 4} y2={H / 2 - 4} stroke="#dcd7ca" />
+        {eventPoints.map((e) => (
+          <line key={e.event_id} x1={X(e.log_nodes)} x2={X(e.log_nodes)}
+            y1={e.label === 1 ? 6 : H / 2} y2={e.label === 1 ? H / 2 - 8 : H - 18}
+            stroke={e.label === 1 ? "#8f2626" : "#23527c"} strokeOpacity="0.55" strokeWidth="1.5" />
+        ))}
+        {ticks.map((t) => (
+          <text key={t} x={X(Math.log1p(t))} y={H - 4} textAnchor={X(Math.log1p(t)) < 40 ? "start" : X(Math.log1p(t)) > W - 40 ? "end" : "middle"} fontSize="10" fill="#757065" fontFamily="var(--font-mono)">{t >= 1000 ? `${t / 1000}k` : t} nodes</text>
+        ))}
+      </svg>
+      <div className="mt-2 flex flex-wrap items-center justify-between gap-x-6 gap-y-3">
+        <div className="flex gap-4 text-[11px] font-mono text-[#5e5a52]">
+          <span className="inline-flex items-center gap-1.5"><span className="w-3 h-[2px] bg-[#8f2626]" />campaign</span>
+          <span className="inline-flex items-center gap-1.5"><span className="w-3 h-[2px] bg-[#23527c]" />comparison</span>
+        </div>
+        <button type="button" onClick={onOpen}
+          className="inline-flex items-center gap-2 px-4 py-2.5 bg-[#15263a] text-white text-xs font-medium tracking-wide hover:bg-[#23527c] transition-colors">
+          <span>Explore LEN-Small</span>
+          <ArrowRight size={13} />
+        </button>
+      </div>
     </div>
   );
 }

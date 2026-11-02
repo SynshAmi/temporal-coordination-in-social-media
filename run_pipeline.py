@@ -21,7 +21,8 @@ Executes:
   12. Paper results file (src/export_paper_results.py)
   13. Paper inputs: figures (paper/make_paper_figures.py) and LaTeX result macros
       (src/export_latex_results.py)
-  14. Website payload (src/export_frontend_data.py)
+  14. Website data: results payload (src/export_frontend_data.py) and the dataset
+      explorer's graph files (src/export_dataset_explorer.py)
   15. Test Suite (pytest tests/ -v)
 
 The paper PDF itself is compiled separately with LaTeX: python paper/build.py (see README).
@@ -92,7 +93,10 @@ def main():
             [py, "paper/make_paper_figures.py", *c, "--out-dir", out_cfg.get("paper_figures_dir", "paper/figures")],
             [py, "src/export_latex_results.py", *c],
         ]),
-        ("14. Export Website Payload", [py, "src/export_frontend_data.py", *c]),
+        ("14. Export Website Data", [
+            [py, "src/export_frontend_data.py", *c],
+            [py, "src/export_dataset_explorer.py", *c],
+        ]),
     ]
     test_stage = "15. Run Test Suite"
     if not args.skip_tests:

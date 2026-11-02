@@ -43,7 +43,7 @@ All comparisons are made on the same events and the same cross-validation folds,
 | `tests/` | Automated checks, including agreement between the paper, the website and the results |
 | `outputs/run_v2/` | The verified results; `paper_results.json` is the main source of every reported number |
 | `outputs/revision_h1_cgrid/`, `outputs/revision_supplement/` | Revision analyses: the wider regularisation search for the count model, and supplementary analyses (single view vs full graph, endpoint count vs structure, null-model coverage, split counts) read by the paper and website |
-| `frontend/` | Source of the research website |
+| `frontend/` | Source of the research website, including the interactive dataset explorer; its graph files are in `frontend/public/data/len/` |
 | `data/` | Dataset manifest and file hashes; the dataset itself is not included |
 | `reports/` | Claim-to-evidence audit and end-to-end reproducibility report |
 | `configs/` | Pipeline configuration (`v2_coreness_fix.yaml` is the one used for all results) |
@@ -82,6 +82,7 @@ python src/h1_c_grid.py               # count-model regularisation grid -> outpu
 python src/revision_supplement.py     # supplementary analyses -> outputs/revision_supplement/supplement.json (output.revision_supplement)
 python src/export_latex_results.py    # refreshes the paper's result macros
 python src/export_frontend_data.py    # refreshes the website payload
+python src/export_dataset_explorer.py # rebuilds the dataset explorer's graph files (needs the raw archive)
 ```
 
 ### Check the results without the dataset
@@ -111,7 +112,7 @@ To run the website locally, use `npm install` and then `npm run dev` inside `fro
 - **Missing metadata.** The release has no account identifiers or campaign subtypes, so links between events through shared accounts cannot be assessed. Timestamp meanings are unverified, so no temporal features are used.
 - **Scope.** Only logistic regression and gradient-boosted trees on hand-crafted features were evaluated. The full pipeline was reproduced on one machine; reproduction on other hardware has not been tested.
 - **Corrections.** Two errors in an earlier version of the analysis, a coreness calculation that ignored self-loops and a cross-validation fold-assignment error, were identified during validation and corrected before the results reported in this paper were finalized. For example, one superseded model reported a balanced accuracy of 0.923, which became 0.894 after correction; **0.923 is not a current result.** Details are in Section VIII of the paper.
-- **Data.** The repository contains no raw LEN data: no graphs, messages, account identifiers or timestamps. It does include derived event-level outputs (event names, counts, file hashes, features and predictions) for reproducibility. The LEN authors release the dataset under a CC-BY licence (their paper gives no version); these derived files are shared with attribution to them and are not endorsed by them. See [`data/DATA_MANIFEST.md`](data/DATA_MANIFEST.md).
+- **Data.** The repository does not include the raw LEN archive, and contains no messages, account identifiers or timestamps. It does include derived event-level outputs (event names, counts, file hashes, features and predictions) for reproducibility, and, for the website's dataset explorer, the graph structure of the 103 analysed events (directed edges between per-graph node indices). The LEN authors release the dataset under a CC-BY licence (their paper gives no version); these derived files and the graph structure are shared with attribution to them and are not endorsed by them. See [`data/DATA_MANIFEST.md`](data/DATA_MANIFEST.md).
 
 ## Licence and citation
 

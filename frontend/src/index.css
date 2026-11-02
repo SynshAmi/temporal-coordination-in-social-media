@@ -351,3 +351,21 @@
 ::-webkit-scrollbar-thumb {
   background: var(--neutral-rule-dark);
 }
+
+/* Horizontal scrollers (tab bars) without a visible scrollbar */
+.no-scrollbar {
+  scrollbar-width: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Dataset explorer: dark slate network canvas with a faint grid */
+.graph-canvas {
+  background-color: #12223a;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+  background-size: 32px 32px;
+  border: 1px solid #0d1a29;
+}

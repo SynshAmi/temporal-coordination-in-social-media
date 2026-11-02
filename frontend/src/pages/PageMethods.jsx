@@ -330,7 +330,7 @@ export default function PageMethods({ data }) {
               A complete rerun from the raw archive reproduced every reported value on the original machine; reproduction on other hardware has not been tested.
             </p>
             <p>
-              LEN-Small is part of LEN (Large Engagement Networks; Gopalakrishnan, Hossain, Elmas and Sarıyüce, ICWSM 2025), which its authors release under a CC-BY licence. We do not redistribute the raw archive; it must be obtained from the LEN project. The repository's derived files (event names, counts, file digests, features and predictions) are shared with attribution for reproducibility and are not endorsed by the LEN authors.
+              LEN-Small is part of LEN (Large Engagement Networks; Gopalakrishnan, Hossain, Elmas and Sarıyüce, ICWSM 2025), which its authors release under a CC-BY licence. We do not redistribute the raw archive; it must be obtained from the LEN project. The repository's derived files (event names, counts, file digests, features and predictions) and the graph structure shown in the dataset explorer (node indices and directed edges, without message text or timestamps) are shared with attribution and are not endorsed by the LEN authors.
             </p>
           </ProtocolBlock>
           <ProtocolBlock title="Methodological Corrections">

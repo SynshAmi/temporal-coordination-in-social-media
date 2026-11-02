@@ -1,17 +1,21 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, lazy, Suspense } from "react";
 import Navbar from "./components/Navbar";
 import PageOverview from "./pages/PageOverview";
 import PageExplorer from "./pages/PageExplorer";
 import PageMethods from "./pages/PageMethods";
 import { AlertCircle, Download, ShieldCheck } from "lucide-react";
 
+// The dataset explorer (and its graph libraries) loads only when visited
+const PageDataset = lazy(() => import("./pages/PageDataset"));
+
 export default function App() {
-  // Sync active tab with URL hash (#overview, #explorer, #methods)
+  // Sync active tab with URL hash (#overview, #explorer, #methods, #dataset[/...])
   const getTabFromHash = () => {
     const hash = window.location.hash.replace("#", "").toLowerCase();
     if (["overview", "explorer", "methods"].includes(hash)) {
       return hash;
     }
+    if (hash === "dataset" || hash.startsWith("dataset/")) return "dataset";
     return "overview";
   };
 
@@ -96,6 +100,11 @@ export default function App() {
         )}
         {activeTab === "methods" && (
           <PageMethods data={researchData} />
+        )}
+        {activeTab === "dataset" && (
+          <Suspense fallback={<div className="text-xs font-mono text-[#5e5a52]">Loading the dataset explorer…</div>}>
+            <PageDataset />
+          </Suspense>
         )}
       </main>
 
