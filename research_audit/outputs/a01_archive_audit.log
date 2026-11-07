@@ -1,0 +1,183 @@
+   1 #ARMvTUR_noncampaign_fulldata.json                           n=  3405 m=   3769
+   2 #Afittifakı___2023-05-23_campaign_fulldata.json              n=   288 m=   1102
+   3 #AsstanHekimeKalıcıNakil___2023-03-18_campaign_fulldata.json n=   420 m=   1398
+   4 #BeşiktaşınMaçıVar_noncampaign_fulldata.json              n=  4735 m=   6188
+   5 #BirOyKemaleBirOyMerale___2023-05-13_campaign_fulldata.json  n=   815 m=    800
+   6 #BugünGünlerdenGALATASARAY_noncampaign_fulldata.json       n=  5496 m=   7498
+   7 #ChampionsLeague_noncampaign_fulldata.json                   n=   631 m=    619
+   8 #Çarşamba_noncampaign_fulldata.json                        n=  4961 m=   6187
+   9 #ErdenTimurSezonu_noncampaign_fulldata.json                  n=  3422 m=   4809
+  10 #Eurovision2023_noncampaign_fulldata.json                    n=  1477 m=   1785
+  11 #FetöİleUluslararasıMücadele___2023-04-12_campaign_fullda n=  1139 m=   1741
+  12 #FlokiCash___2023-04-12_campaign_fulldata.json               n=   584 m=    745
+  13 #GüldürGüldürShow_noncampaign_fulldata.json              n=  4923 m=   6089
+  14 #HaramBahçeKollanıyor_noncampaign_fulldata.json             n=  2880 m=   4468
+  15 #KadıköydeHaramPenaltılar_noncampaign_fulldata.json         n=  4661 m=   7419
+  16 #KalıcıNakilŞart___2023-03-24_campaign_fulldata.json        n=   235 m=    966
+  17 #KayıpCanlarımızNerede___2023-05-13_campaign_fulldata.json   n=   632 m=    782
+  18 #KocaAsistnHekimeSahipÇık___2023-03-21_campaign_fulldata.js n=   405 m=    813
+  19 #LunaticsToken___2023-03-17_campaign_fulldata.json           n=   949 m=   1361
+  20 #MayThe4thBeWithYou_noncampaign_fulldata.json                n=   885 m=    829
+  21 #Mazi__2023-03-26_campaign_fulldata.json                     n=  1255 m=   1307
+  22 #MetaAirdrop___2023-03-23_campaign_fulldata.json             n=   498 m=    485
+  23 #Metatime___2023-03-22_campaign_fulldata.json                n=  1590 m=   1603
+  24 #MilanInter_noncampaign_fulldata.json                        n=  1390 m=   1468
+  25 #PerinçekCNNde___2023-03-18_campaign_fulldata.json          n=   546 m=   1677
+  26 #RealMadridManCity_noncampaign_fulldata.json                 n=   468 m=    427
+  27 #ReisAiledekiEkDersliyeMüjde___2023-04-12_campaign_fulldata n=   345 m=   2049
+  28 #SesimiziDuyanVarMi___2023-03-23_campaign_fulldata.json      n=   356 m=   1435
+  29 #SesimiziDuyanVarMı___2023-03-23_campaign_fulldata.json      n=   356 m=   1435
+  30 #SquidGrow___2023-05-13_campaign_fulldata.json               n=   273 m=    918
+  31 #TekeTek_noncampaign_fulldata.json                           n=  7739 m=  10682
+  32 #Urfa_noncampaign_fulldata.json                              n=  3227 m=   3409
+  33 #Yargı_noncampaign_fulldata.json                             n=  5782 m=   9429
+  34 #YeniProfilResmi_noncampaign_fulldata.json                   n=  1795 m=   2286
+  35 #ankaragücü_noncampaign_fulldata.json                      n=  1567 m=   1869
+  36 #babalatv_noncampaign_fulldata.json                          n=  4635 m=   5560
+  37 #cashgrab___2023-03-21_campaign_fulldata.json                n=   454 m=    490
+  38 #cumartesi_noncampaign_fulldata.json                         n=  4909 m=   6367
+  39 #çekildi_noncampaign_fulldata.json                          n=  1393 m=   1641
+  40 #izmirdeprem_noncampaign_fulldata.json                       n=   818 m=    735
+  41 #lime___2023-03-17_campaign_fulldata.json                    n=   806 m=    877
+  42 #mevzularaçıkmikrofon_noncampaign_fulldata.json             n=  2324 m=   3013
+  43 #reynmen_noncampaign_fulldata.json                           n=  1743 m=   1813
+  44 #sabitkur__2023-03-26_campaign_fulldata.json                 n=   100 m=    539
+  45 #uyuyamıyorum_noncampaign_fulldata.json                      n=  1214 m=   1302
+  46 Abdulahat_Arvas___2023-05-13_campaign_fulldata.json          n=  1624 m=   2016
+  47 Akitavax___2023-03-24_campaign_fulldata.json                 n=   390 m=    741
+  48 Ali_Koç_noncampaign_fulldata.json                           n=  8352 m=  10201
+  49 Amazon_noncampaign_fulldata.json                             n=  4308 m=   4742
+  50 Arsenal_noncampaign_fulldata.json                            n=  4415 m=   4638
+  51 Asrın_Dayanışması___2023-03-21_campaign_fulldata.json       n=   721 m=    854
+  52 Atam_noncampaign_fulldata.json                               n=  5981 m=   6652
+  53 Atilla_Karaoğlan_noncampaign_fulldata.json                  n=  4564 m=   6701
+  54 Bakan_Soylu_noncampaign_fulldata.json                        n=  6169 m=   9146
+  55 Betimar_noncampaign_fulldata.json                            n=  1773 m=   1988
+  56 CHP_Sözcüsü_Faik_Öztrak_noncampaign_fulldata.json        n=  5787 m=   7299
+  57 Cumhurbaşkanı_Manisada___2023-04-22_campaign_fulldata.json  n=  1102 m=   1718
+  58 Daum_noncampaign_fulldata.json                               n=  3193 m=   4630
+  59 Deniz_Gezmiş_noncampaign_fulldata.json                      n=  5791 m=   6538
+  60 DenkliğimiziKimVerecek___2023-03-23_campaign_fulldata.json  n=   214 m=   1389
+  61 Dexgame___2023-03-26_campaign_fulldata.json                  n=   273 m=    710
+  62 Dijital_Sandık___2023-04-12_campaign_fulldata.json           n=  1165 m=   1868
+  63 DiyanetYedeklerAkademiye___2023-03-23_campaign_fulldata.json n=   224 m=   1943
+  64 Dünyanın_Sonu___2023-03-23_campaign_fulldata.json           n=   518 m=    759
+  65 Dzeko_noncampaign_fulldata.json                              n=   796 m=    740
+  66 Emre_Belözoğlu_noncampaign_fulldata.json                   n=  2482 m=   3024
+  67 Ertuğrul_Altun23___2023-03-18_campaign_fulldata.json        n=   747 m=   1206
+  68 Esenyurt_noncampaign_fulldata.json                           n=  3397 m=   3719
+  69 GSBtayiniOlumluAçıkla___2023-03-21_campaign_fulldata.json   n=   178 m=    630
+  70 GSBtayinlerOLUMLUolsun___2023-03-23_campaign_fulldata.json   n=   267 m=   1537
+  71 Gelenekten_Geleceğe___2023-05-13_campaign_fulldata.json     n=   214 m=    206
+  72 Gomis_noncampaign_fulldata.json                              n=  7323 m=   9755
+  73 Güzel_Kızlar__2023-03-26_campaign_fulldata.json             n=   701 m=    995
+  74 Haaland_noncampaign_fulldata.json                            n=  1654 m=   1645
+  75 Icardi_noncampaign_fulldata.json                             n=  2195 m=   1676
+  76 İletişim_Başkanlığı___2023-05-13_campaign_fulldata.json  n=  1546 m=   1504
+  77 Jesus_noncampaign_fulldata.json                              n=  7589 m=   9541
+  78 Kudüs_noncampaign_fulldata.json                             n=  4185 m=   4423
+  79 Kızlara_Tehdit___2023-03-20_campaign_fulldata.json           n=   514 m=   1054
+  80 Malatyanın_Kahramanı___2023-03-24_campaign_fulldata.json     n=   175 m=    459
+  81 Manchester_noncampaign_fulldata.json                         n=  1720 m=   1862
+  82 Maradona_noncampaign_fulldata.json                           n=  1589 m=   1600
+  83 MebHazirandaDepremeTayin___2023-05-23_campaign_fulldata.json n=   775 m=   6746
+  84 MilliYolPartisi_RemziÇayır___2023-05-13_campaign_fulldata.j n=   208 m=    664
+  85 Milliyol_Partisi_noncampaign_fulldata.json                   n=   433 m=    547
+  86 Murat_Bardakçı_noncampaign_fulldata.json                    n=  4909 m=   7053
+  87 Napoli_noncampaign_fulldata.json                             n=  6128 m=   7174
+  88 Osman_Gökçek___2023-03-21_campaign_fulldata.json           n=   852 m=    884
+  89 Özür_Dilerim___2023-03-26_campaign_fulldata.json           n=  2519 m=   1749
+  90 PopiGram_Açıldı__2023-03-20_campaign_fulldata.json          n=   773 m=   1230
+  91 Sevilla_noncampaign_fulldata.json                            n=  2613 m=   2409
+  92 Sloukas_noncampaign_fulldata.json                            n=  1550 m=   1899
+  93 Sonuçlar_Açıklandı___2023-03-24_campaign_fulldata.json     n=   313 m=    665
+  94 ŞartsızTayin_Şart___2023-03-23_campaign_fulldata.json      n=   351 m=   4178
+  95 ŞartsızTayin_Şart___2023-03-24_campaign_fulldata.json      n=   333 m=    853
+  96 Tapuma_YapıKayıt___2023-04-19_campaign_fulldata.json         n=   169 m=   1186
+  97 Tapuma_YapıKayıt___2023-04-22_campaign_fulldata.json         n=   200 m=   1182
+  98 Ters_Kelepçe___2023-03-22_campaign_fulldata.json            n=   581 m=    972
+  99 Teşekkür_Etti___2023-05-01_campaign_fulldata.json          n=  1671 m=   1579
+ 100 Tüm_İslam_noncampaign_fulldata.json                        n=  2065 m=   1894
+ 101 Yakup_Türkal___2023-03-22_campaign_fulldata.json            n=  1093 m=   1287
+ 102 YapıKayıt_YoksaOyyok___2023-05-01_campaign_fulldata.json     n=   131 m=    546
+ 103 Yarısı_Bizden___2023-05-01_campaign_fulldata.json            n=  1908 m=   1976
+ 104 Yunus_Filiz___2023-03-22_campaign_fulldata.json              n=   294 m=   1009
+{
+ "tar_bytes": 5792081920,
+ "members_total": 104,
+ "json_members": 104,
+ "duplicate_groups": [
+  [
+   "#SesimiziDuyanVarMi___2023-03-23_campaign_fulldata.json",
+   "#SesimiziDuyanVarMı___2023-03-23_campaign_fulldata.json"
+  ]
+ ],
+ "canonical_json": 103,
+ "canonical_labels": {
+  "campaign": 52,
+  "noncampaign": 51
+ },
+ "non_nfc_names": [
+  "#BeşiktaşınMaçıVar_noncampaign_fulldata.json",
+  "#BugünGünlerdenGALATASARAY_noncampaign_fulldata.json",
+  "#Çarşamba_noncampaign_fulldata.json",
+  "#FetöİleUluslararasıMücadele___2023-04-12_campaign_fulldata.json",
+  "#GüldürGüldürShow_noncampaign_fulldata.json",
+  "#HaramBahçeKollanıyor_noncampaign_fulldata.json",
+  "#KadıköydeHaramPenaltılar_noncampaign_fulldata.json",
+  "#KalıcıNakilŞart___2023-03-24_campaign_fulldata.json",
+  "#KocaAsistnHekimeSahipÇık___2023-03-21_campaign_fulldata.json",
+  "#PerinçekCNNde___2023-03-18_campaign_fulldata.json",
+  "#ReisAiledekiEkDersliyeMüjde___2023-04-12_campaign_fulldata.json",
+  "#ankaragücü_noncampaign_fulldata.json",
+  "#çekildi_noncampaign_fulldata.json",
+  "#mevzularaçıkmikrofon_noncampaign_fulldata.json",
+  "Ali_Koç_noncampaign_fulldata.json",
+  "Asrın_Dayanışması___2023-03-21_campaign_fulldata.json",
+  "Atilla_Karaoğlan_noncampaign_fulldata.json",
+  "CHP_Sözcüsü_Faik_Öztrak_noncampaign_fulldata.json",
+  "Cumhurbaşkanı_Manisada___2023-04-22_campaign_fulldata.json",
+  "Deniz_Gezmiş_noncampaign_fulldata.json",
+  "DenkliğimiziKimVerecek___2023-03-23_campaign_fulldata.json",
+  "Dünyanın_Sonu___2023-03-23_campaign_fulldata.json",
+  "Emre_Belözoğlu_noncampaign_fulldata.json",
+  "Ertuğrul_Altun23___2023-03-18_campaign_fulldata.json",
+  "GSBtayiniOlumluAçıkla___2023-03-21_campaign_fulldata.json",
+  "Gelenekten_Geleceğe___2023-05-13_campaign_fulldata.json",
+  "Güzel_Kızlar__2023-03-26_campaign_fulldata.json",
+  "İletişim_Başkanlığı___2023-05-13_campaign_fulldata.json",
+  "Kudüs_noncampaign_fulldata.json",
+  "MilliYolPartisi_RemziÇayır___2023-05-13_campaign_fulldata.json",
+  "Murat_Bardakçı_noncampaign_fulldata.json",
+  "Osman_Gökçek___2023-03-21_campaign_fulldata.json",
+  "Özür_Dilerim___2023-03-26_campaign_fulldata.json",
+  "PopiGram_Açıldı__2023-03-20_campaign_fulldata.json",
+  "Sonuçlar_Açıklandı___2023-03-24_campaign_fulldata.json",
+  "ŞartsızTayin_Şart___2023-03-23_campaign_fulldata.json",
+  "ŞartsızTayin_Şart___2023-03-24_campaign_fulldata.json",
+  "Ters_Kelepçe___2023-03-22_campaign_fulldata.json",
+  "Teşekkür_Etti___2023-05-01_campaign_fulldata.json",
+  "Tüm_İslam_noncampaign_fulldata.json",
+  "Yakup_Türkal___2023-03-22_campaign_fulldata.json"
+ ],
+ "directed_values": {
+  "true": 104
+ },
+ "multigraph_values": {
+  "false": 104
+ },
+ "graph_keys": {
+  "directed": 104,
+  "multigraph": 104,
+  "graph": 104
+ },
+ "node_attribute_keys": {
+  "node_attr": 212231,
+  "author_description": 185374,
+  "kcore": 212231,
+  "id": 212231,
+  "author.description": 29466
+ },
+ "edge_attribute_keys": {
+  "edge_attr": 289975,
+  

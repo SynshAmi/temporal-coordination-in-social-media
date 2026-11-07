@@ -214,8 +214,8 @@ def main(config_path):
         "archive": {
             "n_events": len(rows), "n_campaign": int((lab == 1).sum()), "n_comparison": int((lab == 0).sum()),
             "official": {"n_events": 100, "n_campaign": 51, "n_comparison": 49},
-            "note": ("This is the analysed 103-event archive, not the official 100-event LEN-Small release. "
-                     "The three additional events cannot be identified, so no event is marked as official or extra."),
+            "note": ("These are the 103 graphs of the LEN project archive analysed in the paper. The archive is distinct from the published "
+                     "LEN-Small description (100 graphs), so no event is marked as belonging to the published subset."),
         },
         "budgets": budgets, "n_seeds": n_seeds, "seeds": [base_seed + s for s in range(n_seeds)],
         "verification": {"views_regenerated_and_matched": n_checked, "full_graphs_matched": len(rows), "tolerance": TOL},

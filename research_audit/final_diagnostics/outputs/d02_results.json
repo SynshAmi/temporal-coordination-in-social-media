@@ -1,0 +1,1644 @@
+{
+  "verification": {
+    "Tapuma_YapıKayıt___2023-04-19_campaign_fulldata": {
+      "manifest_label": 1,
+      "manifest_label_str": "campaign",
+      "full_graph_label": 1,
+      "full_graph_token_std_is_nan": true,
+      "n_edges": 1186,
+      "views_by_K": {
+        "250": 10,
+        "500": 10,
+        "1000": 10
+      },
+      "views_token_std_nan_by_K": {
+        "250": 10,
+        "500": 10,
+        "1000": 10
+      }
+    },
+    "YapıKayıt_YoksaOyyok___2023-05-01_campaign_fulldata": {
+      "manifest_label": 1,
+      "manifest_label_str": "campaign",
+      "full_graph_label": 1,
+      "full_graph_token_std_is_nan": true,
+      "n_edges": 546,
+      "views_by_K": {
+        "250": 10,
+        "500": 10,
+        "1000": 0
+      },
+      "views_token_std_nan_by_K": {
+        "250": 10,
+        "500": 10,
+        "1000": 0
+      }
+    },
+    "views_with_undefined_token_std_outside_these_events": 0
+  },
+  "validation_max_abs_diff_no_exclusion": 0.0,
+  "excluded_events": [
+    "Tapuma_YapıKayıt___2023-04-19_campaign_fulldata",
+    "YapıKayıt_YoksaOyyok___2023-05-01_campaign_fulldata"
+  ],
+  "contrasts": [
+    {
+      "version": "excluded and refitted",
+      "analysis": "primary (partition 42)",
+      "K": 250,
+      "contrast": "B - A",
+      "n_events": 100,
+      "n_campaign": 49,
+      "dLL": -0.03934584570340123,
+      "dAUC": -0.0011204481792717158,
+      "dBA": 0.03339335734293719,
+      "dLL_ci": [
+        -0.11742743140940078,
+        0.029741073878237222
+      ],
+      "p_LL": 0.288,
+      "dLL_event_sd": 0.03814057677995237,
+      "dAUC_ci": [
+        -0.03176010551948054,
+        0.026606767707082844
+      ],
+      "p_AUC": 0.974,
+      "repeat_dLL_mean": -0.03934584570340123,
+      "repeat_dLL_sd": 0.0074568972613105996,
+      "repeat_dLL_min": -0.050020273219804325,
+      "repeat_dLL_max": -0.025419923908834484,
+      "repeats_favouring_A_LL": 10,
+      "repeats_favouring_A_AUC": 5,
+      "n_repeats": 10,
+      "events_improved_LL": 50,
+      "dBA_ci": [
+        -0.004023033794956536,
+        0.07719537815126053
+      ],
+      "p_BA": 0.08,
+      "repeats_favouring_A_BA": 10,
+      "repeats_tied_BA": 0,
+      "repeat_dBA_min": 0.02000800320128049,
+      "repeat_dBA_max": 0.050620248099239706,
+      "p_LL_holm_across_K": 0.288,
+      "p_AUC_holm_across_K": 1.0,
+      "p_BA_holm_across_K": 0.08
+    },
+    {
+      "version": "excluded and refitted",
+      "analysis": "primary (partition 42)",
+      "K": 250,
+      "contrast": "D - C",
+      "n_events": 100,
+      "n_campaign": 49,
+      "dLL": -0.052503312762983756,
+      "dAUC": 0.01360544217687074,
+      "dBA": 0.022488995598239313,
+      "dLL_ci": [
+        -0.11824268582398893,
+        0.008372142173871418
+      ],
+      "p_LL": 0.076,
+      "dLL_event_sd": 0.031222693217445224,
+      "dAUC_ci": [
+        -0.011049597715218271,
+        0.04291131732828953
+      ],
+      "p_AUC": 0.258,
+      "repeat_dLL_mean": -0.05250331276298377,
+      "repeat_dLL_sd": 0.014166564852175668,
+      "repeat_dLL_min": -0.08178964834650301,
+      "repeat_dLL_max": -0.03292116808251242,
+      "repeats_favouring_A_LL": 10,
+      "repeats_favouring_A_AUC": 10,
+      "n_repeats": 10,
+      "events_improved_LL": 64,
+      "dBA_ci": [
+        -0.012907533013205245,
+        0.057345555371907185
+      ],
+      "p_BA": 0.172,
+      "repeats_favouring_A_BA": 9,
+      "repeats_tied_BA": 0,
+      "repeat_dBA_min": -0.019607843137254832,
+      "repeat_dBA_max": 0.05102040816326525,
+      "p_LL_holm_across_K": 0.1,
+      "p_AUC_holm_across_K": 0.516,
+      "p_BA_holm_across_K": 0.344
+    },
+    {
+      "version": "excluded and refitted",
+      "analysis": "primary (partition 42)",
+      "K": 500,
+      "contrast": "B - A",
+      "n_events": 96,
+      "n_campaign": 46,
+      "dLL": -0.0700269413345102,
+      "dAUC": 0.0022826086956521663,
+      "dBA": 0.06360869565217395,
+      "dLL_ci": [
+        -0.16292462084126288,
+        0.01701178453389723
+      ],
+      "p_LL": 0.1,
+      "dLL_event_sd": 0.04584673928348147,
+      "dAUC_ci": [
+        -0.03629406897808609,
+        0.04181141304347826
+      ],
+      "p_AUC": 0.88,
+      "repeat_dLL_mean": -0.0700269413345102,
+      "repeat_dLL_sd": 0.00813436980367156,
+      "repeat_dLL_min": -0.07914688386930992,
+      "repeat_dLL_max": -0.05427212136169272,
+      "repeats_favouring_A_LL": 10,
+      "repeats_favouring_A_AUC": 8,
+      "n_repeats": 10,
+      "events_improved_LL": 53,
+      "dBA_ci": [
+        0.015338376900876907,
+        0.12053666007905131
+      ],
+      "p_BA": 0.006,
+      "repeats_favouring_A_BA": 10,
+      "repeats_tied_BA": 0,
+      "repeat_dBA_min": 0.03347826086956518,
+      "repeat_dBA_max": 0.09608695652173915,
+      "p_LL_holm_across_K": 0.2,
+      "p_AUC_holm_across_K": 1.0,
+      "p_BA_holm_across_K": 0.018000000000000002
+    },
+    {
+      "version": "excluded and refitted",
+      "analysis": "primary (partition 42)",
+      "K": 500,
+      "contrast": "D - C",
+      "n_events": 96,
+      "n_campaign": 46,
+      "dLL": -0.06279652244829692,
+      "dAUC": 0.00982608695652174,
+      "dBA": 0.03965217391304347,
+      "dLL_ci": [
+        -0.12800642006797883,
+        -0.0003804779457935535
+      ],
+      "p_LL": 0.05,
+      "dLL_event_sd": 0.032375515665274426,
+      "dAUC_ci": [
+        -0.02192190104313907,
+        0.04528967548480649
+      ],
+      "p_AUC": 0.51,
+      "repeat_dLL_mean": -0.06279652244829692,
+      "repeat_dLL_sd": 0.011669270079369833,
+      "repeat_dLL_min": -0.08211991787911614,
+      "repeat_dLL_max": -0.042310540214991914,
+      "repeats_favouring_A_LL": 10,
+      "repeats_favouring_A_AUC": 10,
+      "n_repeats": 10,
+      "events_improved_LL": 64,
+      "dBA_ci": [
+        0.009080065359477104,
+        0.07946787464985997
+      ],
+      "p_BA": 0.018,
+      "repeats_favouring_A_BA": 10,
+      "repeats_tied_BA": 0,
+      "repeat_dBA_min": 0.010869565217391353,
+      "repeat_dBA_max": 0.052608695652173854,
+      "p_LL_holm_across_K": 0.1,
+      "p_AUC_holm_across_K": 0.516,
+      "p_BA_holm_across_K": 0.05399999999999999
+    },
+    {
+      "version": "excluded and refitted",
+      "analysis": "primary (partition 42)",
+      "K": 1000,
+      "contrast": "B - A",
+      "n_events": 72,
+      "n_campaign": 27,
+      "dLL": -0.10826964503236945,
+      "dAUC": 0.06576131687242796,
+      "dBA": 0.0874074074074074,
+      "dLL_ci": [
+        -0.21515374009606517,
+        0.0037828791483560786
+      ],
+      "p_LL": 0.056,
+      "dLL_event_sd": 0.05382223355571357,
+      "dAUC_ci": [
+        0.004788716041458211,
+        0.14292199675324666
+      ],
+      "p_AUC": 0.034,
+      "repeat_dLL_mean": -0.10826964503236947,
+      "repeat_dLL_sd": 0.009507109488747466,
+      "repeat_dLL_min": -0.12263894537209377,
+      "repeat_dLL_max": -0.09501179554191726,
+      "repeats_favouring_A_LL": 10,
+      "repeats_favouring_A_AUC": 10,
+      "n_repeats": 10,
+      "events_improved_LL": 46,
+      "dBA_ci": [
+        0.013452786688051353,
+        0.1666814551907718
+      ],
+      "p_BA": 0.01,
+      "repeats_favouring_A_BA": 10,
+      "repeats_tied_BA": 0,
+      "repeat_dBA_min": 0.07407407407407407,
+      "repeat_dBA_max": 0.11111111111111116,
+      "p_LL_holm_across_K": 0.168,
+      "p_AUC_holm_across_K": 0.10200000000000001,
+      "p_BA_holm_across_K": 0.02
+    },
+    {
+      "version": "excluded and refitted",
+      "analysis": "primary (partition 42)",
+      "K": 1000,
+      "contrast": "D - C",
+      "n_events": 72,
+      "n_campaign": 27,
+      "dLL": -0.12380888062985419,
+      "dAUC": 0.043539094650205765,
+      "dBA": 0.016666666666666673,
+      "dLL_ci": [
+        -0.21545403320697293,
+        -0.03728590947837207
+      ],
+      "p_LL": 0.006,
+      "dLL_event_sd": 0.045961731906458504,
+      "dAUC_ci": [
+        -0.005987501883254892,
+        0.12070036410366244
+      ],
+      "p_AUC": 0.15,
+      "repeat_dLL_mean": -0.1238088806298542,
+      "repeat_dLL_sd": 0.01838286920187604,
+      "repeat_dLL_min": -0.14295760825006879,
+      "repeat_dLL_max": -0.09150729750645797,
+      "repeats_favouring_A_LL": 10,
+      "repeats_favouring_A_AUC": 10,
+      "n_repeats": 10,
+      "events_improved_LL": 54,
+      "dBA_ci": [
+        -0.03666702127659576,
+        0.07881407563025207
+      ],
+      "p_BA": 0.556,
+      "repeats_favouring_A_BA": 7,
+      "repeats_tied_BA": 0,
+      "repeat_dBA_min": -0.02962962962962956,
+      "repeat_dBA_max": 0.051851851851851816,
+      "p_LL_holm_across_K": 0.018000000000000002,
+      "p_AUC_holm_across_K": 0.44999999999999996,
+      "p_BA_holm_across_K": 0.556
+    },
+    {
+      "version": "excluded and refitted",
+      "analysis": "sensitivity (10 partitions)",
+      "K": 250,
+      "contrast": "B - A",
+      "n_events": 100,
+      "n_campaign": 49,
+      "dLL": -0.03826087283056749,
+      "dAUC": -0.0005802320928371386,
+      "dBA": 0.027338935574229714,
+      "dLL_ci": [
+        -0.11485795134625894,
+        0.03214480739790189
+      ],
+      "p_LL": 0.29,
+      "dLL_event_sd": 0.03745373394868438,
+      "dAUC_ci": [
+        -0.03146880005411256,
+        0.024908763936619262
+      ],
+      "p_AUC": 0.954,
+      "repeat_dLL_mean": -0.03826087283056748,
+      "repeat_dLL_sd": 0.019215653918125068,
+      "repeat_dLL_min": -0.07559124025726127,
+      "repeat_dLL_max": 0.0277852748223913,
+      "repeats_favouring_A_LL": 95,
+      "repeats_favouring_A_AUC": 50,
+      "n_repeats": 100,
+      "events_improved_LL": 54,
+      "dBA_ci": [
+        -0.009456839603141804,
+        0.07053420752207945
+      ],
+      "p_BA": 0.156,
+      "repeats_favouring_A_BA": 92,
+      "repeats_tied_BA": 4,
+      "repeat_dBA_min": -0.02000800320128049,
+      "repeat_dBA_max": 0.0706282513005202,
+      "p_LL_holm_across_K": 0.29400000000000004,
+      "p_AUC_holm_across_K": 1.0,
+      "p_BA_holm_across_K": 0.156
+    },
+    {
+      "version": "excluded and refitted",
+      "analysis": "sensitivity (10 partitions)",
+      "K": 250,
+      "contrast": "D - C",
+      "n_events": 100,
+      "n_campaign": 49,
+      "dLL": -0.05677389584900054,
+      "dAUC": 0.017342937174869944,
+      "dBA": 0.02015206082432974,
+      "dLL_ci": [
+        -0.1362230689211208,
+        0.014105757561927031
+      ],
+      "p_LL": 0.104,
+      "dLL_event_sd": 0.03730272033705918,
+      "dAUC_ci": [
+        -0.011084267263361909,
+        0.0521310524891775
+      ],
+      "p_AUC": 0.212,
+      "repeat_dLL_mean": -0.05677389584900057,
+      "repeat_dLL_sd": 0.025381694443779978,
+      "repeat_dLL_min": -0.13900193293664137,
+      "repeat_dLL_max": 0.016052373508760126,
+      "repeats_favouring_A_LL": 98,
+      "repeats_favouring_A_AUC": 95,
+      "n_repeats": 100,
+      "events_improved_LL": 61,
+      "dBA_ci": [
+        -0.012236450785024073,
+        0.04993476515455641
+      ],
+      "p_BA": 0.178,
+      "repeats_favouring_A_BA": 80,
+      "repeats_tied_BA": 3,
+      "repeat_dBA_min": -0.020408163265306145,
+      "repeat_dBA_max": 0.07102841136454585,
+      "p_LL_holm_across_K": 0.14,
+      "p_AUC_holm_across_K": 0.424,
+      "p_BA_holm_across_K": 0.178
+    },
+    {
+      "version": "excluded and refitted",
+      "analysis": "sensitivity (10 partitions)",
+      "K": 500,
+      "contrast": "B - A",
+      "n_events": 96,
+      "n_campaign": 46,
+      "dLL": -0.06775238641202817,
+      "dAUC": 0.0014456521739130434,
+      "dBA": 0.058247826086956514,
+      "dLL_ci": [
+        -0.1601543479085916,
+        0.014508666121277746
+      ],
+      "p_LL": 0.11,
+      "dLL_event_sd": 0.04507847065073563,
+      "dAUC_ci": [
+        -0.03600020844739376,
+        0.03695330727708764
+      ],
+      "p_AUC": 0.894,
+      "repeat_dLL_mean": -0.06775238641202817,
+      "repeat_dLL_sd": 0.019196119087925193,
+      "repeat_dLL_min": -0.09878489342102716,
+      "repeat_dLL_max": -0.0103491088151198,
+      "repeats_favouring_A_LL": 100,
+      "repeats_favouring_A_AUC": 60,
+      "n_repeats": 100,
+      "events_improved_LL": 55,
+      "dBA_ci": [
+        0.01601639044506688,
+        0.11144637805539058
+      ],
+      "p_BA": 0.01,
+      "repeats_favouring_A_BA": 100,
+      "repeats_tied_BA": 0,
+      "repeat_dBA_min": 0.010869565217391242,
+      "repeat_dBA_max": 0.1069565217391305,
+      "p_LL_holm_across_K": 0.29400000000000004,
+      "p_AUC_holm_across_K": 1.0,
+      "p_BA_holm_across_K": 0.02
+    },
+    {
+      "version": "excluded and refitted",
+      "analysis": "sensitivity (10 partitions)",
+      "K": 500,
+      "contrast": "D - C",
+      "n_events": 96,
+      "n_campaign": 46,
+      "dLL": -0.05945728565802861,
+      "dAUC": 0.011426086956521737,
+      "dBA": 0.03321304347826086,
+      "dLL_ci": [
+        -0.12984863683340092,
+        0.005820140219264559
+      ],
+      "p_LL": 0.07,
+      "dLL_event_sd": 0.03425102841442837,
+      "dAUC_ci": [
+        -0.020723969247713876,
+        0.048024922673243285
+      ],
+      "p_AUC": 0.468,
+      "repeat_dLL_mean": -0.05945728565802859,
+      "repeat_dLL_sd": 0.037978555064391434,
+      "repeat_dLL_min": -0.18638698503611048,
+      "repeat_dLL_max": 0.05185406552915559,
+      "repeats_favouring_A_LL": 89,
+      "repeats_favouring_A_AUC": 91,
+      "n_repeats": 100,
+      "events_improved_LL": 64,
+      "dBA_ci": [
+        0.0005774929857376774,
+        0.06946503410059678
+      ],
+      "p_BA": 0.044,
+      "repeats_favouring_A_BA": 95,
+      "repeats_tied_BA": 1,
+      "repeat_dBA_min": -0.020000000000000018,
+      "repeat_dBA_max": 0.07347826086956522,
+      "p_LL_holm_across_K": 0.14,
+      "p_AUC_holm_across_K": 0.468,
+      "p_BA_holm_across_K": 0.088
+    },
+    {
+      "version": "excluded and refitted",
+      "analysis": "sensitivity (10 partitions)",
+      "K": 1000,
+      "contrast": "B - A",
+      "n_events": 72,
+      "n_campaign": 27,
+      "dLL": -0.09768917782099235,
+      "dAUC": 0.06421810699588476,
+      "dBA": 0.09385185185185183,
+      "dLL_ci": [
+        -0.1993264053153213,
+        0.019014329012654037
+      ],
+      "p_LL": 0.098,
+      "dLL_event_sd": 0.05419137170629132,
+      "dAUC_ci": [
+        0.002910493311036785,
+        0.13505439253647586
+      ],
+      "p_AUC": 0.034,
+      "repeat_dLL_mean": -0.09768917782099235,
+      "repeat_dLL_sd": 0.02071128494571312,
+      "repeat_dLL_min": -0.13584849453719514,
+      "repeat_dLL_max": -0.04568988154295092,
+      "repeats_favouring_A_LL": 100,
+      "repeats_favouring_A_AUC": 100,
+      "n_repeats": 100,
+      "events_improved_LL": 43,
+      "dBA_ci": [
+        0.02734645458578686,
+        0.1679045268256334
+      ],
+      "p_BA": 0.006,
+      "repeats_favouring_A_BA": 100,
+      "repeats_tied_BA": 0,
+      "repeat_dBA_min": 0.0444444444444444,
+      "repeat_dBA_max": 0.1777777777777778,
+      "p_LL_holm_across_K": 0.29400000000000004,
+      "p_AUC_holm_across_K": 0.10200000000000001,
+      "p_BA_holm_across_K": 0.018000000000000002
+    },
+    {
+      "version": "excluded and refitted",
+      "analysis": "sensitivity (10 partitions)",
+      "K": 1000,
+      "contrast": "D - C",
+      "n_events": 72,
+      "n_campaign": 27,
+      "dLL": -0.12935911523015323,
+      "dAUC": 0.04274897119341564,
+      "dBA": 0.04474074074074073,
+      "dLL_ci": [
+        -0.20573049406179889,
+        -0.053214546694644385
+      ],
+      "p_LL": 0.006,
+      "dLL_event_sd": 0.039413483797361766,
+      "dAUC_ci": [
+        -0.008039364010475121,
+        0.11055890411994837
+      ],
+      "p_AUC": 0.128,
+      "repeat_dLL_mean": -0.1293591152301532,
+      "repeat_dLL_sd": 0.054742624962206644,
+      "repeat_dLL_min": -0.25891514203150495,
+      "repeat_dLL_max": 0.007036708140350807,
+      "repeats_favouring_A_LL": 98,
+      "repeats_favouring_A_AUC": 100,
+      "n_repeats": 100,
+      "events_improved_LL": 57,
+      "dBA_ci": [
+        0.004109666264718382,
+        0.09993890100851151
+      ],
+      "p_BA": 0.026,
+      "repeats_favouring_A_BA": 95,
+      "repeats_tied_BA": 0,
+      "repeat_dBA_min": -0.02962962962962956,
+      "repeat_dBA_max": 0.12222222222222223,
+      "p_LL_holm_across_K": 0.018000000000000002,
+      "p_AUC_holm_across_K": 0.384,
+      "p_BA_holm_across_K": 0.078
+    },
+    {
+      "version": "original fits, two events dropped from scoring only",
+      "analysis": "primary (partition 42)",
+      "K": 250,
+      "contrast": "B - A",
+      "n_events": 100,
+      "n_campaign": 49,
+      "dLL": -0.03663930802401709,
+      "dAUC": -0.0017607042817126884,
+      "dBA": 0.029391756702681106,
+      "dLL_ci": [
+        -0.11524864345712837,
+        0.03374936572141721
+      ],
+      "p_LL": 0.32,
+      "dLL_event_sd": 0.038319743639171656,
+      "dAUC_ci": [
+        -0.033215827922077924,
+        0.02628426370548221
+      ],
+      "p_AUC": 0.99,
+      "repeat_dLL_mean": -0.03663930802401709,
+      "repeat_dLL_sd": 0.00788349184338521,
+      "repeat_dLL_min": -0.04711480545428002,
+      "repeat_dLL_max": -0.025229307387961503,
+      "repeats_favouring_A_LL": 10,
+      "repeats_favouring_A_AUC": 3,
+      "n_repeats": 10,
+      "events_improved_LL": 50,
+      "dBA_ci": [
+        -0.00674995126686848,
+        0.07209097388955579
+      ],
+      "p_BA": 0.122,
+      "repeats_favouring_A_BA": 10,
+      "repeats_tied_BA": 0,
+      "repeat_dBA_min": 0.009803921568627527,
+      "repeat_dBA_max": 0.07102841136454585,
+      "p_LL_holm_across_K": 0.32,
+      "p_AUC_holm_across_K": 1.0,
+      "p_BA_holm_across_K": 0.122
+    },
+    {
+      "version": "original fits, two events dropped from scoring only",
+      "analysis": "primary (partition 42)",
+      "K": 250,
+      "contrast": "D - C",
+      "n_events": 100,
+      "n_campaign": 49,
+      "dLL": -0.04755562532190358,
+      "dAUC": 0.01104441776710684,
+      "dBA": 0.020408163265306135,
+      "dLL_ci": [
+        -0.14383923038339194,
+        0.03561532049108594
+      ],
+      "p_LL": 0.262,
+      "dLL_event_sd": 0.045149467654879274,
+      "dAUC_ci": [
+        -0.0206961432048928,
+        0.0498782857767233
+      ],
+      "p_AUC": 0.524,
+      "repeat_dLL_mean": -0.04755562532190361,
+      "repeat_dLL_sd": 0.0216719957684767,
+      "repeat_dLL_min": -0.09162348638977781,
+      "repeat_dLL_max": -0.021178368977366344,
+      "repeats_favouring_A_LL": 10,
+      "repeats_favouring_A_AUC": 8,
+      "n_repeats": 10,
+      "events_improved_LL": 59,
+      "dBA_ci": [
+        -0.010310831529581576,
+        0.04879067081378007
+      ],
+      "p_BA": 0.152,
+      "repeats_favouring_A_BA": 9,
+      "repeats_tied_BA": 1,
+      "repeat_dBA_min": 0.0,
+      "repeat_dBA_max": 0.04081632653061229,
+      "p_LL_holm_across_K": 0.262,
+      "p_AUC_holm_across_K": 1.0,
+      "p_BA_holm_across_K": 0.304
+    },
+    {
+      "version": "original fits, two events dropped from scoring only",
+      "analysis": "primary (partition 42)",
+      "K": 500,
+      "contrast": "B - A",
+      "n_events": 96,
+      "n_campaign": 46,
+      "dLL": -0.06963333460482445,
+      "dAUC": 0.0018478260869565165,
+      "dBA": 0.07230434782608697,
+      "dLL_ci": [
+        -0.16155392982289124,
+        0.017241953542127642
+      ],
+      "p_LL": 0.11,
+      "dLL_event_sd": 0.04602930635730772,
+      "dAUC_ci": [
+        -0.03672134506118881,
+        0.04054704284581548
+      ],
+      "p_AUC": 0.902,
+      "repeat_dLL_mean": -0.06963333460482443,
+      "repeat_dLL_sd": 0.00812451861623247,
+      "repeat_dLL_min": -0.07883012403771776,
+      "repeat_dLL_max": -0.05382833590070903,
+      "repeats_favouring_A_LL": 10,
+      "repeats_favouring_A_AUC": 8,
+      "n_repeats": 10,
+      "events_improved_LL": 54,
+      "dBA_ci": [
+        0.02045744206773614,
+        0.13078098463252089
+      ],
+      "p_BA": 0.002,
+      "repeats_favouring_A_BA": 10,
+      "repeats_tied_BA": 0,
+      "repeat_dBA_min": 0.05434782608695654,
+      "repeat_dBA_max": 0.11782608695652175,
+      "p_LL_holm_across_K": 0.22,
+      "p_AUC_holm_across_K": 1.0,
+      "p_BA_holm_across_K": 0.006
+    },
+    {
+      "version": "original fits, two events dropped from scoring only",
+      "analysis": "primary (partition 42)",
+      "K": 500,
+      "contrast": "D - C",
+      "n_events": 96,
+      "n_campaign": 46,
+      "dLL": -0.09300640893147129,
+      "dAUC": 0.011391304347826082,
+      "dBA": 0.03739130434782608,
+      "dLL_ci": [
+        -0.20196231282294916,
+        -0.0031319170010999623
+      ],
+      "p_LL": 0.044,
+      "dLL_event_sd": 0.050318281030364835,
+      "dAUC_ci": [
+        -0.028004742712582412,
+        0.058057278151987884
+      ],
+      "p_AUC": 0.584,
+      "repeat_dLL_mean": -0.09300640893147129,
+      "repeat_dLL_sd": 0.028566833101548613,
+      "repeat_dLL_min": -0.13030315556684832,
+      "repeat_dLL_max": -0.04080833171265883,
+      "repeats_favouring_A_LL": 10,
+      "repeats_favouring_A_AUC": 9,
+      "n_repeats": 10,
+      "events_improved_LL": 59,
+      "dBA_ci": [
+        0.0028430308293530024,
+        0.07649912587412576
+      ],
+      "p_BA": 0.026,
+      "repeats_favouring_A_BA": 10,
+      "repeats_tied_BA": 0,
+      "repeat_dBA_min": 0.02086956521739136,
+      "repeat_dBA_max": 0.06173913043478252,
+      "p_LL_holm_across_K": 0.088,
+      "p_AUC_holm_across_K": 1.0,
+      "p_BA_holm_across_K": 0.078
+    },
+    {
+      "version": "original fits, two events dropped from scoring only",
+      "analysis": "primary (partition 42)",
+      "K": 1000,
+      "contrast": "B - A",
+      "n_events": 72,
+      "n_campaign": 27,
+      "dLL": -0.11552487441796758,
+      "dAUC": 0.06781893004115225,
+      "dBA": 0.09444444444444443,
+      "dLL_ci": [
+        -0.21903807952774804,
+        -0.003173043688151237
+      ],
+      "p_LL": 0.046,
+      "dLL_event_sd": 0.053660267610156916,
+      "dAUC_ci": [
+        0.006807022152175816,
+        0.14364809782608698
+      ],
+      "p_AUC": 0.026,
+      "repeat_dLL_mean": -0.11552487441796758,
+      "repeat_dLL_sd": 0.014028062463218199,
+      "repeat_dLL_min": -0.13319603411522885,
+      "repeat_dLL_max": -0.089434124829506,
+      "repeats_favouring_A_LL": 10,
+      "repeats_favouring_A_AUC": 10,
+      "n_repeats": 10,
+      "events_improved_LL": 47,
+      "dBA_ci": [
+        0.0173603897082211,
+        0.18264745670995672
+      ],
+      "p_BA": 0.018,
+      "repeats_favouring_A_BA": 10,
+      "repeats_tied_BA": 0,
+      "repeat_dBA_min": 0.06296296296296289,
+      "repeat_dBA_max": 0.11851851851851858,
+      "p_LL_holm_across_K": 0.138,
+      "p_AUC_holm_across_K": 0.078,
+      "p_BA_holm_across_K": 0.036
+    },
+    {
+      "version": "original fits, two events dropped from scoring only",
+      "analysis": "primary (partition 42)",
+      "K": 1000,
+      "contrast": "D - C",
+      "n_events": 72,
+      "n_campaign": 27,
+      "dLL": -0.13997714860264265,
+      "dAUC": 0.046666666666666676,
+      "dBA": 0.03185185185185184,
+      "dLL_ci": [
+        -0.21011050742975346,
+        -0.07535306405724955
+      ],
+      "p_LL": 0.0,
+      "dLL_event_sd": 0.03368562225996376,
+      "dAUC_ci": [
+        0.0004101076823643982,
+        0.12128472222222221
+      ],
+      "p_AUC": 0.042,
+      "repeat_dLL_mean": -0.13997714860264268,
+      "repeat_dLL_sd": 0.010462695209675792,
+      "repeat_dLL_min": -0.1548026279061755,
+      "repeat_dLL_max": -0.12261124909514542,
+      "repeats_favouring_A_LL": 10,
+      "repeats_favouring_A_AUC": 10,
+      "n_repeats": 10,
+      "events_improved_LL": 55,
+      "dBA_ci": [
+        -0.012596889678084582,
+        0.09154520718594283
+      ],
+      "p_BA": 0.198,
+      "repeats_favouring_A_BA": 10,
+      "repeats_tied_BA": 0,
+      "repeat_dBA_min": 0.007407407407407418,
+      "repeat_dBA_max": 0.07037037037037042,
+      "p_LL_holm_across_K": 0.0,
+      "p_AUC_holm_across_K": 0.126,
+      "p_BA_holm_across_K": 0.304
+    },
+    {
+      "version": "original fits, two events dropped from scoring only",
+      "analysis": "sensitivity (10 partitions)",
+      "K": 250,
+      "contrast": "B - A",
+      "n_events": 100,
+      "n_campaign": 49,
+      "dLL": -0.04163632079628912,
+      "dAUC": -0.0004441776710684275,
+      "dBA": 0.026888755502200906,
+      "dLL_ci": [
+        -0.11795033733827118,
+        0.030066057516279637
+      ],
+      "p_LL": 0.266,
+      "dLL_event_sd": 0.03789492278357341,
+      "dAUC_ci": [
+        -0.03153161255411256,
+        0.025081090209451408
+      ],
+      "p_AUC": 0.952,
+      "repeat_dLL_mean": -0.04163632079628912,
+      "repeat_dLL_sd": 0.018476746652957142,
+      "repeat_dLL_min": -0.08018223510102673,
+      "repeat_dLL_max": 0.029596256908231963,
+      "repeats_favouring_A_LL": 99,
+      "repeats_favouring_A_AUC": 44,
+      "n_repeats": 100,
+      "events_improved_LL": 54,
+      "dBA_ci": [
+        -0.009093668637359876,
+        0.07038305322128854
+      ],
+      "p_BA": 0.174,
+      "repeats_favouring_A_BA": 94,
+      "repeats_tied_BA": 4,
+      "repeat_dBA_min": -0.009803921568627416,
+      "repeat_dBA_max": 0.07102841136454585,
+      "p_LL_holm_across_K": 0.266,
+      "p_AUC_holm_across_K": 1.0,
+      "p_BA_holm_across_K": 0.174
+    },
+    {
+      "version": "original fits, two events dropped from scoring only",
+      "analysis": "sensitivity (10 partitions)",
+      "K": 250,
+      "contrast": "D - C",
+      "n_events": 100,
+      "n_campaign": 49,
+      "dLL": -0.0612662110711324,
+      "dAUC": 0.01777110844337734,
+      "dBA": 0.018455382152861147,
+      "dLL_ci": [
+        -0.14114154823673628,
+        0.00969814588338502
+      ],
+      "p_LL": 0.076,
+      "dLL_event_sd": 0.0368853566120597,
+      "dAUC_ci": [
+        -0.009725777697395629,
+        0.05125947097589034
+      ],
+      "p_AUC": 0.188,
+      "repeat_dLL_mean": -0.0612662110711324,
+      "repeat_dLL_sd": 0.02732017514327953,
+      "repeat_dLL_min": -0.14680890171104433,
+      "repeat_dLL_max": 0.027758191935946572,
+      "repeats_favouring_A_LL": 99,
+      "repeats_favouring_A_AUC": 95,
+      "n_repeats": 100,
+      "events_improved_LL": 60,
+      "dBA_ci": [
+        -0.010739555604850607,
+        0.045027015978805325
+      ],
+      "p_BA": 0.17,
+      "repeats_favouring_A_BA": 80,
+      "repeats_tied_BA": 10,
+      "repeat_dBA_min": -0.04001600640256109,
+      "repeat_dBA_max": 0.06082432973189278,
+      "p_LL_holm_across_K": 0.14,
+      "p_AUC_holm_across_K": 0.42599999999999993,
+      "p_BA_holm_across_K": 0.17
+    },
+    {
+      "version": "original fits, two events dropped from scoring only",
+      "analysis": "sensitivity (10 partitions)",
+      "K": 500,
+      "contrast": "B - A",
+      "n_events": 96,
+      "n_campaign": 46,
+      "dLL": -0.06652765741117432,
+      "dAUC": 0.0012413043478260843,
+      "dBA": 0.06641739130434782,
+      "dLL_ci": [
+        -0.15933369805735095,
+        0.01612787696596403
+      ],
+      "p_LL": 0.12,
+      "dLL_event_sd": 0.04534687607408994,
+      "dAUC_ci": [
+        -0.03638650656516076,
+        0.03686424121532711
+      ],
+      "p_AUC": 0.904,
+      "repeat_dLL_mean": -0.06652765741117435,
+      "repeat_dLL_sd": 0.01931035002303367,
+      "repeat_dLL_min": -0.10081989553008182,
+      "repeat_dLL_max": 0.0012740899833726578,
+      "repeats_favouring_A_LL": 99,
+      "repeats_favouring_A_AUC": 60,
+      "n_repeats": 100,
+      "events_improved_LL": 52,
+      "dBA_ci": [
+        0.020053847177442446,
+        0.12224360916810774
+      ],
+      "p_BA": 0.004,
+      "repeats_favouring_A_BA": 100,
+      "repeats_tied_BA": 0,
+      "repeat_dBA_min": 0.021739130434782594,
+      "repeat_dBA_max": 0.11782608695652175,
+      "p_LL_holm_across_K": 0.24,
+      "p_AUC_holm_across_K": 1.0,
+      "p_BA_holm_across_K": 0.012
+    },
+    {
+      "version": "original fits, two events dropped from scoring only",
+      "analysis": "sensitivity (10 partitions)",
+      "K": 500,
+      "contrast": "D - C",
+      "n_events": 96,
+      "n_campaign": 46,
+      "dLL": -0.06357037976728158,
+      "dAUC": 0.012221739130434783,
+      "dBA": 0.035630434782608675,
+      "dLL_ci": [
+        -0.13843684499252878,
+        0.0044031496258494715
+      ],
+      "p_LL": 0.07,
+      "dLL_event_sd": 0.03620970298077441,
+      "dAUC_ci": [
+        -0.021182279514417243,
+        0.05085665081521739
+      ],
+      "p_AUC": 0.444,
+      "repeat_dLL_mean": -0.0635703797672816,
+      "repeat_dLL_sd": 0.041949276734457544,
+      "repeat_dLL_min": -0.18575554375792147,
+      "repeat_dLL_max": 0.03424531665999274,
+      "repeats_favouring_A_LL": 94,
+      "repeats_favouring_A_AUC": 91,
+      "n_repeats": 100,
+      "events_improved_LL": 64,
+      "dBA_ci": [
+        9.932696482847379e-05,
+        0.07374197830728038
+      ],
+      "p_BA": 0.05,
+      "repeats_favouring_A_BA": 98,
+      "repeats_tied_BA": 1,
+      "repeat_dBA_min": -0.0008695652173912327,
+      "repeat_dBA_max": 0.08347826086956522,
+      "p_LL_holm_across_K": 0.14,
+      "p_AUC_holm_across_K": 0.444,
+      "p_BA_holm_across_K": 0.15000000000000002
+    },
+    {
+      "version": "original fits, two events dropped from scoring only",
+      "analysis": "sensitivity (10 partitions)",
+      "K": 1000,
+      "contrast": "B - A",
+      "n_events": 72,
+      "n_campaign": 27,
+      "dLL": -0.10326767226994397,
+      "dAUC": 0.06511522633744855,
+      "dBA": 0.08877777777777776,
+      "dLL_ci": [
+        -0.20516733469985535,
+        0.012085939764374451
+      ],
+      "p_LL": 0.078,
+      "dLL_event_sd": 0.05416266710355537,
+      "dAUC_ci": [
+        0.002929400083612027,
+        0.13668215909090906
+      ],
+      "p_AUC": 0.03,
+      "repeat_dLL_mean": -0.10326767226994399,
+      "repeat_dLL_sd": 0.0224963186551757,
+      "repeat_dLL_min": -0.13423327695956766,
+      "repeat_dLL_max": -0.04407626228266934,
+      "repeats_favouring_A_LL": 100,
+      "repeats_favouring_A_AUC": 100,
+      "n_repeats": 100,
+      "events_improved_LL": 46,
+      "dBA_ci": [
+        0.018274090935127434,
+        0.16760812609415096
+      ],
+      "p_BA": 0.016,
+      "repeats_favouring_A_BA": 100,
+      "repeats_tied_BA": 0,
+      "repeat_dBA_min": 0.0444444444444444,
+      "repeat_dBA_max": 0.17407407407407405,
+      "p_LL_holm_across_K": 0.23399999999999999,
+      "p_AUC_holm_across_K": 0.09,
+      "p_BA_holm_across_K": 0.032
+    },
+    {
+      "version": "original fits, two events dropped from scoring only",
+      "analysis": "sensitivity (10 partitions)",
+      "K": 1000,
+      "contrast": "D - C",
+      "n_events": 72,
+      "n_campaign": 27,
+      "dLL": -0.1311577709402954,
+      "dAUC": 0.04132510288065844,
+      "dBA": 0.03977777777777778,
+      "dLL_ci": [
+        -0.21262121405347695,
+        -0.05042881396419797
+      ],
+      "p_LL": 0.002,
+      "dLL_event_sd": 0.040404694133913885,
+      "dAUC_ci": [
+        -0.008473536487570163,
+        0.10936616875862468
+      ],
+      "p_AUC": 0.142,
+      "repeat_dLL_mean": -0.1311577709402954,
+      "repeat_dLL_sd": 0.04442329425468708,
+      "repeat_dLL_min": -0.24928808876838143,
+      "repeat_dLL_max": 0.013570523332277528,
+      "repeats_favouring_A_LL": 99,
+      "repeats_favouring_A_AUC": 100,
+      "n_repeats": 100,
+      "events_improved_LL": 57,
+      "dBA_ci": [
+        -0.0031960317460317383,
+        0.09838419489688419
+      ],
+      "p_BA": 0.074,
+      "repeats_favouring_A_BA": 93,
+      "repeats_tied_BA": 2,
+      "repeat_dBA_min": -0.014814814814814836,
+      "repeat_dBA_max": 0.1074074074074074,
+      "p_LL_holm_across_K": 0.006,
+      "p_AUC_holm_across_K": 0.42599999999999993,
+      "p_BA_holm_across_K": 0.15000000000000002
+    }
+  ],
+  "comparison_with_original": [
+    {
+      "analysis": "primary (partition 42)",
+      "K": 250,
+      "contrast": "B - A",
+      "n_events_orig": 102,
+      "n_events_excl": 100,
+      "dLL_orig": -0.035903662656291656,
+      "dLL_ci_orig": [
+        -0.11243209167753376,
+        0.03786961335592287
+      ],
+      "p_LL_holm_orig": 0.346,
+      "dLL_excl": -0.03934584570340123,
+      "dLL_ci_excl": [
+        -0.11742743140940078,
+        0.029741073878237222
+      ],
+      "p_LL_holm_excl": 0.288,
+      "dLL_change": -0.0034421830471095746,
+      "dAUC_orig": -0.0016916570549788458,
+      "dAUC_ci_orig": [
+        -0.033966301169590644,
+        0.025464199075856755
+      ],
+      "p_AUC_holm_orig": 1.0,
+      "dAUC_excl": -0.0011204481792717158,
+      "dAUC_ci_excl": [
+        -0.03176010551948054,
+        0.026606767707082844
+      ],
+      "p_AUC_holm_excl": 1.0,
+      "dAUC_change": 0.00057120887570713,
+      "dBA_orig": 0.02843137254901954,
+      "dBA_ci_orig": [
+        -0.006643812416270851,
+        0.06568627450980395
+      ],
+      "p_BA_holm_orig": 0.146,
+      "dBA_excl": 0.03339335734293719,
+      "dBA_ci_excl": [
+        -0.004023033794956536,
+        0.07719537815126053
+      ],
+      "p_BA_holm_excl": 0.08,
+      "dBA_change": 0.0049619847939176495,
+      "repeats_favouring_lensd_LL_orig": 10,
+      "repeats_favouring_lensd_LL_excl": 10,
+      "n_repeats": 10
+    },
+    {
+      "analysis": "primary (partition 42)",
+      "K": 250,
+      "contrast": "D - C",
+      "n_events_orig": 102,
+      "n_events_excl": 100,
+      "dLL_orig": -0.04662194486404649,
+      "dLL_ci_orig": [
+        -0.1344564170908961,
+        0.036611647571860716
+      ],
+      "p_LL_holm_orig": 0.27,
+      "dLL_excl": -0.052503312762983756,
+      "dLL_ci_excl": [
+        -0.11824268582398893,
+        0.008372142173871418
+      ],
+      "p_LL_holm_excl": 0.1,
+      "dLL_change": -0.005881367898937263,
+      "dAUC_orig": 0.010611303344867363,
+      "dAUC_ci_orig": [
+        -0.019961910992255177,
+        0.04622685185185184
+      ],
+      "p_AUC_holm_orig": 1.0,
+      "dAUC_excl": 0.01360544217687074,
+      "dAUC_ci_excl": [
+        -0.011049597715218271,
+        0.04291131732828953
+      ],
+      "p_AUC_holm_excl": 0.516,
+      "dAUC_change": 0.002994138832003378,
+      "dBA_orig": 0.019607843137254877,
+      "dBA_ci_orig": [
+        -0.008017307692307697,
+        0.04669893658459189
+      ],
+      "p_BA_holm_orig": 0.3,
+      "dBA_excl": 0.022488995598239313,
+      "dBA_ci_excl": [
+        -0.012907533013205245,
+        0.057345555371907185
+      ],
+      "p_BA_holm_excl": 0.344,
+      "dBA_change": 0.002881152460984436,
+      "repeats_favouring_lensd_LL_orig": 10,
+      "repeats_favouring_lensd_LL_excl": 10,
+      "n_repeats": 10
+    },
+    {
+      "analysis": "primary (partition 42)",
+      "K": 500,
+      "contrast": "B - A",
+      "n_events_orig": 98,
+      "n_events_excl": 96,
+      "dLL_orig": -0.06821163377677168,
+      "dLL_ci_orig": [
+        -0.16314413560235097,
+        0.0184964619897214
+      ],
+      "p_LL_holm_orig": 0.268,
+      "dLL_excl": -0.0700269413345102,
+      "dLL_ci_excl": [
+        -0.16292462084126288,
+        0.01701178453389723
+      ],
+      "p_LL_holm_excl": 0.2,
+      "dLL_change": -0.0018153075577385241,
+      "dAUC_orig": 0.0017708333333333437,
+      "dAUC_ci_orig": [
+        -0.03721985069452665,
+        0.03764950355351168
+      ],
+      "p_AUC_holm_orig": 1.0,
+      "dAUC_excl": 0.0022826086956521663,
+      "dAUC_ci_excl": [
+        -0.03629406897808609,
+        0.04181141304347826
+      ],
+      "p_AUC_holm_excl": 1.0,
+      "dAUC_change": 0.0005117753623188226,
+      "dBA_orig": 0.06954166666666665,
+      "dBA_ci_orig": [
+        0.020482260049220633,
+        0.1265477063739488
+      ],
+      "p_BA_holm_orig": 0.0,
+      "dBA_excl": 0.06360869565217395,
+      "dBA_ci_excl": [
+        0.015338376900876907,
+        0.12053666007905131
+      ],
+      "p_BA_holm_excl": 0.018000000000000002,
+      "dBA_change": -0.005932971014492708,
+      "repeats_favouring_lensd_LL_orig": 10,
+      "repeats_favouring_lensd_LL_excl": 10,
+      "n_repeats": 10
+    },
+    {
+      "analysis": "primary (partition 42)",
+      "K": 500,
+      "contrast": "D - C",
+      "n_events_orig": 98,
+      "n_events_excl": 96,
+      "dLL_orig": -0.09110846714182022,
+      "dLL_ci_orig": [
+        -0.1839983276530645,
+        -0.0008515824457486336
+      ],
+      "p_LL_holm_orig": 0.096,
+      "dLL_excl": -0.06279652244829692,
+      "dLL_ci_excl": [
+        -0.12800642006797883,
+        -0.0003804779457935535
+      ],
+      "p_LL_holm_excl": 0.1,
+      "dLL_change": 0.0283119446935233,
+      "dAUC_orig": 0.01091666666666664,
+      "dAUC_ci_orig": [
+        -0.02638581538594904,
+        0.050235771653770564
+      ],
+      "p_AUC_holm_orig": 1.0,
+      "dAUC_excl": 0.00982608695652174,
+      "dAUC_ci_excl": [
+        -0.02192190104313907,
+        0.04528967548480649
+      ],
+      "p_AUC_holm_excl": 0.516,
+      "dAUC_change": -0.0010905797101449007,
+      "dBA_orig": 0.036666666666666736,
+      "dBA_ci_orig": [
+        0.0026488772513323534,
+        0.07538163474366304
+      ],
+      "p_BA_holm_orig": 0.12,
+      "dBA_excl": 0.03965217391304347,
+      "dBA_ci_excl": [
+        0.009080065359477104,
+        0.07946787464985997
+      ],
+      "p_BA_holm_excl": 0.05399999999999999,
+      "dBA_change": 0.002985507246376737,
+      "repeats_favouring_lensd_LL_orig": 10,
+      "repeats_favouring_lensd_LL_excl": 10,
+      "n_repeats": 10
+    },
+    {
+      "analysis": "primary (partition 42)",
+      "K": 1000,
+      "contrast": "B - A",
+      "n_events_orig": 73,
+      "n_events_excl": 72,
+      "dLL_orig": -0.1139137763325931,
+      "dLL_ci_orig": [
+        -0.2179052444936185,
+        -0.010956606953368572
+      ],
+      "p_LL_holm_orig": 0.084,
+      "dLL_excl": -0.10826964503236945,
+      "dLL_ci_excl": [
+        -0.21515374009606517,
+        0.0037828791483560786
+      ],
+      "p_LL_holm_excl": 0.168,
+      "dLL_change": 0.005644131300223648,
+      "dAUC_orig": 0.06539682539682544,
+      "dAUC_ci_orig": [
+        0.01008124999999999,
+        0.1442277578743096
+      ],
+      "p_AUC_holm_orig": 0.07200000000000001,
+      "dAUC_excl": 0.06576131687242796,
+      "dAUC_ci_excl": [
+        0.004788716041458211,
+        0.14292199675324666
+      ],
+      "p_AUC_holm_excl": 0.10200000000000001,
+      "dAUC_change": 0.00036449147560252415,
+      "dBA_orig": 0.0908730158730158,
+      "dBA_ci_orig": [
+        0.009879814151365907,
+        0.1763313475303009
+      ],
+      "p_BA_holm_orig": 0.056,
+      "dBA_excl": 0.0874074074074074,
+      "dBA_ci_excl": [
+        0.013452786688051353,
+        0.1666814551907718
+      ],
+      "p_BA_holm_excl": 0.02,
+      "dBA_change": -0.003465608465608394,
+      "repeats_favouring_lensd_LL_orig": 10,
+      "repeats_favouring_lensd_LL_excl": 10,
+      "n_repeats": 10
+    },
+    {
+      "analysis": "primary (partition 42)",
+      "K": 1000,
+      "contrast": "D - C",
+      "n_events_orig": 73,
+      "n_events_excl": 72,
+      "dLL_orig": -0.13806207587076663,
+      "dLL_ci_orig": [
+        -0.2079974989322863,
+        -0.07579001390257553
+      ],
+      "p_LL_holm_orig": 0.0,
+      "dLL_excl": -0.12380888062985419,
+      "dLL_ci_excl": [
+        -0.21545403320697293,
+        -0.03728590947837207
+      ],
+      "p_LL_holm_excl": 0.018000000000000002,
+      "dLL_change": 0.014253195240912439,
+      "dAUC_orig": 0.04499999999999997,
+      "dAUC_ci_orig": [
+        0.0020909859970168507,
+        0.11090079365079358
+      ],
+      "p_AUC_holm_orig": 0.066,
+      "dAUC_excl": 0.043539094650205765,
+      "dAUC_ci_excl": [
+        -0.005987501883254892,
+        0.12070036410366244
+      ],
+      "p_AUC_holm_excl": 0.44999999999999996,
+      "dAUC_change": -0.001460905349794206,
+      "dBA_orig": 0.03138888888888889,
+      "dBA_ci_orig": [
+        -0.00976598807950495,
+        0.08555919236497042
+      ],
+      "p_BA_holm_orig": 0.3,
+      "dBA_excl": 0.016666666666666673,
+      "dBA_ci_excl": [
+        -0.03666702127659576,
+        0.07881407563025207
+      ],
+      "p_BA_holm_excl": 0.556,
+      "dBA_change": -0.014722222222222216,
+      "repeats_favouring_lensd_LL_orig": 10,
+      "repeats_favouring_lensd_LL_excl": 10,
+      "n_repeats": 10
+    },
+    {
+      "analysis": "sensitivity (10 partitions)",
+      "K": 250,
+      "contrast": "B - A",
+      "n_events_orig": 102,
+      "n_events_excl": 100,
+      "dLL_orig": -0.040811395215362756,
+      "dLL_ci_orig": [
+        -0.11443527073920855,
+        0.03133212447742167
+      ],
+      "p_LL_holm_orig": 0.292,
+      "dLL_excl": -0.03826087283056749,
+      "dLL_ci_excl": [
+        -0.11485795134625894,
+        0.03214480739790189
+      ],
+      "p_LL_holm_excl": 0.29400000000000004,
+      "dLL_change": 0.0025505223847952646,
+      "dAUC_orig": -0.000426758938869668,
+      "dAUC_ci_orig": [
+        -0.03131707219332746,
+        0.025883522999578242
+      ],
+      "p_AUC_holm_orig": 1.0,
+      "dAUC_excl": -0.0005802320928371386,
+      "dAUC_ci_excl": [
+        -0.03146880005411256,
+        0.024908763936619262
+      ],
+      "p_AUC_holm_excl": 1.0,
+      "dAUC_change": -0.00015347315396747055,
+      "dBA_orig": 0.025980392156862687,
+      "dBA_ci_orig": [
+        -0.009101894409937888,
+        0.06309502876575321
+      ],
+      "p_BA_holm_orig": 0.174,
+      "dBA_excl": 0.027338935574229714,
+      "dBA_ci_excl": [
+        -0.009456839603141804,
+        0.07053420752207945
+      ],
+      "p_BA_holm_excl": 0.156,
+      "dBA_change": 0.0013585434173670266,
+      "repeats_favouring_lensd_LL_orig": 99,
+      "repeats_favouring_lensd_LL_excl": 95,
+      "n_repeats": 100
+    },
+    {
+      "analysis": "sensitivity (10 partitions)",
+      "K": 250,
+      "contrast": "D - C",
+      "n_events_orig": 102,
+      "n_events_excl": 100,
+      "dLL_orig": -0.06006415619963153,
+      "dLL_ci_orig": [
+        -0.1314857794100381,
+        0.008686169803466152
+      ],
+      "p_LL_holm_orig": 0.14,
+      "dLL_excl": -0.05677389584900054,
+      "dLL_ci_excl": [
+        -0.1362230689211208,
+        0.014105757561927031
+      ],
+      "p_LL_holm_excl": 0.14,
+      "dLL_change": 0.0032902603506309858,
+      "dAUC_orig": 0.017074202229911576,
+      "dAUC_ci_orig": [
+        -0.007786616053070845,
+        0.04922943121693121
+      ],
+      "p_AUC_holm_orig": 0.476,
+      "dAUC_excl": 0.017342937174869944,
+      "dAUC_ci_excl": [
+        -0.011084267263361909,
+        0.0521310524891775
+      ],
+      "p_AUC_holm_excl": 0.424,
+      "dAUC_change": 0.00026873494495836814,
+      "dBA_orig": 0.01784313725490195,
+      "dBA_ci_orig": [
+        -0.008546737377718858,
+        0.04339296700639785
+      ],
+      "p_BA_holm_orig": 0.214,
+      "dBA_excl": 0.02015206082432974,
+      "dBA_ci_excl": [
+        -0.012236450785024073,
+        0.04993476515455641
+      ],
+      "p_BA_holm_excl": 0.178,
+      "dBA_change": 0.0023089235694277906,
+      "repeats_favouring_lensd_LL_orig": 99,
+      "repeats_favouring_lensd_LL_excl": 98,
+      "n_repeats": 100
+    },
+    {
+      "analysis": "sensitivity (10 partitions)",
+      "K": 500,
+      "contrast": "B - A",
+      "n_events_orig": 98,
+      "n_events_excl": 96,
+      "dLL_orig": -0.06516615367685342,
+      "dLL_ci_orig": [
+        -0.15520207351493184,
+        0.0192401925839597
+      ],
+      "p_LL_holm_orig": 0.292,
+      "dLL_excl": -0.06775238641202817,
+      "dLL_ci_excl": [
+        -0.1601543479085916,
+        0.014508666121277746
+      ],
+      "p_LL_holm_excl": 0.29400000000000004,
+      "dLL_change": -0.0025862327351747483,
+      "dAUC_orig": 0.001189583333333335,
+      "dAUC_ci_orig": [
+        -0.03826879225628931,
+        0.03608860409122398
+      ],
+      "p_AUC_holm_orig": 1.0,
+      "dAUC_excl": 0.0014456521739130434,
+      "dAUC_ci_excl": [
+        -0.03600020844739376,
+        0.03695330727708764
+      ],
+      "p_AUC_holm_excl": 1.0,
+      "dAUC_change": 0.0002560688405797084,
+      "dBA_orig": 0.06380416666666668,
+      "dBA_ci_orig": [
+        0.016136731847083148,
+        0.11240333875224466
+      ],
+      "p_BA_holm_orig": 0.0,
+      "dBA_excl": 0.058247826086956514,
+      "dBA_ci_excl": [
+        0.01601639044506688,
+        0.11144637805539058
+      ],
+      "p_BA_holm_excl": 0.02,
+      "dBA_change": -0.005556340579710162,
+      "repeats_favouring_lensd_LL_orig": 99,
+      "repeats_favouring_lensd_LL_excl": 100,
+      "n_repeats": 100
+    },
+    {
+      "analysis": "sensitivity (10 partitions)",
+      "K": 500,
+      "contrast": "D - C",
+      "n_events_orig": 98,
+      "n_events_excl": 96,
+      "dLL_orig": -0.06227311910034369,
+      "dLL_ci_orig": [
+        -0.1335719060132824,
+        0.005680066760297517
+      ],
+      "p_LL_holm_orig": 0.14,
+      "dLL_excl": -0.05945728565802861,
+      "dLL_ci_excl": [
+        -0.12984863683340092,
+        0.005820140219264559
+      ],
+      "p_LL_holm_excl": 0.14,
+      "dLL_change": 0.002815833442315084,
+      "dAUC_orig": 0.011733333333333325,
+      "dAUC_ci_orig": [
+        -0.019227215052220133,
+        0.04552315394242801
+      ],
+      "p_AUC_holm_orig": 0.552,
+      "dAUC_excl": 0.011426086956521737,
+      "dAUC_ci_excl": [
+        -0.020723969247713876,
+        0.048024922673243285
+      ],
+      "p_AUC_holm_excl": 0.468,
+      "dAUC_change": -0.00030724637681158774,
+      "dBA_orig": 0.034937500000000024,
+      "dBA_ci_orig": [
+        -0.0008190315748941865,
+        0.07267588443396228
+      ],
+      "p_BA_holm_orig": 0.162,
+      "dBA_excl": 0.03321304347826086,
+      "dBA_ci_excl": [
+        0.0005774929857376774,
+        0.06946503410059678
+      ],
+      "p_BA_holm_excl": 0.088,
+      "dBA_change": -0.001724456521739165,
+      "repeats_favouring_lensd_LL_orig": 94,
+      "repeats_favouring_lensd_LL_excl": 89,
+      "n_repeats": 100
+    },
+    {
+      "analysis": "sensitivity (10 partitions)",
+      "K": 1000,
+      "contrast": "B - A",
+      "n_events_orig": 73,
+      "n_events_excl": 72,
+      "dLL_orig": -0.10183478094066101,
+      "dLL_ci_orig": [
+        -0.20439068192703605,
+        0.004222773182277976
+      ],
+      "p_LL_holm_orig": 0.18,
+      "dLL_excl": -0.09768917782099235,
+      "dLL_ci_excl": [
+        -0.1993264053153213,
+        0.019014329012654037
+      ],
+      "p_LL_holm_excl": 0.29400000000000004,
+      "dLL_change": 0.004145603119668662,
+      "dAUC_orig": 0.06278968253968258,
+      "dAUC_ci_orig": [
+        0.0071388539982589205,
+        0.1379170652173913
+      ],
+      "p_AUC_holm_orig": 0.078,
+      "dAUC_excl": 0.06421810699588476,
+      "dAUC_ci_excl": [
+        0.002910493311036785,
+        0.13505439253647586
+      ],
+      "p_AUC_holm_excl": 0.10200000000000001,
+      "dAUC_change": 0.0014284244562021847,
+      "dBA_orig": 0.08532539682539676,
+      "dBA_ci_orig": [
+        0.015473340237348818,
+        0.16369520933373347
+      ],
+      "p_BA_holm_orig": 0.036,
+      "dBA_excl": 0.09385185185185183,
+      "dBA_ci_excl": [
+        0.02734645458578686,
+        0.1679045268256334
+      ],
+      "p_BA_holm_excl": 0.018000000000000002,
+      "dBA_change": 0.008526455026455063,
+      "repeats_favouring_lensd_LL_orig": 100,
+      "repeats_favouring_lensd_LL_excl": 100,
+      "n_repeats": 100
+    },
+    {
+      "analysis": "sensitivity (10 partitions)",
+      "K": 1000,
+      "contrast": "D - C",
+      "n_events_orig": 73,
+      "n_events_excl": 72,
+      "dLL_orig": -0.12939072899909518,
+      "dLL_ci_orig": [
+        -0.2044768882243097,
+        -0.04964629926853704
+      ],
+      "p_LL_holm_orig": 0.006,
+      "dLL_excl": -0.12935911523015323,
+      "dLL_ci_excl": [
+        -0.20573049406179889,
+        -0.053214546694644385
+      ],
+      "p_LL_holm_excl": 0.018000000000000002,
+      "dLL_change": 3.161376894195156e-05,
+      "dAUC_orig": 0.03984920634920633,
+      "dAUC_ci_orig": [
+        -0.00712276696105983,
+        0.10604032738095238
+      ],
+      "p_AUC_holm_orig": 0.34800000000000003,
+      "dAUC_excl": 0.04274897119341564,
+      "dAUC_ci_excl": [
+        -0.008039364010475121,
+        0.11055890411994837
+      ],
+      "p_AUC_holm_excl": 0.384,
+      "dAUC_change": 0.0028997648442093127,
+      "dBA_orig": 0.03884523809523807,
+      "dBA_ci_orig": [
+        -0.0012390518707483195,
+        0.09037919527078568
+      ],
+      "p_BA_holm_orig": 0.162,
+      "dBA_excl": 0.04474074074074073,
+      "dBA_ci_excl": [
+        0.004109666264718382,
+        0.09993890100851151
+      ],
+      "p_BA_holm_excl": 0.078,
+      "dBA_change": 0.005895502645502655,
+      "repeats_favouring_lensd_LL_orig": 99,
+      "repeats_favouring_lensd_LL_excl": 98,
+      "n_repeats": 100
+    }
+  ]
+}

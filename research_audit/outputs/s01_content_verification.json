@@ -1,0 +1,35 @@
+{
+  "events": 103,
+  "content_max_abs_diff_vs_pipeline": {
+    "exact_dup_proportion": 0.0,
+    "text_concentration": 0.0,
+    "msg_length_dispersion": 0.0
+  },
+  "nan_pattern_identical": true,
+  "events_without_usable_text": [
+    "Tapuma_YapıKayıt___2023-04-19_campaign_fulldata",
+    "YapıKayıt_YoksaOyyok___2023-05-01_campaign_fulldata"
+  ],
+  "links_text_key_absent": 0,
+  "links_text_null": 79271,
+  "links_text_empty_raw": 0,
+  "links_total": 288540,
+  "usable_text_share_by_label": {
+    "0": {
+      "mean": 0.7988509279872579,
+      "median": 0.8153356327938445,
+      "min": 0.308472553699284,
+      "max": 0.9872029250457038
+    },
+    "1": {
+      "mean": 0.5808068834349752,
+      "median": 0.6338673931110905,
+      "min": 0.0,
+      "max": 0.9789156626506024
+    }
+  },
+  "events_usable_share_below_0.2": {
+    "0": 0,
+    "1": 11
+  }
+}

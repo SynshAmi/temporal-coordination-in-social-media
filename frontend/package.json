@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "sync-paper": "node -e \"require('fs').copyFileSync('../paper/LEN_Small_Predictive_Information_Beyond_Scale.pdf','public/LEN_Small_Predictive_Information_Beyond_Scale.pdf')\"",
+    "sync-paper": "node -e \"require('fs').copyFileSync('../paper/Finding_Signal_in_Network_Simplicity.pdf','public/Finding_Signal_in_Network_Simplicity.pdf')\"",
     "predev": "npm run sync-paper",
     "dev": "vite",
     "prebuild": "npm run sync-paper",

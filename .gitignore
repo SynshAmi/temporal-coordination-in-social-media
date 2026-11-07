@@ -81,7 +81,7 @@ secrets*.json
 # Temporary writing/format reference material (never publish)
 reference/
 
-# LaTeX build by-products (the official PDF is paper/LEN_Small_Predictive_Information_Beyond_Scale.pdf;
+# LaTeX build by-products (the official PDF is paper/Finding_Signal_in_Network_Simplicity.pdf;
 # paper/main.bbl is kept so the reference-list test runs on a fresh clone without TeX)
 paper/*.aux
 paper/*.bbl
@@ -95,3 +95,8 @@ paper/*.synctex.gz
 paper/main.pdf
 paper/build*.log
 paper/bib.log
+
+# Local browser-automation screenshots and logs
+.playwright-mcp/
+# The robustness-audit logs are part of its provenance record
+!research_audit/**/*.log

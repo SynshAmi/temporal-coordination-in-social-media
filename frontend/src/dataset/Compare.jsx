@@ -39,17 +39,17 @@ export default function Compare({ index, a, b, onPick }) {
         <EventSelect id="cmp-b" events={index.events} value={b} onChange={(v) => onPick(a, v)} label="Event B" />
       </div>
 
-      {!(A && B) && <div className="border border-dashed border-[#cfc8b8] p-8 text-sm text-[#5e5a52] bg-[#faf8f5]">Choose two events to compare their size and structure.</div>}
+      {!(A && B) && <div className="border border-dashed border-[#cfc8b8] p-8 text-[16px] text-[#5e5a52] bg-[#faf8f5]">Choose two events to compare their size and structure.</div>}
 
       {A && B && (
         <>
           <div className="bg-white border border-[#dcd7ca] overflow-x-auto">
-            <table className="w-full text-sm min-w-[560px]">
-              <thead className="bg-[#f4efe6] text-[11px] font-mono uppercase tracking-wider text-[#757065]">
+            <table className="w-full text-[16px] min-w-[560px]">
+              <thead className="bg-[#f4efe6] text-[13px] font-mono text-[#757065]">
                 <tr>
                   <th className="text-left font-medium px-4 py-2.5">Measure (full graph)</th>
-                  <th className="text-right font-medium px-3 py-2.5"><span className="inline-flex flex-col items-end gap-1"><span className="normal-case font-sans text-[13px] text-[#15263a] break-all">A · {A.name}</span><LabelBadge label={A.label} small /></span></th>
-                  <th className="text-right font-medium px-3 py-2.5"><span className="inline-flex flex-col items-end gap-1"><span className="normal-case font-sans text-[13px] text-[#15263a] break-all">B · {B.name}</span><LabelBadge label={B.label} small /></span></th>
+                  <th className="text-right font-medium px-3 py-2.5"><span className="inline-flex flex-col items-end gap-1"><span className="normal-case font-sans text-[15px] text-[#15263a] break-all">A · {A.name}</span><LabelBadge label={A.label} small /></span></th>
+                  <th className="text-right font-medium px-3 py-2.5"><span className="inline-flex flex-col items-end gap-1"><span className="normal-case font-sans text-[15px] text-[#15263a] break-all">B · {B.name}</span><LabelBadge label={B.label} small /></span></th>
                   <th className="text-left font-medium px-4 py-2.5 w-[34%]">Relative size</th>
                 </tr>
               </thead>
@@ -61,10 +61,10 @@ export default function Compare({ index, a, b, onPick }) {
                     <tr key={m.t} className={big ? "bg-[#fbf6ec]" : ""}>
                       <td className="px-4 py-2 text-[#3c3a37]">
                         {m.t}{m.h && <Hint text={m.h} />}
-                        {big && <span className="ml-2 text-[10px] font-mono uppercase tracking-wider text-[#a0672a]" title="Counts differing by a factor of two or more, or fractions differing by at least 0.1; a reading aid, not a statistical test">notable difference</span>}
+                        {big && <span className="ml-2 text-[12px] font-mono text-[#a0672a]" title="Counts differing by a factor of two or more, or fractions differing by at least 0.1; a reading aid, not a statistical test">notable difference</span>}
                       </td>
-                      <td className="px-3 py-2 text-right font-mono text-[13px] text-[#15263a]">{f(va)}</td>
-                      <td className="px-3 py-2 text-right font-mono text-[13px] text-[#15263a]">{f(vb)}</td>
+                      <td className="px-3 py-2 text-right font-mono text-[15px] text-[#15263a]">{f(va)}</td>
+                      <td className="px-3 py-2 text-right font-mono text-[15px] text-[#15263a]">{f(vb)}</td>
                       <td className="px-4 py-2">
                         <div className="space-y-1" aria-hidden="true">
                           <div className="h-1.5" style={{ width: `${(100 * va) / mx}%`, background: A.label === 1 ? PAGE.campaign : PAGE.comparison }} />
@@ -79,8 +79,8 @@ export default function Compare({ index, a, b, onPick }) {
           </div>
           {!load ? (
             <div className="graph-canvas p-8 flex flex-col sm:flex-row items-center justify-center gap-4 text-center">
-              <p className="text-sm text-[#d8dee6]">Load both graphs ({int(A.n_nodes + B.n_nodes)} nodes in total) to view them side by side.</p>
-              <button type="button" onClick={() => setLoad(true)} className="inline-flex items-center gap-2 px-5 py-2.5 bg-[#f4efe6] text-[#15263a] text-sm font-medium hover:bg-white">
+              <p className="text-[16px] text-[#d8dee6]">Load both graphs ({int(A.n_nodes + B.n_nodes)} nodes in total) to view them side by side.</p>
+              <button type="button" onClick={() => setLoad(true)} className="inline-flex items-center gap-2 px-5 py-2.5 bg-[#f4efe6] text-[#15263a] text-[16px] font-medium hover:bg-white">
                 <GitCompare size={15} /> Compare networks
               </button>
             </div>
@@ -117,7 +117,7 @@ function Side({ tag, event }) {
         <div className="graph-canvas h-[46vh] min-h-[320px] flex items-center justify-center"><div className="bg-[#f4efe6] px-4 py-3"><Loading>{G.phase === "layout" ? "Computing layout…" : "Loading graph…"}</Loading></div></div>
       )}
       {G.status === "ready" && (
-        <div className="text-[12px] font-mono text-[#4a4740]">
+        <div className="text-[14px] font-mono text-[#4a4740]">
           {sel == null ? "Select a node for its degree." : `Node #${sel}: in ${G.d.indeg[sel]} · out ${G.d.outdeg[sel]} · reciprocal ${G.d.recip[sel]}`}
         </div>
       )}

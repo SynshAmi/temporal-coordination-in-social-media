@@ -68,16 +68,16 @@ export default function PageDataset() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-x-12 gap-y-5 items-end">
           <div className="lg:col-span-8">
             <span className="section-label">Dataset Explorer</span>
-            <h1 className="page-title">LEN-Small, Event by Event</h1>
-            <p className="mt-4 text-base sm:text-[17px] text-[#3c3a37] leading-relaxed max-w-[64ch]">
+            <h1 className="page-title">The archive, event by event</h1>
+            <p className="mt-4 text-base sm:text-[18px] text-[#3c3a37] leading-relaxed max-w-[64ch]">
               Browse the engagement graphs analysed in the paper, open any event's network, compare two events, and see what a fixed-budget sample of edges keeps of a graph.
             </p>
           </div>
           <dl className="lg:col-span-4 lg:justify-self-end border-l-2 border-[#d8d3c5] pl-4 lg:border-l-0 lg:pl-0 lg:border-r-2 lg:pr-4 lg:text-right">
-            <dt className="text-[10.5px] font-mono font-semibold uppercase tracking-wider text-[#8f2626]">Data source</dt>
-            <dd className="mt-1.5 font-serif text-[15px] text-[#15263a] leading-snug">Gopalakrishnan, Hossain, Elmas &amp; Sarıyüce</dd>
-            <dd className="mt-0.5 text-[12px] font-mono text-[#5e5a52]">LEN · ICWSM 2025 · CC-BY (per the authors)</dd>
-            <dd className="mt-0.5 text-[12px] font-mono text-[#757065]">Graph structure only</dd>
+            <dt className="text-[12.5px] font-mono font-semibold text-[#8f2626]">Data source</dt>
+            <dd className="mt-1.5 font-serif text-[17px] text-[#15263a] leading-snug">Gopalakrishnan, Hossain, Elmas &amp; Sarıyüce</dd>
+            <dd className="mt-0.5 text-[14px] font-mono text-[#5e5a52]">LEN · ICWSM 2025 · CC-BY (per the authors)</dd>
+            <dd className="mt-0.5 text-[14px] font-mono text-[#757065]">Graph structure only</dd>
           </dl>
         </div>
       </header>
@@ -89,7 +89,7 @@ export default function PageDataset() {
           return (
             <button key={v.id} type="button" aria-current={on ? "page" : undefined}
               onClick={() => (v.id === "overview" ? navigate("overview") : v.id === "compare" ? navigate("compare", selected, null) : navigate(v.id, selected))}
-              className={`inline-flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-2 px-1 sm:px-4 py-2.5 sm:py-3 text-[11px] sm:text-[13px] font-medium whitespace-nowrap border-b-2 transition-colors ${
+              className={`inline-flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-2 px-1 sm:px-4 py-2.5 sm:py-3 text-[13px] sm:text-[15px] font-medium whitespace-nowrap border-b-2 transition-colors ${
                 on ? "border-[#8f2626] text-[#15263a]" : "border-transparent text-[#5e5a52] hover:text-[#15263a]"
               }`}>
               <Icon size={14} className={on ? "text-[#8f2626]" : ""} />
@@ -105,7 +105,7 @@ export default function PageDataset() {
       {index && (
         <>
           {cur !== "overview" && (
-            <button type="button" onClick={() => navigate("overview")} className="inline-flex items-center gap-1.5 text-xs font-mono text-[#23527c] hover:text-[#15263a] -mt-4">
+            <button type="button" onClick={() => navigate("overview")} className="inline-flex items-center gap-1.5 text-[14px] font-mono text-[#23527c] hover:text-[#15263a] -mt-4">
               <ArrowLeft size={13} /> Back to the dataset overview
             </button>
           )}

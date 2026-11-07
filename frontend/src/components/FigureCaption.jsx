@@ -18,10 +18,10 @@ export default function FigureCaption({
   const [isExpanded, setIsExpanded] = useState(defaultExpanded);
 
   return (
-    <div className="mt-6 pt-5 border-t border-[#e5e0d4] text-sm font-sans text-[#2f2d2a] leading-relaxed">
+    <div className="mt-6 pt-5 border-t border-[#e5e0d4] text-[16px] font-sans text-[#2f2d2a] leading-relaxed">
       {/* Primary visible caption level */}
       <p className="max-w-[80ch]">
-        <strong className="font-mono text-[#15263a] uppercase tracking-wide mr-2 font-bold text-[13px]">
+        <strong className="font-mono text-[#15263a] mr-2 font-semibold text-[15px]">
           {figNumber}.
         </strong>
         {title && <span className="font-semibold text-[#15263a] mr-1.5">{title}.</span>}
@@ -33,7 +33,7 @@ export default function FigureCaption({
           type="button"
           onClick={() => setIsExpanded(!isExpanded)}
           aria-expanded={isExpanded}
-          className="mt-3 inline-flex items-center gap-1.5 text-xs font-mono text-[#23527c] hover:text-[#15263a] transition-colors underline decoration-[#23527c]/40 underline-offset-4 hover:decoration-[#15263a] py-1"
+          className="mt-3 inline-flex items-center gap-1.5 text-[14px] font-mono text-[#23527c] hover:text-[#15263a] transition-colors underline decoration-[#23527c]/40 underline-offset-4 hover:decoration-[#15263a] py-1"
         >
           <span>{isExpanded ? "Hide detailed notes" : "Statistical notes & caveats"}</span>
           {isExpanded ? <ChevronUp size={13} /> : <ChevronDown size={13} />}
@@ -42,8 +42,8 @@ export default function FigureCaption({
 
       {/* Expandable level 2 notes */}
       {details && isExpanded && (
-        <div className="mt-3 border border-dashed border-[#dcd7ca] bg-[#f9f7f2] p-5 text-[13px] text-[#4a4740] space-y-3 rounded-none font-sans leading-relaxed">
-          <div className="flex items-center gap-2 text-[#15263a] font-mono font-semibold text-[11px] uppercase tracking-wider">
+        <div className="mt-3 border border-dashed border-[#dcd7ca] bg-[#f9f7f2] p-5 text-[15px] text-[#4a4740] space-y-3 rounded-none font-sans leading-relaxed">
+          <div className="flex items-center gap-2 text-[#15263a] font-mono font-semibold text-[13px]">
             <Info size={13} className="text-[#23527c]" />
             <span>Methodological Details & Statistical Parameters</span>
           </div>

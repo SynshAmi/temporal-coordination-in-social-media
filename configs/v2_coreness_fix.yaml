@@ -70,6 +70,8 @@ output:
   revision_h1_dir: "outputs/revision_h1_cgrid"                        # src/h1_c_grid.py
   revision_supplement: "outputs/revision_supplement/supplement.json"  # src/revision_supplement.py
   dataset_explorer_dir: "frontend/public/data/len"                     # src/export_dataset_explorer.py
+  # Values from the stored robustness-audit outputs in research_audit/ that the paper and website report
+  audit_results: "outputs/research_audit/audit_results.json"           # src/export_audit_results.py
 
 # ---------------------------------------------------------------------------
 # Study 1: incremental information beyond scale and degree (src/study1_incremental.py)

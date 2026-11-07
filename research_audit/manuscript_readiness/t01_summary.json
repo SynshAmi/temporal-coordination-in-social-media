@@ -1,0 +1,104 @@
+{
+  "full_graphs": {
+    "n": 103,
+    "max_abs_diff": 0.0,
+    "n_abs_diff_gt_1e-9": 0,
+    "nan_pattern_identical": true,
+    "n_undefined": 2
+  },
+  "views": {
+    "n": 2730,
+    "max_abs_diff": 3.552713678800501e-15,
+    "n_abs_diff_gt_1e-9": 0,
+    "nan_pattern_identical": true,
+    "n_undefined": 50
+  },
+  "views_total_expected_in_sampled_views_v2": 2730,
+  "views_covered_by_stored_edge_sets": 2730,
+  "undefined_full_graph_events": [
+    "Tapuma_YapıKayıt___2023-04-19_campaign_fulldata",
+    "YapıKayıt_YoksaOyyok___2023-05-01_campaign_fulldata"
+  ],
+  "undefined_view_events_by_K": {
+    "250": [
+      "Tapuma_YapıKayıt___2023-04-19_campaign_fulldata",
+      "YapıKayıt_YoksaOyyok___2023-05-01_campaign_fulldata"
+    ],
+    "500": [
+      "Tapuma_YapıKayıt___2023-04-19_campaign_fulldata",
+      "YapıKayıt_YoksaOyyok___2023-05-01_campaign_fulldata"
+    ],
+    "1000": [
+      "Tapuma_YapıKayıt___2023-04-19_campaign_fulldata"
+    ]
+  },
+  "undefined_views_by_K_event": {
+    "250|Tapuma_YapıKayıt___2023-04-19_campaign_fulldata": 10,
+    "250|YapıKayıt_YoksaOyyok___2023-05-01_campaign_fulldata": 10,
+    "500|Tapuma_YapıKayıt___2023-04-19_campaign_fulldata": 10,
+    "500|YapıKayıt_YoksaOyyok___2023-05-01_campaign_fulldata": 10,
+    "1000|Tapuma_YapıKayıt___2023-04-19_campaign_fulldata": 10
+  },
+  "m_K_by_K_class": {
+    "K250|comparison": {
+      "views": 510,
+      "events": 51,
+      "min": 58,
+      "median": 207.0,
+      "max": 248,
+      "views_m_K_0": 0,
+      "views_m_K_1": 0,
+      "views_m_K_lt_10": 0
+    },
+    "K250|campaign": {
+      "views": 510,
+      "events": 51,
+      "min": 0,
+      "median": 158.0,
+      "max": 247,
+      "views_m_K_0": 20,
+      "views_m_K_1": 0,
+      "views_m_K_lt_10": 30
+    },
+    "K500|comparison": {
+      "views": 500,
+      "events": 50,
+      "min": 143,
+      "median": 408.0,
+      "max": 495,
+      "views_m_K_0": 0,
+      "views_m_K_1": 0,
+      "views_m_K_lt_10": 0
+    },
+    "K500|campaign": {
+      "views": 480,
+      "events": 48,
+      "min": 0,
+      "median": 312.5,
+      "max": 494,
+      "views_m_K_0": 20,
+      "views_m_K_1": 0,
+      "views_m_K_lt_10": 29
+    },
+    "K1000|comparison": {
+      "views": 450,
+      "events": 45,
+      "min": 298,
+      "median": 811.0,
+      "max": 977,
+      "views_m_K_0": 0,
+      "views_m_K_1": 0,
+      "views_m_K_lt_10": 0
+    },
+    "K1000|campaign": {
+      "views": 280,
+      "events": 28,
+      "min": 0,
+      "median": 530.0,
+      "max": 974,
+      "views_m_K_0": 10,
+      "views_m_K_1": 0,
+      "views_m_K_lt_10": 10
+    }
+  }
+}

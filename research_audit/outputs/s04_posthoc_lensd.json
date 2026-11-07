@@ -1,0 +1,98 @@
+{
+  "M4 - M0q+lensd": {
+    "dLL": -0.013786551066911821,
+    "dAUC": 0.00356334841628958,
+    "dLL_ci": [
+      -0.05481610645294513,
+      0.02445704994661308
+    ],
+    "p_LL": 0.455,
+    "dLL_event_sd": 0.019446336112446092,
+    "dAUC_ci": [
+      -0.008542179157131947,
+      0.01634980620155041
+    ],
+    "p_AUC": 0.534,
+    "repeat_dLL_mean": -0.013786551066911821,
+    "repeat_dLL_sd": 0.025099127898659233,
+    "repeat_dLL_min": -0.040229582426329055,
+    "repeat_dLL_max": 0.05930796998244518,
+    "repeats_favouring_A_LL": 16,
+    "repeats_favouring_A_AUC": 15,
+    "n_repeats": 20,
+    "events_improved_LL": 51,
+    "n_events": 103
+  },
+  "M2+lensd - M0q+lensd": {
+    "dLL": -0.007226051044778737,
+    "dAUC": 0.00199849170437405,
+    "dLL_ci": [
+      -0.04859393002799602,
+      0.0348914710426754
+    ],
+    "p_LL": 0.665,
+    "dLL_event_sd": 0.020883431902306564,
+    "dAUC_ci": [
+      -0.011565282931354379,
+      0.014820859538784033
+    ],
+    "p_AUC": 0.704,
+    "repeat_dLL_mean": -0.007226051044778735,
+    "repeat_dLL_sd": 0.02659883678434498,
+    "repeat_dLL_min": -0.055699180782697394,
+    "repeat_dLL_max": 0.0539710136861774,
+    "repeats_favouring_A_LL": 14,
+    "repeats_favouring_A_AUC": 15,
+    "n_repeats": 20,
+    "events_improved_LL": 53,
+    "n_events": 103
+  },
+  "M0q+lensd - M0q": {
+    "dLL": -0.07997885780232157,
+    "dAUC": 0.030561840120663646,
+    "dLL_ci": [
+      -0.1597568810935457,
+      0.004148527038887763
+    ],
+    "p_LL": 0.061,
+    "dLL_event_sd": 0.04203576222964966,
+    "dAUC_ci": [
+      0.002656716328102432,
+      0.06831514077125453
+    ],
+    "p_AUC": 0.035,
+    "repeat_dLL_mean": -0.07997885780232157,
+    "repeat_dLL_sd": 0.01435185231497524,
+    "repeat_dLL_min": -0.1000080407501664,
+    "repeat_dLL_max": -0.031184469390642795,
+    "repeats_favouring_A_LL": 20,
+    "repeats_favouring_A_AUC": 20,
+    "n_repeats": 20,
+    "events_improved_LL": 76,
+    "n_events": 103
+  },
+  "M4 - M2+lensd": {
+    "dLL": -0.0065605000221330865,
+    "dAUC": 0.0015648567119155299,
+    "dLL_ci": [
+      -0.03046812478239794,
+      0.017587248168410965
+    ],
+    "p_LL": 0.584,
+    "dLL_event_sd": 0.011994329686694404,
+    "dAUC_ci": [
+      -0.006046992514954687,
+      0.008484892023685131
+    ],
+    "p_AUC": 0.623,
+    "repeat_dLL_mean": -0.006560500022133093,
+    "repeat_dLL_sd": 0.021010808296928012,
+    "repeat_dLL_min": -0.04088865873849122,
+    "repeat_dLL_max": 0.03490670916746203,
+    "repeats_favouring_A_LL": 12,
+    "repeats_favouring_A_AUC": 13,
+    "n_repeats": 20,
+    "events_improved_LL": 56,
+    "n_events": 103
+  }
+}

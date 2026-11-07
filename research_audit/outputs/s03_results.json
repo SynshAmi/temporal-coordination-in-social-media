@@ -1,0 +1,559 @@
+{
+  "concentration": {
+    "dLL": -0.09376540886923339,
+    "events_improved": 82,
+    "events_worse": 21,
+    "share_from_top5_favouring_M4": 0.5829952680726435,
+    "share_from_top10_favouring_M4": 0.943901588502483,
+    "share_from_top5_favouring_M0q": -0.5443718702489757,
+    "median_d": -0.020210680641911914,
+    "trimmed_mean_d_5pct": -0.09983675944708545,
+    "dLL_jackknife_range": [
+      -0.11524880742606622,
+      -0.07860371789312673
+    ],
+    "dAUC_jackknife_range": [
+      0.02780769230769231,
+      0.03731257208765858
+    ],
+    "dBA_jackknife_range": [
+      0.025490196078431348,
+      0.044807692307692326
+    ]
+  },
+  "reversal_repeat": {
+    "seed": 3,
+    "dLL": 0.02812350059180239,
+    "top_contributors": {
+      "Özür_Dilerim___2023-03-26_campaign_fulldata": 0.08226968896471962,
+      "Yakup_Türkal___2023-03-22_campaign_fulldata": 0.026293173486862838,
+      "Osman_Gökçek___2023-03-21_campaign_fulldata": 0.024245999674747446,
+      "MilliYolPartisi_RemziÇayır___2023-05-13_campaign_fulldata": 0.007810646416640784,
+      "#BirOyKemaleBirOyMerale___2023-05-13_campaign_fulldata": 0.004077317124763635
+    },
+    "dLL_without_top1": -0.05467703335696544
+  },
+  "refit_loeo": {
+    "dLL_full_10seeds": -0.08629212664262315,
+    "refit_dLL_range": [
+      -0.10566474599459785,
+      -0.06980062992807141
+    ],
+    "refit_dAUC_range": [
+      0.026028450595924645,
+      0.035870818915801614
+    ],
+    "refit_dBA_range": [
+      0.012115384615384629,
+      0.04705882352941175
+    ],
+    "events_whose_removal_makes_dLL_nonnegative": [],
+    "events_whose_removal_makes_dAUC_nonpositive": [],
+    "largest_training_effects": [
+      "#MetaAirdrop___2023-03-23_campaign_fulldata",
+      "Yakup_Türkal___2023-03-22_campaign_fulldata",
+      "#RealMadridManCity_noncampaign_fulldata",
+      "#Metatime___2023-03-22_campaign_fulldata",
+      "Yarısı_Bizden___2023-05-01_campaign_fulldata"
+    ]
+  },
+  "exclusions": [
+    {
+      "set": "none",
+      "n_removed": 0,
+      "removed": [],
+      "dLL": -0.09376540886923339,
+      "dAUC": 0.034125188536953226,
+      "dBA": 0.03519984917043736,
+      "dLL_ci": [
+        -0.17184429816653335,
+        -0.012625442176462297
+      ],
+      "p_LL": 0.024,
+      "dLL_event_sd": 0.040071406957835135,
+      "dAUC_ci": [
+        0.005630806427048431,
+        0.07032942808395941
+      ],
+      "p_AUC": 0.012,
+      "repeat_dLL_mean": -0.09376540886923339,
+      "repeat_dLL_sd": 0.034699072317138896,
+      "repeat_dLL_min": -0.1222002756227156,
+      "repeat_dLL_max": 0.02812350059180239,
+      "repeats_favouring_A_LL": 19,
+      "repeats_favouring_A_AUC": 20,
+      "n_repeats": 20,
+      "events_improved_LL": 82,
+      "n_events": 103,
+      "dBA_ci": [
+        -0.01977729072398185,
+        0.09482365218001329
+      ],
+      "p_BA": 0.2,
+      "repeats_favouring_A_BA": 20,
+      "repeats_tied_BA": 0,
+      "repeat_dBA_min": 0.009803921568627416,
+      "repeat_dBA_max": 0.058634992458521884
+    },
+    {
+      "set": "Özür_Dilerim only",
+      "n_removed": 1,
+      "removed": [
+        "Özür_Dilerim___2023-03-26_campaign_fulldata"
+      ],
+      "dLL": -0.10282705543852651,
+      "dAUC": 0.032756632064590535,
+      "dBA": 0.038725490196078446,
+      "dLL_ci": [
+        -0.1889887947722325,
+        -0.024861001624185138
+      ],
+      "p_LL": 0.01,
+      "dLL_event_sd": 0.04229587569773205,
+      "dAUC_ci": [
+        0.005138140161725057,
+        0.0722443585954718
+      ],
+      "p_AUC": 0.018,
+      "repeat_dLL_mean": -0.10282705543852651,
+      "repeat_dLL_sd": 0.031179007749436466,
+      "repeat_dLL_min": -0.14264735926982483,
+      "repeat_dLL_max": 0.004227482041637788,
+      "repeats_favouring_A_LL": 19,
+      "repeats_favouring_A_AUC": 20,
+      "n_repeats": 20,
+      "events_improved_LL": 79,
+      "n_events": 102,
+      "dBA_ci": [
+        -0.01319535256410261,
+        0.09496495098039215
+      ],
+      "p_BA": 0.146,
+      "repeats_favouring_A_BA": 20,
+      "repeats_tied_BA": 0,
+      "repeat_dBA_min": 0.009803921568627416,
+      "repeat_dBA_max": 0.08823529411764708
+    },
+    {
+      "set": "top 1 favouring M4",
+      "n_removed": 1,
+      "removed": [
+        "Milliyol_Partisi_noncampaign_fulldata"
+      ],
+      "dLL": -0.08074447872235979,
+      "dAUC": 0.028749999999999998,
+      "dBA": 0.03825,
+      "dLL_ci": [
+        -0.15353949858722243,
+        -0.006886300208942985
+      ],
+      "p_LL": 0.026,
+      "dLL_event_sd": 0.03719727541143605,
+      "dAUC_ci": [
+        0.0047690476190476085,
+        0.058771856577598286
+      ],
+      "p_AUC": 0.013,
+      "repeat_dLL_mean": -0.08074447872235982,
+      "repeat_dLL_sd": 0.03394665367747826,
+      "repeat_dLL_min": -0.11232231391864937,
+      "repeat_dLL_max": 0.029157170882999118,
+      "repeats_favouring_A_LL": 19,
+      "repeats_favouring_A_AUC": 20,
+      "n_repeats": 20,
+      "events_improved_LL": 74,
+      "n_events": 102,
+      "dBA_ci": [
+        -0.010461463576894899,
+        0.09073888436434882
+      ],
+      "p_BA": 0.124,
+      "repeats_favouring_A_BA": 20,
+      "repeats_tied_BA": 0,
+      "repeat_dBA_min": 0.010384615384615437,
+      "repeat_dBA_max": 0.0888461538461538
+    },
+    {
+      "set": "top 3 favouring M4",
+      "n_removed": 3,
+      "removed": [
+        "Milliyol_Partisi_noncampaign_fulldata",
+        "İletişim_Başkanlığı___2023-05-13_campaign_fulldata",
+        "#ChampionsLeague_noncampaign_fulldata"
+      ],
+      "dLL": -0.05732919445412135,
+      "dAUC": 0.020488195278111236,
+      "dBA": 0.020778311324529807,
+      "dLL_ci": [
+        -0.12843826829785782,
+        0.015771179331840624
+      ],
+      "p_LL": 0.128,
+      "dLL_event_sd": 0.03746005472512114,
+      "dAUC_ci": [
+        -0.0017042991401124662,
+        0.0477474703334911
+      ],
+      "p_AUC": 0.069,
+      "repeat_dLL_mean": -0.057329194454121345,
+      "repeat_dLL_sd": 0.04161103803880883,
+      "repeat_dLL_min": -0.09343695139907926,
+      "repeat_dLL_max": 0.059276686162635824,
+      "repeats_favouring_A_LL": 17,
+      "repeats_favouring_A_AUC": 19,
+      "n_repeats": 20,
+      "events_improved_LL": 74,
+      "n_events": 100,
+      "dBA_ci": [
+        -0.023069272488282246,
+        0.06972916454477736
+      ],
+      "p_BA": 0.353,
+      "repeats_favouring_A_BA": 17,
+      "repeats_tied_BA": 0,
+      "repeat_dBA_min": -0.019607843137254943,
+      "repeat_dBA_max": 0.06042416966786712
+    },
+    {
+      "set": "top 5 favouring M4",
+      "n_removed": 5,
+      "removed": [
+        "Milliyol_Partisi_noncampaign_fulldata",
+        "İletişim_Başkanlığı___2023-05-13_campaign_fulldata",
+        "#ChampionsLeague_noncampaign_fulldata",
+        "#Mazi__2023-03-26_campaign_fulldata",
+        "Yarısı_Bizden___2023-05-01_campaign_fulldata"
+      ],
+      "dLL": -0.04974323855776983,
+      "dAUC": 0.014993752603082033,
+      "dBA": -0.004081632653061234,
+      "dLL_ci": [
+        -0.10018844503808551,
+        0.00026102490736830945
+      ],
+      "p_LL": 0.053,
+      "dLL_event_sd": 0.026199970229318886,
+      "dAUC_ci": [
+        -0.00237827158161538,
+        0.03563686000716075
+      ],
+      "p_AUC": 0.096,
+      "repeat_dLL_mean": -0.04974323855776984,
+      "repeat_dLL_sd": 0.03367868102534866,
+      "repeat_dLL_min": -0.08336717568999996,
+      "repeat_dLL_max": 0.07688459391670233,
+      "repeats_favouring_A_LL": 19,
+      "repeats_favouring_A_AUC": 19,
+      "n_repeats": 20,
+      "events_improved_LL": 68,
+      "n_events": 98,
+      "dBA_ci": [
+        -0.04387586066052045,
+        0.033698643272346104
+      ],
+      "p_BA": 0.835,
+      "repeats_favouring_A_BA": 4,
+      "repeats_tied_BA": 7,
+      "repeat_dBA_min": -0.030612244897959218,
+      "repeat_dBA_max": 0.020408163265306145
+    },
+    {
+      "set": "top 10 favouring M4",
+      "n_removed": 10,
+      "removed": [
+        "Milliyol_Partisi_noncampaign_fulldata",
+        "İletişim_Başkanlığı___2023-05-13_campaign_fulldata",
+        "#ChampionsLeague_noncampaign_fulldata",
+        "#Mazi__2023-03-26_campaign_fulldata",
+        "Yarısı_Bizden___2023-05-01_campaign_fulldata",
+        "#RealMadridManCity_noncampaign_fulldata",
+        "Abdulahat_Arvas___2023-05-13_campaign_fulldata",
+        "#izmirdeprem_noncampaign_fulldata",
+        "Dzeko_noncampaign_fulldata",
+        "#MayThe4thBeWithYou_noncampaign_fulldata"
+      ],
+      "dLL": -0.0015341832545974763,
+      "dAUC": 0.001412037037037045,
+      "dBA": 0.00475694444444445,
+      "dLL_ci": [
+        -0.048501857575527475,
+        0.04305002405065125
+      ],
+      "p_LL": 0.959,
+      "dLL_event_sd": 0.02376494373084147,
+      "dAUC_ci": [
+        -0.008666490586133448,
+        0.013229805797917236
+      ],
+      "p_AUC": 0.838,
+      "repeat_dLL_mean": -0.0015341832545974748,
+      "repeat_dLL_sd": 0.05295376444733414,
+      "repeat_dLL_min": -0.059346786190135836,
+      "repeat_dLL_max": 0.15565424520004023,
+      "repeats_favouring_A_LL": 13,
+      "repeats_favouring_A_AUC": 13,
+      "n_repeats": 20,
+      "events_improved_LL": 57,
+      "n_events": 93,
+      "dBA_ci": [
+        -0.02409453580057815,
+        0.03570906432748529
+      ],
+      "p_BA": 0.751,
+      "repeats_favouring_A_BA": 14,
+      "repeats_tied_BA": 0,
+      "repeat_dBA_min": -0.022222222222222143,
+      "repeat_dBA_max": 0.04444444444444451
+    },
+    {
+      "set": "top 5 favouring M0q",
+      "n_removed": 5,
+      "removed": [
+        "#MilanInter_noncampaign_fulldata",
+        "Osman_Gökçek___2023-03-21_campaign_fulldata",
+        "MilliYolPartisi_RemziÇayır___2023-05-13_campaign_fulldata",
+        "Yakup_Türkal___2023-03-22_campaign_fulldata",
+        "Özür_Dilerim___2023-03-26_campaign_fulldata"
+      ],
+      "dLL": -0.22996214062332715,
+      "dAUC": 0.05150000000000003,
+      "dBA": 0.0935,
+      "dLL_ci": [
+        -0.3252714712194497,
+        -0.14629754633064626
+      ],
+      "p_LL": 0.0,
+      "dLL_event_sd": 0.045484445498086765,
+      "dAUC_ci": [
+        0.018490147334443985,
+        0.09562329466044088
+      ],
+      "p_AUC": 0.0,
+      "repeat_dLL_mean": -0.22996214062332715,
+      "repeat_dLL_sd": 0.010004927665353894,
+      "repeat_dLL_min": -0.24782153929215037,
+      "repeat_dLL_max": -0.21455098469019707,
+      "repeats_favouring_A_LL": 20,
+      "repeats_favouring_A_AUC": 20,
+      "n_repeats": 20,
+      "events_improved_LL": 92,
+      "n_events": 98,
+      "dBA_ci": [
+        0.040269551969724045,
+        0.1510258730647431
+      ],
+      "p_BA": 0.0,
+      "repeats_favouring_A_BA": 20,
+      "repeats_tied_BA": 0,
+      "repeat_dBA_min": 0.05125000000000002,
+      "repeat_dBA_max": 0.12208333333333332
+    },
+    {
+      "set": "symmetric trim (5 + 5)",
+      "n_removed": 10,
+      "removed": [
+        "Milliyol_Partisi_noncampaign_fulldata",
+        "İletişim_Başkanlığı___2023-05-13_campaign_fulldata",
+        "#ChampionsLeague_noncampaign_fulldata",
+        "#Mazi__2023-03-26_campaign_fulldata",
+        "Yarısı_Bizden___2023-05-01_campaign_fulldata",
+        "#MilanInter_noncampaign_fulldata",
+        "Osman_Gökçek___2023-03-21_campaign_fulldata",
+        "MilliYolPartisi_RemziÇayır___2023-05-13_campaign_fulldata",
+        "Yakup_Türkal___2023-03-22_campaign_fulldata",
+        "Özür_Dilerim___2023-03-26_campaign_fulldata"
+      ],
+      "dLL": -0.12284545694184855,
+      "dAUC": 0.023888888888888897,
+      "dBA": 0.04125000000000002,
+      "dLL_ci": [
+        -0.19099447928887822,
+        -0.061739853072005
+      ],
+      "p_LL": 0.0,
+      "dLL_event_sd": 0.03344217970109005,
+      "dAUC_ci": [
+        0.004580181464191225,
+        0.050209879406308
+      ],
+      "p_AUC": 0.007,
+      "repeat_dLL_mean": -0.12284545694184854,
+      "repeat_dLL_sd": 0.020596012423948325,
+      "repeat_dLL_min": -0.1629505049666446,
+      "repeat_dLL_max": -0.07155055629683228,
+      "repeats_favouring_A_LL": 20,
+      "repeats_favouring_A_AUC": 20,
+      "n_repeats": 20,
+      "events_improved_LL": 85,
+      "n_events": 93,
+      "dBA_ci": [
+        0.001587937731910904,
+        0.08463626639040404
+      ],
+      "p_BA": 0.038,
+      "repeats_favouring_A_BA": 20,
+      "repeats_tied_BA": 0,
+      "repeat_dBA_min": 0.020138888888888817,
+      "repeat_dBA_max": 0.07430555555555551
+    },
+    {
+      "set": "5 highest M4 losses",
+      "n_removed": 5,
+      "removed": [
+        "Özür_Dilerim___2023-03-26_campaign_fulldata",
+        "Yakup_Türkal___2023-03-22_campaign_fulldata",
+        "#RealMadridManCity_noncampaign_fulldata",
+        "Osman_Gökçek___2023-03-21_campaign_fulldata",
+        "#MilanInter_noncampaign_fulldata"
+      ],
+      "dLL": -0.19354574097207608,
+      "dAUC": 0.04258642232403167,
+      "dBA": 0.09030612244897959,
+      "dLL_ci": [
+        -0.29172331421887554,
+        -0.0946139834505161
+      ],
+      "p_LL": 0.0,
+      "dLL_event_sd": 0.050469695214039975,
+      "dAUC_ci": [
+        0.012954438967656185,
+        0.08225052854122614
+      ],
+      "p_AUC": 0.001,
+      "repeat_dLL_mean": -0.19354574097207605,
+      "repeat_dLL_sd": 0.018282476782462392,
+      "repeat_dLL_min": -0.22344977697770327,
+      "repeat_dLL_max": -0.15430162386385743,
+      "repeats_favouring_A_LL": 20,
+      "repeats_favouring_A_AUC": 20,
+      "n_repeats": 20,
+      "events_improved_LL": 92,
+      "n_events": 98,
+      "dBA_ci": [
+        0.03519676999587715,
+        0.15061308849994184
+      ],
+      "p_BA": 0.001,
+      "repeats_favouring_A_BA": 20,
+      "repeats_tied_BA": 0,
+      "repeat_dBA_min": 0.061224489795918435,
+      "repeat_dBA_max": 0.12244897959183676
+    },
+    {
+      "set": "5 highest M0q losses",
+      "n_removed": 5,
+      "removed": [
+        "Özür_Dilerim___2023-03-26_campaign_fulldata",
+        "Milliyol_Partisi_noncampaign_fulldata",
+        "#RealMadridManCity_noncampaign_fulldata",
+        "Yarısı_Bizden___2023-05-01_campaign_fulldata",
+        "Teşekkür_Etti___2023-05-01_campaign_fulldata"
+      ],
+      "dLL": -0.059290217296545246,
+      "dAUC": 0.013723448563098723,
+      "dBA": 0.043877551020408176,
+      "dLL_ci": [
+        -0.1509606983931962,
+        0.030691917736106945
+      ],
+      "p_LL": 0.188,
+      "dLL_event_sd": 0.046647462102360066,
+      "dAUC_ci": [
+        -0.005479462072610641,
+        0.04043556311413453
+      ],
+      "p_AUC": 0.183,
+      "repeat_dLL_mean": -0.059290217296545246,
+      "repeat_dLL_sd": 0.029153994277348792,
+      "repeat_dLL_min": -0.11574060546753175,
+      "repeat_dLL_max": 0.022011291770530964,
+      "repeats_favouring_A_LL": 19,
+      "repeats_favouring_A_AUC": 19,
+      "n_repeats": 20,
+      "events_improved_LL": 70,
+      "n_events": 98,
+      "dBA_ci": [
+        -0.003247489000204654,
+        0.09655088115194499
+      ],
+      "p_BA": 0.078,
+      "repeats_favouring_A_BA": 19,
+      "repeats_tied_BA": 1,
+      "repeat_dBA_min": 0.0,
+      "repeat_dBA_max": 0.09183673469387754
+    },
+    {
+      "set": "11 campaign events with < 20% usable text",
+      "n_removed": 11,
+      "removed": [
+        "#Afittifakı___2023-05-23_campaign_fulldata",
+        "#KalıcıNakilŞart___2023-03-24_campaign_fulldata",
+        "#ReisAiledekiEkDersliyeMüjde___2023-04-12_campaign_fulldata",
+        "#sabitkur__2023-03-26_campaign_fulldata",
+        "DenkliğimiziKimVerecek___2023-03-23_campaign_fulldata",
+        "GSBtayiniOlumluAçıkla___2023-03-21_campaign_fulldata",
+        "MebHazirandaDepremeTayin___2023-05-23_campaign_fulldata",
+        "ŞartsızTayin_Şart___2023-03-23_campaign_fulldata",
+        "Tapuma_YapıKayıt___2023-04-19_campaign_fulldata",
+        "Tapuma_YapıKayıt___2023-04-22_campaign_fulldata",
+        "YapıKayıt_YoksaOyyok___2023-05-01_campaign_fulldata"
+      ],
+      "dLL": -0.1121056993602898,
+      "dAUC": 0.04447632711621232,
+      "dBA": 0.030535628885700623,
+      "dLL_ci": [
+        -0.19876800416191084,
+        -0.02027455141245712
+      ],
+      "p_LL": 0.018,
+      "dLL_event_sd": 0.04519129077584638,
+      "dAUC_ci": [
+        0.0076448926163692685,
+        0.08784657738095233
+      ],
+      "p_AUC": 0.012,
+      "repeat_dLL_mean": -0.1121056993602898,
+      "repeat_dLL_sd": 0.033474761493021137,
+      "repeat_dLL_min": -0.1478701023231241,
+      "repeat_dLL_max": 0.012146702199291329,
+      "repeats_favouring_A_LL": 19,
+      "repeats_favouring_A_AUC": 20,
+      "n_repeats": 20,
+      "events_improved_LL": 73,
+      "n_events": 92,
+      "dBA_ci": [
+        -0.02458442892653419,
+        0.08253152944804193
+      ],
+      "p_BA": 0.26,
+      "repeats_favouring_A_BA": 18,
+      "repeats_tied_BA": 0,
+      "repeat_dBA_min": -0.009564801530368205,
+      "repeat_dBA_max": 0.07101865136298424
+    }
+  ],
+  "ozur_dilerim": [
+    {
+      "event_id": "Özür_Dilerim___2023-03-26_campaign_fulldata",
+      "label": 1,
+      "p_M0q": 0.03382688440445023,
+      "p_M4": 0.00774916026321595,
+      "loss_M0q": 3.4357441290389232,
+      "loss_M4": 5.5332853729666365,
+      "d_LL": 2.0975412439277132,
+      "share_of_total": -0.21718540282574955,
+      "usable_text_share": 0.461978273299028,
+      "jk_dLL": -0.11524880742606622,
+      "jk_dAUC": 0.03704344482891197,
+      "jk_dBA": 0.03529411764705881,
+      "infl_dLL": -0.02148339855683283,
+      "infl_dAUC": 0.002918256291958743,
+      "infl_dBA": 9.426847662145216e-05,
+      "refit_dLL": -0.10566474599459785,
+      "refit_dAUC": 0.032833525567089586,
+      "refit_dBA": 0.03137254901960784,
+      "fixed10_dLL": -0.11180304077377709,
+      "training_effect_dLL": 0.0061382947791792375
+    }
+  ]
+}

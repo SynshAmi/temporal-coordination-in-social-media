@@ -1,0 +1,3 @@
+E[N_K] alone − QDA on counts: dAUC +0.012 [-0.042, +0.061] | dLL -0.022 [-0.159, +0.136] | dBA +0.059 [+0.005, +0.120]
+E[N_K] alone − counts + nonlinear: dAUC +0.021 [-0.012, +0.059] | dLL -0.027 [-0.098, +0.045] | dBA +0.088 [+0.013, +0.167]
+counts + nonlinear + E[N_K] − counts + nonlinear: dAUC +0.018 [-0.014, +0.053] | dLL -0.024 [-0.081, +0.039] | dBA +0.059 [-0.003, +0.123]

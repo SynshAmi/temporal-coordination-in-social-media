@@ -1,0 +1,71 @@
+240 jobs
+max |diff| vs stored Study 2 predictions: 0.0
+   K condition model                features  n_events  n_campaign  log_loss  log_loss_seed_min  log_loss_seed_max   auc  auc_seed_min  auc_seed_max    ba  ba_seed_min  ba_seed_max
+ 250        KK     A                     N_K       102          51     0.279              0.268              0.295 0.961         0.955         0.967 0.922        0.882        0.941
+ 250        KK     B             N_K + lensd       102          51     0.243              0.223              0.258 0.959         0.955         0.962 0.950        0.941        0.951
+ 250        KK     C         N_K + structure       102          51     0.273              0.240              0.298 0.946         0.937         0.955 0.914        0.902        0.931
+ 250        KK     D N_K + structure + lensd       102          51     0.226              0.196              0.263 0.957         0.934         0.972 0.933        0.912        0.941
+ 250        FF     A                     N_K       102          51     0.331              0.331              0.331 0.931         0.931         0.931 0.873        0.873        0.873
+ 250        FF     B             N_K + lensd       102          51     0.271              0.271              0.271 0.957         0.957         0.957 0.902        0.902        0.902
+ 250        FF     C         N_K + structure       102          51     0.363              0.363              0.363 0.930         0.930         0.930 0.863        0.863        0.863
+ 250        FF     D N_K + structure + lensd       102          51     0.263              0.263              0.263 0.956         0.956         0.956 0.922        0.922        0.922
+ 500        KK     A                     N_K        98          48     0.315              0.308              0.322 0.952         0.949         0.958 0.880        0.845        0.896
+ 500        KK     B             N_K + lensd        98          48     0.246              0.237              0.267 0.954         0.951         0.955 0.949        0.938        0.958
+ 500        KK     C         N_K + structure        98          48     0.328              0.287              0.378 0.944         0.930         0.957 0.905        0.887        0.928
+ 500        KK     D N_K + structure + lensd        98          48     0.237              0.215              0.262 0.955         0.939         0.965 0.942        0.928        0.958
+ 500        FF     A                     N_K        98          48     0.337              0.337              0.337 0.930         0.930         0.930 0.888        0.888        0.888
+ 500        FF     B             N_K + lensd        98          48     0.273              0.273              0.273 0.957         0.957         0.957 0.908        0.908        0.908
+ 500        FF     C         N_K + structure        98          48     0.395              0.395              0.395 0.927         0.927         0.927 0.878        0.878        0.878
+ 500        FF     D N_K + structure + lensd        98          48     0.224              0.224              0.224 0.965         0.965         0.965 0.907        0.907        0.907
+1000        KK     A                     N_K        73          28     0.382              0.377              0.385 0.890         0.886         0.894 0.851        0.839        0.857
+1000        KK     B             N_K + lensd        73          28     0.268              0.251              0.292 0.955         0.952         0.956 0.942        0.917        0.964
+1000        KK     C         N_K + structure        73          28     0.423              0.401              0.447 0.899         0.887         0.909 0.885        0.860        0.906
+1000        KK     D N_K + structure + lensd        73          28     0.285              0.272              0.307 0.944         0.939         0.949 0.917        0.888        0.946
+1000        FF     A                     N_K        73          28     0.262              0.262              0.262 0.952         0.952         0.952 0.855        0.855        0.855
+1000        FF     B             N_K + lensd        73          28     0.227              0.227              0.227 0.967         0.967         0.967 0.938        0.938        0.938
+1000        FF     C         N_K + structure        73          28     0.437              0.437              0.437 0.925         0.925         0.925 0.869        0.869        0.869
+1000        FF     D N_K + structure + lensd        73          28     0.340              0.340              0.340 0.949         0.949         0.949 0.895        0.895        0.895
+primary (pa K= 250 KK B - A dLL -0.036 [-0.112, +0.038] holm 0.346 | dAUC -0.002 [-0.034, +0.025] holm 1.000 | dBA +0.028 [-0.007, +0.066] holm 0.146 | seeds/partitions favouring A (LL) 10/10
+primary (pa K= 250 KK D - C dLL -0.047 [-0.134, +0.037] holm 0.270 | dAUC +0.011 [-0.020, +0.046] holm 1.000 | dBA +0.020 [-0.008, +0.047] holm 0.300 | seeds/partitions favouring A (LL) 10/10
+sensitivity K= 250 KK B - A dLL -0.041 [-0.114, +0.031] holm 0.292 | dAUC -0.000 [-0.031, +0.026] holm 1.000 | dBA +0.026 [-0.009, +0.063] holm 0.174 | seeds/partitions favouring A (LL) 99/100
+sensitivity K= 250 KK D - C dLL -0.060 [-0.131, +0.009] holm 0.140 | dAUC +0.017 [-0.008, +0.049] holm 0.476 | dBA +0.018 [-0.009, +0.043] holm 0.214 | seeds/partitions favouring A (LL) 99/100
+primary (pa K= 250 FF B - A dLL -0.060 [-0.125, +0.015] holm 0.354 | dAUC +0.025 [-0.005, +0.058] holm 0.300 | dBA +0.029 [-0.033, +0.098] holm 0.776 | seeds/partitions favouring A (LL) 1/1
+primary (pa K= 250 FF D - C dLL -0.100 [-0.194, -0.010] holm 0.040 | dAUC +0.025 [-0.012, +0.069] holm 0.336 | dBA +0.059 [-0.012, +0.135] holm 0.276 | seeds/partitions favouring A (LL) 1/1
+primary (pa K= 500 KK B - A dLL -0.068 [-0.163, +0.018] holm 0.268 | dAUC +0.002 [-0.037, +0.038] holm 1.000 | dBA +0.070 [+0.020, +0.127] holm 0.000 | seeds/partitions favouring A (LL) 10/10
+primary (pa K= 500 KK D - C dLL -0.091 [-0.184, -0.001] holm 0.096 | dAUC +0.011 [-0.026, +0.050] holm 1.000 | dBA +0.037 [+0.003, +0.075] holm 0.120 | seeds/partitions favouring A (LL) 10/10
+sensitivity K= 500 KK B - A dLL -0.065 [-0.155, +0.019] holm 0.292 | dAUC +0.001 [-0.038, +0.036] holm 1.000 | dBA +0.064 [+0.016, +0.112] holm 0.000 | seeds/partitions favouring A (LL) 99/100
+sensitivity K= 500 KK D - C dLL -0.062 [-0.134, +0.006] holm 0.140 | dAUC +0.012 [-0.019, +0.046] holm 0.552 | dBA +0.035 [-0.001, +0.073] holm 0.162 | seeds/partitions favouring A (LL) 94/100
+primary (pa K= 500 FF B - A dLL -0.063 [-0.150, +0.024] holm 0.354 | dAUC +0.027 [-0.008, +0.067] holm 0.300 | dBA +0.021 [-0.044, +0.091] holm 0.776 | seeds/partitions favouring A (LL) 1/1
+primary (pa K= 500 FF D - C dLL -0.171 [-0.320, -0.053] holm 0.000 | dAUC +0.038 [+0.001, +0.085] holm 0.132 | dBA +0.029 [-0.036, +0.098] holm 0.776 | seeds/partitions favouring A (LL) 1/1
+primary (pa K=1000 KK B - A dLL -0.114 [-0.218, -0.011] holm 0.084 | dAUC +0.065 [+0.010, +0.144] holm 0.072 | dBA +0.091 [+0.010, +0.176] holm 0.056 | seeds/partitions favouring A (LL) 10/10
+primary (pa K=1000 KK D - C dLL -0.138 [-0.208, -0.076] holm 0.000 | dAUC +0.045 [+0.002, +0.111] holm 0.066 | dBA +0.031 [-0.010, +0.086] holm 0.300 | seeds/partitions favouring A (LL) 10/10
+sensitivity K=1000 KK B - A dLL -0.102 [-0.204, +0.004] holm 0.180 | dAUC +0.063 [+0.007, +0.138] holm 0.078 | dBA +0.085 [+0.015, +0.164] holm 0.036 | seeds/partitions favouring A (LL) 100/100
+sensitivity K=1000 KK D - C dLL -0.129 [-0.204, -0.050] holm 0.006 | dAUC +0.040 [-0.007, +0.106] holm 0.348 | dBA +0.039 [-0.001, +0.090] holm 0.162 | seeds/partitions favouring A (LL) 99/100
+primary (pa K=1000 FF B - A dLL -0.035 [-0.127, +0.065] holm 0.430 | dAUC +0.015 [-0.026, +0.063] holm 0.446 | dBA +0.083 [+0.017, +0.165] holm 0.060 | seeds/partitions favouring A (LL) 1/1
+primary (pa K=1000 FF D - C dLL -0.097 [-0.179, -0.021] holm 0.040 | dAUC +0.024 [-0.006, +0.070] holm 0.336 | dBA +0.027 [-0.072, +0.116] holm 0.776 | seeds/partitions favouring A (LL) 1/1
+descriptive: {
+ "250": {
+  "events_with_defined_lensd": 100,
+  "spearman_view_mean_vs_full": 0.9952955295529552,
+  "median_abs_view_minus_full": 0.10277457915344534,
+  "auc_lensd_for_comparison_single_view_mean": 0.776110444177671,
+  "auc_lensd_for_comparison_full_graph": 0.7831132452981192,
+  "within_event_sd_of_view_lensd_median": 0.37451782577720694
+ },
+ "500": {
+  "events_with_defined_lensd": 96,
+  "spearman_view_mean_vs_full": 0.998901247965274,
+  "median_abs_view_minus_full": 0.03774110962565391,
+  "auc_lensd_for_comparison_single_view_mean": 0.7660434782608695,
+  "auc_lensd_for_comparison_full_graph": 0.7713043478260869,
+  "within_event_sd_of_view_lensd_median": 0.2248427293118166
+ },
+ "1000": {
+  "events_with_defined_lensd": 72,
+  "spearman_view_mean_vs_full": 0.9991960897806935,
+  "median_abs_view_minus_full": 0.024643134225624586,
+  "auc_lensd_for_comparison_single_view_mean": 0.8075720164609053,
+  "auc_lensd_for_comparison_full_graph": 0.811522633744856,
+  "within_event_sd_of_view_lensd_median": 0.14254554157134344
+ }
+}

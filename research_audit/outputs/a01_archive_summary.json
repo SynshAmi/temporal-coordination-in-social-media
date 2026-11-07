@@ -1,0 +1,106 @@
+{
+  "tar_bytes": 5792081920,
+  "members_total": 104,
+  "json_members": 104,
+  "duplicate_groups": [
+    [
+      "#SesimiziDuyanVarMi___2023-03-23_campaign_fulldata.json",
+      "#SesimiziDuyanVarMı___2023-03-23_campaign_fulldata.json"
+    ]
+  ],
+  "canonical_json": 103,
+  "canonical_labels": {
+    "campaign": 52,
+    "noncampaign": 51
+  },
+  "non_nfc_names": [
+    "#BeşiktaşınMaçıVar_noncampaign_fulldata.json",
+    "#BugünGünlerdenGALATASARAY_noncampaign_fulldata.json",
+    "#Çarşamba_noncampaign_fulldata.json",
+    "#FetöİleUluslararasıMücadele___2023-04-12_campaign_fulldata.json",
+    "#GüldürGüldürShow_noncampaign_fulldata.json",
+    "#HaramBahçeKollanıyor_noncampaign_fulldata.json",
+    "#KadıköydeHaramPenaltılar_noncampaign_fulldata.json",
+    "#KalıcıNakilŞart___2023-03-24_campaign_fulldata.json",
+    "#KocaAsistnHekimeSahipÇık___2023-03-21_campaign_fulldata.json",
+    "#PerinçekCNNde___2023-03-18_campaign_fulldata.json",
+    "#ReisAiledekiEkDersliyeMüjde___2023-04-12_campaign_fulldata.json",
+    "#ankaragücü_noncampaign_fulldata.json",
+    "#çekildi_noncampaign_fulldata.json",
+    "#mevzularaçıkmikrofon_noncampaign_fulldata.json",
+    "Ali_Koç_noncampaign_fulldata.json",
+    "Asrın_Dayanışması___2023-03-21_campaign_fulldata.json",
+    "Atilla_Karaoğlan_noncampaign_fulldata.json",
+    "CHP_Sözcüsü_Faik_Öztrak_noncampaign_fulldata.json",
+    "Cumhurbaşkanı_Manisada___2023-04-22_campaign_fulldata.json",
+    "Deniz_Gezmiş_noncampaign_fulldata.json",
+    "DenkliğimiziKimVerecek___2023-03-23_campaign_fulldata.json",
+    "Dünyanın_Sonu___2023-03-23_campaign_fulldata.json",
+    "Emre_Belözoğlu_noncampaign_fulldata.json",
+    "Ertuğrul_Altun23___2023-03-18_campaign_fulldata.json",
+    "GSBtayiniOlumluAçıkla___2023-03-21_campaign_fulldata.json",
+    "Gelenekten_Geleceğe___2023-05-13_campaign_fulldata.json",
+    "Güzel_Kızlar__2023-03-26_campaign_fulldata.json",
+    "İletişim_Başkanlığı___2023-05-13_campaign_fulldata.json",
+    "Kudüs_noncampaign_fulldata.json",
+    "MilliYolPartisi_RemziÇayır___2023-05-13_campaign_fulldata.json",
+    "Murat_Bardakçı_noncampaign_fulldata.json",
+    "Osman_Gökçek___2023-03-21_campaign_fulldata.json",
+    "Özür_Dilerim___2023-03-26_campaign_fulldata.json",
+    "PopiGram_Açıldı__2023-03-20_campaign_fulldata.json",
+    "Sonuçlar_Açıklandı___2023-03-24_campaign_fulldata.json",
+    "ŞartsızTayin_Şart___2023-03-23_campaign_fulldata.json",
+    "ŞartsızTayin_Şart___2023-03-24_campaign_fulldata.json",
+    "Ters_Kelepçe___2023-03-22_campaign_fulldata.json",
+    "Teşekkür_Etti___2023-05-01_campaign_fulldata.json",
+    "Tüm_İslam_noncampaign_fulldata.json",
+    "Yakup_Türkal___2023-03-22_campaign_fulldata.json"
+  ],
+  "directed_values": {
+    "true": 104
+  },
+  "multigraph_values": {
+    "false": 104
+  },
+  "graph_keys": {
+    "directed": 104,
+    "multigraph": 104,
+    "graph": 104
+  },
+  "node_attribute_keys": {
+    "node_attr": 212231,
+    "author_description": 185374,
+    "kcore": 212231,
+    "id": 212231,
+    "author.description": 29466
+  },
+  "edge_attribute_keys": {
+    "edge_attr": 289975,
+    "timestamp": 289975,
+    "text": 289975,
+    "Interaction_Count": 289975,
+    "source": 289975,
+    "target": 289975
+  },
+  "sample_node_attributes": {
+    "node_attr": "list[772]",
+    "author_description": "None",
+    "kcore": "list[91]",
+    "id": "0"
+  },
+  "sample_edge_attributes": {
+    "edge_attr": "list[776]",
+    "timestamp": "1679803162",
+    "text": "Sanatçı Hozan Cane:\\n\\n\"O kadar ben işkence yedim. O çocuğun işkencesi kadar hiç",
+    "Interaction_Count": "1",
+    "source": "0",
+    "target": "1"
+  },
+  "all_ids_0_to_n_minus_1": true,
+  "files_with_self_loops": 103,
+  "self_loops_total": 4212,
+  "repeated_directed_pairs_total": 0,
+  "isolated_nodes_total": 0,
+  "nodes_total": 211875,
+  "links_total": 288540
+}

@@ -16,6 +16,18 @@ function rowLabel(id) {
   return `${p[2]} · ${S2_SETS[p.slice(3).join("_")] || p.slice(3).join(" ")}`;
 }
 
+// Sortable column header, declared at module scope so React keeps the same component between renders
+function SortHead({ field, onSort, children, className = "" }) {
+  return (
+    <th className={className}>
+      <button type="button" onClick={() => onSort(field)} className="inline-flex items-center gap-1.5 hover:text-[#23527c]">
+        <span>{children}</span>
+        <ArrowUpDown size={12} aria-hidden="true" />
+      </button>
+    </th>
+  );
+}
+
 export default function ResultsTable({ experiments }) {
   const [searchTerm, setSearchTerm] = useState("");
   const [categoryFilter, setCategoryFilter] = useState("all");
@@ -58,32 +70,23 @@ export default function ResultsTable({ experiments }) {
     }
   };
 
-  const SortHead = ({ field, children, className = "" }) => (
-    <th className={`cursor-pointer ${className}`} onClick={() => handleSort(field)}>
-      <div className="flex items-center gap-1.5">
-        <span>{children}</span>
-        <ArrowUpDown size={11} />
-      </div>
-    </th>
-  );
-
   return (
     <div className="bg-[#faf8f5] border border-[#dcd7ca] p-5 sm:p-8 lg:p-10 shadow-none w-full">
       <div className="panel-head flex flex-col lg:flex-row lg:items-end justify-between gap-6">
         <div className="min-w-0">
-          <span className="section-label">Numerical Results</span>
+          <span className="section-label">Results table</span>
           <h3 className="text-xl font-serif font-medium text-[#15263a]">
-            Out-of-Fold Results, Study 1 and Study 2
+            Out-of-fold results, Study 1 and Study 2
           </h3>
           <p className="head-desc">
-            Study 1 brackets are 95% event-level bootstrap intervals of fixed out-of-fold predictions. Study 2 brackets are the minimum and maximum over 10 sampling seeds, not confidence intervals.
+            Study 1 brackets are 95% event-level bootstrap intervals of fixed out-of-fold predictions. Study 2 brackets are the minimum and maximum over 10 sampling seeds, not confidence intervals. Rows marked post hoc come from the stored audit outputs.
           </p>
         </div>
 
-        <div className="flex flex-wrap items-center gap-1 border border-[#d8d3c5] bg-white p-1 text-xs font-mono self-start lg:self-end shrink-0 shadow-2xs">
+        <div className="flex flex-wrap items-center gap-1 border border-[#d8d3c5] bg-white p-1 text-[14px] font-mono self-start lg:self-end shrink-0 shadow-2xs">
           {[
-            { id: "core", label: `Key Rows (${CORE_IDS.length})` },
-            { id: "all", label: `All Rows (${experiments.length})` },
+            { id: "core", label: `Key rows (${CORE_IDS.length})` },
+            { id: "all", label: `All rows (${experiments.length})` },
           ].map((m) => (
             <button
               key={m.id}
@@ -100,8 +103,8 @@ export default function ResultsTable({ experiments }) {
       </div>
 
       <div className="flex flex-col xl:flex-row items-stretch xl:items-center justify-between gap-x-8 gap-y-4 mb-6 p-4 sm:px-5 bg-[#f4efe6] border border-[#e2dcd0]">
-        <div className="flex flex-wrap items-center gap-2 text-xs font-mono">
-          <span className="inline-flex items-center gap-1.5 mr-2 text-[11px] uppercase tracking-wider text-[#6b6862]">
+        <div className="flex flex-wrap items-center gap-2 text-[14px] font-mono">
+          <span className="inline-flex items-center gap-1.5 mr-2 text-[13px] text-[#6b6862]">
             <Filter size={13} className="shrink-0" />
             <span>Category</span>
           </span>
@@ -129,7 +132,7 @@ export default function ResultsTable({ experiments }) {
             placeholder="Search models, features, notes..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="w-full bg-white border border-[#d8d3c5] pl-10 pr-4 py-2.5 text-sm text-[#15263a] placeholder:text-[#8a857a] focus:outline-none focus:border-[#15263a] shadow-2xs"
+            className="w-full bg-white border border-[#d8d3c5] pl-10 pr-4 py-2.5 text-[16px] text-[#15263a] placeholder:text-[#8a857a] focus:outline-none focus:border-[#15263a] shadow-2xs"
           />
         </label>
       </div>
@@ -138,13 +141,13 @@ export default function ResultsTable({ experiments }) {
         <table className="ieee-table">
           <thead>
             <tr>
-              <SortHead field="experiment_id">Model / Condition</SortHead>
+              <SortHead field="experiment_id" onSort={handleSort}>Model or condition</SortHead>
               <th>Category</th>
               <th>Model</th>
-              <SortHead field="balanced_accuracy">Bal. Acc [interval]</SortHead>
-              <SortHead field="log_loss">Log Loss</SortHead>
-              <SortHead field="roc_auc">ROC-AUC</SortHead>
-              <SortHead field="n_events" className="text-center">N</SortHead>
+              <SortHead field="balanced_accuracy" onSort={handleSort}>Balanced accuracy [interval]</SortHead>
+              <SortHead field="log_loss" onSort={handleSort}>Log loss</SortHead>
+              <SortHead field="roc_auc" onSort={handleSort}>AUC</SortHead>
+              <SortHead field="n_events" onSort={handleSort} className="text-center">N</SortHead>
             </tr>
           </thead>
           {sorted.map((exp) => {
@@ -153,30 +156,30 @@ export default function ResultsTable({ experiments }) {
             return (
               <tbody key={exp.experiment_id}>
                 <tr className={`${rowTone} [&>td]:border-b-0 [&>td]:pb-2`}>
-                  <td className="font-mono text-xs font-semibold text-[#15263a]">
+                  <td className="font-mono text-[14px] font-semibold text-[#15263a]">
                     <div>{rowLabel(exp.experiment_id)}</div>
-                    <div className="text-[11px] font-sans font-normal text-[#5e5a52]">{exp.feature_group}</div>
+                    <div className="text-[13px] font-sans font-normal text-[#5e5a52]">{exp.feature_group}</div>
                   </td>
-                  <td className="text-xs text-[#4a4740] font-sans whitespace-nowrap">{exp.category}</td>
-                  <td className="font-mono text-xs text-[#15263a] whitespace-nowrap">{exp.model}</td>
-                  <td className="font-mono text-xs whitespace-nowrap">
-                    <span className="font-bold text-[#15263a]">{f3(exp.balanced_accuracy)}</span>
+                  <td className="text-[14px] text-[#4a4740] font-sans whitespace-nowrap">{exp.category}</td>
+                  <td className="font-mono text-[14px] text-[#15263a] whitespace-nowrap">{exp.model}</td>
+                  <td className="font-mono text-[14px] whitespace-nowrap">
+                    <span className="font-semibold text-[#15263a]">{f3(exp.balanced_accuracy)}</span>
                     {exp.ba_ci_lower != null && (
-                      <span className="text-[10.5px] text-[#757065] ml-1">
+                      <span className="text-[12.5px] text-[#757065] ml-1">
                         [{f3(exp.ba_ci_lower)}, {f3(exp.ba_ci_upper)}]
                       </span>
                     )}
-                    <div className="text-[10px] text-[#8a857a]">{exp.interval_kind}</div>
+                    <div className="text-[12px] text-[#8a857a]">{exp.interval_kind}</div>
                   </td>
-                  <td className="font-mono text-xs text-[#333] whitespace-nowrap">{f3(exp.log_loss)}</td>
-                  <td className="font-mono text-xs text-[#333] whitespace-nowrap">{f3(exp.roc_auc)}</td>
-                  <td className="font-mono text-xs text-center text-[#15263a] font-semibold">{exp.n_events}</td>
+                  <td className="font-mono text-[14px] text-[#333] whitespace-nowrap">{f3(exp.log_loss)}</td>
+                  <td className="font-mono text-[14px] text-[#333] whitespace-nowrap">{f3(exp.roc_auc)}</td>
+                  <td className="font-mono text-[14px] text-center text-[#15263a] font-semibold">{exp.n_events}</td>
                 </tr>
                 <tr className={rowTone}>
-                  <td colSpan={7} className="pt-0 pb-4 text-[13px] font-sans text-[#4a4740] leading-relaxed">
+                  <td colSpan={7} className="pt-0 pb-4 text-[15px] font-sans text-[#4a4740] leading-relaxed">
                     {/* Sticky + viewport-capped so the note stays readable when the table scrolls horizontally */}
                     <div className="sticky left-4 max-w-[calc(100vw-6.5rem)]">
-                      <span className="font-mono text-[10.5px] uppercase tracking-wider text-[#757065] mr-2">Note</span>
+                      <span className="font-mono text-[12.5px] text-[#757065] mr-2">Note</span>
                       {exp.note}
                     </div>
                   </td>
@@ -186,7 +189,7 @@ export default function ResultsTable({ experiments }) {
           })}
           <tfoot>
             <tr>
-              <td colSpan={7} className="text-xs text-[#6b6862] font-sans">
+              <td colSpan={7} className="text-[14px] text-[#6b6862] font-sans">
                 {viewMode === "core"
                   ? `Showing ${sorted.length} key rows. Switch to "All Rows" to inspect all ${experiments.length}.`
                   : `Showing ${sorted.length} of ${experiments.length} rows: Study 1 feature levels (LR and HGBT) and Study 2 conditions at K = 250, 500 and 1000.`}

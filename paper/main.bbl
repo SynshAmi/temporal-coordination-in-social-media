@@ -29,9 +29,10 @@ A.~A. Gopalakrishnan, J.~Hossain, T.~Elmas, and A.~E. Sar{\i}y{\"u}ce, ``Large
 
 \bibitem{decode}
 A.~A. Gopalakrishnan, J.~Hossain, T.~Elmas, and A.~E. Sar{\i}y{\"u}ce,
-  ``Density-aware walks for coordinated campaign detection,'' in \emph{Proc.
-  European Conf. Machine Learning and Principles and Practice of Knowledge
-  Discovery in Databases (ECML PKDD)}, 2025, pp. 283--298, arXiv:2506.13912.
+  ``Density-aware walks for coordinated campaign detection,'' in \emph{Machine
+  Learning and Knowledge Discovery in Databases. Applied Data Science Track and
+  Demo Track (ECML PKDD), LNCS}.\hskip 1em plus 0.5em minus 0.4em\relax
+  Springer, 2025, pp. 283--298, doi: 10.1007/978-3-032-06129-4\_17.
 
 \bibitem{jacobs}
 A.~Z. Jacobs and H.~Wallach, ``Measurement and fairness,'' in \emph{Proc. ACM
@@ -47,7 +48,7 @@ Z.~Li, Y.~Cao, K.~Shuai, Y.~Miao, and K.~Hwang, ``Rethinking the effectiveness
 \bibitem{errica}
 F.~Errica, M.~Podda, D.~Bacciu, and A.~Micheli, ``A fair comparison of graph
   neural networks for graph classification,'' in \emph{Proc. Int. Conf.
-  Learning Representations (ICLR)}, 2020.
+  Learning Representations (ICLR)}, 2020, arXiv:1912.09893.
 
 \bibitem{coupette}
 C.~Coupette, J.~Wayland, E.~Simons, and B.~Rieck, ``No metric to rule them all:
@@ -55,20 +56,21 @@ C.~Coupette, J.~Wayland, E.~Simons, and B.~Rieck, ``No metric to rule them all:
   Int. Conf. Machine Learning (ICML)}, ser. PMLR, vol. 267, 2025, pp.
   11\,405--11\,434.
 
+\bibitem{leskovec}
+J.~Leskovec and C.~Faloutsos, ``Sampling from large graphs,'' in \emph{Proc.
+  ACM SIGKDD Int. Conf. Knowledge Discovery and Data Mining}, 2006, pp.
+  631--636, doi: 10.1145/1150402.1150479.
+
 \bibitem{repo}
 \BIBentryALTinterwordspacing
-``{LEN}: {Large Engagement Networks},'' Dataset repository. [Online].
-  Available: \url{https://erdemub.github.io/large-engagement-network/}
+``{LEN}: {Large Engagement Networks},'' Dataset repository, accessed Nov. 1,
+  2026. [Online]. Available:
+  \url{https://erdemub.github.io/large-engagement-network/}
 \BIBentrySTDinterwordspacing
 
 \bibitem{maslov}
 S.~Maslov and K.~Sneppen, ``Specificity and stability in topology of protein
   networks,'' \emph{Science}, vol. 296, no. 5569, pp. 910--913, 2002.
-
-\bibitem{leskovec}
-J.~Leskovec and C.~Faloutsos, ``Sampling from large graphs,'' in \emph{Proc.
-  ACM SIGKDD Int. Conf. Knowledge Discovery and Data Mining}, 2006, pp.
-  631--636, doi: 10.1145/1150402.1150479.
 
 \bibitem{varoquaux}
 G.~Varoquaux, ``Cross-validation failure: Small sample sizes lead to large
@@ -90,15 +92,5 @@ B.~Efron and R.~J. Tibshirani, \emph{An Introduction to the Bootstrap}.\hskip
 \bibitem{holm}
 S.~Holm, ``A simple sequentially rejective multiple test procedure,''
   \emph{Scandinavian J. Statistics}, vol.~6, no.~2, pp. 65--70, 1979.
-
-\bibitem{austin}
-P.~C. Austin, ``Balance diagnostics for comparing the distribution of baseline
-  covariates between treatment groups in propensity-score matched samples,''
-  \emph{Statistics in Medicine}, vol.~28, no.~25, pp. 3083--3107, 2009, doi:
-  10.1002/sim.3697.
-
-\bibitem{stuart}
-E.~A. Stuart, ``Matching methods for causal inference: A review and a look
-  forward,'' \emph{Statistical Science}, vol.~25, no.~1, pp. 1--21, 2010.
 
 \end{thebibliography}

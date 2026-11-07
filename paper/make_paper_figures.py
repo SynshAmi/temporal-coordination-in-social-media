@@ -3,7 +3,9 @@ make_paper_figures.py
 ---------------------
 Single-column (3.5 in) figures for the research paper, built only from the
 corrected run's verified outputs (outputs/run_v2/paper_results.json) and the
-canonical manifest. No metric is typed in by hand.
+canonical manifest, plus the stored audit values collected by
+src/export_audit_results.py (output.audit_results) for Fig. 3. No metric is
+typed in by hand.
 
 Run from the project root:
     python paper/make_paper_figures.py [--config CONFIG] [--out-dir DIR]
@@ -74,62 +76,7 @@ axes[0].set_ylabel("Count (log scale)")
 fig.tight_layout(w_pad=1.0)
 save(fig, "fig1_size_distributions")
 
-# Fig. 2 - Study 1 confirmatory paired contrasts (LR), one panel per estimand
-conf = R["study1"]["confirmatory"]["logreg"]
-names = {"C1": "C1: all features\nvs counts", "C2": "C2: arrangement\nvs degree", "C3": "C3: content\nvs counts"}
-panels = [("BA\n(BA-tuned)", "ba", "delta_ba", "delta_ba_ci"),
-          ("Log loss\n(log-loss-tuned)", "log_loss", "delta_logloss", "delta_logloss_ci"),
-          ("AUC\n(log-loss-tuned)", "auc_ll_fit", "delta_auc", "delta_auc_ci")]
-fig, axes = plt.subplots(1, 3, figsize=(W, 1.85), sharey=True)
-for ax, (title, block, key, cikey) in zip(axes, panels):
-    for i, c in enumerate(["C1", "C2", "C3"]):
-        d = conf[c][block]
-        v, (lo, hi) = d[key], d[cikey]
-        sig = lo > 0 or hi < 0
-        ax.errorbar(v, i, xerr=[[v - lo], [hi - v]], fmt="o", ms=3.2, capsize=1.8, lw=0.9,
-                    color=(CAMP if sig else INK), mfc=(CAMP if sig else "white"))
-    ax.axvline(0, color=MUTE, lw=0.6, ls="--")
-    ax.set_title(title, fontsize=6.8)
-    ax.tick_params(axis="x", labelsize=6)
-axes[0].set_yticks(range(3))
-axes[0].set_yticklabels([names[c] for c in ["C1", "C2", "C3"]], fontsize=6.5)
-axes[0].invert_yaxis()
-for ax, lab in zip(axes, ["Δ BA", "Δ log loss", "Δ AUC"]):
-    ax.set_xlabel(lab, fontsize=7)
-fig.tight_layout(w_pad=0.4)
-save(fig, "fig2_study1_contrasts")
-
-# Fig. 3 - Study 2 single-view BA by budget on the COMMON cohort (the events eligible at every
-# budget), so that every line compares the same events. Full-graph (FF) values do not depend on K.
-ks = [250, 500, 1000]
-series = [("FF|combined", "Full graph → full graph (all features)", MUTE, "-.", "x"),
-          ("FF|struct6", "Full graph → full graph (6 structural)", MUTE, ":", "s"),
-          ("FK|struct6", "Full graph → single view (frozen, 6 structural)", COMP, "--", "s"),
-          ("KK|struct6", "View-trained (6 structural)", ACC, "-", "^"),
-          ("KK|NK", "View-trained (sampled node count only)", INK, "-", "o"),
-          ("KK|combined", "View-trained (node count + structure + content)", CAMP, "-", "D")]
-fig, ax = plt.subplots(figsize=(W, 2.75))
-x = np.arange(3)
-for key, label, color, ls, mk in series:
-    rr = [R["study2"]["results"][f"common_K{k}"]["conditions"][key] for k in ks]
-    m = np.array([r["single_view_ba_mean"] for r in rr])
-    lo = np.array([r["single_view_ba_min"] for r in rr])
-    hi = np.array([r["single_view_ba_max"] for r in rr])
-    # full-graph rows have no sampling, so their seed range is zero (clip rounding noise)
-    ax.errorbar(x, m, yerr=[np.maximum(m - lo, 0), np.maximum(hi - m, 0)], color=color, ls=ls, marker=mk, ms=3.2, lw=1.0,
-                capsize=1.8, label=label)
-ax.axhline(0.5, color=CAMP, ls="--", lw=0.4)
-ax.set_xticks(x)
-el = R["eligibility"]["1000"]   # the common cohort is the set eligible at the largest budget
-ax.set_xticklabels([f"K={k}" for k in ks])
-ax.set_xlabel(f"Edge budget (common cohort: n={el['total_eligible']}; {el['campaign_eligible']}/{el['comparison_eligible']})")
-ax.set_ylabel("Single-view balanced accuracy")
-ax.set_ylim(0.5, 1.0)
-ax.legend(loc="upper center", bbox_to_anchor=(0.5, -0.32), ncol=1, frameon=False)
-fig.tight_layout()
-save(fig, "fig3_study2_single_view")
-
-# Fig. 4 - endpoint mechanism at K=250: expected sampled endpoints vs full-graph node count
+# Fig. 2 - endpoint mechanism at K=250: expected sampled endpoints vs full-graph node count
 edges = pd.read_parquet(ROOT / CFG["data"]["processed_dir"] / "edges.parquet")
 elig250 = sorted(set(manifest.event_id) & set(edges.groupby("event_id").size().loc[lambda s: s >= 250].index))
 rows = []
@@ -152,5 +99,38 @@ ax.text(0.02, 0.97, f"R$^2$: log N {r2['log N only']:.2f}; + log mean degree {r2
         transform=ax.transAxes, va="top", fontsize=6.3)
 ax.legend(loc="lower right", frameon=False)
 fig.tight_layout()
-save(fig, "fig4_endpoint_mechanism")
+save(fig, "fig2_endpoint_mechanism")
+
+# Fig. 3 - token-count dispersion added to N_K (B - A) and to N_K + structure (D - C), by budget.
+# Post hoc. Filled: trained and evaluated on single views (KK); open: full graphs of the same events (FF).
+A = json.loads((ROOT / CFG["output"]["audit_results"]).read_text(encoding="utf-8"))
+V = A["edge_limited_token_std"]["contrasts"]["primary"]
+el = R["eligibility"]
+fig, axes = plt.subplots(1, 2, figsize=(W, 2.2), sharey=True)
+# vertical position within each budget row: (contrast, condition) -> offset
+POS = {("B-A", "KK"): -0.27, ("B-A", "FF"): -0.11, ("D-C", "KK"): 0.11, ("D-C", "FF"): 0.27}
+series = [("B-A", "Added to $N_K$ (B $-$ A)", INK), ("D-C", "Added to $N_K$ + structure (D $-$ C)", ACC)]
+for ax, (key, cikey, xlab) in zip(axes, [("dLL", "dLL_ci", "Δ log loss (lower is better)"),
+                                         ("dAUC", "dAUC_ci", "Δ AUC (higher is better)")]):
+    for name, label, color in series:
+        for cond in ("KK", "FF"):
+            for j, k in enumerate((250, 500, 1000)):
+                x = V[cond][name][f"K{k}"]
+                v, (lo, hi) = x[key], x[cikey]
+                first = j == 0 and key == "dLL"
+                ax.errorbar(v, j + POS[(name, cond)], xerr=[[v - lo], [hi - v]], fmt="o" if cond == "KK" else "s",
+                            ms=3.0 if cond == "KK" else 2.6, capsize=1.6, lw=0.9 if cond == "KK" else 0.6, color=color,
+                            mfc=color if cond == "KK" else "white",
+                            label=(f"{label}, {'single views (KK)' if cond == 'KK' else 'full graphs (FF)'}" if first else None))
+    ax.axvline(0, color=MUTE, lw=0.6, ls="--")
+    ax.set_xlabel(xlab, fontsize=7)
+    ax.tick_params(axis="x", labelsize=6)
+axes[0].set_yticks(range(3))
+axes[0].set_yticklabels([f"K={k}\n(n={el[str(k)]['total_eligible']})" for k in (250, 500, 1000)], fontsize=6.5)
+axes[0].set_ylim(2.5, -0.5)
+handles, labels = axes[0].get_legend_handles_labels()
+fig.legend(handles, labels, loc="upper center", bbox_to_anchor=(0.5, 1.13), ncol=2, frameon=False, fontsize=5.8,
+           handletextpad=0.3, columnspacing=0.8)
+fig.tight_layout(w_pad=0.6)
+save(fig, "fig3_dispersion_contrasts")
 print("figures ->", OUT)

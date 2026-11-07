@@ -7,74 +7,83 @@
 \usepackage{url}
 \usepackage{xcolor}
 \usepackage[hidelinks]{hyperref}
-\hypersetup{pdftitle={What Does LEN-Small Measure? Predictive Information Beyond Scale in Retained Engagement Graphs},
-  pdfauthor={Suryansh Singh and Devansh Kewlani}}
+\hypersetup{pdftitle={Finding Signal in Network Simplicity},
+  pdfauthor={Suryansh Singh, Devansh Kewlani and Yashaswini K A}}
 % Allow long URLs to break after hyphens
 \expandafter\def\expandafter\UrlBreaks\expandafter{\UrlBreaks\do\-}
 % Reproducible PDF: no creation date or random trailer ID
 \ifdefined\pdfinfoomitdate \pdfinfoomitdate=1 \pdftrailerid{} \pdfsuppressptexinfo=-1 \fi
 
-% Every number in this paper is a macro generated from the pipeline's results
-% file by src/export_latex_results.py. Do not type results by hand.
+% Every number in this paper is a macro generated from the pipeline's and the
+% audit's stored results by src/export_latex_results.py. Do not type results by hand.
 \input{generated/results.tex}
 
 \newcommand{\NK}{N_K}
+% Stacked table cells: a nested tabular keeps its full height inside the row,
+% so multi-line cells do not collide with the rule above them.
+\renewcommand{\shortstack}[2][c]{\begin{tabular}[c]{@{}#1@{}}#2\end{tabular}}
 
 \begin{document}
 
-\title{What Does LEN-Small Measure? Predictive Information Beyond Scale in Retained Engagement Graphs}
+\title{Finding Signal in Network Simplicity}
 
+% IEEE conference multicolumn author format (three authors, one column each); each
+% author's role is given in the author block.
 \author{\IEEEauthorblockN{Suryansh Singh}
-\IEEEauthorblockA{\textit{Department of Computer Science and Engineering} \\
-\textit{(Data Science)} \\
-Manipal Institute of Technology, Bengaluru, India \\
-Reg. No. 245816214}
+\IEEEauthorblockA{\textit{Co-first author}\\
+Manipal Institute of Technology\\
+Bengaluru, India\\
+suryansh.mitblr2024@learner.manipal.edu}
 \and
 \IEEEauthorblockN{Devansh Kewlani}
-\IEEEauthorblockA{\textit{Department of Computer Science and Engineering} \\
-\textit{(Data Science)} \\
-Manipal Institute of Technology, Bengaluru, India \\
-Reg. No. 245816052}
-}
+\IEEEauthorblockA{\textit{Co-first author}\\
+Manipal Institute of Technology\\
+Bengaluru, India\\
+devansh1.mitblr2024@learner.manipal.edu}
+\and
+\IEEEauthorblockN{Yashaswini K A}
+\IEEEauthorblockA{\textit{Second author}\\
+Manipal Institute of Technology\\
+Bengaluru, India\\
+yashaswini.ka@manipal.edu}}
 
 \maketitle
 % Bibliography style control: list repeated authors in full instead of a dash
 \bstctlcite{BSTcontrol}
 
 \begin{abstract}
-LEN-Small is a benchmark of Twitter engagement graphs labeled as campaign-associated or comparison events. We ask what these labels can be predicted from. On a distributed archive of \RNEvents{} canonical event graphs, \RExtraEventsWord{} more than the official \ROfficialN-graph release, logistic regression given only node and edge counts reaches a balanced accuracy of \RCountsBA. Adding degree, higher-order arrangement and content features did not detectably improve balanced accuracy on the primary fold split (paired difference \RCOneBA, 95\% interval \RCOneBALo{} to \RCOneBAHi), although its point estimate was positive, and small, in all \RSplitNWord{} fold splits examined. The same features improved log loss by \RCOneLLGain{} (in \RSplitLLNeg{} of \RSplitNWord{} splits) and ranking quality by \RCOneAUC{} in area under the curve. The arrangement features showed no detectable improvement over the same features computed on degree-preserving rewired graphs. In fixed-budget edge samples, a model trained on single views was not detectably less accurate than the full-graph model on the same events. Much of the information in a view is size-like: the number of distinct sampled endpoints, whose expectation is strongly associated with full-graph node count and mean degree, is also closely encoded by the structural features. Training on observations of the kind being scored matters far more than averaging repeated views. The results describe what the released labels are predictable from; they do not detect coordinating accounts.
+Engagement graphs, built from the retweets, replies and quotes that link accounts, are used to distinguish coordinated campaigns from organic activity. A model that classifies them well is easily read as having learned how campaigns spread, so the source of its predictive signal matters. How much of that signal can simple graph measurements capture, and what do structural and content features add? We study \RNEvents{} Twitter event graphs from the Large Engagement Networks (LEN) project archive. We first compare node and edge counts with models adding degree concentration, higher-order arrangement and message content on complete graphs, and then ask what remains informative when only a fixed number of edges is observed, as in sampled engagement data. Node and edge counts alone separate campaign from comparison events well (balanced accuracy \RCountsBA). The other features improved probabilistic predictions, lowering log loss in the prespecified comparison and in \RTwCOneFav{} of \RNPartitions{} repartitions, but classification decisions showed no detectable improvement, and no feature family alone detectably improved on the counts. Under a fixed edge budget, the number of distinct nodes a sample reaches remained highly informative, because it is largely set by the full graph's size and degree sequence. An edge-by-edge statistic, the dispersion of message token counts, measured the same quantity at every budget, yet its added predictive value, identified post hoc, was uncertain: measurement stability and additional predictive value are different questions. Complex features should therefore be judged against simple baselines, and stable measurements should not be read as additional predictive information.
 \end{abstract}
 
 \begin{IEEEkeywords}
-benchmark validity, graph classification, coordinated campaigns, paired evaluation, probabilistic evaluation, degree-preserving null model, graph sampling
+graph classification, engagement networks, coordinated campaigns, simple baselines, probabilistic evaluation, graph sampling
 \end{IEEEkeywords}
 
 \section{Introduction}
-Coordinated campaigns on social media, such as organized efforts to push a hashtag into a platform's trending list, are often studied through engagement graphs, in which accounts are nodes and retweets, replies or quotes are directed edges. The Large Engagement Networks (LEN) benchmark~\cite{len} releases such graphs with event-level labels, and later work proposes graph-learning methods on it~\cite{decode}. A high benchmark score is usually read as evidence that a model has learned something about coordination. Whether that reading is justified depends on what the labels can be predicted from, which makes it a question about the construct being measured and not only about performance~\cite{jacobs}.
+Coordinated campaigns on social media, such as organized efforts to push a hashtag into a platform's trending list, are often studied through engagement graphs, in which accounts are nodes and retweets, replies or quotes are directed edges. The Large Engagement Networks (LEN) benchmark~\cite{len} releases such graphs with event-level labels, and graph-learning methods have been proposed and evaluated on it~\cite{decode}. A high score invites the reading that a model has learned something about how campaigns spread. That reading depends on what the labels can be predicted from, which makes it a question about what the benchmark measures and not only about how well models perform~\cite{jacobs}.
 
-LEN-Small consists of the 100 smallest LEN graphs by node count~\cite{len}, yet its comparison events are still several times larger than its campaign events. Simple graph properties are known to rival learned models on many graph benchmarks~\cite{li,errica,coupette}. We therefore ask two questions of the released archive. \emph{RQ1 (incremental information):} what do degree concentration, higher-order arrangement and retained content add beyond node and edge counts? \emph{RQ2 (restricted observation):} how much label information survives in a single fixed-size sample of edges, what does the sampling mechanism make predictive, and how much does training on matching observations change performance?
+Graph-classification benchmarks are often matched by simple baselines that ignore much of the structure they are meant to test~\cite{li,errica,coupette}. Engagement graphs give a specific reason to expect this. In the archive analysed here, the median comparison graph has \RNodesMedComp{} nodes and the median campaign graph \RNodesMedCamp. The first question is therefore what node and edge counts achieve on their own, and the second is what anything else adds to them.
 
-We audit the predictive information in the distributed LEN-Small archive and report three findings.
-\begin{itemize}
-\item \textbf{Counts carry most of the decision signal.} Node and edge counts alone reach most of the balanced accuracy reached by the evaluated models. The full feature set improves probability quality and ranking but shows no reliable gain in classification decisions.
-\item \textbf{Arrangement shows no detectable gain over a degree-preserving null.} The tested arrangement features did not detectably improve on the same features computed on rewired graphs with identical degree sequences.
-\item \textbf{Single views lose no detectable signal, and training matters.} At fixed edge budgets a single view was not detectably less informative than the full graph; its endpoint count and structural features carry largely overlapping, size-like information; and training on matching observations matters far more than ensembling views.
-\end{itemize}
-The unit of analysis is the event graph throughout; we make no claims about individual accounts, bots, intent or causal effects.
+Full graphs are also not the only way such data are seen. Engagement data are usually collected by sampling, and fixing the number of observed edges looks like a natural way to hold size constant across events. Sampling, however, changes graph statistics~\cite{leskovec}. We use uniform edge sampling as a controlled probe of this second regime, not as a model of how any platform samples its data.
+
+We ask how well the campaign label can be predicted from node and edge counts, and what, if anything, adds to that prediction. Under full observation (RQ1), we add degree concentration, higher-order arrangement and message content to the counts. Under edge-limited observation (RQ2), exactly $K$ edges are seen, so the edge count is fixed by design and the count that still varies is the view's node count $\NK$; we ask what structural and message-level statistics add to it. The unit of analysis is the event graph, and every claim concerns predictive association. We make no claims about individual accounts, coordination mechanisms or learned graph models.
+
+We study the \RNEvents-graph LEN project archive, obtained from the LEN project website~\cite{repo}; Section~\ref{sec:data} describes its provenance, and all results refer to this archive.
+
+Three findings emerge. First, counts alone predict the label well. Second, adding all other features to the counts lowered log loss on the prespecified partition and in \RTwCOneFav{} of \RNPartitions{} repartitions, without a detectable gain in balanced accuracy; no single feature family detectably improved on the counts, and structural features helped only alongside content. Third, a fixed edge budget does not remove size. The view's node count is, in expectation, a function of the full graph's size and degree sequence and stays highly predictive, and the structural features of a view largely track it. A statistic computed edge by edge, token-count dispersion, keeps its meaning across budgets and was associated with lower log loss, but it was selected post hoc and its added value is uncertain. The paper contributes a count-first evaluation of nested feature sets with prespecified contrasts and repartition sensitivity; an edge-limited evaluation that identifies the count remaining in a fixed-budget view and why it remains; a comparison of collision-dependent and edge-by-edge statistics under sampling that keeps measurement agreement separate from predictive value; and a documented description of the archive, including its text retention.
 
 \section{Related Work}\label{sec:related}
-LEN~\cite{len} provides 314 engagement graphs (179 campaign, 135 non-campaign) with campaign subtypes, and LEN-Small, the 100 smallest graphs by node count (51 campaign, 49 non-campaign), is distributed through the project repository~\cite{repo}. Its authors note that comparison events tend to produce larger networks. DECODE~\cite{decode} adds density-aware random-walk embeddings built on degree, core and truss numbers. We do not propose a detector or re-evaluate these models; we characterize the label signal they are evaluated against.
+LEN~\cite{len} releases engagement graphs labelled as campaign or non-campaign events, with campaign subtypes, and describes a smaller balanced subset, LEN-Small. Its authors note that comparison events tend to produce larger networks. DECODE~\cite{decode} adds density-aware random-walk embeddings built on degree, core and truss numbers. We do not propose a detector or re-evaluate these models; we characterize the signal they are evaluated against.
 
-Benchmark-effectiveness studies show that structure-agnostic or simple-property baselines can match graph neural networks~\cite{li,errica}, and that dataset quality can be assessed by perturbing graph structure and features~\cite{coupette}. Degree-preserving rewiring is a standard null model for separating degree-sequence effects from higher-order arrangement~\cite{maslov}, and graph sampling is known to distort graph statistics~\cite{leskovec}. Small-sample cross-validation produces wide error bars~\cite{varoquaux}. Our contribution is to apply paired, estimand-specific evaluation, a degree-preserving null and a single-view observation design to one released benchmark, and to state what each analysis can and cannot show.
+Benchmark-effectiveness studies show that structure-agnostic or simple-property baselines can match graph neural networks~\cite{li,errica}, and that dataset quality can be assessed by perturbing graph structure and features~\cite{coupette}. Degree-preserving rewiring is a standard null model for separating degree-sequence effects from higher-order arrangement~\cite{maslov}, graph sampling is known to distort graph statistics~\cite{leskovec}, and small-sample cross-validation produces wide error bars~\cite{varoquaux}. We combine a count-first baseline, paired estimand-specific evaluation, a degree-preserving null and a fixed-budget observation design on the LEN project archive, and state what each analysis can and cannot show.
 
 \section{Data and Provenance}\label{sec:data}
-\subsection{Archive, Labels and Canonical Cohort}
-The analysed archive contains \RArchiveFiles{} NetworkX node-link JSON files. Ingestion computes a SHA-256 digest of every file and removes \RDupRemoved{} byte-identical duplicate, a campaign graph whose two file names differ only in a Turkish dotless ``\i'' versus ASCII ``i''. This leaves \RNEvents{} canonical events (\RNCampaign{} campaign, \RNComparison{} comparison). Labels are read from the file-name tokens \texttt{\_campaign\_} and \texttt{\_noncampaign\_}. \textbf{This archive does not match the official release.} The LEN paper describes LEN-Small as \ROfficialN{} graphs (\ROfficialCamp{} campaign, \ROfficialNon{} non-campaign), the smallest 100 of 314 by node count~\cite{len}. We could not determine why the archive holds \RExtraEventsWord{} additional events, and we make no claim of equivalence to the official selection; all results refer to the \RNEvents-event archive.
+The archive was obtained from the official LEN project website~\cite{repo} and contains \RArchiveFiles{} NetworkX node-link JSON files. Ingestion computes a SHA-256 digest of every file and removes \RDupRemoved{} exact duplicate, a campaign graph whose two file names differ only in a Turkish dotless ``\i'' versus ASCII ``i''. The remaining \RNEvents{} unique graphs comprise \RNCampaign{} campaign and \RNComparison{} comparison events, labelled from the file-name tokens \texttt{\_campaign\_} and \texttt{\_noncampaign\_}. This archive is distinct from the dataset described in the published LEN paper, which reports LEN-Small as \ROfficialN{} graphs (\ROfficialCamp{} campaign, \ROfficialNon{} non-campaign) selected as the smallest by node count~\cite{len}; the two differ in membership and graph sizes. Throughout, we refer to the analysed collection as the \RNEvents-graph LEN project archive, and our results describe it rather than the published subset.
 
-The graphs are directed and simple (no repeated directed pairs), with \REdgesTotal{} edges in total, including \RSelfLoops{} self-loops that occur in every event. Node identifiers are per-graph indices (0 to $N-1$), so the release contains no account identifiers and cross-event account overlap cannot be measured. We exclude the pretrained text and profile embeddings attached to nodes and edges to keep the features interpretable. Edge timestamps are present, but whether they record the engagement action or the engaged-with post is not verified, so no temporal features are used. Table~\ref{tab:cohort} summarizes the cohort, and Fig.~\ref{fig:sizes} shows the size difference between classes: the signed standardized mean difference (SMD) of log node count is \RSMDNodes.
+The graphs are directed and simple (no repeated directed pairs), with \REdgesTotal{} edges in total, including \RSelfLoops{} self-loops that occur in every event. Node identifiers are per-graph indices, so the release contains no account identifiers and cross-event account overlap cannot be measured. We exclude the pretrained text and profile embeddings attached to nodes and edges to keep the features interpretable. Each edge carries a message text, but \RTextNullPct\% of the \RTextLinks{} texts are null. Campaign graphs retain less usable text than comparison graphs (mean usable share \RUsableCamp{} against \RUsableComp), \RLowTextCamp{} campaign graphs and \RLowTextComp{} comparison graphs keep under a fifth of their texts, and \RNoTextEvents{} campaign graphs have none. Content features therefore describe retained text only. Edge timestamps are present, but whether they record the engagement action or the engaged-with post is not verified, so no temporal features are used. Table~\ref{tab:cohort} summarizes the archive, and Fig.~\ref{fig:sizes} shows the size difference between classes (signed standardized mean difference of log node count \RSMDNodes).
 
 \begin{table}[htbp]
-\caption{Archive and Cohort}
+\caption{Archive and Cohorts}
 \begin{center}
 \footnotesize
 \setlength{\tabcolsep}{4pt}
@@ -95,203 +104,236 @@ The graphs are directed and simple (no repeated directed pairs), with \REdgesTot
 \end{figure}
 
 \section{Methods}\label{sec:methods}
-\subsection{Features and Conventions}\label{sec:features}
-All features are computed per event graph $G=(V,E)$ with NetworkX~\cite{nx}. \emph{Counts} are $\log(1+|V|)$ and $\log(1+|E|)$. \emph{Degree concentration} is the Gini coefficient of the in-degree and of the out-degree sequence, where for a non-negative vector $x$ sorted in ascending order
+\subsection{Features}\label{sec:features}
+All features are computed per event graph $G=(V,E)$ with NetworkX~\cite{nx} and listed in Table~\ref{tab:features}. \emph{Counts} are $\log(1+|V|)$ and $\log(1+|E|)$; density and mean degree are functions of them. \emph{Degree concentration} is the Gini coefficient of the in-degree and of the out-degree sequence, where for a non-negative vector $x$ sorted in ascending order
 \begin{equation}
 G(x)=\frac{2\sum_{i=1}^{n} i\,x_{(i)}-(n+1)\sum_{i=1}^{n} x_{(i)}}{n\sum_{i=1}^{n} x_{(i)}}.
 \label{eq:gini}
 \end{equation}
-\emph{Arrangement} comprises reciprocity, the fraction of nodes in the largest weakly connected component, and the median and maximum core number. Core numbers are computed on the simple undirected projection with self-loops removed ($\{u,v\}$ is an edge if $(u,v)$ or $(v,u)$ is, $u\neq v$); a node whose only edges are self-loops has core number 0. \emph{Content} comprises the exact-duplicate fraction of cleaned message texts, a Gini coefficient over message frequencies, and the standard deviation of message token counts. Density $|E|/(|V|(|V|-1))$ is a deterministic function of the counts. We therefore treat it as scale-encoding, not as topology, and use it only in a diagnostic model.
+\emph{Arrangement} comprises reciprocity, the fraction of nodes in the largest weakly connected component, and the median and maximum core number, computed on the simple undirected projection without self-loops. \emph{Content} is computed from the edges' message texts. Texts are lower-cased, URLs (\texttt{https?://\textbackslash S+}) are removed and whitespace is collapsed; null texts and texts empty after cleaning are dropped, and each remaining edge contributes its own text, so repeated messages are kept. Content comprises the exact-duplicate fraction (one minus the share of unique texts), the Gini coefficient~\eqref{eq:gini} of message frequencies, and \emph{token-count dispersion}, the sample standard deviation of per-text whitespace token counts (0 for one text). A graph without usable text has undefined content features, which are imputed with the training-fold median. Recomputing all three content features from the raw archive, independently of the pipeline code, reproduced the stored values exactly.
 
-\subsection{Study 1: Feature Sets and Paired Inference}
-Seven feature sets share identical event-level folds: M0, counts; M0q, counts with squared and interaction terms as a nonlinear count control; M1 = M0q + degree Gini; M2 = M1 + arrangement; M3 = M0q + content; M4 = M2 + content; and a diagnostic M4 + density. They form two nested chains, M0 $\subset$ M0q $\subset$ M1 $\subset$ M2 $\subset$ M4 $\subset$ M4 + density and M0q $\subset$ M3 $\subset$ M4; M3 is not nested in M1 or M2. Three primary contrasts were specified before the corrected run: C1 (M4 vs M0q, anything beyond counts), C2 (M2 vs M1, arrangement beyond degree concentration) and C3 (M3 vs M0q, content beyond counts). They were not preregistered, and an earlier version of this study had analysed the same archive. All other contrasts are exploratory.
+The last column of Table~\ref{tab:features} records how each feature behaves in a sample of edges. Most depend on how often sampled edges share endpoints, or sampled texts repeat, so their values in a view change with the budget. Token-count dispersion is an average over edges: a view estimates the same full-graph quantity at every budget.
 
-Logistic regression (LR, with median imputation, standardization and balanced class weights) is the primary model~\cite{sklearn}; gradient-boosted trees (HGBT) are secondary. All hyperparameters are tuned by inner three-fold cross-validation inside each outer training fold; for LR, the regularization strength $C$ is chosen from $\{\RHOrigGrid\}$, and a wider grid is examined in Section~\ref{sec:rq1}. Balanced accuracy (BA) and log loss are distinct estimands with separately tuned fits: BA comes from fits tuned for BA, log loss from fits tuned for log loss, and the area under the ROC curve (AUC) is secondary. Differences are estimated on identical events with an event-level paired bootstrap of fixed out-of-fold predictions~\cite{efron} (\RNBoot{} resamples), and Holm correction is applied separately to the three BA and the three log-loss primary tests~\cite{holm}. These intervals do not include refitting or split variability~\cite{varoquaux}, which we report separately from \RNSplits{} fold splits, including the primary one; the splits are not independent replicates.
+\begin{table}[htbp]
+\caption{Feature Families, Models and Behaviour Under Edge Sampling}
+\begin{center}
+\footnotesize
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{|>{\raggedright\arraybackslash}p{0.36\columnwidth}|>{\raggedright\arraybackslash}p{0.21\columnwidth}|>{\raggedright\arraybackslash}p{0.31\columnwidth}|}
+\hline
+\textbf{Feature} & \textbf{Models} & \textbf{In a $K$-edge view} \\
+\hline
+Log node count & all; A--D as $\log\NK$ & shared endpoints \\ \hline
+Log edge count & M0--M4 & fixed at $K$ \\ \hline
+Squares and product of counts & M0q--M4 & fixed or shared endpoints \\ \hline
+In-/out-degree Gini & M1, M2, M4; C, D & shared endpoints \\ \hline
+Reciprocity; largest weakly connected component; median, max core number & M2, M4; C, D & shared endpoints \\ \hline
+Duplicate fraction; frequency Gini & M3, M4 & repeated texts \\ \hline
+Token-count dispersion & M3, M4; B, D & edge-by-edge average \\ \hline
+\end{tabular}
+\label{tab:features}
+\end{center}
+\end{table}
+
+\subsection{Full Observation: Nested Models and Contrasts}
+Seven feature sets share identical event-level folds: M0, counts; M0q, counts with squared and interaction terms as a nonlinear count control; M1 = M0q + degree concentration; M2 = M1 + arrangement; M3 = M0q + content; M4 = M2 + content; and a diagnostic M4 + density. Three primary contrasts were specified before the final run: C1 (M4 $-$ M0q, all features beyond counts), C2 (M2 $-$ M1, arrangement beyond counts and degree concentration) and C3 (M3 $-$ M0q, content beyond counts). They were not preregistered, and an earlier version of this study analysed the same archive.
+
+The nesting is what makes each contrast interpretable. A larger model adds one family to a smaller one on the same events and folds, so a difference between them reflects the added family given the others, not a change of data or partition. The baseline for C1 and C3 is M0q rather than M0 because a feature that is a nonlinear function of size could otherwise appear to add information merely by capturing curvature in the counts; the squared and interaction terms themselves made no detectable difference (\REFourLL{} \REFourLLCI), so the choice of baseline does not drive the contrasts. Because content is added both to counts alone (M3) and to counts and structure (M4), the contribution of structure can be read in two ways: beyond counts alone (M2 $-$ M0q) and beyond counts and content (M4 $-$ M3). The two answers need not agree. In an additive model, disagreement shows that the families' contributions overlap or offset each other; it does not show an interaction.
+
+Logistic regression (LR, with median imputation, standardization and balanced class weights) is the primary model~\cite{sklearn}; gradient-boosted trees (HGBT) are secondary. Hyperparameters are tuned by inner three-fold cross-validation inside each of five stratified outer folds; for LR, the regularization strength $C$ is chosen from $\{\RHOrigGrid\}$. Log loss, area under the ROC curve (AUC) and balanced accuracy (BA) answer different questions, so BA comes from fits tuned for BA, and log loss and AUC from fits tuned for log loss; the regularization that maximizes BA at a fixed threshold need not give well-calibrated probabilities. We lead with log loss for every incremental comparison: it is a proper scoring rule, uses the whole predicted probability and does not depend on a threshold. AUC is reported as the ranking metric and BA as the decision metric. Both the BA and the log-loss tests of C1--C3 were prespecified, and both are reported; leading with log loss is a presentation choice.
+
+\subsection{Uncertainty, Repartitions and Status Labels}
+Differences are estimated on identical events with an event-level paired bootstrap of fixed out-of-fold predictions~\cite{efron} (\RNBoot{} resamples, seed 7), and Holm correction is applied separately to the three BA and the three log-loss primary tests~\cite{holm}. These intervals resample events for one partition of the events into folds (seed 42); they do not include the variability of refitting on a different partition~\cite{varoquaux}. As a sensitivity analysis, we repeated the full-observation analysis over \RNPartitions{} outer partitions (seeds 42 and 1--19), averaged each event's out-of-fold predictions over partitions, and bootstrapped those. The partitions reuse the same events and are not independent replications. Every result carries one of four labels: \emph{primary} (C1--C3, and the models they compare, on the prespecified partition), \emph{sensitivity} (the same question under different partitions, exclusions or fold grouping), \emph{exploratory} (planned but outside the primary family) and \emph{post hoc} (chosen after inspecting results on these events). Token-count dispersion was singled out after the full-observation results had been examined, so every analysis that isolates it is post hoc. Unless a Holm-adjusted $p$ is given, intervals are unadjusted.
 
 \subsection{Degree-Preserving Null}
-To test arrangement beyond degree~\cite{maslov}, each graph is rewired by directed double-edge swaps $(a,b),(c,d)\to(a,d),(c,b)$ on non-loop edges, rejecting swaps that create self-loops or repeated edges; self-loops are held fixed. This preserves every node's in- and out-degree, $|V|$, $|E|$, density and the degree Gini coefficients exactly. It changed reciprocity in \RChRecipPct\% of events, the largest-component fraction in \RChWCCPct\% and the maximum core number in \RChCoreMaxPct\%, but the median core number in only \RChCoreMedPct\%, so it is a constrained degree-preserving comparison rather than a randomization of all graph structure. Directed double-edge swaps also do not reach every digraph with the given degrees, so this is not a uniform sample. We use \RSwaps{} swaps per edge and \RRealizations{} realizations per event, refit M2 with arrangement features from the rewired graphs, and compare it with M2 on the real graphs, both per realization and with the probabilities of the \RRealizations{} rewired fits averaged per event. Realizations are nested within events and are not independent samples.
+To test arrangement beyond degree~\cite{maslov}, each graph is rewired by directed double-edge swaps $(a,b),(c,d)\to(a,d),(c,b)$ on non-loop edges, rejecting swaps that create self-loops or repeated edges. This preserves every node's in- and out-degree, $|V|$, $|E|$ and the degree Gini coefficients exactly. We use \RSwaps{} swaps per edge and \RRealizations{} realizations per event, refit M2 with arrangement features from the rewired graphs, and compare it with M2 on the real graphs, with the rewired fits' probabilities averaged per event.
 
-\subsection{Exploratory Size Matching}
-Campaign and comparison events are matched one-to-one on log node count with a caliper of \RCaliper{} standard deviations~\cite{austin,stuart}, giving \RPairs{} pairs (\RMatchedEvents{} events; signed SMD \RSMDBefore{} $\to$ \RSMDAfter, i.e., $|\mathrm{SMD}|$ \RAbsSMDBefore{} $\to$ \RAbsSMDAfter). Greedy matching depends on the order in which events are visited, and node-only matching does not balance edge counts. We therefore repeat it over \ROrders{} visiting orders, with and without edge count as a second matching variable, keeping pairs in the same fold.
+\subsection{Edge-Limited Observation}
+For $K\in\{250,500,1000\}$, every event with at least $K$ edges is reduced to $K$ uniformly sampled edges, with ten sampling seeds (100--109) per event, and every feature is recomputed from the sampled edges only. The cohorts therefore differ by budget (Table~\ref{tab:cohort}); the \RCommonN{} events eligible at $K=1000$ form a common cohort eligible at every budget. $K=2000$ is infeasible for five-fold evaluation because only \RTwoThousandCamp{} campaign events have at least 2,000 edges. All conditions at a given $K$ use the same events, the full-cohort folds restricted to them, and the same feature definitions: \emph{FF}, a model trained and evaluated on full graphs; \emph{FK}, the full-graph model applied to single $K$-edge views (frozen transfer), each event being scored only by the fold model that held it out; and \emph{KK}, a model trained and evaluated on single views from the same seed. The estimand is single-view performance, averaged over seeds, because a practitioner usually sees one sample of an event; an ensemble that averages probabilities over the ten views is reported separately, as a measure of what one sample's randomness costs. Contrasts use an event-level paired bootstrap (\RSTwoNBoot{} resamples). For the regime and feature contrasts, which answer separate questions, Holm-adjusted $p$-values are across the three budgets for each contrast and metric. The two token-count dispersion contrasts (B $-$ A and D $-$ C, defined below) test one post-hoc question at three budgets each, so their six $p$-values are adjusted together for each metric.
 
-\subsection{Study 2: Single-View Observation Design}
-For $K\in\{250,500,1000\}$, every eligible event (at least $K$ edges) is reduced to $K$ uniformly sampled edges with ten sampling seeds per event, and every feature is recomputed from the sampled edges only. All conditions at a given $K$ use the same events, the full-cohort folds restricted to those events, and the same feature definitions: \emph{FF}, a model trained and evaluated on full graphs; \emph{FK}, the full-graph model applied to single $K$-edge views (frozen transfer); and \emph{KK}, a model trained and evaluated on single $K$-edge views from the same seed. The feature sets are the sampled endpoint count $\NK$ alone, six structural features (degree Gini, reciprocity, largest component and coreness), $\NK$ plus structure, and $\NK$ plus structure plus content. Density is excluded because at fixed $K$ it is determined by $\NK$:
-\begin{equation}
-D_K=\frac{K}{\NK(\NK-1)}.
-\label{eq:density}
-\end{equation}
-The estimand is single-view performance, computed per sampling seed and averaged over seeds; the ensemble that averages probabilities over the ten views is reported separately. Study 2 is exploratory: its paired contrasts use an event-level bootstrap of the single-view estimand (\RSTwoNBoot{} resamples), with no correction for multiple comparisons. We report budget-specific cohorts ($K=250$: \REligTwoFifty{} events, \REligTwoFiftyCamp/\REligTwoFiftyComp; $K=500$: \REligFiveHundred, \REligFiveHundredCamp/\REligFiveHundredComp; $K=1000$: \REligThousand, \REligThousandCamp/\REligThousandComp) and a common cohort of the \REligThousand{} events eligible at every budget. $K=2000$ is infeasible for five-fold stratified evaluation because only \RTwoThousandCamp{} campaign events have at least 2,000 edges. To explain the sampled endpoint count, we use its expectation under uniform sampling of $K$ of the $m=|E|$ edges without replacement, where $d_v$ is the number of distinct edges incident to $v$:
+Three choices limit what this design can show. First, uniform sampling without replacement is the simplest observation process and makes the expected node count of a view computable exactly; platform collection is instead shaped by keywords, time windows and rate limits, and can over-represent active accounts or bursts of activity. The results describe a controlled probe, not any platform's sampling. Second, a view keeps only the nodes its sampled edges touch and the texts of those edges, so every view feature is computed from the view alone. Third, eligibility requires at least $K$ edges, so larger budgets keep only larger events: comparisons across budgets mix observation depth with cohort composition, and the common cohort removes the composition change only for its \RCommonN{} largest events.
+
+In a view, $|E|=K$, and density $K/(\NK(\NK-1))$ is a function of the view's node count $\NK$, the number of distinct endpoints of the sampled edges. Four models are compared within views: A, $\log\NK$ alone; B, A plus token-count dispersion; C, A plus the six structural features (degree Gini, reciprocity, largest component, coreness); and D, C plus token-count dispersion. B and D are post hoc. To explain $\NK$, we use its expectation under uniform sampling of $K$ of the $m=|E|$ edges without replacement, where $d_v$ is the number of distinct edges incident to $v$:
 \begin{equation}
 \mathbb{E}[\NK]=\sum_{v\in V}\left[1-\binom{m-d_v}{K}\Big/\binom{m}{K}\right].
 \label{eq:endpoints}
 \end{equation}
+This expectation depends only on $K$ and the full graph's incidence-degree sequence.
+
+\subsection{Implementation and Verification}
+One pipeline runs every step from the raw archive to the results with fixed seeds. Every number in this paper is written into the manuscript by a script from the stored results, and the repository's tests fail if a result is typed by hand, if the generated values are stale, or if the paper and the project website disagree. An independent script reimplements the metrics, the bootstrap, Holm correction, the cross-validation and~\eqref{eq:endpoints}, and recomputes all pipeline comparisons from the saved predictions (\RChecksPassed{} of \RChecksTotal{} checks pass). The repartition, exclusion, text-retention and token-count dispersion analyses were run by separate audit scripts that reuse the pipeline's stored features, folds and sampled edges; where the two overlap, the audit reproduces the pipeline's values exactly. Two implementation errors in an earlier internal version, coreness on graphs with self-loops and fold assignment for frozen models, were fixed before these results were produced and are covered by regression tests.
 
 \section{Results}\label{sec:results}
-\subsection{Counts and Incremental Information (RQ1)}\label{sec:rq1}
-Table~\ref{tab:levels} reports out-of-fold performance by feature level. Node and edge counts alone (M0, LR) reach BA \RCountsBA; node count alone reaches \RNodeOnlyBA. The full feature set M4 reaches BA \RAllBA, log loss \RAllLL{} and AUC \RAllAUC, against \RCountsQLL{} and \RCountsQAUC{} for the count model.
+\subsection{Counts Alone}\label{sec:counts}
+Node and edge counts alone predict the label well. LR on the two counts (M0) reaches BA \RCountsBA, AUC \RCountsAUC{} and log loss \RCountsLL{} on the prespecified partition (Table~\ref{tab:levels}), and node count alone reaches BA \RNodeOnlyBA. Averaged over \RNPartitions{} partitions, the count model's BA is \RTwCountsBA. Fig.~\ref{fig:sizes} shows why counts predict well, and also why not perfectly: the classes overlap in the middle of the size range. If counts carry this much of the signal, the next question is what remains for every other feature.
 
 \begin{table}[htbp]
-\caption{Out-of-Fold Performance by Feature Level ($N=\RNEvents$)}
+\caption{Full Observation, LR: Out-of-Fold Performance by Feature Level ($N=\RNEvents$)}
 \begin{center}
 \footnotesize
 \setlength{\tabcolsep}{3pt}
 \begin{tabular}{|l|c|c|c|c|c|c|}
 \hline
-\textbf{Level} & \textbf{LR BA} & \textbf{\shortstack{LR\\log loss}} & \textbf{LR AUC} & \textbf{\shortstack{HGBT\\BA}} & \textbf{\shortstack{HGBT\\log loss}} & \textbf{\shortstack{HGBT\\AUC}} \\
+& \multicolumn{3}{c|}{\textbf{Primary partition}} & \multicolumn{3}{c|}{\textbf{\RNPartitions-partition mean}} \\
+\textbf{Level} & \textbf{\shortstack{log\\loss}} & \textbf{AUC} & \textbf{BA} & \textbf{\shortstack{log\\loss}} & \textbf{AUC} & \textbf{BA} \\
 \hline
 \RTabLevels
-\multicolumn{7}{p{0.92\columnwidth}}{\raggedright BA from BA-tuned fits; log loss and AUC from log-loss-tuned fits.}
+\multicolumn{7}{p{0.92\columnwidth}}{\raggedright BA from BA-tuned fits; log loss and AUC from log-loss-tuned fits. $^{\mathrm{p}}$Post hoc; not fitted on the primary partition alone.}
 \end{tabular}
 \label{tab:levels}
 \end{center}
 \end{table}
 
-The primary contrasts (Table~\ref{tab:contrasts}, Fig.~\ref{fig:contrasts}) separate the three measures. \textbf{For classification decisions, no contrast shows a detectable gain on the primary split.} C1, the difference in BA between all features and counts, is \RCOneBA{} \RCOneBACI, with \RCOneOnlyAll{} events classified correctly only by M4 and \RCOneOnlyCounts{} only by the count model. C2 and C3 are also indistinguishable from zero. These results are inconclusive, not evidence of equivalence: the intervals admit gains of up to about \RBAMaxHi. \textbf{For probability quality and ranking, the combined features help.} C1 improves log loss by \RCOneLLGain{} \RCOneLLCI{} (Holm $p=\RCOneLLHolm$) and AUC by \RCOneAUC{} \RCOneAUCCI. Neither arrangement beyond degree (C2) nor content alone (C3) accounts for this gain. In exploratory, uncorrected contrasts, M4 also changed log loss by \RETwoLL{} \RETwoLLCI{} against M3 and by \REThreeLL{} \REThreeLLCI{} against M2. Because LR is additive, this indicates complementary information in the combined feature set rather than a modelled interaction, and its source is not isolated. Log loss is a proper scoring rule that reflects both calibration and discrimination; we did not assess calibration separately.
-
-\begin{table}[htbp]
-\caption{Primary Paired Contrasts, LR: $\Delta$ [95\% CI] (Holm $p$)}
+\begin{table*}[!t]
+\caption{Full Observation, LR: Paired Contrasts on Identical Events, $\Delta$ [95\% Interval]}
 \begin{center}
-\footnotesize
-\setlength{\tabcolsep}{3pt}
-\begin{tabular}{|l|c|c|c|}
-\hline
-\textbf{Contrast} & \textbf{$\Delta$BA} & \textbf{$\Delta$log loss} & \textbf{$\Delta$AUC} \\
-\hline
-\RTabContrasts
-\end{tabular}
-\label{tab:contrasts}
-\end{center}
-\end{table}
-
-\begin{figure}[!t]
-\centerline{\includegraphics[width=\columnwidth]{figures/fig2_study1_contrasts.pdf}}
-\caption{Primary paired contrasts (LR, $N=\RNEvents$). Points are differences A $-$ B on identical events; bars are 95\% event-level paired bootstrap intervals of fixed out-of-fold predictions. Filled red points exclude zero. Lower log loss is better.}
-\label{fig:contrasts}
-\end{figure}
-
-The bootstrap intervals above resample events for one fixed set of out-of-fold predictions; fold-split variability is a different source of uncertainty, which we examine by refitting. Across \RNSplits{} fold splits, the C1 BA difference was positive in all \RSplitNWord{} (\RSplitBAMin{} to \RSplitBAMax, mean \RSplitBAMean), so the primary split shows the smallest gain; the C1 log-loss difference was negative in \RSplitLLNeg{} (\RSplitLLMin{} to \RSplitLLMax, median \RSplitLLMedian); and the C1 AUC difference ranged from \RSplitAUCMin{} to \RSplitAUCMax. The C2 and C3 BA differences changed sign across splits. Because the splits reuse the same events, these consistent signs are not independent replications and do not establish a reliable BA improvement. Hyperparameter selection was also sensitive to the order of events: re-running with permuted rows moved the C1 BA difference from \RRowOneStudy{} to \RRowOnePerm{} and the C3 BA difference from \RRowThreeStudy{} to \RRowThreePerm, while the C1 log-loss difference was unchanged (\RRowOneLL). The count models chose the largest $C$ of the grid in every log-loss fold. With $C$ widened to $\{\RHGridMin, \dots, \RHGridMax\}$, inner cross-validation chose weaker regularization for M0q, but its out-of-fold log loss rose from \RCountsQLL{} to \RHCountsLL, while that of M4 was \RHAllLL; C1 became \RHCOneLL{} \RHCOneLLCI{} for log loss (negative in \RHSplitLLNeg{} of \RSplitNWord{} splits) and \RHCOneBA{} \RHCOneBACI{} for BA. The count baseline's apparent under-tuning therefore did not explain its log-loss disadvantage. The wider grid does not resolve boundary effects for every model: the BA-tuned M0q and M2 fits and the log-loss-tuned M3 fit still chose its largest value in some folds. HGBT is secondary. Its own count model is weak (BA \RHGBTCountsBA), so gains measured within HGBT are inflated. Against the best count model (LR M0q), HGBT M4 changes BA by \RHGBTvsLRBA{} \RHGBTvsLRBACI{} and AUC (from log-loss-tuned fits, as elsewhere) by \RHGBTvsLRAUC{} \RHGBTvsLRAUCCI, and its log loss (\RHGBTAllLL) is worse than that of LR.
-
-\subsection{Arrangement Beyond Degree}
-Real graphs differ strongly from their rewired counterparts: the median observed-minus-null $z$-score for reciprocity is \RZRecipCamp{} in campaign and \RZRecipComp{} in comparison events, and about \RZWCCCamp{} for the largest-component fraction. These medians cover only events with a non-zero null spread; with \RRealizations{} realizations, the null standard deviation of reciprocity was zero, and its $z$-score undefined, in \RZUndefRecipPct\% of events. The arrangement features nevertheless showed no detectable improvement over the null. M2 on real graphs reached BA \RNullRealBA. Fitted separately on each rewired realization, M2 reached a mean BA of \RNullMeanBA{} (range \RNullMinBA--\RNullMaxBA); against the averaged probabilities of the \RRealizations{} rewired fits, the real-graph model differed by \RNullDBA{} \RNullDBACI{} in BA and \RNullDLL{} \RNullDLLCI{} in log loss (Table~\ref{tab:null}). These are different aggregations: against the per-realization mean, the real-graph model is \RNullMeanMinusReal{} lower, a difference without an interval. Neither comparison establishes equivalence, and neither shows that topology is uninformative. Mixing was limited. About \RUnmovedPct\% of non-loop edges per graph could not be moved (median), a plateau reached by five swaps per edge and concentrated in hub-dominated graphs, and because the median core number was almost never changed, the null mainly tests reciprocity, connectivity and the maximum core number.
-
-\begin{table}[htbp]
-\caption{Degree-Preserving Null (LR, $N=\RNEvents$)}
-\begin{center}
-\footnotesize
-\setlength{\tabcolsep}{4pt}
-\begin{tabular}{|>{\raggedright\arraybackslash}p{0.5\columnwidth}|c|}
-\hline
-\textbf{Quantity} & \textbf{Value} \\
-\hline
-\RTabNull
-\multicolumn{2}{p{0.92\columnwidth}}{\raggedright\let\\\tabularnewline$^{\mathrm{a}}$BA of M2 fitted on each rewired realization separately. $^{\mathrm{b}}$Probabilities of the \RRealizations{} rewired fits averaged per event, compared with the real-graph fit by paired bootstrap; the two rows are different aggregations.}
-\end{tabular}
-\label{tab:null}
-\end{center}
-\end{table}
-
-\subsection{Exploratory Size Matching}
-Across \ROrders{} visiting orders, node-only matching retained \RPairsMin--\RPairsMax{} pairs but left edge counts imbalanced ($|\mathrm{SMD}|$ of log edge count \REdgeSMDMin--\REdgeSMDMax). Within matched cohorts, the count model fell to near chance (median BA \RMatchCountsBA), while the content model's point estimates stayed above 0.5 in every ordering (median \RMatchContentBA, range \RMatchContentMin--\RMatchContentMax; Table~\ref{tab:matching}). These are point estimates over visiting orders, without sampling intervals; with \RPairsMin--\RPairsMax{} pairs each is imprecise, so they are not evidence of above-chance performance, and matching also changes the evaluated population.
-
-\begin{table}[htbp]
-\caption{Exploratory Matching Sensitivity, LR BA: Median [Range] over Visiting Orders}
-\begin{center}
-\footnotesize
-\setlength{\tabcolsep}{3pt}
-\begin{tabular}{|>{\raggedright\arraybackslash}p{0.2\columnwidth}|c|c|c|c|}
-\hline
-\textbf{Matching} & \textbf{Pairs} & \textbf{M0 counts} & \textbf{M3 content} & \textbf{M4 all} \\
-\hline
-\RTabMatching
-\end{tabular}
-\label{tab:matching}
-\end{center}
-\end{table}
-
-\subsection{Restricted Observation (RQ2)}
-Table~\ref{tab:singleview} and Fig.~\ref{fig:singleview} report single-view BA. On the same events, a model trained and evaluated on single $K$-edge views (KK) with all features was not detectably less accurate than the full-graph model with all features (FF): the single-view minus full-graph BA difference was \RViewMinusFullTwoFifty{} \RViewMinusFullTwoFiftyCI{} at $K=250$, \RViewMinusFullFiveHundred{} \RViewMinusFullFiveHundredCI{} at $K=500$ and \RViewMinusFullThousand{} \RViewMinusFullThousandCI{} at $K=1000$ (Table~\ref{tab:stwocontrasts}), with log-loss differences of \RViewMinusFullLLTwoFifty{} \RViewMinusFullLLTwoFiftyCI, \RViewMinusFullLLFiveHundred{} \RViewMinusFullLLFiveHundredCI{} and \RViewMinusFullLLThousand{} \RViewMinusFullLLThousandCI. At these budgets, sampling did not detectably reduce the label information available on the evaluated cohorts. The positive BA difference at $K=1000$ is an exploratory, uncorrected result on a small, imbalanced cohort (\REligThousand{} events, \REligThousandCamp/\REligThousandComp) whose log-loss difference includes zero; it does not indicate that sampling generally improves classification. $\NK$ alone and structure alone did not differ detectably ($\NK$ minus structure: \RNKMinusStructTwoFifty{} \RNKMinusStructTwoFiftyCI, \RNKMinusStructFiveHundred{} \RNKMinusStructFiveHundredCI, \RNKMinusStructThousand{} \RNKMinusStructThousandCI); adding $\NK$ to structure changed BA by \RNKAddedTwoFifty{} \RNKAddedTwoFiftyCI, \RNKAddedFiveHundred{} \RNKAddedFiveHundredCI{} and \RNKAddedThousand{} \RNKAddedThousandCI. Content added at most a few points of BA, with intervals that include zero at every budget.
-
-The training regime mattered more than any feature choice we tested. With the same six structural features, events and folds, training on single views instead of applying the full-graph model raised single-view BA at $K=250$ (budget-specific cohort, $n=\RNViewEvents$) by \RRetrainTwoFifty{} \RRetrainTwoFiftyCI, and by \RRetrainFiveHundred{} and \RRetrainThousand{} at $K=500$ and 1000. With all features, the corresponding changes were \RRetrainAllTwoFifty{} \RRetrainAllTwoFiftyCI, \RRetrainAllFiveHundred{} \RRetrainAllFiveHundredCI{} and \RRetrainAllThousand{} \RRetrainAllThousandCI, the last interval including zero. Applying the full-graph model to views lost \RTransferLossTwoFifty{} BA at $K=250$ relative to full graphs, a loss whose interval includes zero at larger budgets. Averaging the ten views changed BA by at most \REnsembleMax{} in the budget-specific cohorts, so ensembling contributes little. On the common cohort of the \RCommonN{} events eligible at every budget, the retraining, transfer, feature and ensembling contrasts have the same directions at $K=250$ and 500 (for example, a $K=250$ retraining effect of \RCommonRetrainTwoFifty), although on this cohort the content interval at $K=500$ excludes zero; an exploratory diagnostic of density in frozen models changed sign between cohorts and is not interpreted.
-
-\begin{table}[htbp]
-\caption{Single-View Balanced Accuracy (Budget-Specific Cohorts)}
-\begin{center}
-\footnotesize
-\setlength{\tabcolsep}{4pt}
-\begin{tabular}{|l|c|c|c|}
-\hline
-\textbf{Condition (feature set)} & \textbf{$K=250$} & \textbf{$K=500$} & \textbf{$K=1000$} \\
-\hline
-\RTabSingleView
-\multicolumn{4}{p{0.92\columnwidth}}{\raggedright Mean over 10 sampling seeds. FF rows use the full graphs of the same events (no sampling); the last row averages probabilities over the 10 views.}
-\end{tabular}
-\label{tab:singleview}
-\end{center}
-\end{table}
-
-\begin{figure}[!t]
-\centerline{\includegraphics[width=\columnwidth]{figures/fig3_study2_single_view.pdf}}
-\caption{Single-view balanced accuracy by edge budget on the common cohort ($n=\RCommonN$; \RCommonCamp/\RCommonComp), the events eligible at every budget, so that every line compares the same events; full-graph (FF) values do not depend on $K$. Points are means over 10 sampling seeds and bars span the minimum and maximum over seeds; they are not confidence intervals. Table~\ref{tab:singleview} reports the budget-specific cohorts.}
-\label{fig:singleview}
-\end{figure}
-
-\begin{table}[htbp]
-\caption{Study 2 Paired Contrasts (Exploratory), Single-View $\Delta$BA [95\% CI]}
-\begin{center}
-\footnotesize
+\scriptsize
 \setlength{\tabcolsep}{2.5pt}
-\begin{tabular}{|>{\raggedright\arraybackslash}p{0.22\columnwidth}|c|c|c|}
+\begin{tabular}{|>{\raggedright\arraybackslash}p{0.25\textwidth}|c|c|c|c|c|c|}
 \hline
-\textbf{Contrast} & \textbf{$K=250$} & \textbf{$K=500$} & \textbf{$K=1000$} \\
+& \multicolumn{3}{c|}{\textbf{Primary partition (seed 42)}} & \multicolumn{3}{c|}{\textbf{\RNPartitions{} partitions, repeat-averaged}} \\
+\textbf{Contrast} & \textbf{$\Delta$log loss} & \textbf{$\Delta$AUC} & \textbf{$\Delta$BA} & \textbf{$\Delta$log loss} & \textbf{$\Delta$AUC} & \textbf{\shortstack{Partitions\\favouring\\first model}} \\
 \hline
-\RTabSTwoContrasts
-\multicolumn{4}{p{0.92\columnwidth}}{\raggedright Budget-specific cohorts. Event-level paired bootstrap (\RSTwoNBoot{} resamples); no multiplicity correction.}
+\RTabFullContrasts
+\multicolumn{7}{p{0.96\textwidth}}{\raggedright Negative $\Delta$log loss and positive $\Delta$AUC or $\Delta$BA favour the first model. Event-level paired bootstrap of fixed out-of-fold predictions (\RNBoot{} resamples). $^{\dagger}$95\% interval excludes zero (nominal). $^{*}$Holm-adjusted $p<0.05$ within the named family. ``---'': not computed for that partitioning. The last column counts partitions in which the first model had lower log loss.}
 \end{tabular}
-\label{tab:stwocontrasts}
+\label{tab:fullcontrasts}
 \end{center}
-\end{table}
+\end{table*}
 
-\subsection{What the Sampled Endpoint Count Reflects}\label{sec:endpoints}
-The expectation in~\eqref{eq:endpoints} matches the observed mean $\NK$ within \RMechRelErr\% at $K=250$ and agrees with a Monte Carlo check on three events. It carries strong label information: at $K=250$ its AUC is \RMechAUC, compared with \RMechAUCNodes{} for full-graph log node count. The expected number of distinct endpoints in a fixed-budget edge sample is strongly associated with full-graph node count and mean degree. Together, these variables explain \RRTwoSizeDegree\% of its variation at $K=250$ in the analysed archive (node count alone: \RRTwoNodes\%). Adding in/out-degree Gini provides no measurable additional explanatory power (\RRTwoWithGini\% with it). Because~\eqref{eq:endpoints} depends on the full incidence-degree distribution, these aggregates describe, but do not completely determine, the quantity (Fig.~\ref{fig:mechanism}). Within sampled views, the six structural features also predict $\log\NK$ closely: a linear regression, cross-validated with events grouped, reaches $R^2$ of \RProxyRTwoTwoFifty, \RProxyRTwoFiveHundred{} and \RProxyRTwoThousand{} at $K=250$, 500 and 1000. The endpoint count and the structural features therefore carry largely overlapping, size-like information, and this analysis does not establish that $\NK$, rather than structure, is responsible for the predictive signal.
+\subsection{What Adds to Counts Under Full Observation}\label{sec:rq1}
+\emph{All features together improve probabilities, not decisions.} On the prespecified partition, adding degree, arrangement and content features to the count model (C1) changed log loss by \RCOneLLRaw{} \RCOneLLCI{} (Holm-adjusted $p=\RCOneLLHolm$ across the three primary log-loss contrasts) and AUC by \RCOneAUC{} \RCOneAUCCI{} (unadjusted; Table~\ref{tab:fullcontrasts}). Because this interval does not include partition variability, we repeated the analysis over \RNPartitions{} outer partitions of the same events: the repeat-averaged difference was \RTwCOneLL{} \RTwCOneLLCI{} (unadjusted), and the direction was the same in \RTwCOneFav{} of the \RNPartitions{} partitions (range \RTwCOneMin{} to \RTwCOneMax). The spread across partitions (standard deviation \RTwPartSD) is about as large as the event-level bootstrap uncertainty (\RTwEventSD), so the single-partition interval omits a source of variation of comparable size. In BA, the primary C1 difference was \RCOneBA{} \RCOneBACI{} (Holm $p=\RCOneBAHolm$): at the 0.5 threshold, M4 classified \RCOneOnlyAll{} events correctly that the count model missed, and missed \RCOneOnlyCounts{} that it got right. The two results describe one pattern. The richer model moves most events' predicted probabilities toward the correct class, which log loss and AUC register, but few of those moves cross the decision threshold, so classifications barely change. The BA difference was positive in all \RNPartitions{} partitions (\RTwCOneBAMin{} to \RTwCOneBAMax), but because the partitions reuse the same events this does not establish a reliable gain, and BA comparisons were sensitive to tuning tie-breaks: permuting the row order moved the C1 BA difference from \RRowOneStudy{} to \RRowOnePerm, while the log-loss difference was unchanged.
+
+\emph{No feature family improves on counts by itself, and structure helps only alongside content.} Added to the count model alone, the six structural features produced no detectable change in log loss (M2 $-$ M0q: \RTwStructLL{} \RTwStructLLCI{} over \RNPartitions{} partitions), and degree concentration on its own worsened log loss in every partition (\RTwEOneLL{} \RTwEOneLLCI). Arrangement beyond counts and degree concentration (C2) and the three content features beyond counts (C3) showed no detectable log-loss change on the prespecified partition (\RCTwoLL{} \RCTwoLLCI{} and \RCThreeLL{} \RCThreeLLCI; Holm $p=\RCTwoLLHolm$ and \RCThreeLLHolm). Added to a model that already contained counts and content, however, the same structural features changed log loss by \RTwETwoLL{} \RTwETwoLLCI{} (exploratory, unadjusted; \RTwETwoFav{} of \RNPartitions{} partitions; \RETwoLL{} \RETwoLLCI{} on the primary partition). Neither degree concentration nor arrangement alone accounts for this: added to counts, content and the other family, each gave an interval including zero (\RTwDegGivenLLCI{} and \RTwArrGivenLLCI). Content added to counts and structure (M4 $-$ M2) changed log loss by \RTwEThreeLL{} \RTwEThreeLLCI. LR is additive, so these contrasts do not identify a modelled interaction, and they are predictive comparisons: they do not show that graph structure is uninformative, or informative in any causal sense.
+
+\emph{The gain rests on a minority of events and on the treatment of missing text.} Averaged over partitions, \RTwEventsImproved{} of the \RNEvents{} events had lower out-of-fold log loss under M4 than under the count model, but the ten events most favourable to M4 contributed \RTopTenShare\% of the net gain. No single event drives it: refitting with each event left out kept the C1 log-loss difference between \RLoeoMin{} and \RLoeoMax{} (ten partitions). The \RNoTextEvents{} campaign graphs without usable text have imputed content features. Excluding them (\RNoTextN{} events, \RNPartitions{} partitions), the C1 log-loss difference was \RNoTextCOneLL{} \RNoTextCOneLLCI: the same direction, but with an interval that includes zero. The AUC difference (\RNoTextCOneAUC{} \RNoTextCOneAUCCI) and the contrast for content beyond counts and structure (\RNoTextEThreeLL{} \RNoTextEThreeLLCI) kept intervals excluding zero (unadjusted). Keeping the two events from each repeated hashtag in one fold gave \RGroupedCOneLL{} \RGroupedCOneLLCI.
+
+\emph{The baseline and model choice matter for how firm the gain is.} Widening the regularization grid made the count model's log loss worse (\RCountsQLL{} to \RHCountsLL), so under-tuning does not explain its disadvantage. Against more flexible count models, the gain is less firm: M4's log loss was lower than that of a natural-spline count model (\RFlexSplineLL{} \RFlexSplineLLCI) and a cubic count model (\RFlexCubicLL{} \RFlexCubicLLCI), but not detectably lower than quadratic discriminant analysis on the counts (\RFlexQDALL{} \RFlexQDALLCI), and none of these three comparisons had a Holm-adjusted $p$ below 0.05 in the \RTwHolmN-contrast family assembled for this sensitivity analysis (\RFlexSplineHolm, \RFlexCubicHolm{} and \RFlexQDAHolm). HGBT, the secondary model, gave a weaker count model (BA \RHGBTCountsBA) and, for all features, a log loss (\RHGBTAllLL) worse than LR's; against LR's count model, HGBT M4 changed BA by \RHGBTvsLRBA{} \RHGBTvsLRBACI.
+
+\emph{A single feature, chosen post hoc, comes close to the full set.} Token-count dispersion alone, added to the count model, changed log loss by \RTokCountsLL{} \RTokCountsLLCI{} and AUC by \RTokCountsAUC{} \RTokCountsAUCCI, in the same direction in all \RTokCountsFav{} partitions. The full feature set did not detectably improve on counts plus this one feature (\RTokMFourLL{} \RTokMFourLLCI). Equivalence was not tested, and the feature was singled out after inspecting these results, so this does not show that dispersion accounts for the content gain.
+
+\emph{Arrangement shows no detectable gain over its degree-preserving null.} Real graphs differ strongly from their rewired counterparts (median $z$-score of reciprocity \RZRecipCamp{} in campaign and \RZRecipComp{} in comparison events), but M2 with real arrangement features did not detectably outperform M2 with rewired ones: the differences were \RNullDLL{} \RNullDLLCI{} in log loss and \RNullDBA{} \RNullDBACI{} in BA against the averaged rewired fits (real-graph BA \RNullRealBA; per-realization mean \RNullMeanBA). The null is narrow. Rewiring changed reciprocity in \RChRecipPct\% of events and the largest-component fraction in \RChWCCPct\%, but the median core number in only \RChCoreMedPct\%; about \RUnmovedPct\% of non-loop edges per graph could not be moved (median); and because it preserves the degree sequence, it preserves every quantity determined by it, including~\eqref{eq:endpoints}. In an exploratory analysis that matched campaign and comparison events one-to-one on log node count (\RPairsMin--\RPairsMax{} pairs over visiting orders, \RPairs{} in the primary one), the count model fell to near chance (median BA over visiting orders \RMatchCountsBA) while the content model's median was \RMatchContentBA; with so few pairs these are point estimates without sampling intervals, and matching changes the evaluated population.
+
+If counts carry most of the signal under full observation, does fixing the number of observed edges remove it?
+
+\subsection{Edge-Limited Observation: The Count That Remains}\label{sec:edge}
+\emph{The view's node count stays highly predictive.} In a $K$-edge view the edge count is fixed, but $\NK$ alone (model A, KK) reaches AUC \RNKAUCTwoFifty, \RNKAUCFiveHundred{} and \RNKAUCThousand{} at $K=250$, 500 and 1000 (Table~\ref{tab:edgeperf}). The expectation~\eqref{eq:endpoints} matches the observed mean $\NK$ within \RMechRelErr\% at $K=250$ and agrees with a Monte Carlo check on three events. Computed directly from the score, without fitting a model, its AUC is \RMechAUC, against \RMechAUCNodes{} for full-graph log node count. Full-graph node count and mean degree explain \RRTwoSizeDegree\% of the variation of $\log\mathbb{E}[N_{250}]$ (node count alone \RRTwoNodes\%), and in/out-degree Gini adds nothing measurable (\RRTwoWithGini\%; Fig.~\ref{fig:mechanism}). A fixed edge budget therefore does not hold size constant: the number of distinct nodes a view reaches re-encodes the full graph's size and degree sequence.
 
 \begin{figure}[!t]
-\centerline{\includegraphics[width=\columnwidth]{figures/fig4_endpoint_mechanism.pdf}}
+\centerline{\includegraphics[width=\columnwidth]{figures/fig2_endpoint_mechanism.pdf}}
 \caption{Expected distinct endpoints in a 250-edge sample, from~\eqref{eq:endpoints}, against full-graph node count for the \REligTwoFifty{} eligible events. Inset: variance of $\log\mathbb{E}[\NK]$ explained by log node count, by log node count and log mean degree, and additionally by in/out-degree Gini.}
 \label{fig:mechanism}
 \end{figure}
 
+\emph{Structural features in a view largely track $\NK$.} Within views, a linear regression of $\log\NK$ on the six structural features, cross-validated with events grouped, reaches $R^2$ of \RProxyRTwoTwoFifty, \RProxyRTwoFiveHundred{} and \RProxyRTwoThousand{} at the three budgets. Adding them to $\NK$ (C $-$ A) produced no detectable change in log loss at any budget (\RStructNKLLTwoFifty{} \RStructNKLLCITwoFifty, \RStructNKLLFiveHundred{} \RStructNKLLCIFiveHundred{} and \RStructNKLLThousand{} \RStructNKLLCIThousand; Table~\ref{tab:edgecontrasts}). The three content features, added to $\NK$ and structure, changed log loss by \RContentLLTwoFifty, \RContentLLFiveHundred{} and \RContentLLThousand, with intervals excluding zero at $K=500$ and 1000 (Holm-adjusted $p$ \RContentLLHolmFiveHundred{} and \RContentLLHolmThousand), while their BA intervals included zero at every budget.
+
+\emph{A single view was not detectably worse than the full graph.} With all features, a model trained and evaluated on single views (KK) and the full-graph model on the same events (FF) differed in log loss by \RViewFullLLTwoFifty{} \RViewFullLLCITwoFifty, \RViewFullLLFiveHundred{} \RViewFullLLCIFiveHundred{} and \RViewFullLLThousand{} \RViewFullLLCIThousand. In BA the view-trained model was ahead at $K=1000$ (\RViewMinusFullThousand{} \RViewMinusFullThousandCI, nominal), but its AUC was almost the same (\RKKAllAUCThousand{} against \RFFAllAUCThousand), so that difference reflects where the decision threshold falls rather than better ranking; it comes from a small, imbalanced cohort (\REligThousand{} events, \REligThousandCamp/\REligThousandComp) and does not suggest that sampling improves classification.
+
+\emph{Retraining on views matters because view features measure something different.} Applying the full-graph model to views (FK) degrades predictions, and the reason is visible in the metrics. For $\NK$ alone, frozen transfer leaves ranking largely intact (AUC \RFKNKAUCTwoFifty{} at $K=250$) but collapses decisions to a single class (BA \RFKNKBATwoFifty), because a view's node count sits on a different scale from a full graph's. For the six structural features, frozen transfer also loses ranking (AUC \RFKStructAUCTwoFifty, against \RKKStructAUCTwoFifty{} when trained on views), and lost \RTransferLossTwoFifty{} in BA relative to full graphs. Training on views instead changed log loss by \RRetrainSLLTwoFifty, \RRetrainSLLFiveHundred{} and \RRetrainSLLThousand{} at the three budgets (each Holm-adjusted $p<0.05$) and BA by \RRetrainTwoFifty{} \RRetrainTwoFiftyCI{} at $K=250$. Because these features largely track $\NK$ within views, the contrast mixes the training regime with a change in what the features measure. Averaging the ten views changed BA by at most \REnsembleMax{} and lowered log loss by at most \REnsembleLLMax: detectable, but small. On the common cohort of \RCommonN{} events, the retraining, transfer, content and ensembling contrasts have the same log-loss directions at $K=250$ and 500. The structure contrast does not: at $K=250$ it changes sign, from \RStructNKLLTwoFifty{} \RStructNKLLCITwoFifty{} on the budget-specific cohort to \RCommonStructLL{} \RCommonStructLLCI{} on the common cohort. Both intervals include zero, so this is a change in an estimate that was indistinguishable from zero on either cohort, not a reversal of a detected effect.
+
+\begin{table*}[!t]
+\caption{Edge-Limited Observation: Single-View Performance by Condition and Feature Set (Budget-Specific Cohorts)}
+\begin{center}
+\footnotesize
+\setlength{\tabcolsep}{3.5pt}
+\begin{tabular}{|l|c|c|c|c|c|c|c|c|c|}
+\hline
+& \multicolumn{3}{c|}{\textbf{$K=250$ ($n=\REligTwoFifty$; \REligTwoFiftyCamp/\REligTwoFiftyComp)}} & \multicolumn{3}{c|}{\textbf{$K=500$ ($n=\REligFiveHundred$; \REligFiveHundredCamp/\REligFiveHundredComp)}} & \multicolumn{3}{c|}{\textbf{$K=1000$ ($n=\REligThousand$; \REligThousandCamp/\REligThousandComp)}} \\
+\textbf{Condition, features} & \textbf{log loss} & \textbf{AUC} & \textbf{BA} & \textbf{log loss} & \textbf{AUC} & \textbf{BA} & \textbf{log loss} & \textbf{AUC} & \textbf{BA} \\
+\hline
+\RTabEdgePerf
+\multicolumn{10}{p{0.96\textwidth}}{\raggedright Means over ten sampling seeds. FF: trained and evaluated on full graphs of the same events (no sampling). FK: full-graph model applied to single views. KK: trained and evaluated on single views. Node count is $\log|V|$ for FF and $\log\NK$ in views; structure is the six structural features. $^{\mathrm{p}}$Post hoc.}
+\end{tabular}
+\label{tab:edgeperf}
+\end{center}
+\end{table*}
+
+\begin{table*}[!t]
+\caption{Edge-Limited Observation: Paired Contrasts, $\Delta$ [95\% Interval], Log Loss First}
+\begin{center}
+\scriptsize
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{|>{\raggedright\arraybackslash}p{0.25\textwidth}|c|c|c|c|c|c|}
+\hline
+& \multicolumn{2}{c|}{\textbf{$K=250$}} & \multicolumn{2}{c|}{\textbf{$K=500$}} & \multicolumn{2}{c|}{\textbf{$K=1000$}} \\
+\textbf{Contrast} & \textbf{$\Delta$log loss} & \textbf{$\Delta$BA} & \textbf{$\Delta$log loss} & \textbf{$\Delta$BA} & \textbf{$\Delta$log loss} & \textbf{$\Delta$BA} \\
+\hline
+\RTabEdgeContrasts
+\multicolumn{7}{p{0.96\textwidth}}{\raggedright Budget-specific cohorts (Table~\ref{tab:edgeperf}); single-view estimand. Event-level paired bootstrap (\RSTwoNBoot{} resamples). $^{\dagger}$95\% interval excludes zero (nominal). $^{*}$Holm-adjusted $p<0.05$, across the three budgets for each regime or feature contrast and metric, and across all six dispersion contrasts for each metric; the view-minus-full-graph contrast has no stored $p$-value and carries only the nominal marker. Interval-based $\Delta$AUC was computed only for the token-count dispersion contrasts (Fig.~\ref{fig:dispersion}); condition-level AUC is in Table~\ref{tab:edgeperf}.}
+\end{tabular}
+\label{tab:edgecontrasts}
+\end{center}
+\end{table*}
+
+Is there a statistic whose meaning does not change with the budget, and does it add anything to $\NK$?
+
+\subsection{Token-Count Dispersion Under Edge Limits}\label{sec:dispersion}
+\emph{Measurement.} Because token-count dispersion is an average over edges, its view values tracked its full-graph values closely (Spearman $\rho\ge\RTokSpearmanMin$ between the seed-averaged view value and the full-graph value at every budget). This is the expected behaviour of such a statistic estimated from hundreds of edges, and at $K=1000$ a view covers most edges of a typical campaign graph, so it is a measurement check rather than a finding. Comparison events had higher dispersion: its univariate AUC was \RTokUniAUCTwoFifty, \RTokUniAUCFiveHundred{} and \RTokUniAUCThousand{} in views at the three budgets, the same as on the full graphs of those events (\RTokUniAUCFullTwoFifty, \RTokUniAUCFullFiveHundred, \RTokUniAUCFullThousand).
+
+\emph{Incremental value (post hoc).} The question here is whether a view's message lengths add anything once its node count, or its node count and structure, are known. Adding dispersion to $\NK$ (B $-$ A) changed single-view log loss by \RTokBALLTwoFifty{} \RTokBALLCITwoFifty, \RTokBALLFiveHundred{} \RTokBALLCIFiveHundred{} and \RTokBALLThousand{} \RTokBALLCIThousand{} at $K=250$, 500 and 1000 (Fig.~\ref{fig:dispersion}). In every budget and contrast, at least \RTokSeedsMin{} of the \RTokSeedsN{} sampling seeds favoured the model with dispersion, but the seeds share events, and the B $-$ A intervals include zero at $K=250$ and 500. At $K=1000$ (\REligThousand{} events), dispersion was associated with lower log loss both when added to $\NK$ (B $-$ A, nominal interval excluding zero, Holm-adjusted $p=\RTokBAHolmThousand$) and when added to $\NK$ and structure (D $-$ C: \RTokDCLLThousand{} \RTokDCLLCIThousand, Holm-adjusted $p$ \RTokDCHolmThousand), with AUC differences of \RTokBAAUCThousand{} \RTokBAAUCCIThousand{} and \RTokDCAUCThousand{} \RTokDCAUCCIThousand. After Holm adjustment over the six dispersion contrasts, only D $-$ C at $K=1000$ keeps a log-loss difference with adjusted $p<0.05$; the other log-loss differences are nominal at best. In BA, B $-$ A at $K=500$ also survives adjustment (Table~\ref{tab:edgecontrasts}), but its AUC difference is \RTokBAAUCFiveHundred{} \RTokBAAUCCIFiveHundred, so that gain reflects where the threshold falls rather than better ranking. We did not test whether the two contrasts differ, and their intervals overlap almost entirely. Model C, with $\NK$ and structure but without dispersion, had the highest log loss of the four at $K=1000$ (\RCLLThousand, against \RNKLLThousand{} for $\NK$ alone), so D $-$ C is measured against a comparatively poorly calibrated baseline. D $-$ C was \RTokDCLLTwoFifty{} \RTokDCLLCITwoFifty{} at $K=250$ and \RTokDCLLFiveHundred{} \RTokDCLLCIFiveHundred{} at $K=500$, the latter interval only narrowly excluding zero. Cohort composition changes with $K$, and B and D were not computed on the common cohort below $K=1000$, so these results do not show that the added value of dispersion depends on the budget.
+
+\begin{figure}[!t]
+\centerline{\includegraphics[width=\columnwidth]{figures/fig3_dispersion_contrasts.pdf}}
+\caption{Post hoc: change in single-view log loss (left) and AUC (right) when token-count dispersion is added to $\NK$ (B $-$ A) or to $\NK$ and structure (D $-$ C), by edge budget. Filled circles: trained and evaluated on single views (KK); open squares: the same contrasts on full graphs of the same events (FF). Bars are 95\% event-level paired bootstrap intervals, unadjusted. Cohort sizes differ by budget.}
+\label{fig:dispersion}
+\end{figure}
+
+\emph{Text availability.} Retained text differs by class, and dispersion is not independent of it. Within comparison events, views with more usable text had lower dispersion (event-level Spearman $\rho$ from \RTokTextRhoMin{} to \RTokTextRhoMax{} across budgets). Within strata of the usable-text share, dispersion still separated the classes (AUC \RTokStratMin--\RTokStratMax; descriptive). Excluding the two graphs without usable text changed the six B $-$ A and D $-$ C log-loss differences by at most \RExclSecond{} in \RExclWithin{} of them and by \RExclMax{} in the remaining one.
+
 \section{Discussion}\label{sec:discussion}
-On this archive, the released labels are predictable to a large degree from how large an event graph is. Counts reach most of the BA reached by the evaluated models, and richer features did not produce a detectable improvement in classification decisions; the BA point estimate was small and positive in every fold split examined, which is not evidence of a reliable gain. They did improve probability quality and ranking, which matters when scores are used directly or thresholds are chosen after deployment, but the source of this gain is not isolated. Anyone using LEN-Small as a benchmark should read reported accuracy against a count-only baseline and report probabilistic metrics separately.
+Table~\ref{tab:evidence} summarizes the main findings with their status. The firm results concern counts; the conditional and edge-limited results are exploratory; everything about token-count dispersion is post hoc.
 
-The null-model result is narrow by design. The real graphs are far from degree-preserving random graphs, so their arrangement is not random; the tested arrangement features simply showed no detectable improvement over the degree sequences for the model we used. Other arrangement statistics, other null models or larger cohorts could change this.
+\begin{table}[htbp]
+\caption{Main Findings and the Strength of Their Evidence}
+\begin{center}
+\footnotesize
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{|>{\raggedright\arraybackslash}p{0.33\columnwidth}|>{\raggedright\arraybackslash}p{0.17\columnwidth}|>{\raggedright\arraybackslash}p{0.38\columnwidth}|}
+\hline
+\textbf{Finding} & \textbf{Status} & \textbf{Evidence} \\
+\hline
+Counts predict the label well & Primary & Count models M0 and M0q: all three metrics, every partition \\ \hline
+All features improve log loss and AUC over counts & Primary; sensitivity & Holm-adjusted on the prespecified partition; \RTwCOneFav{} of \RNPartitions{} repartitions; interval includes zero without the no-text graphs \\ \hline
+No detectable BA gain from added features & Primary & Inconclusive, not evidence of equivalence \\ \hline
+Structure adds only alongside content & Exploratory & Unadjusted; not attributable to one family \\ \hline
+$\NK$ stays predictive in fixed-$K$ views & Exploratory & Every budget; expectation exact under uniform sampling \\ \hline
+Structure adds nothing detectable to $\NK$ & Exploratory & Intervals include zero at every budget \\ \hline
+Dispersion adds to $\NK$ & Post hoc & Consistent direction; adjusted support only for D $-$ C at $K=1000$ \\ \hline
+\end{tabular}
+\label{tab:evidence}
+\end{center}
+\end{table}
 
-Under restricted observation, a single view was not detectably less informative than the full graph with the same features. Much of that information is size-like: the number of distinct endpoints a view touches, a quantity strongly associated with the full graph's node count and mean degree, is itself closely encoded by the structural features. A model needs to be trained on observations like those it will see: frozen transfer from full graphs loses accuracy at small budgets, while averaging many views adds almost nothing.
+\emph{Counts first.} In this archive, most of the predictability comes from node and edge counts. Why size should carry so much of the label is not resolved by these data, and the possible explanations have different implications. Organic trends can draw large and diverse audiences, while a campaign hashtag pushed by a limited group over a short period may reach fewer accounts; the LEN authors note that comparison events tend to produce larger networks~\cite{len}. It could also reflect how the events in this archive were selected. Under the first explanation, size is a genuine property of the events that any model will exploit; under the second, it is an artefact of the data that would not transfer. In either case, a model that learns event size learns something real about these labels without necessarily learning anything about coordination.
 
-These results do not establish that any model detects coordinated behavior, accounts or intent, that size is the only relevant property, or any causal effect. They concern one released archive, which differs from the official release.
+The other features improved probabilistic prediction, not decisions, and the improvement is concentrated in a minority of events and sensitive to how missing text and flexible count models are handled. Evaluations on these data should therefore report a count-only baseline and report probability and decision metrics separately: a richer model can sharpen probabilities without changing many classifications.
+
+\emph{Structure is conditional, not absent.} Structural features showed no detectable change when added to counts or to $\NK$, but improved log loss alongside content. The degree-preserving null tests a narrow question, because rewiring preserves everything the degree sequence determines, including the expected node count of a view. None of these results shows that graph structure is uninformative; they show that, for the features and model used, its contribution beyond counts was not detectable on its own.
+
+\emph{What remains predictive under a fixed edge budget.} Fixing the number of observed edges looks like a way to compare events of different sizes on equal terms, but it does not remove size. A view's node count is, in expectation, a function of the budget and the full graph's degree sequence: a large graph whose edges spread over many accounts yields many distinct endpoints in a sample, and a small, concentrated graph yields few. Size therefore re-enters through a quantity that varies even though the edge count is held fixed. The structural features computed on a view largely track that count, which explains why views remain predictive, why structure adds nothing detectable to $\NK$, and why full-graph models transfer poorly to views. Anyone who uses fixed-budget samples to control for size should check what the samples' node counts alone achieve. Uniform edge sampling is a probe, and platform sampling may behave differently.
+
+\emph{Measurement stability is not predictive value.} These results separate two properties that are easy to conflate. A statistic is stable under sampling if its value in a view estimates its full-graph value: token-count dispersion is, and the structural features and $\NK$ are not. Stability decides whether a model trained on full graphs can be applied to samples, and its absence explains the failure of frozen transfer. It says nothing about whether a feature adds information beyond what a view already offers. $\NK$ is unstable across budgets yet highly predictive within each, while dispersion is stable but its increment over $\NK$ is uncertain.
+
+\emph{What token-count dispersion is and is not.} Dispersion is a statistic of how much message lengths, in whitespace tokens, vary within the retained text of an event. Whether it adds predictive value beyond $\NK$ is unclear: the direction was consistent, adjusted support is limited to one contrast at the largest budget, it rests on retained text, and it was selected after inspecting these events. Topic or event-type differences, text retention and cleaning choices are alternative explanations. It is not evidence of coordination or templated messaging. Testing it requires independent events and a common-cohort evaluation across budgets.
 
 \section{Limitations}\label{sec:limitations}
-\emph{Sample size and uncertainty.} With \RNEvents{} events, null BA results are inconclusive rather than evidence of equivalence. Paired intervals resample fixed out-of-fold predictions and exclude refitting and split variability; re-drawn splits show C1 differences that vary in magnitude, and the primary split shows the smallest C1 BA gain of the \RSplitNWord. Hyperparameter selection in small inner folds was sensitive to row order and, for log loss, to the width of the regularization grid.
+\emph{Scope and labels.} All results describe the \RNEvents-graph LEN project archive (Section~\ref{sec:data}); size--label associations may reflect how its events were selected and need not hold in other LEN data. Labels come from file names and were not independently verified; the comparison class means ``not labelled a campaign'', not verified organic activity. Campaign subtypes are not available, so heterogeneity across campaign types cannot be examined.
 
-\emph{Provenance.} The archive has \RNEvents{} events rather than the official \ROfficialN, for an unknown reason. Labels come from file names. Account identifiers and campaign subtypes are not available, so dependence between events through shared accounts and heterogeneity across subtypes cannot be assessed. \RHashtagPairsCap{} campaign hashtags each appear as two events on nearby dates, and \RHashtagPairsSplit{} pair falls in different folds, so not every event is independent of the others. LEN-Small itself is selected by node count, so associations between size and label in this archive need not hold in the full LEN dataset. Timestamp semantics are unverified, so temporal features are excluded.
+\emph{Sample size and dependence.} With \RNEvents{} events (\REligThousand{} at $K=1000$), intervals are wide, and a result showing no detectable difference is not evidence of equivalence. Bootstrap intervals exclude refitting variability, which the repartitions show to be of comparable size. \RHashtagPairsCap{} campaign hashtags each appear as two events on nearby dates, and \RHashtagPairsSplit{} pair falls in different folds of the primary partition. Without account identifiers, dependence between events through shared accounts cannot be measured.
 
-\emph{Null model and matching.} Rewiring mixes incompletely in hub-dominated graphs, leaves the median core number almost unchanged and uses only \RRealizations{} realizations, too few to estimate the null spread reliably. Matching keeps \RPairsMin--\RPairsMax{} pairs, changes the evaluated population, does not balance all size measures and is reported without sampling intervals.
+\emph{Selection.} Token-count dispersion was chosen on these events, and no independent sample was available to test it. Holm adjustment controls for testing it at several budgets and baselines, not for having chosen it after looking at the data.
 
-\emph{Scope of models and observations.} Only LR and HGBT on hand-crafted features were evaluated. Graph neural networks and the methods of~\cite{len,decode} were not re-run, and published LEN-Small accuracies use a different protocol and metric. Uniform edge sampling is one observation mechanism among many~\cite{leskovec}, and the Study 2 contrasts are exploratory and uncorrected for multiplicity.
+\emph{Missing text.} All content features are computed on retained text. Retention differs by class, two campaign graphs have none and receive imputed values, and why texts are missing is unknown: deleted posts, suspended accounts and collection choices are all possible, and if any of them affects campaigns more than organic events, missingness would itself carry label information. Within comparison events, dispersion is associated with how much text a view retains, so what dispersion measures cannot be fully separated from retention.
 
-\section{Methodological Corrections}\label{sec:corrections}
-Validation of an earlier version of this analysis identified two errors, both corrected before the results reported here were produced.
+\emph{Cohorts and sampled views.} In the edge-limited analysis, budget is confounded with cohort composition: larger budgets keep only larger events, and the \REligThousand-event cohort at $K=1000$ is imbalanced. B and D were not computed on the common cohort below $K=1000$, so no budget trend can be claimed for dispersion. Only uniform edge sampling was studied, and a view's features use only its sampled edges, which is a stricter and simpler observation model than platform collection.
 
-\emph{Coreness and self-loops.} Every graph in the archive contains self-loops, which the core-number routine does not accept. The earlier implementation set both coreness features to zero instead of failing, so its arrangement features carried no coreness information. Core numbers are now computed on the undirected projection without self-loops (Section~\ref{sec:features}). The error affected every model that uses arrangement features.
-
-\emph{Fold assignment for frozen models.} In the frozen-transfer evaluation, sampled events were assigned to fold models with a split specific to each edge budget instead of the full-cohort split, so some events were scored by a model whose training data included their own full graph. Such leakage inflates frozen-transfer accuracy. Each sampled event is now scored only by the full-cohort fold model that held it out. The error affected only the frozen-transfer condition.
-
-Both corrections are covered by regression tests, and every result in this paper comes from the corrected pipeline. The superseded outputs are retained in the project repository, with their values, for reference.
+\emph{Models and null.} The degree-preserving null mixes incompletely in hub-dominated graphs, rarely changes the median core number and uses \RRealizations{} realizations. Only LR and HGBT on hand-crafted features were evaluated; graph neural networks and the methods of~\cite{len,decode} were not re-run, and published LEN-Small accuracies use a different protocol and metric. Timestamp semantics are unverified, so no temporal features are used.
 
 \section{Conclusion}\label{sec:conclusion}
-First, LEN-Small's labels, as distributed in the analysed archive, are highly predictable from graph size, although we do not show that size is the only relevant property. Second, additional degree, arrangement and content features improved probability quality and ranking without a reliable improvement in balanced accuracy, and the tested arrangement features showed no detectable improvement over a degree-preserving null. Third, under fixed-budget observation, the sampled endpoint count and the structural features encode substantially overlapping, size-like information; single views were not detectably less informative than full graphs on the evaluated cohorts, and training on matching observations mattered far more than ensembling. Evaluations on this benchmark should report count-only baselines, separate decision and probability metrics, and match training to the observation regime. Natural next steps are to obtain the official release and account-level data to test provenance and dependence, and to evaluate learned graph models under the same paired protocol.
+In this archive of \RNEvents{} engagement graphs, node and edge counts predict the campaign label well. Adding degree, arrangement and content features improved probabilistic prediction on the prespecified partition and in most repartitions, but showed no detectable gain in classification decisions, and no single family detectably improved on the counts by itself. Under a fixed edge budget, the view's node count re-encodes the full graph's size and degree sequence and remains highly predictive, while an edge-by-edge statistic, token-count dispersion, keeps its meaning across budgets and is a lead, chosen post hoc, for independent testing. Two next steps follow: repeating the analysis on the published LEN-Small selection and other LEN data, and evaluating token-count dispersion and learned graph models on independent events under the same paired protocol.
 
 \section*{Code and Data Availability}
-Code, configuration, tests, derived outputs and reproduction instructions are at \url{https://github.com/SynshAmi/temporal-coordination-in-social-media}; the MIT licence covers the code only, not this paper, its figures or any data. One command runs the pipeline from the raw archive to every number, table and figure in this paper with fixed seeds, and an independent script recomputes all reported comparisons from the saved predictions (\RChecksPassed{} of \RChecksTotal{} checks pass). A complete rerun reproduced every reported value on the original machine; other hardware has not been tested. LEN is released by its authors under a CC-BY licence~\cite{len}. We do not redistribute the raw LEN-Small archive, which must be obtained from the LEN project~\cite{repo}; the repository records its SHA-256 digest. Derived files (event names, counts, file digests, features and predictions) and, for the project website, each event's graph structure (node indices and directed edges, without text or timestamps) are shared with attribution and are not endorsed by the LEN authors.
+Code, configuration, tests, derived outputs, the audit record (\texttt{research\_audit}) and reproduction instructions are at \url{https://github.com/SynshAmi/temporal-coordination-in-social-media}; the MIT licence covers the code only, not this paper, its figures or any data. A complete rerun of the pipeline reproduced every pipeline value on the original machine; other hardware has not been tested, and the audit scripts were run once. LEN is released by its authors under a CC-BY licence~\cite{len}. We do not redistribute the raw archive, which must be obtained from the LEN project~\cite{repo}; the repository records its SHA-256 digest. Derived files (event names, counts, file digests, features and predictions) and, for the project website, each event's graph structure (node indices and directed edges, without text or timestamps) are shared with attribution and are not endorsed by the LEN authors.
 
 \bibliographystyle{IEEEtran}
 \bibliography{references}

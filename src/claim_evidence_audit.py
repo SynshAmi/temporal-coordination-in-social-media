@@ -2,14 +2,16 @@
 claim_evidence_audit.py
 -----------------------
 Builds reports/audit/claim_evidence.md: every headline claim of the paper and
-website, the value(s) behind it, the key in <run_dir>/paper_results.json, the
-source artifact, and whether the value appears verbatim in the built paper PDF.
+website, the value(s) behind it, the key in <run_dir>/paper_results.json (or in
+the audit results file, output.audit_results, for values from the stored
+robustness-audit outputs), the source artifact, and whether the value appears
+verbatim in the built paper PDF.
 Claims documented only in the repository (the superseded correction-history
 values) are checked against README.md instead.
 
-The website reads the same paper_results.json unchanged (enforced by
-tests/test_frontend_payload.py), so a claim that resolves here is the value the
-website shows.
+The website reads the same paper_results.json and audit results unchanged
+(enforced by tests/test_frontend_payload.py), so a claim that resolves here is
+the value the website shows.
 
 Usage: python src/claim_evidence_audit.py [--config configs/v2_coreness_fix.yaml]
 """
@@ -25,10 +27,12 @@ import yaml
 
 sys.stdout.reconfigure(encoding="utf-8")
 
-PDF = Path("paper/LEN_Small_Predictive_Information_Beyond_Scale.pdf")
-README = Path("README.md")
+ROOT = Path(__file__).resolve().parents[1]
+PDF = ROOT / "paper" / "Finding_Signal_in_Network_Simplicity.pdf"
+README = ROOT / "README.md"
 REPO_ONLY = "(repository only)"
-OUT = Path("reports/audit/claim_evidence.md")
+OUT = ROOT / "reports" / "audit" / "claim_evidence.md"
+CONFIG = ROOT / "configs" / "v2_coreness_fix.yaml"
 
 
 # Formatting identical to the paper macros (src/export_latex_results.py) and the website (fmt.js)
@@ -49,8 +53,20 @@ def get(R, path):
     return o
 
 
-def claims(R):
+def load_audit(config=CONFIG):
+    cfg = yaml.safe_load(Path(config).read_text(encoding="utf-8"))
+    return json.loads((ROOT / cfg["output"]["audit_results"]).read_text(encoding="utf-8"))
+
+
+def claims(R, A=None):
     """(claim, [(key, printed form)], source artifact, where shown)"""
+    A = A if A is not None else load_audit()
+    P = A["study1_20_partitions"]["contrasts"]
+    E = A["edge_limited_token_std"]
+    V = E["contrasts"]["primary"]["KK"]
+    X = A["text_retention"]
+    H = A["study2_contrasts_holm"]["contrasts"]
+    AUD = "outputs/research_audit/audit_results.json"
     S1, LC = "study1.performance.logreg", "study1.confirmatory.logreg"
     S2C = "study2.contrasts.budget_specific_K{}"
     S2R = "study2.results.budget_specific_K{}.conditions"
@@ -61,7 +77,7 @@ def claims(R):
          [("dataset.archive_json_files", str(g("dataset.archive_json_files"))), ("dataset.n_events", str(g("dataset.n_events"))),
           ("dataset.n_campaign", str(g("dataset.n_campaign"))), ("dataset.n_comparison", str(g("dataset.n_comparison")))],
          "data/manifests/manifest.parquet, duplicate_files.json", "Paper §III, Table I; website Overview, Study Design, Methods §1"),
-        ("Official LEN-Small release is 100 graphs (51/49); archive differs and the reason is unknown",
+        ("The LEN paper describes LEN-Small as 100 graphs (51/49), a dataset distinct from the analysed 103-graph archive",
          [("dataset.official_len_small.n_graphs", "100 graphs"), ("dataset.official_len_small.n_campaign", "51 campaign")],
          "LEN paper (ICWSM 2025), Table 3 caption", "Paper abstract, §III; website Overview, navbar, Methods §1"),
         ("Signed SMD of log node count (campaign − comparison) is −2.24",
@@ -92,10 +108,25 @@ def claims(R):
         ("C2 (arrangement beyond degree) and C3 (content beyond counts) show no detectable BA gain",
          [(f"{LC}.C2.ba.delta_ba_ci", ci(g(f"{LC}.C2.ba.delta_ba_ci"))), (f"{LC}.C3.ba.delta_ba_ci", ci(g(f"{LC}.C3.ba.delta_ba_ci")))],
          "outputs/run_v2/study1/nested_results.json", "Paper §V-A, Table III; website Fig. 2"),
-        ("Across 10 re-drawn splits, C1 ΔBA ranges +0.010 to +0.049 (stable direction, unstable magnitude)",
-         [("study1.repeated_splits_lr.C1.dBA_min", sg(g("study1.repeated_splits_lr.C1.dBA_min"))),
-          ("study1.repeated_splits_lr.C1.dBA_max", sg(g("study1.repeated_splits_lr.C1.dBA_max")))],
-         "outputs/run_v2/study1/repeated_splits_lr.csv", "Paper §V-A; website Fig. 2 notes, Overview RQ1"),
+        ("Sensitivity over 20 outer partitions: C1 log-loss difference −0.094 [−0.172, −0.013], same direction in 19 of 20",
+         [("study1_20_partitions.contrasts.C1.dLL", sg(P["C1"]["dLL"])), ("study1_20_partitions.contrasts.C1.dLL_ci", ci(P["C1"]["dLL_ci"])),
+          ("study1_20_partitions.contrasts.C1.repeats_favouring_A_LL", f"{P['C1']['repeats_favouring_A_LL']} of the {P['C1']['n_repeats']}")],
+         f"{AUD} (research_audit/outputs/s02_results.json)", "Paper §V-B, Table IV; website Findings"),
+        ("Structure beyond counts: no detectable change (M2 − M0q); beyond counts + content: −0.059 (exploratory)",
+         [("study1_20_partitions.contrasts.M2_minus_M0q.dLL_ci", ci(P["M2_minus_M0q"]["dLL_ci"])),
+          ("study1_20_partitions.contrasts.E2.dLL", sg(P["E2"]["dLL"])), ("study1_20_partitions.contrasts.E2.dLL_ci", ci(P["E2"]["dLL_ci"]))],
+         f"{AUD} (research_audit/outputs/s02_results.json)", "Paper §V-B, Table IV; website Findings"),
+        ("Without the two no-text graphs, C1 log loss keeps its direction with an interval including zero",
+         [("study1_20_partitions.contrasts.C1_text101.dLL", sg(P["C1_text101"]["dLL"])),
+          ("study1_20_partitions.contrasts.C1_text101.dLL_ci", ci(P["C1_text101"]["dLL_ci"]))],
+         f"{AUD} (research_audit/outputs/s02_results.json)", "Paper §V-B, Table IV; website Findings"),
+        ("Post hoc: token-count dispersion added to counts, log-loss interval includes zero",
+         [("study1_20_partitions.contrasts.tokenstd_beyond_counts.dLL_ci", ci(P["tokenstd_beyond_counts"]["dLL_ci"]))],
+         f"{AUD} (research_audit/outputs/s04_posthoc_lensd.json)", "Paper §V-B, Table IV; website Findings"),
+        ("Edge texts: 27.5% null; usable share 0.58 (campaign) vs 0.80 (comparison)",
+         [("text_retention.null_share", pct(X["null_share"]) + "%"), ("text_retention.usable_share_mean_campaign", f2(X["usable_share_mean_campaign"])),
+          ("text_retention.usable_share_mean_comparison", f2(X["usable_share_mean_comparison"]))],
+         f"{AUD} (research_audit/outputs/s01_content_verification.json)", "Paper §III, Table I; website Data"),
         ("Tuning is sensitive to row order (C1 ΔBA +0.010 → +0.029 with permuted rows)",
          [("study1.row_order_sensitivity.ba:C1.delta_permuted_order", sg(g("study1.row_order_sensitivity")["ba:C1"]["delta_permuted_order"]))],
          "outputs/run_v2/verification/verification_report.json", "Paper §V-A, Limitations; website Methods §3"),
@@ -107,8 +138,8 @@ def claims(R):
          [("null_model.M2_real_ba", f3(g("null_model.M2_real_ba"))), ("null_model.M2_null_ba_mean", f3(g("null_model.M2_null_ba_mean"))),
           ("null_model.real_minus_null_ba.delta_ba_ci", ci(g("null_model.real_minus_null_ba.delta_ba_ci")))],
          "outputs/run_v2/study1/null_results.json", "Paper abstract, §V-B, Table IV; website Overview, Methods §4"),
-        ("Rewiring mixes incompletely (median unmoved non-loop edges)",
-         [("null_model.frac_edges_unchanged_quantiles[2]", f2(g("null_model.frac_edges_unchanged_quantiles")[2]))],
+        ("Rewiring mixes incompletely (median share of unmoved non-loop edges)",
+         [("null_model.frac_edges_unchanged_quantiles[2]", str(round(100 * g("null_model.frac_edges_unchanged_quantiles")[2])) + "%")],
          "outputs/run_v2/study1/null_results.json; verification_report.json", "Paper §V-B, Table IV, Limitations; website Overview limitations"),
         ("Exploratory matching: 16 pairs, |SMD| 2.24 → 0.10; counts near chance (median 0.531), content above chance (median 0.781)",
          [("matching.primary_pairs", str(g("matching.primary_pairs"))), ("matching.node_only.ba.M0.median", f3(g("matching.node_only.ba.M0.median"))),
@@ -135,6 +166,16 @@ def claims(R):
          [("study2.mechanism_r2_K250.log N + log mean degree", pct(g("study2.mechanism_r2_K250")["log N + log mean degree"]) + "%"),
           ("study2.mechanism_r2_K250.size + degree concentration", pct(g("study2.mechanism_r2_K250")["size + degree concentration"]) + "%")],
          "outputs/run_v2/verification/verification_report.json", "Paper §V-E, Fig. 4; website Overview RQ2, Explorer"),
+        ("Within views, N_K alone has AUC 0.961 / 0.952 / 0.890 (model A, KK)",
+         [(f"edge_limited_token_std.performance.K{k}.KK.A.auc", f3(E["performance"][f"K{k}"]["KK"]["A"]["auc"])) for k in (250, 500, 1000)],
+         f"{AUD} (research_audit/outputs/v02_results.json; equals the pipeline's KK|NK)", "Paper §V-C, Table V; website Findings"),
+        ("Content beyond N_K + structure in views: lower log loss, intervals excluding zero at K = 500 and 1000",
+         [(f"study2_contrasts_holm.contrasts.content_beyond_NK_struct.K{k}.log_loss.delta", sg(H["content_beyond_NK_struct"][f"K{k}"]["log_loss"]["delta"])) for k in (500, 1000)],
+         f"{R['source_run']}/paper_results.json (study2.contrasts)", "Paper §V-C, Table VI; website Findings"),
+        ("Post hoc: token-count dispersion at K = 1000, B − A −0.114 [−0.218, −0.011] and D − C −0.138 [−0.208, −0.076]",
+         [("edge_limited_token_std.contrasts.primary.KK.B-A.K1000.dLL_ci", ci(V["B-A"]["K1000"]["dLL_ci"])),
+          ("edge_limited_token_std.contrasts.primary.KK.D-C.K1000.dLL_ci", ci(V["D-C"]["K1000"]["dLL_ci"]))],
+         f"{AUD} (research_audit/outputs/v02_results.json)", "Paper §V-D, Table VI, Fig. 3; website Findings"),
         ("K = 2000 is infeasible: only 4 campaign events have ≥ 2,000 edges",
          [("eligibility.2000.campaign_eligible", str(g("eligibility")["2000"]["campaign_eligible"]) + " campaign events")],
          "data/manifests/edge_budget_eligibility.json", "Paper §IV-E; website Fig. 4, Methods §4"),
@@ -153,7 +194,7 @@ def pdf_text(pdf=PDF):
     return re.sub(r"\s+", " ", " ".join(p.extract_text() for p in PdfReader(pdf).pages))
 
 
-def check(R, text, readme=None):
+def check(R, text, readme=None, A=None):
     """[(claim, values, source, shown_in, found_flags)] for every headline claim.
     Paper claims are searched in the PDF text; repository-only claims in README.md."""
     readme = readme if readme is not None else README.read_text(encoding="utf-8")
@@ -163,22 +204,22 @@ def check(R, text, readme=None):
         return v in doc or v.replace(" ", "") in doc.replace(" ", "")
 
     return [(claim, vals, src, where, [found(v, readme if REPO_ONLY in where else text) for _, v in vals])
-            for claim, vals, src, where in claims(R)]
+            for claim, vals, src, where in claims(R, A)]
 
 
 def main(config_path):
-    cfg = yaml.safe_load(open(config_path, encoding="utf-8"))
-    R = json.loads((Path(cfg["output"]["run_dir"]) / "paper_results.json").read_text(encoding="utf-8"))
+    cfg = yaml.safe_load(open(ROOT / config_path, encoding="utf-8"))
+    R = json.loads((ROOT / cfg["output"]["run_dir"] / "paper_results.json").read_text(encoding="utf-8"))
 
     lines = ["# Claim-to-Evidence Audit", "",
              f"Generated by `src/claim_evidence_audit.py` from `{R['source_run']}/paper_results.json`. "
              "Each value is printed exactly as the paper formats it and searched for in the built PDF "
-             f"(`{PDF.as_posix()}`). The website embeds the same results file unchanged "
+             f"(`{PDF.relative_to(ROOT).as_posix()}`). The website embeds the same results files unchanged "
              "(`tests/test_frontend_payload.py`).", "",
              "| # | Claim | Value(s) as printed | Key in paper_results.json | Source artifact | Shown in | Found |",
              "|---|---|---|---|---|---|---|"]
     missing = 0
-    for i, (claim, vals, src, where, found) in enumerate(check(R, pdf_text()), 1):
+    for i, (claim, vals, src, where, found) in enumerate(check(R, pdf_text(), A=load_audit(ROOT / config_path)), 1):
         missing += not all(found)
         lines.append(f"| {i} | {claim} | " + "<br>".join(f"`{v}`" for _, v in vals) + " | "
                      + "<br>".join(f"`{k}`" for k, _ in vals) + f" | {src} | {where} | "

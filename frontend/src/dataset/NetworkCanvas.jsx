@@ -170,7 +170,7 @@ export default function NetworkCanvas({
       <div ref={container} className="absolute inset-0" role="img" aria-label="Interactive network graph; use the zoom buttons or scroll to zoom, drag to pan, select a node to inspect it" />
       {banner && (
         <div className="absolute top-3 left-3 right-14 pointer-events-none">
-          <span className="inline-block px-2 py-1 bg-[#0f1d30]/90 border border-[#3a4b63] text-[10.5px] font-mono uppercase tracking-wider text-[#e9e4d8]">{banner}</span>
+          <span className="inline-block px-2 py-1 bg-[#0f1d30]/90 border border-[#3a4b63] text-[12.5px] font-mono text-[#e9e4d8]">{banner}</span>
         </div>
       )}
       <div className="absolute top-3 right-3 flex flex-col gap-1.5">
@@ -182,7 +182,7 @@ export default function NetworkCanvas({
         )}
       </div>
       {hover && d && (
-        <div className="absolute pointer-events-none z-10 px-2.5 py-1.5 bg-[#f4efe6] text-[#15263a] border border-[#d8d3c5] text-[11px] font-mono shadow-md whitespace-nowrap"
+        <div className="absolute pointer-events-none z-10 px-2.5 py-1.5 bg-[#f4efe6] text-[#15263a] border border-[#d8d3c5] text-[13px] font-mono shadow-md whitespace-nowrap"
           style={{ left: Math.max(4, Math.min(hover.x + 12, hover.w - 170)), top: Math.max(hover.y - 40, 4) }}>
           <div className="font-semibold">Node #{hover.node}</div>
           <div>in {d.indeg[hover.node]} · out {d.outdeg[hover.node]}{d.recip[hover.node] ? ` · reciprocal ${d.recip[hover.node]}` : ""}</div>

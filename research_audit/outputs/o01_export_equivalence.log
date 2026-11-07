@@ -1,0 +1,123 @@
+  1 #ARMvTUR_noncampaign_fulldata                      nodes 3405/3405 edges 3769/3769 set=True order=True
+  2 #Afittifakı___2023-05-23_campaign_fulldata         nodes 288/288 edges 1102/1102 set=True order=True
+  3 #AsstanHekimeKalıcıNakil___2023-03-18_campaign_ful nodes 420/420 edges 1398/1398 set=True order=True
+  4 #BeşiktaşınMaçıVar_noncampaign_fulldata            nodes 4735/4735 edges 6188/6188 set=True order=True
+  5 #BirOyKemaleBirOyMerale___2023-05-13_campaign_full nodes 815/815 edges 800/800 set=True order=True
+  6 #BugünGünlerdenGALATASARAY_noncampaign_fulldata    nodes 5496/5496 edges 7498/7498 set=True order=True
+  7 #ChampionsLeague_noncampaign_fulldata              nodes 631/631 edges 619/619 set=True order=True
+ 43 #Çarşamba_noncampaign_fulldata                     nodes 4961/4961 edges 6187/6187 set=True order=True
+  8 #ErdenTimurSezonu_noncampaign_fulldata             nodes 3422/3422 edges 4809/4809 set=True order=True
+  9 #Eurovision2023_noncampaign_fulldata               nodes 1477/1477 edges 1785/1785 set=True order=True
+ 10 #FetöİleUluslararasıMücadele___2023-04-12_campaign nodes 1139/1139 edges 1741/1741 set=True order=True
+ 11 #FlokiCash___2023-04-12_campaign_fulldata          nodes 584/584 edges 745/745 set=True order=True
+ 12 #GüldürGüldürShow_noncampaign_fulldata             nodes 4923/4923 edges 6089/6089 set=True order=True
+ 13 #HaramBahçeKollanıyor_noncampaign_fulldata         nodes 2880/2880 edges 4468/4468 set=True order=True
+ 14 #KadıköydeHaramPenaltılar_noncampaign_fulldata     nodes 4661/4661 edges 7419/7419 set=True order=True
+ 15 #KalıcıNakilŞart___2023-03-24_campaign_fulldata    nodes 235/235 edges 966/966 set=True order=True
+ 16 #KayıpCanlarımızNerede___2023-05-13_campaign_fulld nodes 632/632 edges 782/782 set=True order=True
+ 17 #KocaAsistnHekimeSahipÇık___2023-03-21_campaign_fu nodes 405/405 edges 813/813 set=True order=True
+ 18 #LunaticsToken___2023-03-17_campaign_fulldata      nodes 949/949 edges 1361/1361 set=True order=True
+ 19 #MayThe4thBeWithYou_noncampaign_fulldata           nodes 885/885 edges 829/829 set=True order=True
+ 20 #Mazi__2023-03-26_campaign_fulldata                nodes 1255/1255 edges 1307/1307 set=True order=True
+ 21 #MetaAirdrop___2023-03-23_campaign_fulldata        nodes 498/498 edges 485/485 set=True order=True
+ 22 #Metatime___2023-03-22_campaign_fulldata           nodes 1590/1590 edges 1603/1603 set=True order=True
+ 23 #MilanInter_noncampaign_fulldata                   nodes 1390/1390 edges 1468/1468 set=True order=True
+ 24 #PerinçekCNNde___2023-03-18_campaign_fulldata      nodes 546/546 edges 1677/1677 set=True order=True
+ 25 #RealMadridManCity_noncampaign_fulldata            nodes 468/468 edges 427/427 set=True order=True
+ 26 #ReisAiledekiEkDersliyeMüjde___2023-04-12_campaign nodes 345/345 edges 2049/2049 set=True order=True
+ 27 #SesimiziDuyanVarMi___2023-03-23_campaign_fulldata nodes 356/356 edges 1435/1435 set=True order=True
+ 28 #SquidGrow___2023-05-13_campaign_fulldata          nodes 273/273 edges 918/918 set=True order=True
+ 29 #TekeTek_noncampaign_fulldata                      nodes 7739/7739 edges 10682/10682 set=True order=True
+ 30 #Urfa_noncampaign_fulldata                         nodes 3227/3227 edges 3409/3409 set=True order=True
+ 31 #Yargı_noncampaign_fulldata                        nodes 5782/5782 edges 9429/9429 set=True order=True
+ 32 #YeniProfilResmi_noncampaign_fulldata              nodes 1795/1795 edges 2286/2286 set=True order=True
+ 33 #ankaragücü_noncampaign_fulldata                   nodes 1567/1567 edges 1869/1869 set=True order=True
+ 34 #babalatv_noncampaign_fulldata                     nodes 4635/4635 edges 5560/5560 set=True order=True
+ 35 #cashgrab___2023-03-21_campaign_fulldata           nodes 454/454 edges 490/490 set=True order=True
+ 36 #cumartesi_noncampaign_fulldata                    nodes 4909/4909 edges 6367/6367 set=True order=True
+ 44 #çekildi_noncampaign_fulldata                      nodes 1393/1393 edges 1641/1641 set=True order=True
+ 37 #izmirdeprem_noncampaign_fulldata                  nodes 818/818 edges 735/735 set=True order=True
+ 38 #lime___2023-03-17_campaign_fulldata               nodes 806/806 edges 877/877 set=True order=True
+ 39 #mevzularaçıkmikrofon_noncampaign_fulldata         nodes 2324/2324 edges 3013/3013 set=True order=True
+ 40 #reynmen_noncampaign_fulldata                      nodes 1743/1743 edges 1813/1813 set=True order=True
+ 41 #sabitkur__2023-03-26_campaign_fulldata            nodes 100/100 edges 539/539 set=True order=True
+ 42 #uyuyamıyorum_noncampaign_fulldata                 nodes 1214/1214 edges 1302/1302 set=True order=True
+ 45 Abdulahat_Arvas___2023-05-13_campaign_fulldata     nodes 1624/1624 edges 2016/2016 set=True order=True
+ 46 Akitavax___2023-03-24_campaign_fulldata            nodes 390/390 edges 741/741 set=True order=True
+ 47 Ali_Koç_noncampaign_fulldata                       nodes 8352/8352 edges 10201/10201 set=True order=True
+ 48 Amazon_noncampaign_fulldata                        nodes 4308/4308 edges 4742/4742 set=True order=True
+ 49 Arsenal_noncampaign_fulldata                       nodes 4415/4415 edges 4638/4638 set=True order=True
+ 50 Asrın_Dayanışması___2023-03-21_campaign_fulldata   nodes 721/721 edges 854/854 set=True order=True
+ 51 Atam_noncampaign_fulldata                          nodes 5981/5981 edges 6652/6652 set=True order=True
+ 52 Atilla_Karaoğlan_noncampaign_fulldata              nodes 4564/4564 edges 6701/6701 set=True order=True
+ 53 Bakan_Soylu_noncampaign_fulldata                   nodes 6169/6169 edges 9146/9146 set=True order=True
+ 54 Betimar_noncampaign_fulldata                       nodes 1773/1773 edges 1988/1988 set=True order=True
+ 55 CHP_Sözcüsü_Faik_Öztrak_noncampaign_fulldata       nodes 5787/5787 edges 7299/7299 set=True order=True
+ 56 Cumhurbaşkanı_Manisada___2023-04-22_campaign_fulld nodes 1102/1102 edges 1718/1718 set=True order=True
+ 57 Daum_noncampaign_fulldata                          nodes 3193/3193 edges 4630/4630 set=True order=True
+ 58 Deniz_Gezmiş_noncampaign_fulldata                  nodes 5791/5791 edges 6538/6538 set=True order=True
+ 59 DenkliğimiziKimVerecek___2023-03-23_campaign_fulld nodes 214/214 edges 1389/1389 set=True order=True
+ 60 Dexgame___2023-03-26_campaign_fulldata             nodes 273/273 edges 710/710 set=True order=True
+ 61 Dijital_Sandık___2023-04-12_campaign_fulldata      nodes 1165/1165 edges 1868/1868 set=True order=True
+ 62 DiyanetYedeklerAkademiye___2023-03-23_campaign_ful nodes 224/224 edges 1943/1943 set=True order=True
+ 64 Dünyanın_Sonu___2023-03-23_campaign_fulldata       nodes 518/518 edges 759/759 set=True order=True
+ 63 Dzeko_noncampaign_fulldata                         nodes 796/796 edges 740/740 set=True order=True
+ 65 Emre_Belözoğlu_noncampaign_fulldata                nodes 2482/2482 edges 3024/3024 set=True order=True
+ 66 Ertuğrul_Altun23___2023-03-18_campaign_fulldata    nodes 747/747 edges 1206/1206 set=True order=True
+ 67 Esenyurt_noncampaign_fulldata                      nodes 3397/3397 edges 3719/3719 set=True order=True
+ 68 GSBtayiniOlumluAçıkla___2023-03-21_campaign_fullda nodes 178/178 edges 630/630 set=True order=True
+ 69 GSBtayinlerOLUMLUolsun___2023-03-23_campaign_fulld nodes 267/267 edges 1537/1537 set=True order=True
+ 70 Gelenekten_Geleceğe___2023-05-13_campaign_fulldata nodes 214/214 edges 206/206 set=True order=True
+ 71 Gomis_noncampaign_fulldata                         nodes 7323/7323 edges 9755/9755 set=True order=True
+ 72 Güzel_Kızlar__2023-03-26_campaign_fulldata         nodes 701/701 edges 995/995 set=True order=True
+ 73 Haaland_noncampaign_fulldata                       nodes 1654/1654 edges 1645/1645 set=True order=True
+ 74 Icardi_noncampaign_fulldata                        nodes 2195/2195 edges 1676/1676 set=True order=True
+101 İletişim_Başkanlığı___2023-05-13_campaign_fulldata nodes 1546/1546 edges 1504/1504 set=True order=True
+ 75 Jesus_noncampaign_fulldata                         nodes 7589/7589 edges 9541/9541 set=True order=True
+ 76 Kudüs_noncampaign_fulldata                         nodes 4185/4185 edges 4423/4423 set=True order=True
+ 77 Kızlara_Tehdit___2023-03-20_campaign_fulldata      nodes 514/514 edges 1054/1054 set=True order=True
+ 78 Malatyanın_Kahramanı___2023-03-24_campaign_fulldat nodes 175/175 edges 459/459 set=True order=True
+ 79 Manchester_noncampaign_fulldata                    nodes 1720/1720 edges 1862/1862 set=True order=True
+ 80 Maradona_noncampaign_fulldata                      nodes 1589/1589 edges 1600/1600 set=True order=True
+ 81 MebHazirandaDepremeTayin___2023-05-23_campaign_ful nodes 775/775 edges 6746/6746 set=True order=True
+ 82 MilliYolPartisi_RemziÇayır___2023-05-13_campaign_f nodes 208/208 edges 664/664 set=True order=True
+ 83 Milliyol_Partisi_noncampaign_fulldata              nodes 433/433 edges 547/547 set=True order=True
+ 84 Murat_Bardakçı_noncampaign_fulldata                nodes 4909/4909 edges 7053/7053 set=True order=True
+ 85 Napoli_noncampaign_fulldata                        nodes 6128/6128 edges 7174/7174 set=True order=True
+ 86 Osman_Gökçek___2023-03-21_campaign_fulldata        nodes 852/852 edges 884/884 set=True order=True
+100 Özür_Dilerim___2023-03-26_campaign_fulldata        nodes 2519/2519 edges 1749/1749 set=True order=True
+ 87 PopiGram_Açıldı__2023-03-20_campaign_fulldata      nodes 773/773 edges 1230/1230 set=True order=True
+ 88 Sevilla_noncampaign_fulldata                       nodes 2613/2613 edges 2409/2409 set=True order=True
+ 89 Sloukas_noncampaign_fulldata                       nodes 1550/1550 edges 1899/1899 set=True order=True
+ 90 Sonuçlar_Açıklandı___2023-03-24_campaign_fulldata  nodes 313/313 edges 665/665 set=True order=True
+102 ŞartsızTayin_Şart___2023-03-23_campaign_fulldata   nodes 351/351 edges 4178/4178 set=True order=True
+103 ŞartsızTayin_Şart___2023-03-24_campaign_fulldata   nodes 333/333 edges 853/853 set=True order=True
+ 91 Tapuma_YapıKayıt___2023-04-19_campaign_fulldata    nodes 169/169 edges 1186/1186 set=True order=True
+ 92 Tapuma_YapıKayıt___2023-04-22_campaign_fulldata    nodes 200/200 edges 1182/1182 set=True order=True
+ 93 Ters_Kelepçe___2023-03-22_campaign_fulldata        nodes 581/581 edges 972/972 set=True order=True
+ 94 Teşekkür_Etti___2023-05-01_campaign_fulldata       nodes 1671/1671 edges 1579/1579 set=True order=True
+ 95 Tüm_İslam_noncampaign_fulldata                     nodes 2065/2065 edges 1894/1894 set=True order=True
+ 96 Yakup_Türkal___2023-03-22_campaign_fulldata        nodes 1093/1093 edges 1287/1287 set=True order=True
+ 97 YapıKayıt_YoksaOyyok___2023-05-01_campaign_fulldat nodes 131/131 edges 546/546 set=True order=True
+ 98 Yarısı_Bizden___2023-05-01_campaign_fulldata       nodes 1908/1908 edges 1976/1976 set=True order=True
+ 99 Yunus_Filiz___2023-03-22_campaign_fulldata         nodes 294/294 edges 1009/1009 set=True order=True
+{
+ "raw_json_members": 104,
+ "raw_members_matched_to_export": 103,
+ "raw_members_not_in_export": [
+  "#SesimiziDuyanVarMı___2023-03-23_campaign_fulldata"
+ ],
+ "export_events_without_raw": [],
+ "all_node_counts_equal": true,
+ "all_node_ids_0_to_n_1": true,
+ "all_edge_multisets_equal": true,
+ "all_edge_orders_equal": true,
+ "all_self_loop_counts_equal": true,
+ "all_interaction_counts_equal": true,
+ "all_d_v_equal": true,
+ "labels_token_export_manifest_agree": true,
+ "label_counts_export": {
+  "1.0": 52,
+  "0.0": 51
+ }
+}

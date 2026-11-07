@@ -1,104 +1,52 @@
 import React from "react";
-import { BookOpen, BarChart3, FileCode, CheckCircle2, Network } from "lucide-react";
+import { FileText } from "lucide-react";
+
+const TABS = [
+  { id: "overview", label: "Paper" },
+  { id: "results", label: "Results" },
+  { id: "methods", label: "Methods" },
+  { id: "dataset", label: "Dataset" },
+];
 
 export default function Navbar({ activeTab, setActiveTab, meta }) {
   return (
-    <header className="masthead-border bg-[#faf8f5] sticky top-0 z-30 shadow-2xs">
-      {/* Top micro metadata header */}
-      <div className="border-b border-[#e8e3d5] bg-[#f4efe6]">
-        <div className="site-container py-2 flex gap-x-6 gap-y-1 flex-wrap items-center justify-between text-[11px] text-[#5e5a52] font-mono">
-          <div className="flex items-center gap-2">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#8f2626]"></span>
-            <span className="font-semibold uppercase tracking-wider text-[#15263a]">
-              {meta?.project_identity || "Temporal Coordination in Social Media"}
-            </span>
-            <span className="text-[#a8a396]">/</span>
-            <span className="text-[#757065]">Benchmark Validity Study</span>
-          </div>
-
-          <div className="flex items-center gap-4">
-            <span className="inline-flex items-center gap-1 text-[#23527c] font-medium">
-              <CheckCircle2 size={12} className="text-[#23527c]" />
-              <span>103-event archive &middot; official release: 100</span>
-            </span>
-            <span className="hidden xl:inline text-[#dcd7ca]">&bull;</span>
-            <span className="hidden xl:inline text-[#757065]">5-Fold Stratified Out-of-Fold CV</span>
-          </div>
-        </div>
-      </div>
-
-      {/* Sleek, Compact Masthead Bar */}
-      <div className="site-container py-4 flex flex-col lg:flex-row lg:items-center justify-between gap-3">
-        <div className="flex items-baseline gap-3 flex-wrap">
-          <button
-            type="button"
-            onClick={() => setActiveTab("overview")}
-            className="text-left group"
-          >
-            <span className="font-serif text-xl sm:text-2xl text-[#15263a] font-normal tracking-tight group-hover:text-[#23527c] transition-colors">
-              Temporal Coordination in Social Media
-            </span>
-          </button>
-          <span className="text-xs text-[#5e5a52] hidden xl:inline pl-3 border-l border-[#dcd7ca] font-sans">
-            What Does LEN-Small Measure?
+    <header className="masthead-border bg-[#faf8f5] sticky top-0 z-30">
+      <div className="site-container py-3 sm:py-0 sm:h-16 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 sm:gap-4">
+        <button type="button" onClick={() => setActiveTab("overview")} className="text-left min-w-0 max-w-full group">
+          <span className="block font-serif text-[19px] sm:text-[21px] leading-[1.3] text-[#15263a] group-hover:text-[#23527c] truncate">
+            {meta.paper_title}
           </span>
-        </div>
+          <span className="hidden sm:block text-[14px] leading-[1.3] text-[#757065]">
+            {meta.project_identity}
+          </span>
+        </button>
 
-        {/* Publication Nav Tabs */}
-        <nav className="no-scrollbar flex items-center gap-0.5 sm:gap-1 bg-[#ede8dc] p-1 border border-[#d8d3c5] max-w-full overflow-x-auto text-xs font-mono self-start lg:self-auto shrink-0">
-          <button
-            type="button"
-            onClick={() => setActiveTab("overview")}
-            className={`flex items-center gap-1.5 px-2 sm:px-3 py-1.5 whitespace-nowrap transition-colors ${
-              activeTab === "overview"
-                ? "bg-[#15263a] text-white font-medium shadow-xs"
-                : "text-[#3c3a37] hover:text-[#15263a] hover:bg-[#e4dfd2]"
-            }`}
+        <div className="flex items-center gap-2 sm:gap-4 shrink-0 -ml-2 sm:ml-0">
+          <nav aria-label="Sections" className="no-scrollbar flex items-center gap-1 overflow-x-auto">
+            {TABS.map((t) => (
+              <button
+                key={t.id}
+                type="button"
+                onClick={() => setActiveTab(t.id)}
+                aria-current={activeTab === t.id ? "page" : undefined}
+                className={`h-9 px-2 sm:px-3 text-[16px] rounded-[4px] whitespace-nowrap ${
+                  activeTab === t.id
+                    ? "text-[#15263a] bg-[#ece6d8] font-medium"
+                    : "text-[#5e5a52] hover:text-[#15263a] hover:bg-[#f4efe6]"
+                }`}
+              >
+                {t.label}
+              </button>
+            ))}
+          </nav>
+          <a
+            href={`/${meta.paper_pdf}`}
+            className="hidden md:inline-flex items-center gap-2 h-9 px-4 rounded-[4px] bg-[#15263a] text-white text-[16px] font-medium hover:bg-[#233b54]"
           >
-            <BookOpen size={13} className="shrink-0 hidden sm:block" />
-            <span>Overview</span>
-            <span className="hidden sm:inline">Research</span>
-          </button>
-          <button
-            type="button"
-            onClick={() => setActiveTab("explorer")}
-            className={`flex items-center gap-1.5 px-2 sm:px-3 py-1.5 whitespace-nowrap transition-colors ${
-              activeTab === "explorer"
-                ? "bg-[#15263a] text-white font-medium shadow-xs"
-                : "text-[#3c3a37] hover:text-[#15263a] hover:bg-[#e4dfd2]"
-            }`}
-          >
-            <BarChart3 size={13} className="shrink-0 hidden sm:block" />
-            <span>Results</span>
-            <span className="hidden sm:inline">Explorer</span>
-          </button>
-          <button
-            type="button"
-            onClick={() => setActiveTab("methods")}
-            className={`flex items-center gap-1.5 px-2 sm:px-3 py-1.5 whitespace-nowrap transition-colors ${
-              activeTab === "methods"
-                ? "bg-[#15263a] text-white font-medium shadow-xs"
-                : "text-[#3c3a37] hover:text-[#15263a] hover:bg-[#e4dfd2]"
-            }`}
-          >
-            <FileCode size={13} className="shrink-0 hidden sm:block" />
-            <span>Methods</span>
-            <span className="hidden sm:inline">&amp; Reproducibility</span>
-          </button>
-          <button
-            type="button"
-            onClick={() => setActiveTab("dataset")}
-            className={`flex items-center gap-1.5 px-2 sm:px-3 py-1.5 whitespace-nowrap transition-colors ${
-              activeTab === "dataset"
-                ? "bg-[#15263a] text-white font-medium shadow-xs"
-                : "text-[#3c3a37] hover:text-[#15263a] hover:bg-[#e4dfd2]"
-            }`}
-          >
-            <Network size={13} className="shrink-0 hidden sm:block" />
-            <span>Dataset</span>
-            <span className="hidden sm:inline">Explorer</span>
-          </button>
-        </nav>
+            <FileText size={16} strokeWidth={1.5} />
+            PDF
+          </a>
+        </div>
       </div>
     </header>
   );

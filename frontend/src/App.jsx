@@ -1,186 +1,136 @@
 import React, { useState, useEffect, lazy, Suspense } from "react";
 import Navbar from "./components/Navbar";
 import PageOverview from "./pages/PageOverview";
-import PageExplorer from "./pages/PageExplorer";
+import PageResults from "./pages/PageResults";
 import PageMethods from "./pages/PageMethods";
-import { AlertCircle, Download, ShieldCheck } from "lucide-react";
+import { Download } from "lucide-react";
+import Authors from "./components/Authors";
+
+const REPO_URL = "https://github.com/SynshAmi/temporal-coordination-in-social-media";
 
 // The dataset explorer (and its graph libraries) loads only when visited
 const PageDataset = lazy(() => import("./pages/PageDataset"));
 
-export default function App() {
-  // Sync active tab with URL hash (#overview, #explorer, #methods, #dataset[/...])
-  const getTabFromHash = () => {
-    const hash = window.location.hash.replace("#", "").toLowerCase();
-    if (["overview", "explorer", "methods"].includes(hash)) {
-      return hash;
-    }
-    if (hash === "dataset" || hash.startsWith("dataset/")) return "dataset";
-    return "overview";
-  };
+// Routes: #overview, #results, #methods, #dataset[/...]. #explorer was the earlier name of #results.
+function tabFromHash() {
+  const hash = window.location.hash.replace("#", "").toLowerCase();
+  if (hash === "explorer") return "results";
+  if (["overview", "results", "methods"].includes(hash)) return hash;
+  if (hash === "dataset" || hash.startsWith("dataset/")) return "dataset";
+  return "overview";
+}
 
-  const [activeTab, setActiveTabState] = useState(getTabFromHash);
-  const [researchData, setResearchData] = useState(null);
-  const [loading, setLoading] = useState(true);
+export default function App() {
+  const [activeTab, setActiveTabState] = useState(tabFromHash);
+  const [data, setData] = useState(null);
   const [error, setError] = useState(null);
 
   const setActiveTab = (tab) => {
     setActiveTabState(tab);
     window.location.hash = tab;
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    window.scrollTo({ top: 0 });
   };
 
   useEffect(() => {
-    const handleHashChange = () => {
-      setActiveTabState(getTabFromHash());
-    };
-    window.addEventListener("hashchange", handleHashChange);
-    return () => window.removeEventListener("hashchange", handleHashChange);
+    const onHash = () => setActiveTabState(tabFromHash());
+    window.addEventListener("hashchange", onHash);
+    return () => window.removeEventListener("hashchange", onHash);
   }, []);
 
   useEffect(() => {
     fetch("/data/research_data.json")
       .then((res) => {
-        if (!res.ok) throw new Error(`HTTP error ${res.status} while loading research data`);
+        if (!res.ok) throw new Error(`HTTP ${res.status} while loading the results`);
         return res.json();
       })
-      .then((data) => {
-        setResearchData(data);
-        setLoading(false);
-      })
-      .catch((err) => {
-        console.error("Failed to load research data:", err);
-        setError(err.message);
-        setLoading(false);
-      });
+      .then(setData)
+      .catch((err) => setError(err.message));
   }, []);
 
-  if (loading) {
+  useEffect(() => {
+    if (data) document.title = data.metadata.paper_title;
+  }, [data]);
+
+  if (error) {
     return (
-      <div className="min-h-screen bg-[#faf8f5] flex items-center justify-center p-6 text-[#15263a] font-mono text-xs">
-        <div className="text-center space-y-3">
-          <div className="inline-block w-6 h-6 border-2 border-[#15263a] border-t-transparent rounded-full animate-spin"></div>
-          <div>Loading research results...</div>
+      <div className="min-h-screen bg-[#faf8f5] flex items-center justify-center p-6">
+        <div className="border border-[#8f2626] bg-white p-6 max-w-md space-y-2 text-[16px] text-[#3c3a37]">
+          <p className="font-medium text-[#8f2626]">The results could not be loaded</p>
+          <p>{error}</p>
+          <p className="text-[#757065]">Reload the page. The paper PDF is also available from the repository.</p>
         </div>
       </div>
     );
   }
 
-  if (error || !researchData) {
+  if (!data) {
     return (
-      <div className="min-h-screen bg-[#faf8f5] flex items-center justify-center p-6 text-xs font-mono">
-        <div className="bg-white border border-[#8f2626] p-6 max-w-md space-y-3">
-          <div className="flex items-center gap-2 text-[#8f2626] font-bold">
-            <AlertCircle size={16} />
-            <span>Results Could Not Be Loaded</span>
-          </div>
-          <p className="text-[#3c3a37] text-xs">
-            {error || "The results data could not be read."}
-          </p>
-          <div className="text-[11px] text-[#757065] pt-2 border-t border-[#e5e0d4]">
-            Please reload the page. If the problem persists, the paper PDF is available from the repository.
-          </div>
-        </div>
+      <div className="min-h-screen bg-[#faf8f5] flex items-center justify-center text-[16px] text-[#5e5a52]" role="status">
+        Loading the results
       </div>
     );
   }
+
+  const M = data.metadata;
 
   return (
     <div className="min-h-screen flex flex-col bg-[#faf8f5] text-[#181818]">
-      {/* Top Academic Masthead */}
-      <Navbar activeTab={activeTab} setActiveTab={setActiveTab} meta={researchData.metadata} />
+      <Navbar activeTab={activeTab} setActiveTab={setActiveTab} meta={M} />
 
-      {/* Main Content Area (Spacious Editorial Canvas) */}
-      <main className="flex-1 site-container pt-12 pb-4 md:pt-16 lg:pt-20">
-        {activeTab === "overview" && (
-          <PageOverview data={researchData} setActiveTab={setActiveTab} />
-        )}
-        {activeTab === "explorer" && (
-          <PageExplorer data={researchData} />
-        )}
-        {activeTab === "methods" && (
-          <PageMethods data={researchData} />
-        )}
+      <main key={activeTab} className="page-enter flex-1 site-container pt-8 pb-4 md:pt-10 lg:pt-12">
+        {activeTab === "overview" && <PageOverview data={data} setActiveTab={setActiveTab} />}
+        {activeTab === "results" && <PageResults data={data} />}
+        {activeTab === "methods" && <PageMethods data={data} />}
         {activeTab === "dataset" && (
-          <Suspense fallback={<div className="text-xs font-mono text-[#5e5a52]">Loading the dataset explorer…</div>}>
+          <Suspense fallback={<div className="text-[16px] text-[#5e5a52]">Loading the dataset explorer</div>}>
             <PageDataset />
           </Suspense>
         )}
       </main>
 
-      {/* Minimal Academic Footer Focused on Citations & Working Downloads */}
-      <footer className="mt-24 lg:mt-32 border-t border-[#dcd7ca] bg-[#f4efe6] font-sans text-[#4a4740]">
-        <div className="site-container pt-14 pb-12 lg:pt-16 lg:pb-14">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-x-12 gap-y-12 lg:gap-x-16">
-            {/* Column 1: Research Identity */}
-            <div className="md:col-span-2 lg:col-span-4 space-y-4">
-              <div className="font-serif text-2xl text-[#15263a] leading-tight">
-                Temporal Coordination in Social Media
-              </div>
-              <p className="text-sm leading-relaxed text-[#4a4740] max-w-[46ch]">
-                What the LEN-Small benchmark labels can be predicted from: incremental information beyond graph counts, and how much survives in a single fixed-size sample of edges.
-              </p>
-              <div className="text-xs font-mono text-[#5e5a52] flex items-center gap-2">
-                <ShieldCheck size={14} className="text-[#23527c] shrink-0" />
-                <span>{researchData.paper.verification.n_pass}/{researchData.paper.verification.n_checks} independent checks pass &bull; Event-level 5-fold CV</span>
-              </div>
-            </div>
+      <footer className="mt-16 lg:mt-20 border-t border-[#dcd7ca] bg-[#f4efe6] text-[#4a4740]">
+        <div className="site-container py-12 lg:py-14 grid grid-cols-1 md:grid-cols-12 gap-x-12 gap-y-10">
+          <div className="md:col-span-5 space-y-4">
+            <div className="font-serif text-[28px] text-[#15263a] leading-tight">{M.paper_title}</div>
+            <Authors linked />
+          </div>
 
-            {/* Column 2: Relevant Citations & External Links */}
-            <div className="lg:col-span-4 space-y-5">
-              <div className="font-mono font-semibold text-[#15263a] uppercase tracking-wider text-xs pb-3 border-b border-[#d8d3c5]">
-                Primary Sources
-              </div>
-              <ul className="space-y-4 text-sm text-[#4a4740] leading-relaxed">
-                <li>
-                  Gopalakrishnan, Hossain, Elmas and Sarıyüce. <em>Large Engagement Networks for Classifying Coordinated Campaigns and Organic Twitter Trends</em>. ICWSM 2025.
-                </li>
-                <li>
-                  Gopalakrishnan, Hossain, Elmas and Sarıyüce. <em>Density-Aware Walks for Coordinated Campaign Detection</em>. ECML PKDD 2025.
-                </li>
-                <li>
-                  <em>LEN: Large Engagement Networks</em>, dataset repository.{" "}
-                  <a href="https://erdemub.github.io/large-engagement-network/" target="_blank" rel="noopener noreferrer" className="underline decoration-[#b5ad9e] underline-offset-4 hover:text-[#23527c]">erdemub.github.io/large-engagement-network</a>
-                </li>
-              </ul>
-            </div>
+          <div className="md:col-span-4 space-y-2">
+            <div className="font-serif italic text-[18px] text-[#15263a]">Data source</div>
+            <p className="text-[17px] leading-relaxed">
+              Gopalakrishnan, Hossain, Elmas and Sarıyüce, Large Engagement Networks for Classifying Coordinated Campaigns and Organic Twitter Trends,
+              ICWSM 2025. The archive was obtained from the{" "}
+              <a href="https://erdemub.github.io/large-engagement-network/" target="_blank" rel="noopener noreferrer" className="underline decoration-[#b5ad9e] underline-offset-4 hover:text-[#23527c]">LEN project website</a>.
+            </p>
+          </div>
 
-            {/* Column 3: Working Downloadable Artifacts */}
-            <div className="lg:col-span-4 space-y-5">
-              <div className="font-mono font-semibold text-[#15263a] uppercase tracking-wider text-xs pb-3 border-b border-[#d8d3c5]">
-                Downloads
-              </div>
-              <ul className="divide-y divide-[#e2dcd0]">
-                {[
-                  { href: "/LEN_Small_Predictive_Information_Beyond_Scale.pdf", file: "LEN_Small_Predictive_Information_Beyond_Scale.pdf", label: "Research Paper — PDF", meta: "IEEE conference paper · PDF" },
-                  { href: "/data/research_data.json", file: "research_data.json", label: "Results Data", meta: "JSON · every value shown on this site" },
-                ].map((d) => (
-                  <li key={d.href}>
-                    <a
-                      href={d.href}
-                      download={d.file}
-                      className="group flex items-start gap-3 py-3 first:pt-0 text-[#15263a] hover:text-[#23527c] transition-colors"
-                    >
-                      <Download size={15} className="text-[#8f2626] shrink-0 mt-1" />
-                      <span className="min-w-0">
-                        <span className="block text-sm font-medium underline decoration-[#b5ad9e] underline-offset-4 group-hover:decoration-[#23527c]">
-                          {d.label}
-                        </span>
-                        <span className="block text-xs font-mono text-[#757065] mt-0.5">{d.meta}</span>
-                      </span>
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </div>
+          <div className="md:col-span-3 space-y-2">
+            <div className="font-serif italic text-[18px] text-[#15263a]">Downloads</div>
+            <ul className="space-y-3">
+              {[
+                { href: `/${M.paper_pdf}`, file: M.paper_pdf, label: "Research paper (PDF)", meta: `${M.paper_pages} pages · full manuscript`, primary: true },
+                { href: "/data/research_data.json", file: "research_data.json", label: "Results data (JSON)", meta: "The values shown on this site" },
+              ].map((d) => (
+                <li key={d.href}>
+                  <a href={d.href} download={d.file} className="group flex items-start gap-3 text-[#15263a] hover:text-[#23527c]">
+                    <Download size={16} strokeWidth={1.5} className="text-[#5e5a52] shrink-0 mt-1" />
+                    <span>
+                      <span className={`block underline decoration-[#b5ad9e] underline-offset-4 ${d.primary ? "text-[18px] font-medium" : "text-[17px]"}`}>{d.label}</span>
+                      <span className="block text-[16px] text-[#6b6862] mt-0.5">{d.meta}</span>
+                    </span>
+                  </a>
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
-
-        {/* Bottom Provenance & Copyright Strip, visually quieter and fully separated */}
         <div className="border-t border-[#d8d3c5] bg-[#ede8dc]">
-          <div className="site-container py-5 flex flex-col md:flex-row md:items-center justify-between gap-2 text-[11px] font-mono text-[#6b6862]">
-            <div>All values generated from the analysis pipeline &bull; LEN-Small archive ({researchData.paper.dataset.n_events} events)</div>
-            <div>Suryansh Singh &bull; Devansh Kewlani &bull; Manipal Institute of Technology, Bengaluru</div>
+          <div className="site-container py-4 flex flex-col md:flex-row md:items-center justify-between gap-2 text-[16px] text-[#5e5a52]">
+            <div>
+              Code, supporting data and reproduction instructions are in the{" "}
+              <a href={REPO_URL} target="_blank" rel="noopener noreferrer" className="underline decoration-[#b5ad9e] underline-offset-4 hover:text-[#23527c]">project repository</a>.
+            </div>
+            <div>Code under the MIT licence; paper and figures © the authors.</div>
           </div>
         </div>
       </footer>

@@ -1,0 +1,86 @@
+K=250: 102 events x 10 seeds regenerated
+K=500: 98 events x 10 seeds regenerated
+K=1000: 73 events x 10 seeds regenerated
+{
+ "views": 2730,
+ "regenerated_NK_matches_stored": true,
+ "lensd_max_abs_diff_vs_stored": 0.0,
+ "lensd_nan_pattern_identical": true,
+ "by_K": {
+  "250": {
+   "events": 102,
+   "campaign_events": 51,
+   "comparison_events": 51,
+   "campaign": {
+    "views": 510,
+    "usable_text_share_mean": 0.5744549019607843,
+    "usable_text_share_median": 0.632,
+    "usable_text_share_min": 0.0,
+    "views_lensd_undefined_no_text": 20,
+    "views_with_lt_10_usable_texts": 30,
+    "views_with_lt_25pct_usable_text": 142,
+    "events_mean_usable_share_lt_0.2": 11
+   },
+   "comparison": {
+    "views": 510,
+    "usable_text_share_mean": 0.8005803921568627,
+    "usable_text_share_median": 0.828,
+    "usable_text_share_min": 0.232,
+    "views_lensd_undefined_no_text": 0,
+    "views_with_lt_10_usable_texts": 0,
+    "views_with_lt_25pct_usable_text": 1,
+    "events_mean_usable_share_lt_0.2": 0
+   }
+  },
+  "500": {
+   "events": 98,
+   "campaign_events": 48,
+   "comparison_events": 50,
+   "campaign": {
+    "views": 480,
+    "usable_text_share_mean": 0.5697625,
+    "usable_text_share_median": 0.625,
+    "usable_text_share_min": 0.0,
+    "views_lensd_undefined_no_text": 20,
+    "views_with_lt_10_usable_texts": 29,
+    "views_with_lt_25pct_usable_text": 144,
+    "events_mean_usable_share_lt_0.2": 11
+   },
+   "comparison": {
+    "views": 500,
+    "usable_text_share_mean": 0.7958800000000001,
+    "usable_text_share_median": 0.816,
+    "usable_text_share_min": 0.286,
+    "views_lensd_undefined_no_text": 0,
+    "views_with_lt_10_usable_texts": 0,
+    "views_with_lt_25pct_usable_text": 0,
+    "events_mean_usable_share_lt_0.2": 0
+   }
+  },
+  "1000": {
+   "events": 73,
+   "campaign_events": 28,
+   "comparison_events": 45,
+   "campaign": {
+    "views": 280,
+    "usable_text_share_mean": 0.5412785714285714,
+    "usable_text_share_median": 0.53,
+    "usable_text_share_min": 0.0,
+    "views_lensd_undefined_no_text": 10,
+    "views_with_lt_10_usable_texts": 10,
+    "views_with_lt_25pct_usable_text": 92,
+    "events_mean_usable_share_lt_0.2": 7
+   },
+   "comparison": {
+    "views": 450,
+    "usable_text_share_mean": 0.7926755555555556,
+    "usable_text_share_median": 0.811,
+    "usable_text_share_min": 0.298,
+    "views_lensd_undefined_no_text": 0,
+    "views_with_lt_10_usable_texts": 0,
+    "views_with_lt_25pct_usable_text": 0,
+    "events_mean_usable_share_lt_0.2": 0
+   }
+  }
+ }
+}

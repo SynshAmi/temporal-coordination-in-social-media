@@ -34,6 +34,10 @@ def test_payload_embeds_revision_supplement_unchanged():
     assert load(PAYLOAD)["revision"] == load(SUPPLEMENT_PATH)
 
 
+def test_payload_embeds_audit_results_unchanged():
+    assert load(PAYLOAD)["audit"] == load(Path(__file__).resolve().parents[1] / CFG["output"]["audit_results"])
+
+
 def test_payload_has_no_legacy_run_final_sections():
     data = load(PAYLOAD)
     for key in ("metrics", "audit_takeaways", "matching_diagnostics", "edge_eligibility", "validation_report"):

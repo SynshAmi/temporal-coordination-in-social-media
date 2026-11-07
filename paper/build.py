@@ -1,7 +1,7 @@
 """
 build.py
 --------
-Builds the paper: regenerates the result macros, compiles main.tex with
+Builds the paper: refreshes the audit values and regenerates the result macros, compiles main.tex with
 pdflatex and BibTeX, checks the log, and copies the PDF to the official name
 used by the website.
 
@@ -20,7 +20,7 @@ sys.stdout.reconfigure(encoding="utf-8")
 
 PAPER = Path(__file__).resolve().parent
 ROOT = PAPER.parent
-OFFICIAL = PAPER / "LEN_Small_Predictive_Information_Beyond_Scale.pdf"
+OFFICIAL = PAPER / "Finding_Signal_in_Network_Simplicity.pdf"
 
 
 def run(cmd):
@@ -34,6 +34,7 @@ def main(config):
     for tool in ("pdflatex", "bibtex"):
         if not shutil.which(tool):
             raise SystemExit(f"{tool} not found on PATH; install TeX Live or MiKTeX.")
+    subprocess.run([sys.executable, str(ROOT / "src" / "export_audit_results.py"), "--config", config], cwd=ROOT, check=True)
     subprocess.run([sys.executable, str(ROOT / "src" / "export_latex_results.py"), "--config", config], cwd=ROOT, check=True)
     latex = ["pdflatex", "-interaction=nonstopmode", "-halt-on-error", "main.tex"]
     run(latex)

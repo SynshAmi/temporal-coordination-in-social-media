@@ -2,52 +2,75 @@
 
 ### 🌐 [Visit the live research website](https://temporal-coordination-in-social-media.pages.dev/)
 
-**Paper:** *What Does LEN-Small Measure? Predictive Information Beyond Scale in Retained Engagement Graphs* ([PDF](paper/LEN_Small_Predictive_Information_Beyond_Scale.pdf))
-**Authors:** Suryansh Singh and Devansh Kewlani, Department of Computer Science and Engineering (Data Science), Manipal Institute of Technology, Bengaluru, India
+**Paper:** *Finding Signal in Network Simplicity* ([PDF](paper/Finding_Signal_in_Network_Simplicity.pdf))
+**Authors:** Suryansh Singh (co-first author), Devansh Kewlani (co-first author) and Yashaswini K A (second author), Manipal Institute of Technology, Bengaluru, India
 
 ---
 
 ## About the research
 
-Coordinated campaigns on social media, such as organised efforts to push a hashtag into a trending list, are often studied through **engagement graphs**. In these graphs, accounts are nodes, and retweets, replies or quotes are directed edges. *Temporal Coordination in Social Media* is our project on how such campaigns are measured. This repository holds its first study: a close look at a benchmark used to train and evaluate campaign detectors.
+Coordinated campaigns on social media, such as organised efforts to push a hashtag into a trending list, are often studied through **engagement graphs**. In these graphs, accounts are nodes, and retweets, replies or quotes are directed edges. *Temporal Coordination in Social Media* is our project on how such campaigns are measured. This repository holds its first study.
 
-That benchmark is **LEN-Small**, part of the Large Engagement Networks (LEN) release (Gopalakrishnan et al., ICWSM 2025). Each graph is one Twitter event, labelled either campaign-associated or comparison. When a model scores well on LEN-Small, it is natural to assume it has learned something about coordination. That assumption only holds if the labels cannot be predicted from simpler properties of the graphs, which is what we test.
+Benchmarks such as the Large Engagement Networks (LEN) release (Gopalakrishnan et al., ICWSM 2025) label each Twitter event graph as campaign-associated or comparison, and graph-learning methods are evaluated on them. A high score invites the reading that a model has learned how campaigns spread. That reading depends on what the labels can be predicted from, and engagement graphs give a specific reason for caution: the two classes differ strongly in size.
 
-## Research questions
+## Research question
 
-We analysed the 103 event graphs in the distributed LEN-Small archive and asked:
+How well can the campaign label be predicted from node and edge counts, and what, if anything, adds to that prediction?
 
-1. **What do graph features add beyond size?** How much do degree concentration (how unevenly engagement is spread across accounts), higher-order arrangement (reciprocity, connectivity, core structure) and message content add beyond simple node and edge counts?
-2. **What survives in a partial view?** If we see only a fixed-size random sample of a graph's edges, how much label information remains, and what makes it predictive?
+1. **Full observation (Study 1).** What do degree concentration, higher-order arrangement and message content add to the counts?
+2. **Edge-limited observation (Study 2).** When only K edges of a graph are seen, the edge count is fixed. The count that still varies is the view's node count N_K. What do structural and message-level statistics add to it?
 
-All comparisons are made on the same events and the same cross-validation folds, with paired event-level bootstrap intervals. A degree-preserving rewiring null model tests whether arrangement matters beyond the degree of each node, and an exploratory analysis matches campaign and comparison events on size. The unit of analysis is always the whole event graph; we make no claims about individual accounts, bots, intent or causal effects.
+All comparisons use the same events and the same cross-validation folds, with paired event-level bootstrap intervals. Each result carries a status, as in the paper:
+- **primary**: the three contrasts specified in advance, Holm-adjusted;
+- **sensitivity**: other partitions, exclusions or fold grouping;
+- **exploratory**: planned, but outside the primary family;
+- **post hoc**: chosen after inspecting these events.
+
+The unit of analysis is the event graph; we make no claims about individual accounts, bots, intent or causal effects.
+
+## Data
+
+We analysed the **103-graph LEN project archive (52 campaign, 51 comparison)**, obtained from the LEN project website: 104 files, with one exact duplicate removed. It is distinct from the dataset described in the published LEN paper, which reports LEN-Small as 100 graphs (51/49), and every result refers to this archive. Of the 288,540 edge texts, 27.5% are null; campaign graphs keep less usable text than comparison graphs (mean share 0.58 against 0.80), and two campaign graphs have none.
 
 ## Key findings
 
-- **Size dominates.** Comparison events are several times larger than campaign events (median 3,227 vs 506 nodes). Logistic regression given only node and edge counts reaches a **balanced accuracy of 0.884**.
-- **Richer features help probabilities, not decisions.** Adding degree, arrangement and content features did not detectably improve balanced accuracy (difference +0.010, 95% interval −0.049 to +0.076). This result is inconclusive rather than evidence of equivalence. The difference was positive but small in all ten cross-validation fold splits we examined; because the splits reuse the same events, that is not evidence of a reliable gain. The same features did improve **log loss** (a measure of probability quality) by 0.110 and **AUC** (ranking quality) by 0.039. A wider regularisation search made the count model's log loss worse (0.326 → 0.364), so its apparent under-tuning does not explain the gap.
-- **No detectable gain from arrangement beyond degree.** The arrangement features showed no detectable improvement over the same features computed on degree-preserving rewired graphs (balanced-accuracy difference 0.000, 95% interval −0.048 to +0.047). This is not evidence of equivalence, and the rewiring is a constrained comparison: it changed reciprocity in 92% of events and the largest-component fraction in 99%, but the median core number in only 4%. It does not show that graph structure is uninformative.
-- **Size matching removes the count signal.** In an exploratory analysis of 15–17 size-matched pairs, counts fell to near chance (median balanced accuracy 0.531), while the content model's median was 0.781. These are imprecise point estimates without sampling intervals, not evidence that content performs reliably above chance.
-- **A small sample of edges loses no detectable signal, and training on such samples matters.** On the same events, a model trained on single random samples of K edges was not detectably less accurate than the full-graph model with the same features (balanced-accuracy difference +0.002, 95% interval −0.031 to +0.038, at K = 250; +0.027, −0.003 to +0.065, at K = 500). At K = 1000 the sample-trained model was ahead (+0.056, +0.009 to +0.114), but that exploratory result comes from a small, imbalanced cohort of 73 events and does not mean sampling generally improves classification.
-- **Much of a sample's information is size-like.** The number of distinct accounts a 250-edge sample touches (N_K) gives a balanced accuracy of 0.922 on its own. Its expected value is strongly associated with the full graph's node count and mean degree, which together explain 93.0% of its variation, and the structural features also encode it closely (cross-validated R² 0.92–0.95). N_K alone and structure alone did not differ detectably, so the two carry largely overlapping information, and we do not attribute the signal to N_K rather than structure.
-- **Training on samples matters far more than averaging them.** With the same structural features, a model trained on 250-edge samples scored 0.254 higher in balanced accuracy (95% interval 0.162 to 0.348) than the full-graph model applied to those samples. Averaging ten samples instead of using one changed accuracy by at most 0.004.
+- **Counts alone predict the label well.** Logistic regression on node and edge counts reaches balanced accuracy 0.884 and AUC 0.931 (primary). Comparison graphs are several times larger than campaign graphs (median 3,227 against 506 nodes).
+- **More features sharpen probabilities, not decisions.**
+  - On the prespecified partition, adding degree, arrangement and content features changed log loss by −0.110 [−0.181, −0.039] (Holm-adjusted p = 0.009) and AUC by +0.039 [+0.009, +0.075] (primary).
+  - Over 20 repartitions of the same events, the log-loss difference was −0.094 [−0.172, −0.013], in the same direction in 19 of 20 (sensitivity).
+  - Balanced accuracy showed no detectable gain: +0.010 [−0.049, +0.076].
+- **Structure is conditional, not absent.**
+  - Added to counts alone, the structural features produced no detectable change: +0.002 [−0.048, +0.053].
+  - Added alongside content, they changed log loss by −0.059 [−0.110, −0.011] (exploratory).
+  - Without the two no-text graphs, the main log-loss difference kept its direction (−0.083 [−0.171, +0.008]), with an interval that includes zero.
+- **A fixed edge budget does not remove size.**
+  - In views, N_K alone reaches AUC 0.961, 0.952 and 0.890 at K = 250, 500 and 1000.
+  - Its expectation depends only on K and the full graph's degree sequence. At K = 250, node count and mean degree explain 93.0% of its variation.
+  - The structural features of a view largely track it, and adding them to N_K produced no detectable change.
+- **Token-count dispersion is a lead, not a result.**
+  - The standard deviation of message token counts is an edge-by-edge statistic, so a view estimates the same quantity at every budget.
+  - Added to N_K, it was associated with lower log loss at K = 1000: −0.114 [−0.218, −0.011]. At the smaller budgets the intervals include zero.
+  - It was chosen post hoc on these events and needs testing on independent data.
 
-**In short:** LEN-Small's labels, as distributed, are highly predictable from how large an event graph is, although we do not show that size is the only relevant property. Benchmark results on it should be read against a count-only baseline, with decision and probability metrics reported separately. Full results, tables and figures are in the [paper](paper/LEN_Small_Predictive_Information_Beyond_Scale.pdf) and on the [website](https://temporal-coordination-in-social-media.pages.dev/).
+**In short:** in this archive, most of the predictive signal sits in the simplest network measurements. Evaluations on these data should report a count-only baseline and report probability and decision metrics separately. Full results are in the [paper](paper/Finding_Signal_in_Network_Simplicity.pdf) and on the [website](https://temporal-coordination-in-social-media.pages.dev/).
 
 ## Repository structure
 
 | Directory | Contents |
 |---|---|
-| `paper/` | The paper: LaTeX source, bibliography, figures, generated result macros, build script and compiled PDF |
-| `src/` | The analysis pipeline: data ingestion, feature extraction, both studies, independent verification and result exports |
+| `paper/` | LaTeX source, bibliography, figures, generated result macros, the build script and the compiled PDF |
+| `src/` | The analysis pipeline (ingestion, features, both studies, independent verification) and the exports to the paper and website |
 | `tests/` | Automated checks, including agreement between the paper, the website and the results |
-| `outputs/run_v2/` | The verified results; `paper_results.json` is the main source of every reported number |
-| `outputs/revision_h1_cgrid/`, `outputs/revision_supplement/` | Revision analyses: the wider regularisation search for the count model, and supplementary analyses (single view vs full graph, endpoint count vs structure, null-model coverage, split counts) read by the paper and website |
-| `frontend/` | Source of the research website, including the interactive dataset explorer; its graph files are in `frontend/public/data/len/` |
+| `outputs/run_v2/` | The verified pipeline results; `paper_results.json` is the main source of every reported number |
+| `outputs/revision_h1_cgrid/`, `outputs/revision_supplement/` | Revision analyses that only read `run_v2` (wider regularisation grid; supplementary Study 2 and null-model diagnostics) |
+| `research_audit/` | The robustness audit: reports, scripts and outputs (20 partitions, exclusions, text retention, token-count dispersion). See its [README](research_audit/README.md) |
+| `outputs/research_audit/audit_results.json` | The audit values the paper and website report, collected with their source files by `src/export_audit_results.py` |
+| `frontend/` | The research website, including the interactive dataset explorer (graph files in `frontend/public/data/len/`) |
 | `data/` | Dataset manifest and file hashes; the dataset itself is not included |
 | `reports/` | Claim-to-evidence audit and end-to-end reproducibility report |
-| `configs/` | Pipeline configuration (`v2_coreness_fix.yaml` is the one used for all results) |
-| `archive/`, `outputs/run_final/` | Superseded material, kept only for the correction history |
+| `configs/` | Pipeline configuration (`v2_coreness_fix.yaml` is used for all results) |
+| `docs/research/` | The research plan written before the corrected analysis |
+| `archive/`, `outputs/run_final/` | Superseded material, kept for the correction history |
 
 ## Reproducing the research
 
@@ -56,7 +79,7 @@ All comparisons are made on the same events and the same cross-validation folds,
 - **Python 3.12** with the pinned packages in `requirements.txt`.
 - **Node.js 18 or later**, only to build the website.
 - **A LaTeX distribution** with `pdflatex` and `bibtex` (TeX Live or MiKTeX), only to compile the paper.
-- **The LEN-Small archive** (about 5.4 GB), described below.
+- **The LEN archive** (`small_encoder_final.tar`, about 5.4 GB), described below.
 
 ### Data
 
@@ -73,53 +96,60 @@ python -m pip install -r requirements.txt
 python run_pipeline.py                # about 70 minutes; ends by running the test suite
 ```
 
-The pipeline runs every step from the raw archive to the final results, figures and website data, with fixed random seeds. It writes its results to `outputs/run_v2/` and the revision analyses to the two `outputs/revision_*` directories; all output locations are set in `configs/v2_coreness_fix.yaml`.
+The pipeline runs every step from the raw archive to the results, figures and website data, with fixed seeds. It writes to `outputs/run_v2/` and the two `outputs/revision_*` directories, and it collects the stored audit values into `outputs/research_audit/`. All output locations are set in `configs/v2_coreness_fix.yaml`.
 
-The revision analyses can also be run on their own once `outputs/run_v2/` exists. They only read it:
+The robustness-audit scripts are separate from the pipeline. They read its outputs and write only into `research_audit/`; how to rerun them is in [`research_audit/README.md`](research_audit/README.md). After rerunning any of them, refresh the collected values and the downstream files:
 
 ```bash
-python src/h1_c_grid.py               # count-model regularisation grid -> outputs/revision_h1_cgrid/ (output.revision_h1_dir)
-python src/revision_supplement.py     # supplementary analyses -> outputs/revision_supplement/supplement.json (output.revision_supplement)
+python src/export_audit_results.py    # -> outputs/research_audit/audit_results.json
 python src/export_latex_results.py    # refreshes the paper's result macros
 python src/export_frontend_data.py    # refreshes the website payload
-python src/export_dataset_explorer.py # rebuilds the dataset explorer's graph files (needs the raw archive)
 ```
 
 ### Check the results without the dataset
 
-The results, the paper PDF and its compiled bibliography are committed, so the test suite also runs on a fresh clone without the dataset or LaTeX:
+The results, the audit outputs, the paper PDF and its compiled bibliography are committed, so the test suite also runs on a fresh clone without the dataset or LaTeX. Tests that need the raw archive are skipped, with the reason printed.
 
 ```bash
-python -m pytest                      # 36 pass; 6 skip because they need the dataset
+python -m pytest
 ```
 
 ## Building the paper
 
-The paper is written in IEEE conference LaTeX (`paper/main.tex`). It contains no hand-typed results: every number and table is filled in from `outputs/run_v2/paper_results.json` and `outputs/revision_supplement/supplement.json` through generated macros in `paper/generated/results.tex`.
+The paper is written in IEEE conference LaTeX (`paper/main.tex`). It contains no hand-typed results: every number and table is filled in through generated macros in `paper/generated/results.tex`. The macros come from three files:
+- `outputs/run_v2/paper_results.json`;
+- `outputs/revision_supplement/supplement.json`;
+- `outputs/research_audit/audit_results.json`.
 
 ```bash
-python paper/build.py                 # writes paper/LEN_Small_Predictive_Information_Beyond_Scale.pdf
+python paper/make_paper_figures.py    # figures (needs data/processed from the pipeline)
+python paper/build.py                 # writes paper/Finding_Signal_in_Network_Simplicity.pdf
 python paper/export_references.py     # updates the website's reference list
 python -m pytest                      # checks the paper and website against the results
 ```
 
-To run the website locally, use `npm install` and then `npm run dev` inside `frontend/`.
+To run the website locally, use `npm install` and then `npm run dev` inside `frontend/`. `npm run build` copies the current paper PDF into the site first.
 
 ## Limitations and data availability
 
-- **Small sample.** With 103 events, the confidence intervals are wide, and a result showing no difference is not evidence that none exists.
-- **Archive provenance.** The analysed archive holds 103 events (52 campaign, 51 comparison), three more than the official 100-graph LEN-Small release, for a reason we could not determine.
+- **Small sample.** With 103 events (73 at K = 1000), intervals are wide, and a result showing no difference is not evidence that none exists. Bootstrap intervals exclude refitting variability, which the repartitions show to be of comparable size.
+- **Scope.** Results describe the 103-graph LEN project archive; size–label associations may reflect how its events were selected and need not hold for other LEN data.
+- **Post-hoc selection and text.** Token-count dispersion was chosen after inspecting these events. All content features describe retained text only, and retention differs by class.
 - **Missing metadata.** The release has no account identifiers or campaign subtypes, so links between events through shared accounts cannot be assessed. Timestamp meanings are unverified, so no temporal features are used.
-- **Scope.** Only logistic regression and gradient-boosted trees on hand-crafted features were evaluated. The full pipeline was reproduced on one machine; reproduction on other hardware has not been tested.
-- **Corrections.** Two errors in an earlier version of the analysis, a coreness calculation that ignored self-loops and a cross-validation fold-assignment error, were identified during validation and corrected before the results reported in this paper were finalized. For example, one superseded model reported a balanced accuracy of 0.923, which became 0.894 after correction; **0.923 is not a current result.** Details are in Section VIII of the paper.
-- **Data.** The repository does not include the raw LEN archive, and contains no messages, account identifiers or timestamps. It does include derived event-level outputs (event names, counts, file hashes, features and predictions) for reproducibility, and, for the website's dataset explorer, the graph structure of the 103 analysed events (directed edges between per-graph node indices). The LEN authors release the dataset under a CC-BY licence (their paper gives no version); these derived files and the graph structure are shared with attribution to them and are not endorsed by them. See [`data/DATA_MANIFEST.md`](data/DATA_MANIFEST.md).
+- **Scope.** Only logistic regression and gradient-boosted trees on hand-crafted features were evaluated, and only uniform edge sampling was studied. The full pipeline was reproduced on one machine; reproduction on other hardware has not been tested. The audit scripts were run once.
+- **Correction history.** Two implementation errors in an earlier internal version were found and fixed before the reported results were produced: a coreness calculation that ignored self-loops, and a fold-assignment error for frozen models. Both are now covered by regression tests. For example, one superseded model reported a balanced accuracy of 0.923, which became 0.894 after correction; **0.923 is not a current result.** The superseded run is kept in `outputs/run_final/` and `archive/`.
+- **Data.** The repository does not include the raw LEN archive, and it contains no messages, account identifiers or timestamps. It does include:
+  - derived event-level outputs (event names, counts, file hashes, features and predictions) for reproducibility;
+  - for the website's dataset explorer, the graph structure of the 103 analysed events (directed edges between per-graph node indices).
+
+  The LEN authors release the dataset under a CC-BY licence (their paper gives no version); these derived files are shared with attribution to them and are not endorsed by them. See [`data/DATA_MANIFEST.md`](data/DATA_MANIFEST.md).
 
 ## Licence and citation
 
-The **source code** is released under the [MIT licence](LICENSE). The licence does not cover the paper, its figures or documentation (© the authors), or any LEN-derived data. [`NOTICE.md`](NOTICE.md) sets out exactly what falls under each.
+The **source code** is released under the [MIT licence](LICENSE). The licence does not cover the paper, its figures or documentation (© the authors), or any LEN-derived data. [`NOTICE.md`](NOTICE.md) sets out exactly what falls under each. The website design pass used the [unslop](https://github.com/heydamir/unslop) skill by Damir Sokolovsky (CC BY 4.0), installed locally in `.claude/skills/unslop/`; no part of it is redistributed in this repository.
 
 If you use this work, please cite the paper and the dataset it analyses:
 
-> S. Singh and D. Kewlani, "What Does LEN-Small Measure? Predictive Information Beyond Scale in Retained Engagement Graphs," 2026. [Online]. Available: https://github.com/SynshAmi/temporal-coordination-in-social-media
+> S. Singh, D. Kewlani and Y. K A, "Finding Signal in Network Simplicity," 2026. [Online]. Available: https://github.com/SynshAmi/temporal-coordination-in-social-media
 
 > A. A. Gopalakrishnan, J. Hossain, T. Elmas and A. E. Sarıyüce, "Large engagement networks for classifying coordinated campaigns and organic Twitter trends," in *Proc. ICWSM*, vol. 19, no. 1, pp. 688–702, 2025, doi:10.1609/icwsm.v19i1.35839.

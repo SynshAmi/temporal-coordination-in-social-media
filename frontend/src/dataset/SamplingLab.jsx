@@ -59,7 +59,7 @@ function Lab({ index, eventIdx, onPickEvent }) {
     return (
       <div className="space-y-6">
         <div className="max-w-[420px]"><EventSelect id="sl-event" events={index.events} value={null} onChange={onPickEvent} filter={(e) => e.budgets.length} label="Event (at least 250 edges)" /></div>
-        <div className="border border-dashed border-[#cfc8b8] p-8 text-sm text-[#5e5a52] bg-[#faf8f5]">Choose an event to compare its full graph with the Study 2 observations of it.</div>
+        <div className="border border-dashed border-[#cfc8b8] p-8 text-[16px] text-[#5e5a52] bg-[#faf8f5]">Choose an event to compare its full graph with the Study 2 observations of it.</div>
         <SamplingNotes index={index} />
       </div>
     );
@@ -72,7 +72,7 @@ function Lab({ index, eventIdx, onPickEvent }) {
     <div className="space-y-6">
       <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,420px)_1fr] gap-4 items-end">
         <EventSelect id="sl-event" events={index.events} value={eventIdx} onChange={onPickEvent} filter={(e) => e.budgets.length} label="Event (at least 250 edges)" />
-        {!eligible && <p className="text-sm text-[#8f2626]">This event has fewer than 250 edges, so Study 2 drew no observations of it.</p>}
+        {!eligible && <p className="text-[16px] text-[#8f2626]">This event has fewer than 250 edges, so Study 2 drew no observations of it.</p>}
       </div>
 
       {eligible && (
@@ -80,8 +80,8 @@ function Lab({ index, eventIdx, onPickEvent }) {
           {/* Regime switch */}
           <div className="flex flex-wrap items-end gap-x-6 gap-y-3">
             <div>
-              <div className="text-[11px] font-mono uppercase tracking-wider text-[#757065] mb-1">Observation regime</div>
-              <div className="inline-flex border border-[#15263a] bg-white text-xs font-mono" role="radiogroup" aria-label="Observation regime">
+              <div className="text-[13px] font-mono text-[#757065] mb-1">Observation regime</div>
+              <div className="inline-flex border border-[#15263a] bg-white text-[14px] font-mono" role="radiogroup" aria-label="Observation regime">
                 {["full", ...index.budgets.map(String)].map((r) => {
                   const ok = r === "full" || event.budgets.includes(Number(r));
                   return (
@@ -96,14 +96,14 @@ function Lab({ index, eventIdx, onPickEvent }) {
             </div>
             {K && obs && (
               <label className="flex flex-col gap-1">
-                <span className="text-[11px] font-mono uppercase tracking-wider text-[#757065]">Sampling seed</span>
-                <select value={seedIdx} onChange={(e) => setSeedIdx(Number(e.target.value))} className="bg-white border border-[#d8d3c5] px-2 py-2 text-xs font-mono text-[#15263a]">
+                <span className="text-[13px] font-mono text-[#757065]">Sampling seed</span>
+                <select value={seedIdx} onChange={(e) => setSeedIdx(Number(e.target.value))} className="bg-white border border-[#d8d3c5] px-2 py-2 text-[14px] font-mono text-[#15263a]">
                   {obs.seeds.map((s, k) => <option key={s} value={k}>Seed {s} ({k + 1} of {obs.seeds.length})</option>)}
                 </select>
               </label>
             )}
             {K && (
-              <div className="flex flex-wrap gap-2 text-xs font-mono">
+              <div className="flex flex-wrap gap-2 text-[14px] font-mono">
                 <div className="inline-flex border border-[#d8d3c5] bg-white p-0.5" role="group" aria-label="Node positions">
                   {[["shared", "Full-graph positions"], ["own", "Re-layout observation"]].map(([k, t]) => (
                     <button key={k} type="button" onClick={() => setLayoutMode(k)} aria-pressed={layoutMode === k}
@@ -172,24 +172,24 @@ function Comparison({ event, K, feats, view }) {
   ];
   return (
     <div className="bg-white border border-[#dcd7ca] p-5">
-      <div className="flex items-center gap-2 font-mono text-[11px] font-bold uppercase tracking-wider text-[#15263a] mb-3">
+      <div className="flex items-center gap-2 font-mono text-[13px] font-semibold text-[#15263a] mb-3">
         <FlaskConical size={13} /> Full graph vs {K ? `K = ${K}` : "full graph"}
       </div>
-      <table className="w-full text-[13px]">
-        <thead className="text-[10.5px] font-mono uppercase tracking-wider text-[#757065]">
+      <table className="w-full text-[15px]">
+        <thead className="text-[12.5px] font-mono text-[#757065]">
           <tr><th className="text-left font-medium pb-1.5">Measure</th><th className="text-right font-medium pb-1.5">Full</th><th className="text-right font-medium pb-1.5">{K ? "Observed" : "—"}</th></tr>
         </thead>
         <tbody className="divide-y divide-[#eee9df]">
           {rows.map(([t, a, b, delta, h]) => (
             <tr key={t}>
-              <td className="py-1.5 text-[#4a4740]">{t}{h && <Hint text={h} />}{delta && <div className="text-[10.5px] font-mono text-[#9a948a]">{delta}</div>}</td>
+              <td className="py-1.5 text-[#4a4740]">{t}{h && <Hint text={h} />}{delta && <div className="text-[12.5px] font-mono text-[#9a948a]">{delta}</div>}</td>
               <td className="py-1.5 text-right font-mono text-[#15263a]">{a}</td>
               <td className="py-1.5 text-right font-mono" style={{ color: K ? PAGE.campaign : "#9a948a" }}>{K ? b : ""}</td>
             </tr>
           ))}
         </tbody>
       </table>
-      <p className="mt-3 text-[11px] font-mono text-[#757065]">Self-loops in this view: {int(view.d.loops.reduce((a, b) => a + b, 0))}</p>
+      <p className="mt-3 text-[13px] font-mono text-[#757065]">Self-loops in this view: {int(view.d.loops.reduce((a, b) => a + b, 0))}</p>
     </div>
   );
 }
@@ -201,8 +201,8 @@ function SeedStrip({ samples, event, K, seedIdx, onSeed }) {
   const range = (k) => { const v = samples.budgets[k].features.map((f) => f.n_nodes); return [Math.min(...v), Math.max(...v)]; };
   return (
     <div className="bg-white border border-[#dcd7ca] p-5">
-      <div className="font-mono text-[11px] font-bold uppercase tracking-wider text-[#15263a] mb-1">Sampled endpoint count N<sub>K</sub> by seed</div>
-      <p className="text-[12px] text-[#5e5a52] mb-2">A size-like quantity central to Study 2. Each row has its own scale (minimum to maximum over the ten seeds); select a point on the current budget's row to switch seed.</p>
+      <div className="font-mono text-[13px] font-semibold text-[#15263a] mb-1">Sampled endpoint count N<sub>K</sub> by seed</div>
+      <p className="text-[14px] text-[#5e5a52] mb-2">The count that remains in a fixed-budget view (Study 2): its expectation is set by the full graph's size and degree sequence. Each row has its own scale (minimum to maximum over the ten seeds); select a point on the current budget's row to switch seed.</p>
       <svg viewBox={`0 0 ${W} ${H}`} className="w-full h-auto" role="img" aria-label="Sampled endpoint count for each seed at each budget">
         {ks.map((k, r) => {
           const y = 16 + r * 40;

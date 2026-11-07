@@ -19,8 +19,9 @@ Executes:
       supplementary analyses (src/revision_supplement.py); they read the run
       directory and write output.revision_h1_dir and output.revision_supplement
   12. Paper results file (src/export_paper_results.py)
-  13. Paper inputs: figures (paper/make_paper_figures.py) and LaTeX result macros
-      (src/export_latex_results.py)
+  13. Paper inputs: values from the stored robustness-audit outputs
+      (src/export_audit_results.py), figures (paper/make_paper_figures.py) and
+      LaTeX result macros (src/export_latex_results.py)
   14. Website data: results payload (src/export_frontend_data.py) and the dataset
       explorer's graph files (src/export_dataset_explorer.py)
   15. Test Suite (pytest tests/ -v)
@@ -89,7 +90,8 @@ def main():
             [py, "src/revision_supplement.py", *c],
         ]),
         ("12. Export Paper Results", [py, "src/export_paper_results.py", *c]),
-        ("13. Paper Inputs (Figures & LaTeX Result Macros)", [
+        ("13. Paper Inputs (Audit Values, Figures & LaTeX Result Macros)", [
+            [py, "src/export_audit_results.py", *c],
             [py, "paper/make_paper_figures.py", *c, "--out-dir", out_cfg.get("paper_figures_dir", "paper/figures")],
             [py, "src/export_latex_results.py", *c],
         ]),

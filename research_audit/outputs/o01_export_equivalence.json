@@ -1,0 +1,20 @@
+{
+  "raw_json_members": 104,
+  "raw_members_matched_to_export": 103,
+  "raw_members_not_in_export": [
+    "#SesimiziDuyanVarMı___2023-03-23_campaign_fulldata"
+  ],
+  "export_events_without_raw": [],
+  "all_node_counts_equal": true,
+  "all_node_ids_0_to_n_1": true,
+  "all_edge_multisets_equal": true,
+  "all_edge_orders_equal": true,
+  "all_self_loop_counts_equal": true,
+  "all_interaction_counts_equal": true,
+  "all_d_v_equal": true,
+  "labels_token_export_manifest_agree": true,
+  "label_counts_export": {
+    "1.0": 52,
+    "0.0": 51
+  }
+}

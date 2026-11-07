@@ -65,9 +65,9 @@ export default function DatasetOverview({ index, selected, onSelect, go }) {
           ["Sampled observations", `${totals.withSamples} events`, `K = ${index.budgets.join(", ")} · ${index.n_seeds} seeds`],
         ].map(([k, v, sub]) => (
           <div key={k} className="bg-white px-4 py-4">
-            <div className="text-[10.5px] font-mono uppercase tracking-wider text-[#757065]">{k}</div>
+            <div className="text-[12.5px] font-mono text-[#757065]">{k}</div>
             <div className="mt-1 font-serif text-2xl text-[#15263a] leading-tight">{v}</div>
-            <div className="mt-0.5 text-[11px] font-mono text-[#757065]">{sub}</div>
+            <div className="mt-0.5 text-[13px] font-mono text-[#757065]">{sub}</div>
           </div>
         ))}
       </section>
@@ -90,7 +90,7 @@ export default function DatasetOverview({ index, selected, onSelect, go }) {
               <p className="head-desc">Full-graph values as computed in the paper; lines mark class medians.</p>
             </div>
             <select value={metric} onChange={(e) => setMetric(e.target.value)} aria-label="Measure to plot"
-              className="bg-white border border-[#d8d3c5] px-2 py-1.5 text-xs font-mono text-[#15263a]">
+              className="bg-white border border-[#d8d3c5] px-2 py-1.5 text-[14px] font-mono text-[#15263a]">
               {STRIP_METRICS.map((m) => <option key={m.key} value={m.key}>{m.label}</option>)}
             </select>
           </div>
@@ -107,21 +107,21 @@ export default function DatasetOverview({ index, selected, onSelect, go }) {
               <span className="sr-only">Search events</span>
               <Search size={14} className="absolute left-2.5 top-1/2 -translate-y-1/2 text-[#9a948a]" />
               <input type="search" value={query} onChange={(e) => setQuery(e.target.value)} placeholder="Search event identifier"
-                className="w-full pl-8 pr-2 py-2 text-sm border border-[#d8d3c5] bg-[#faf8f5] focus:outline-none focus:border-[#23527c]" />
+                className="w-full pl-8 pr-2 py-2 text-[16px] border border-[#d8d3c5] bg-[#faf8f5] focus:outline-none focus:border-[#23527c]" />
             </label>
-            <div className="inline-flex border border-[#d8d3c5] bg-[#faf8f5] p-0.5 text-xs font-mono self-start" role="group" aria-label="Filter by label">
+            <div className="inline-flex border border-[#d8d3c5] bg-[#faf8f5] p-0.5 text-[14px] font-mono self-start" role="group" aria-label="Filter by label">
               {[["all", "All"], ["campaign", "Campaign"], ["comparison", "Comparison"]].map(([k, t]) => (
                 <button key={k} type="button" onClick={() => setLabelFilter(k)} aria-pressed={labelFilter === k}
                   className={`px-2.5 py-1.5 ${labelFilter === k ? "bg-[#15263a] text-white" : "text-[#3c3a37] hover:bg-[#ede9df]"}`}>{t}</button>
               ))}
             </div>
           </div>
-          <div className="px-4 sm:px-5 py-2 text-[11px] font-mono text-[#757065] border-b border-[#e5e0d4]">
+          <div className="px-4 sm:px-5 py-2 text-[13px] font-mono text-[#757065] border-b border-[#e5e0d4]">
             {rows.length} of {events.length} events
           </div>
           <div className="max-h-[560px] overflow-y-auto">
-            <table className="w-full text-sm">
-              <thead className="sticky top-0 bg-[#f4efe6] text-[11px] font-mono uppercase tracking-wider text-[#757065]">
+            <table className="w-full text-[16px]">
+              <thead className="sticky top-0 bg-[#f4efe6] text-[13px] font-mono text-[#757065]">
                 <tr className="text-left">
                   <th className="px-4 sm:px-5 py-2 font-medium">{sortBtn("name", "Event")}</th>
                   <th className="px-2 py-2 font-medium hidden sm:table-cell">Label</th>
@@ -139,13 +139,13 @@ export default function DatasetOverview({ index, selected, onSelect, go }) {
                       <span className="sm:hidden ml-2"><LabelBadge label={e.label} small /></span>
                     </td>
                     <td className="px-2 py-2 hidden sm:table-cell"><LabelBadge label={e.label} small /></td>
-                    <td className="px-2 py-2 text-right font-mono text-[13px]">{int(e.n_nodes)}</td>
-                    <td className="px-2 py-2 text-right font-mono text-[13px]">{int(e.n_edges)}</td>
-                    <td className="px-4 sm:px-5 py-2 text-right font-mono text-[13px] hidden md:table-cell">{f3(e.features.reciprocity)}</td>
+                    <td className="px-2 py-2 text-right font-mono text-[15px]">{int(e.n_nodes)}</td>
+                    <td className="px-2 py-2 text-right font-mono text-[15px]">{int(e.n_edges)}</td>
+                    <td className="px-4 sm:px-5 py-2 text-right font-mono text-[15px] hidden md:table-cell">{f3(e.features.reciprocity)}</td>
                   </tr>
                 ))}
                 {!rows.length && (
-                  <tr><td colSpan={5} className="px-5 py-8 text-center text-sm text-[#757065]">No events match this search.</td></tr>
+                  <tr><td colSpan={5} className="px-5 py-8 text-center text-[16px] text-[#757065]">No events match this search.</td></tr>
                 )}
               </tbody>
             </table>
@@ -154,12 +154,12 @@ export default function DatasetOverview({ index, selected, onSelect, go }) {
 
         <aside className="lg:col-span-5 xl:col-span-4 lg:sticky lg:top-36 space-y-5">
           {sel ? <EventCard e={sel} go={go} /> : (
-            <div className="border border-dashed border-[#cfc8b8] p-6 text-sm text-[#5e5a52] bg-[#faf8f5]">
+            <div className="border border-dashed border-[#cfc8b8] p-6 text-[16px] text-[#5e5a52] bg-[#faf8f5]">
               Select an event in the table or a chart to see its statistics and open its network.
             </div>
           )}
           <div className="bg-[#f4efe6] border border-[#dcd7ca] p-5">
-            <div className="font-mono text-[11px] font-bold uppercase tracking-wider text-[#15263a] mb-3">Data source</div>
+            <div className="font-mono text-[13px] font-semibold text-[#15263a] mb-3">Data source</div>
             <Citation source={index.source} />
           </div>
         </aside>
@@ -178,12 +178,12 @@ export function EventCard({ e, go, compact = false }) {
     <div className="bg-white border border-[#dcd7ca] border-t-2 p-5" style={{ borderTopColor: e.label === 1 ? PAGE.campaign : PAGE.comparison }}>
       <div className="flex items-start justify-between gap-3">
         <div className="min-w-0">
-          <div className="text-[11px] font-mono uppercase tracking-wider text-[#757065]">Event {String(e.i).padStart(3, "0")}</div>
+          <div className="text-[13px] font-mono text-[#757065]">Event {String(e.i).padStart(3, "0")}</div>
           <h3 className="mt-1 font-serif text-xl text-[#15263a] leading-snug break-words">{e.name}</h3>
         </div>
         <LabelBadge label={e.label} />
       </div>
-      <div className="mt-1 text-[11px] font-mono text-[#9a948a] break-all">{e.id}</div>
+      <div className="mt-1 text-[13px] font-mono text-[#9a948a] break-all">{e.id}</div>
       <StatRows className="mt-4" rows={[
         ["Nodes", int(e.n_nodes)],
         ["Directed edges", int(e.n_edges)],
@@ -196,16 +196,16 @@ export function EventCard({ e, go, compact = false }) {
       {go && (
         <div className="mt-5 grid grid-cols-1 gap-2">
           <button type="button" onClick={() => go("event", e.i)}
-            className="inline-flex items-center justify-between gap-2 px-4 py-2.5 bg-[#15263a] text-white text-xs font-medium hover:bg-[#23527c] transition-colors">
+            className="inline-flex items-center justify-between gap-2 px-4 py-2.5 bg-[#15263a] text-white text-[14px] font-medium hover:bg-[#23527c] transition-colors">
             <span className="inline-flex items-center gap-2"><Network size={14} /> Explore network</span><ArrowRight size={13} />
           </button>
           <div className="grid grid-cols-2 gap-2">
             <button type="button" onClick={() => go("sampling", e.i)} disabled={!e.budgets.length}
-              className="inline-flex items-center justify-center gap-2 px-3 py-2 bg-white border border-[#15263a] text-[#15263a] text-xs hover:bg-[#f2eee5] disabled:opacity-40 disabled:cursor-not-allowed">
+              className="inline-flex items-center justify-center gap-2 px-3 py-2 bg-white border border-[#15263a] text-[#15263a] text-[14px] hover:bg-[#f2eee5] disabled:opacity-40 disabled:cursor-not-allowed">
               <FlaskConical size={13} /> Sampling lab
             </button>
             <button type="button" onClick={() => go("compare", e.i)}
-              className="inline-flex items-center justify-center gap-2 px-3 py-2 bg-white border border-[#15263a] text-[#15263a] text-xs hover:bg-[#f2eee5]">
+              className="inline-flex items-center justify-center gap-2 px-3 py-2 bg-white border border-[#15263a] text-[#15263a] text-[14px] hover:bg-[#f2eee5]">
               <GitCompare size={13} /> Compare
             </button>
           </div>
@@ -291,7 +291,7 @@ function MetricStrip({ events, metric, selected, onSelect }) {
 
 export function Legend() {
   return (
-    <div className="mt-3 flex flex-wrap gap-x-5 gap-y-1 text-[11px] font-mono text-[#4a4740]">
+    <div className="mt-3 flex flex-wrap gap-x-5 gap-y-1 text-[13px] font-mono text-[#4a4740]">
       <span className="inline-flex items-center gap-1.5"><span className="w-2.5 h-2.5 rounded-full" style={{ background: PAGE.campaign }} />Campaign (dataset label)</span>
       <span className="inline-flex items-center gap-1.5"><span className="w-2.5 h-2.5 rounded-full" style={{ background: PAGE.comparison }} />Comparison (dataset label)</span>
     </div>

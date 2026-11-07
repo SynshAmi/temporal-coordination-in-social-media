@@ -1,0 +1,24 @@
+                                 BA    AUC     LL
+counts                        0.873  0.923  0.348
+E_hom (size only)             0.824  0.932  0.366
+E_nk (degree sequence)        0.931  0.960  0.278
+counts + E_nk                 0.902  0.958  0.294
+counts + het_resid            0.912  0.957  0.303
+counts + degree Gini          0.843  0.913  0.408
+N_K realised (one view)       0.931  0.955  0.302
+sources + targets (one view)  0.922  0.929  0.349
+E_nk (degree sequence) vs E_hom (size only)                dLL -0.087 [-0.177, +0.032]  dAUC +0.028 [-0.009, +0.066]
+counts + E_nk vs counts                                    dLL -0.054 [-0.110, +0.008]  dAUC +0.035 [+0.014, +0.061]
+counts + het_resid vs counts                               dLL -0.045 [-0.121, +0.055]  dAUC +0.033 [+0.008, +0.062]
+counts + degree Gini vs counts                             dLL +0.060 [+0.003, +0.146]  dAUC -0.010 [-0.028, +0.004]
+sources + targets (one view) vs N_K realised (one view)    dLL +0.047 [-0.007, +0.126]  dAUC -0.026 [-0.071, -0.000]
+N_K realised (one view) vs counts                          dLL -0.046 [-0.126, +0.032]  dAUC +0.032 [+0.005, +0.065]
+             het_resid  log_E_nk
+log_n            0.412     0.879
+log_m            0.136     0.534
+log_E_hom        0.281     0.953
+log_E_nk         0.558     1.000
+het_resid        1.000     0.558
+gini_in          0.002     0.650
+gini_out        -0.447    -0.798
+log_nk_view      0.548     0.997

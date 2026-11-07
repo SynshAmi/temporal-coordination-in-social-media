@@ -1,0 +1,4 @@
+M4 - M0q+lensd: dLL -0.014 [-0.055, +0.024] | dAUC +0.004 [-0.009, +0.016] | repeats favouring A 16/20
+M2+lensd - M0q+lensd: dLL -0.007 [-0.049, +0.035] | dAUC +0.002 [-0.012, +0.015] | repeats favouring A 14/20
+M0q+lensd - M0q: dLL -0.080 [-0.160, +0.004] | dAUC +0.031 [+0.003, +0.068] | repeats favouring A 20/20
+M4 - M2+lensd: dLL -0.007 [-0.030, +0.018] | dAUC +0.002 [-0.006, +0.008] | repeats favouring A 12/20

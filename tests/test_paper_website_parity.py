@@ -28,7 +28,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 from _paths import CFG, RUN_DIR, PAYLOAD_PATH, SUPPLEMENT_PATH as SUPPLEMENT  # noqa: E402
 
 PAPER = ROOT / "paper"
-PDF = PAPER / "LEN_Small_Predictive_Information_Beyond_Scale.pdf"
+PDF = PAPER / "Finding_Signal_in_Network_Simplicity.pdf"
 MAIN_TEX = PAPER / "main.tex"
 BBL = PAPER / "main.bbl"
 PUBLIC_PDF = ROOT / "frontend" / "public" / PDF.name
@@ -56,7 +56,7 @@ def test_every_headline_claim_appears_in_paper_pdf():
 @pytest.mark.skipif(not SUPPLEMENT.exists(), reason="run src/revision_supplement.py first")
 def test_paper_result_macros_are_current():
     from export_latex_results import build
-    expected, _, _ = build(load(RESULTS), load(SUPPLEMENT))
+    expected, _, _ = build(load(RESULTS), load(SUPPLEMENT), load(ROOT / CFG["output"]["audit_results"]))
     current = ROOT / CFG["output"].get("paper_results_tex", "paper/generated/results.tex")
     assert current.read_text(encoding="utf-8") == expected, "run `python src/export_latex_results.py`"
 
@@ -106,7 +106,8 @@ def test_website_title_is_paper_title():
     from claim_evidence_audit import pdf_text
     title = load(PAYLOAD_PATH)["metadata"]["paper_title"]
     assert title in pdf_text(PDF)
-    assert f"\\title{{{title}}}" in MAIN_TEX.read_text(encoding="utf-8")
+    # the title may be followed by a \thanks footnote (the equal-contribution note) inside \title{}
+    assert re.search(r"\\title\{" + re.escape(title) + r"(%|\})", MAIN_TEX.read_text(encoding="utf-8"))
 
 
 def test_website_references_equal_paper_references():

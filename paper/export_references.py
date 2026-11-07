@@ -22,7 +22,7 @@ DEFAULT_OUT = PAPER.parent / "frontend" / "src" / "lib" / "references.json"
 REPLACEMENTS = [
     (r"\BIBentryALTinterwordspacing", ""), (r"\BIBentrySTDinterwordspacing", ""), (r"\newblock", ""),
     ("``", "\u201c"), ("''", "\u201d"), ("---", "\u2014"), ("--", "\u2013"),
-    (r"\,", "\u202f"), (r"{\i}", "\u0131"), (r'{\"u}', "\u00fc"), (r"\&", "&"), ("~", " "),
+    (r"\,", "\u202f"), (r"{\i}", "\u0131"), (r'{\"u}', "\u00fc"), (r"\&", "&"), (r"\_", "_"), ("~", " "),
 ]
 
 

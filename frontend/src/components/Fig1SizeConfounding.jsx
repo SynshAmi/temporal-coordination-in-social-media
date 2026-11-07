@@ -47,42 +47,42 @@ export default function Fig1SizeConfounding({ eventPoints, stats, dataset: D }) 
   };
 
   return (
-    <div className="bg-[#faf8f5] border border-[#dcd7ca] p-5 sm:p-8 lg:p-10 shadow-none">
+    <div className="panel">
       {/* Figure Header & Control */}
-      <div className="panel-head flex flex-wrap items-end justify-between gap-x-6 gap-y-4">
+      <div className="pb-4 mb-5 border-b border-[#e5e0d4] flex flex-wrap items-end justify-between gap-x-6 gap-y-3">
         <div className="min-w-0 flex-1 basis-80">
-          <span className="section-label">Figure 1</span>
-          <h3 className="text-xl font-serif font-medium text-[#15263a]">
-            Empirical Graph-Size Distributions by Class
+          <span className="section-label !mb-1">Figure 1</span>
+          <h3 className="font-serif text-[21px] text-[#15263a] leading-snug">
+            Graph size by class
           </h3>
-          <p className="head-desc">
-            Logarithmic scale comparison of node and edge volumes between campaign and comparison events.
+          <p className="head-desc !mt-1">
+            Node and edge counts of every event on a logarithmic scale.
           </p>
         </div>
-        <div className="flex items-center gap-2 text-xs font-mono">
-          <span className="text-[#6b6862] text-[11px] uppercase tracking-wider">Dimension:</span>
-          <div className="inline-flex border border-[#d8d3c5] bg-white p-0.5 shadow-2xs">
+        <div className="flex items-center gap-2 text-[14px] font-mono">
+          <span className="sr-only">Measure</span>
+          <div className="inline-flex border border-[#d8d3c5] rounded-[8px] bg-[#faf8f5] p-1">
             <button
               type="button"
               onClick={() => setMetricType("nodes")}
-              className={`px-3.5 py-1 text-xs transition-colors ${
+              className={`h-8 px-3 text-[15px] rounded-[4px] font-sans ${
                 isNodes
                   ? "bg-[#15263a] text-white font-medium shadow-xs"
                   : "text-[#3c3a37] hover:bg-[#ede9df]"
               }`}
             >
-              Node Count (N)
+              Node count
             </button>
             <button
               type="button"
               onClick={() => setMetricType("edges")}
-              className={`px-3.5 py-1 text-xs transition-colors ${
+              className={`h-8 px-3 text-[15px] rounded-[4px] font-sans ${
                 !isNodes
                   ? "bg-[#15263a] text-white font-medium shadow-xs"
                   : "text-[#3c3a37] hover:bg-[#ede9df]"
               }`}
             >
-              Edge Count (E)
+              Edge count
             </button>
           </div>
         </div>
@@ -312,11 +312,11 @@ export default function Fig1SizeConfounding({ eventPoints, stats, dataset: D }) 
 
         {/* Hover Tooltip */}
         {hoveredEvent && (
-          <div className="absolute top-2 right-2 bg-white border border-[#15263a] px-3.5 py-2.5 shadow-md text-xs font-mono z-10 pointer-events-none">
-            <div className="font-bold text-[#15263a] mb-1">
+          <div className="absolute top-2 right-2 bg-white border border-[#15263a] px-3.5 py-2.5 shadow-md text-[14px] font-mono z-10 pointer-events-none">
+            <div className="font-semibold text-[#15263a] mb-1">
               {hoveredEvent.label_str.toUpperCase()} EVENT
             </div>
-            <div className="text-[#3c3a37] text-[11px] truncate max-w-[280px]">
+            <div className="text-[#3c3a37] text-[13px] truncate max-w-[280px]">
               ID: {hoveredEvent.event_id}
             </div>
             <div className="mt-1 flex gap-4 text-[#555]">
@@ -330,7 +330,7 @@ export default function Fig1SizeConfounding({ eventPoints, stats, dataset: D }) 
       {/* Two-Level Publication Caption */}
       <FigureCaption
         figNumber="FIG. 1"
-        title="Event-Graph Size by Class"
+        title="Event-graph size by class"
         takeaway={`Comparison graphs (blue, n = ${D.n_comparison}) are several times larger than campaign graphs (red, n = ${D.n_campaign}) in both node count (median ${int(D.nodes.comparison.median)} vs ${int(D.nodes.campaign.median)}) and edge count (median ${int(D.edges.comparison.median)} vs ${int(D.edges.campaign.median)}).`}
         details={
           <div className="space-y-2.5">
@@ -338,10 +338,10 @@ export default function Fig1SizeConfounding({ eventPoints, stats, dataset: D }) 
               <strong>Size difference:</strong> the signed standardized mean difference of log node count (campaign − comparison) is {f2(D.smd_log_nodes_full_cohort)}, i.e. |SMD| = {f2(Math.abs(D.smd_log_nodes_full_cohort))}.
             </p>
             <p>
-              <strong>Encoding Conventions:</strong> Solid horizontal bars indicate group medians; dashed bars represent group arithmetic means on log scale; shaded rectangular bounds enclose the Interquartile Range (IQR, 25th–75th percentiles). Individual circles depict exact event graphs jittered along the column axis for visual clarity.
+              <strong>Encoding:</strong> Solid horizontal bars indicate group medians; dashed bars represent group arithmetic means on log scale; shaded rectangular bounds enclose the Interquartile Range (IQR, 25th–75th percentiles). Individual circles depict exact event graphs jittered along the column axis for visual clarity.
             </p>
             <p>
-              <strong>Why it matters:</strong> LEN-Small was constructed as the smallest LEN graphs by node count, and within it the classes still differ strongly in size. Any classifier score on this benchmark should therefore be read against a count-only baseline (Fig. 2).
+              <strong>Why it matters:</strong> in this archive the classes differ strongly in size, so any classifier score on these data should be read against a count-only baseline (Fig. 2).
             </p>
           </div>
         }

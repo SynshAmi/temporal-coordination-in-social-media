@@ -27,18 +27,18 @@ export default function Playground({ index, eventIdx, onPickEvent, go, autoLoad 
         <EventSelect id="pg-event" events={index.events} value={eventIdx} onChange={onPickEvent} label="Event" />
       </div>
 
-      {!event && <div className="border border-dashed border-[#cfc8b8] p-8 text-sm text-[#5e5a52] bg-[#faf8f5]">Choose an event to explore its network.</div>}
+      {!event && <div className="border border-dashed border-[#cfc8b8] p-8 text-[16px] text-[#5e5a52] bg-[#faf8f5]">Choose an event to explore its network.</div>}
 
       {event && !requested && (
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
           <div className="lg:col-span-5"><EventCard e={event} /></div>
           <div className="lg:col-span-7 graph-canvas min-h-[320px] flex flex-col items-center justify-center gap-4 p-8 text-center">
             <Network size={28} className="text-[#8fa3b8]" />
-            <p className="text-sm text-[#d8dee6] max-w-[44ch]">
+            <p className="text-[16px] text-[#d8dee6] max-w-[44ch]">
               {int(event.n_nodes)} nodes and {int(event.n_edges)} directed edges. The graph file is loaded and laid out on request.
             </p>
             <button type="button" onClick={() => setRequestedFor(event.i)}
-              className="inline-flex items-center gap-2 px-5 py-2.5 bg-[#f4efe6] text-[#15263a] text-sm font-medium hover:bg-white transition-colors">
+              className="inline-flex items-center gap-2 px-5 py-2.5 bg-[#f4efe6] text-[#15263a] text-[16px] font-medium hover:bg-white transition-colors">
               <Network size={15} /> Explore network
             </button>
           </div>
@@ -82,7 +82,7 @@ function Viewer({ event, G, go }) {
     <div className="grid grid-cols-1 xl:grid-cols-12 gap-5 items-start">
       <div className="xl:col-span-8 space-y-3">
         {/* Controls */}
-        <div className="flex flex-wrap items-center gap-2 text-xs font-mono">
+        <div className="flex flex-wrap items-center gap-2 text-[14px] font-mono">
           <button type="button" onClick={() => setHubsOn((h) => !h)} aria-pressed={hubsOn}
             className={`px-3 py-1.5 border ${hubsOn ? "bg-[#15263a] text-white border-[#15263a]" : "bg-white border-[#d8d3c5] text-[#3c3a37] hover:bg-[#ede9df]"}`}
             title="Highlight the ten nodes with the highest total degree">Top-10 by degree</button>
@@ -107,7 +107,7 @@ function Viewer({ event, G, go }) {
           hubs={hubs} edgeMode={edgeMode} showLabels={labels} onRelayout={G.relayout}
           banner={`Full graph · ${event.name}`} className="h-[62vh] min-h-[380px] max-h-[720px]" />
         <EncodingLegend label={event.label} />
-        <p className="text-[11px] font-mono text-[#757065]">
+        <p className="text-[13px] font-mono text-[#757065]">
           Loaded in {Math.round(G.tLoad)} ms · layout {G.layoutMs} ms ({G.iterations} ForceAtlas2 iterations, in a background worker) · self-loops ({event.n_self_loops}) are counted but not drawn.
         </p>
       </div>
@@ -116,9 +116,9 @@ function Viewer({ event, G, go }) {
         {go && (
           <div className="grid grid-cols-2 gap-2">
             <button type="button" onClick={() => go("sampling", event.i)} disabled={!event.budgets.length}
-              className="px-3 py-2 bg-white border border-[#15263a] text-[#15263a] text-xs hover:bg-[#f2eee5] disabled:opacity-40">Open in sampling lab</button>
+              className="px-3 py-2 bg-white border border-[#15263a] text-[#15263a] text-[14px] hover:bg-[#f2eee5] disabled:opacity-40">Open in sampling lab</button>
             <button type="button" onClick={() => go("compare", event.i)}
-              className="px-3 py-2 bg-white border border-[#15263a] text-[#15263a] text-xs hover:bg-[#f2eee5]">Compare with another event</button>
+              className="px-3 py-2 bg-white border border-[#15263a] text-[#15263a] text-[14px] hover:bg-[#f2eee5]">Compare with another event</button>
           </div>
         )}
       </aside>
@@ -140,7 +140,7 @@ export function NodeInspector({ G, v, onSelect, sampled = false }) {
   if (v == null)
     return (
       <div className="bg-white border border-[#dcd7ca] p-5 space-y-3">
-        <div className="font-mono text-[11px] font-bold uppercase tracking-wider text-[#15263a]">{sampled ? "This observation" : "This graph"}</div>
+        <div className="font-mono text-[13px] font-semibold text-[#15263a]">{sampled ? "This observation" : "This graph"}</div>
         <StatRows rows={[
           ["Nodes", int(nCount)],
           ["Directed edges", int(d.m)],
@@ -148,7 +148,7 @@ export function NodeInspector({ G, v, onSelect, sampled = false }) {
           ["Weak components", int(d.compSize.size)],
           ["Max in / out degree", `${Math.max(...d.indeg)} / ${Math.max(...d.outdeg)}`],
         ]} />
-        <p className="text-[13px] text-[#5e5a52] leading-relaxed">Select a node, or hover for a quick summary.</p>
+        <p className="text-[15px] text-[#5e5a52] leading-relaxed">Select a node, or hover for a quick summary.</p>
       </div>
     );
 
@@ -163,10 +163,10 @@ export function NodeInspector({ G, v, onSelect, sampled = false }) {
     <div className="flex flex-wrap gap-1 mt-1.5">
       {arr.slice(0, 12).map((u) => (
         <button key={u} type="button" onClick={() => onSelect(u)} title={`in ${d.indeg[u]} · out ${d.outdeg[u]}`}
-          className="px-1.5 py-0.5 border border-[#d8d3c5] bg-[#faf8f5] text-[11px] font-mono text-[#15263a] hover:border-[#23527c]">#{u}</button>
+          className="px-1.5 py-0.5 border border-[#d8d3c5] bg-[#faf8f5] text-[13px] font-mono text-[#15263a] hover:border-[#23527c]">#{u}</button>
       ))}
-      {arr.length > 12 && <span className="text-[11px] font-mono text-[#757065] self-center">+{arr.length - 12} more</span>}
-      {!arr.length && <span className="text-[11px] font-mono text-[#9a948a]">none</span>}
+      {arr.length > 12 && <span className="text-[13px] font-mono text-[#757065] self-center">+{arr.length - 12} more</span>}
+      {!arr.length && <span className="text-[13px] font-mono text-[#9a948a]">none</span>}
     </div>
   );
 
@@ -174,10 +174,10 @@ export function NodeInspector({ G, v, onSelect, sampled = false }) {
     <div className="bg-white border border-[#dcd7ca] border-t-2 border-t-[#15263a] p-5 space-y-4">
       <div className="flex items-start justify-between gap-2">
         <div>
-          <div className="font-mono text-[11px] uppercase tracking-wider text-[#757065]">Selected node</div>
+          <div className="font-mono text-[13px] text-[#757065]">Selected node</div>
           <div className="font-serif text-2xl text-[#15263a]">#{v}</div>
         </div>
-        <button type="button" onClick={() => onSelect(null)} className="text-xs font-mono text-[#23527c] underline underline-offset-4">Clear</button>
+        <button type="button" onClick={() => onSelect(null)} className="text-[14px] font-mono text-[#23527c] underline underline-offset-4">Clear</button>
       </div>
       <StatRows rows={[
         ["In-degree", int(d.indeg[v]), "Directed edges pointing to this node (a self-loop counts once)."],
@@ -191,11 +191,11 @@ export function NodeInspector({ G, v, onSelect, sampled = false }) {
         ["Degree rank", `${rank} of ${int(nCount)}`],
       ]} />
       <div>
-        <div className="text-[11px] font-mono uppercase tracking-wider" style={{ color: "#a0672a" }}>Incoming from ({ins.length})</div>
+        <div className="text-[13px] font-mono" style={{ color: "#a0672a" }}>Incoming from ({ins.length})</div>
         {chips(ins)}
       </div>
       <div>
-        <div className="text-[11px] font-mono uppercase tracking-wider text-[#15263a]">Outgoing to ({outs.length})</div>
+        <div className="text-[13px] font-mono text-[#15263a]">Outgoing to ({outs.length})</div>
         {chips(outs)}
       </div>
     </div>
@@ -206,7 +206,7 @@ export function EncodingLegend({ label, sampled = false }) {
   const dot = (c, r = 5) => <span className="inline-block rounded-full shrink-0" style={{ width: r * 2, height: r * 2, background: c }} />;
   const line = (c) => <span className="inline-block w-5 h-[2px] shrink-0" style={{ background: c }} />;
   return (
-    <div className="flex flex-wrap gap-x-5 gap-y-1.5 text-[11px] font-mono text-[#4a4740]">
+    <div className="flex flex-wrap gap-x-5 gap-y-1.5 text-[13px] font-mono text-[#4a4740]">
       <span className="inline-flex items-center gap-1.5">{dot(LABEL_COLOR[label])}{label === 1 ? "Campaign" : "Comparison"} event (dataset label)</span>
       <span className="inline-flex items-center gap-1.5">Size ∝ √degree</span>
       <span className="inline-flex items-center gap-1.5">{dot(CANVAS.selected)}<span className="-ml-0.5">selected</span></span>
