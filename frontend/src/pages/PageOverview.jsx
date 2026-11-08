@@ -112,7 +112,7 @@ export default function PageOverview({ data, setActiveTab }) {
           />
           <Finding
             i="2"
-            title="More features sharpen probabilities, not decisions"
+            title="More features improve probabilistic prediction, without a detectable gain in decisions"
             body={<>Adding every other feature changed log loss by {sg(C1.log_loss.delta_logloss)} {ci(C1.log_loss.delta_logloss_ci)} (Holm-adjusted
               p = {f3(C1.log_loss.p_holm)}), but balanced accuracy showed no detectable gain ({sg(C1.ba.delta_ba)} {ci(C1.ba.delta_ba_ci)}).</>}
             note={<>Sensitivity analysis: over {A.study1_20_partitions.n_partitions} repartitions of the same events the log-loss difference was {sg(C.C1.dLL)}{" "}

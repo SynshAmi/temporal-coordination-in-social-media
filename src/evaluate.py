@@ -2,7 +2,7 @@
 evaluate.py
 -----------
 Evaluation, bootstrap confidence intervals, visualization figures,
-and checkpoint reporting for LEN-Small robustness audit.
+and checkpoint reporting for the robustness audit of the LEN project archive.
 
 Figures generated:
   outputs/run_final/figures/fig1_size_overlap.png
@@ -248,7 +248,7 @@ def write_checkpoint_report(metrics: dict, manifest: pd.DataFrame, config: dict)
         "20-ordering exploratory analysis.",
         "",
         "## Cohort",
-        f"- **Dataset:** analysed LEN-Small archive (`small_encoder_final.tar`); {n_total} canonical event graphs ({n_camp} campaign, {n_comp} comparison).",
+        f"- **Dataset:** analysed LEN project archive (`small_encoder_final.tar`); {n_total} canonical event graphs ({n_camp} campaign, {n_comp} comparison).",
         "- **Unit of analysis:** the event engagement graph; all predictions and evaluations are event-level.",
         f"- **Campaign graphs:** median node count {float(manifest[manifest['label']==1]['n_nodes'].median()):.1f}, mean {float(manifest[manifest['label']==1]['n_nodes'].mean()):.1f}.",
         f"- **Comparison graphs:** median node count {float(manifest[manifest['label']==0]['n_nodes'].median()):.1f}, mean {float(manifest[manifest['label']==0]['n_nodes'].mean()):.1f}.",

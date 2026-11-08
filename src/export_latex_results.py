@@ -60,13 +60,14 @@ def ciu(a):
 
 
 def pv(p):
-    return "$<$0.001" if p < 0.001 else f3(p)
+    # \ensuremath keeps the bound valid in text and lets main.tex write $p\R...$ with math spacing
+    return r"\ensuremath{<0.001}" if p < 0.001 else f3(p)
 
 
 def pvh(p, m=3, nboot=1000):
     """Holm-adjusted p over m tests from a bootstrap with nboot resamples: a raw p of 0 means
     p < 1/nboot, so the adjusted bound is m/nboot, not 0."""
-    return f"$<${fixed(m / nboot, 3)}" if p == 0 else pv(p)
+    return rf"\ensuremath{{<{fixed(m / nboot, 3)}}}" if p == 0 else pv(p)
 
 
 def intc(v):

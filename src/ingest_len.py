@@ -1,7 +1,7 @@
 """
 ingest_len.py
 -------------
-Ingests the LEN-Small dataset from small_encoder_final.tar without extracting
+Ingests the LEN project archive from small_encoder_final.tar without extracting
 uncompressed JSON files to disk.
 
 Key operations:
@@ -165,7 +165,7 @@ def ingest(config: dict) -> None:
 
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description="Ingest LEN-Small dataset archive")
+    parser = argparse.ArgumentParser(description="Ingest the LEN project archive")
     parser.add_argument("--config", default="configs/final.yaml")
     args = parser.parse_args()
     cfg = load_config(args.config)

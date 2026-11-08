@@ -99,7 +99,7 @@ export default function PageResults({ data }) {
             </figcaption>
           </figure>
           <div className="mt-6 max-w-[80ch]">
-            <Note title="Probabilities, not decisions">
+            <Note title="Probabilistic gains, without a detectable gain in decisions">
               Adding every other feature to the counts (C1) changed log loss by {sg(LC.C1.log_loss.delta_logloss)} {ci(LC.C1.log_loss.delta_logloss_ci)}{" "}
               (Holm-adjusted p = {f3(LC.C1.log_loss.p_holm)}) and AUC by {sg(LC.C1.auc_ll_fit.delta_auc)} {ci(LC.C1.auc_ll_fit.delta_auc_ci)}, but balanced accuracy
               by only {sg(LC.C1.ba.delta_ba)} {ci(LC.C1.ba.delta_ba_ci)}. At the 0.5 threshold, the richer model classified {LC.C1.ba.mcnemar_a_right_b_wrong} events

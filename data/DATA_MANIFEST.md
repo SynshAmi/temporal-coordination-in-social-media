@@ -1,12 +1,12 @@
 # Data Manifest
 
-The raw LEN-Small archive is **not included in this repository** and must never be committed (it is excluded by `.gitignore`). Everything under `data/processed/` is regenerated from it by `run_pipeline.py`.
+The raw LEN project archive is **not included in this repository** and must never be committed (it is excluded by `.gitignore`). Everything under `data/processed/` is regenerated from it by `run_pipeline.py`.
 
 ## Source and Acquisition
 
 | Item | Value |
 |---|---|
-| Dataset | LEN-Small, from LEN: Large Engagement Networks |
+| Dataset | LEN project archive (the "Small Dataset" download), from LEN: Large Engagement Networks; distinct from the published LEN-Small subset (see Contents and Provenance Notes) |
 | Reference | A. A. Gopalakrishnan, J. Hossain, T. Elmas and A. E. Sarıyüce, "Large engagement networks for classifying coordinated campaigns and organic Twitter trends," ICWSM 2025, doi:10.1609/icwsm.v19i1.35839 |
 | Project page | https://erdemub.github.io/large-engagement-network/ |
 | Download page | https://erdemub.github.io/large-engagement-network/download_page.html ("Small Dataset") |
@@ -31,7 +31,7 @@ The digest must equal the SHA-256 above. After `run_pipeline.py` (stage 1), `tes
 
 ## Licence and Redistribution
 
-- The LEN paper (Introduction and Author statement) states: "The dataset is released under a CC-BY license, enabling free sharing and adaptation for research or development purpose." It does not give a licence version. As of 2026-11-03, the project page, download page and GitHub repositories (`erdemUB/large-engagement-network`, `erdemUB/LEN`) carry no separate licence file or terms, and none gives terms specific to LEN-Small.
+- The LEN paper (Introduction and Author statement) states: "The dataset is released under a CC-BY license, enabling free sharing and adaptation for research or development purpose." It does not give a licence version. As of 2026-11-03, the project page, download page and GitHub repositories (`erdemUB/large-engagement-network`, `erdemUB/LEN`) carry no separate licence file or terms, and none gives terms specific to the "Small Dataset" download or to LEN-Small.
 - **The raw archive is not included.** The repository contains no message texts, account identifiers, timestamps or embeddings. It does share the **graph structure** of the 103 analysed events (directed edges between per-graph node indices, with interaction counts), in `frontend/public/data/len/`, for the website's dataset explorer, under the LEN authors' CC-BY statement and with attribution. The LEN project is the source for the archive.
 - This repository does include derived event-level research outputs: event names (the archive's file names), per-event node and edge counts, file SHA-256 digests, per-event features and model predictions. They are adaptations of the LEN project archive, computed as described in the paper and shared with attribution to the LEN authors so the results can be checked and reproduced. They are not endorsed by the LEN authors, and they are excluded from the repository's MIT licence (see `NOTICE.md`).
 - To use the data itself, obtain it from the LEN project and cite the LEN paper above.

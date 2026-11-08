@@ -35,11 +35,11 @@ We analysed the **103-graph LEN project archive (52 campaign, 51 comparison)**, 
 ## Key findings
 
 - **Counts alone predict the label well.** Logistic regression on node and edge counts reaches balanced accuracy 0.884 and AUC 0.931 (primary). Comparison graphs are several times larger than campaign graphs (median 3,227 against 506 nodes).
-- **More features sharpen probabilities, not decisions.**
+- **More features improve probabilistic prediction, without a detectable gain in decisions.**
   - On the prespecified partition, adding degree, arrangement and content features changed log loss by −0.110 [−0.181, −0.039] (Holm-adjusted p = 0.009) and AUC by +0.039 [+0.009, +0.075] (primary).
   - Over 20 repartitions of the same events, the log-loss difference was −0.094 [−0.172, −0.013], in the same direction in 19 of 20 (sensitivity).
   - Balanced accuracy showed no detectable gain: +0.010 [−0.049, +0.076].
-- **Structure is conditional, not absent.**
+- **Structure showed an exploratory gain only alongside content.**
   - Added to counts alone, the structural features produced no detectable change: +0.002 [−0.048, +0.053].
   - Added alongside content, they changed log loss by −0.059 [−0.110, −0.011] (exploratory).
   - Without the two no-text graphs, the main log-loss difference kept its direction (−0.083 [−0.171, +0.008]), with an interval that includes zero.
