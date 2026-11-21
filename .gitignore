@@ -100,3 +100,6 @@ paper/bib.log
 .playwright-mcp/
 # The robustness-audit logs are part of its provenance record
 !research_audit/**/*.log
+
+# Turnitin similarity report (kept locally, never committed)
+wsma proj.pdf

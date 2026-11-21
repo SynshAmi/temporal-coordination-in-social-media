@@ -21,6 +21,12 @@
 \providecommand{\BIBdecl}{\relax}
 \BIBdecl
 
+\bibitem{elmas}
+T.~Elmas, R.~Overdorf, A.~F. {\"O}zkalay, and K.~Aberer, ``Ephemeral
+  astroturfing attacks: The case of fake {Twitter} trends,'' in \emph{Proc.
+  IEEE European Symp. Security and Privacy (EuroS\&P)}, 2021, pp. 403--422,
+  doi: 10.1109/EuroSP51992.2021.00035.
+
 \bibitem{len}
 A.~A. Gopalakrishnan, J.~Hossain, T.~Elmas, and A.~E. Sar{\i}y{\"u}ce, ``Large
   engagement networks for classifying coordinated campaigns and organic
@@ -56,6 +62,12 @@ C.~Coupette, J.~Wayland, E.~Simons, and B.~Rieck, ``No metric to rule them all:
   Int. Conf. Machine Learning (ICML)}, ser. PMLR, vol. 267, 2025, pp.
   11\,405--11\,434.
 
+\bibitem{morstatter}
+F.~Morstatter, J.~Pfeffer, H.~Liu, and K.~M. Carley, ``Is the sample good
+  enough? {Comparing} data from {Twitter's} {Streaming API} with {Twitter's}
+  {Firehose},'' in \emph{Proc. Int. AAAI Conf. Web and Social Media (ICWSM)},
+  vol.~7, no.~1, 2013, pp. 400--408, doi: 10.1609/icwsm.v7i1.14401.
+
 \bibitem{leskovec}
 J.~Leskovec and C.~Faloutsos, ``Sampling from large graphs,'' in \emph{Proc.
   ACM SIGKDD Int. Conf. Knowledge Discovery and Data Mining}, 2006, pp.
@@ -68,22 +80,46 @@ J.~Leskovec and C.~Faloutsos, ``Sampling from large graphs,'' in \emph{Proc.
   \url{https://erdemub.github.io/large-engagement-network/}
 \BIBentrySTDinterwordspacing
 
+\bibitem{pacheco}
+D.~Pacheco, P.-M. Hui, C.~Torres-Lugo, B.~T. Truong, A.~Flammini, and
+  F.~Menczer, ``Uncovering coordinated networks on social media: Methods and
+  case studies,'' in \emph{Proc. Int. AAAI Conf. Web and Social Media (ICWSM)},
+  vol.~15, 2021, pp. 455--466, doi: 10.1609/icwsm.v15i1.18075.
+
+\bibitem{varol}
+O.~Varol, E.~Ferrara, F.~Menczer, and A.~Flammini, ``Early detection of
+  promoted campaigns on social media,'' \emph{EPJ Data Sci.}, vol.~6, no.~1,
+  2017, art. no. 13, doi: 10.1140/epjds/s13688-017-0111-y.
+
 \bibitem{maslov}
 S.~Maslov and K.~Sneppen, ``Specificity and stability in topology of protein
-  networks,'' \emph{Science}, vol. 296, no. 5569, pp. 910--913, 2002.
+  networks,'' \emph{Science}, vol. 296, no. 5569, pp. 910--913, 2002, doi:
+  10.1126/science.1065103.
 
 \bibitem{varoquaux}
 G.~Varoquaux, ``Cross-validation failure: Small sample sizes lead to large
-  error bars,'' \emph{NeuroImage}, vol. 180, pp. 68--77, 2018.
+  error bars,'' \emph{NeuroImage}, vol. 180, pp. 68--77, 2018, doi:
+  10.1016/j.neuroimage.2017.06.061.
 
 \bibitem{nx}
 A.~A. Hagberg, D.~A. Schult, and P.~J. Swart, ``Exploring network structure,
   dynamics, and function using {NetworkX},'' in \emph{Proc. 7th Python in
-  Science Conf. (SciPy)}, 2008, pp. 11--15.
+  Science Conf. (SciPy)}, 2008, pp. 11--15, doi: 10.25080/TCWV9851.
 
 \bibitem{sklearn}
 F.~Pedregosa \emph{et~al.}, ``Scikit-learn: Machine learning in {Python},''
   \emph{J. Mach. Learn. Res.}, vol.~12, pp. 2825--2830, 2011.
+
+\bibitem{brodersen}
+K.~H. Brodersen, C.~S. Ong, K.~E. Stephan, and J.~M. Buhmann, ``The balanced
+  accuracy and its posterior distribution,'' in \emph{Proc. 20th Int. Conf.
+  Pattern Recognition (ICPR)}, 2010, pp. 3121--3124, doi:
+  10.1109/ICPR.2010.764.
+
+\bibitem{gneiting}
+T.~Gneiting and A.~E. Raftery, ``Strictly proper scoring rules, prediction, and
+  estimation,'' \emph{J. Amer. Statist. Assoc.}, vol. 102, no. 477, pp.
+  359--378, 2007, doi: 10.1198/016214506000001437.
 
 \bibitem{efron}
 B.~Efron and R.~J. Tibshirani, \emph{An Introduction to the Bootstrap}.\hskip
@@ -92,5 +128,10 @@ B.~Efron and R.~J. Tibshirani, \emph{An Introduction to the Bootstrap}.\hskip
 \bibitem{holm}
 S.~Holm, ``A simple sequentially rejective multiple test procedure,''
   \emph{Scandinavian J. Statistics}, vol.~6, no.~2, pp. 65--70, 1979.
+
+\bibitem{ahmed}
+N.~K. Ahmed, J.~Neville, and R.~Kompella, ``Network sampling: From static to
+  streaming graphs,'' \emph{ACM Trans. Knowl. Discov. Data}, vol.~8, no.~2, pp.
+  1--56, 2014, doi: 10.1145/2601438.
 
 \end{thebibliography}

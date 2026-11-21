@@ -1,16 +1,23 @@
 [
+  "T. Elmas, R. Overdorf, A. F. \\\"Ozkalay, and K. Aberer, “Ephemeral astroturfing attacks: The case of fake Twitter trends,” in *Proc. IEEE European Symp. Security and Privacy (EuroS&P)*, 2021, pp. 403–422, doi: 10.1109/EuroSP51992.2021.00035.",
   "A. A. Gopalakrishnan, J. Hossain, T. Elmas, and A. E. Sarıyüce, “Large engagement networks for classifying coordinated campaigns and organic Twitter trends,” in *Proc. Int. AAAI Conf. Web and Social Media (ICWSM)*, vol. 19, no. 1, 2025, pp. 688–702, doi: 10.1609/icwsm.v19i1.35839.",
   "A. A. Gopalakrishnan, J. Hossain, T. Elmas, and A. E. Sarıyüce, “Density-aware walks for coordinated campaign detection,” in *Machine Learning and Knowledge Discovery in Databases. Applied Data Science Track and Demo Track (ECML PKDD), LNCS*. Springer, 2025, pp. 283–298, doi: 10.1007/978-3-032-06129-4_17.",
   "A. Z. Jacobs and H. Wallach, “Measurement and fairness,” in *Proc. ACM Conf. Fairness, Accountability, and Transparency (FAccT)*, 2021, pp. 375–385, doi: 10.1145/3442188.3445901.",
   "Z. Li, Y. Cao, K. Shuai, Y. Miao, and K. Hwang, “Rethinking the effectiveness of graph classification datasets in benchmarks for assessing GNNs,” in *Proc. Int. Joint Conf. Artificial Intelligence (IJCAI)*, 2024, pp. 2144–2152, doi: 10.24963/ijcai.2024/237.",
   "F. Errica, M. Podda, D. Bacciu, and A. Micheli, “A fair comparison of graph neural networks for graph classification,” in *Proc. Int. Conf. Learning Representations (ICLR)*, 2020, arXiv:1912.09893.",
   "C. Coupette, J. Wayland, E. Simons, and B. Rieck, “No metric to rule them all: Toward principled evaluations of graph-learning datasets,” in *Proc. Int. Conf. Machine Learning (ICML)*, ser. PMLR, vol. 267, 2025, pp. 11 405–11 434.",
+  "F. Morstatter, J. Pfeffer, H. Liu, and K. M. Carley, “Is the sample good enough? Comparing data from Twitter's Streaming API with Twitter's Firehose,” in *Proc. Int. AAAI Conf. Web and Social Media (ICWSM)*, vol. 7, no. 1, 2013, pp. 400–408, doi: 10.1609/icwsm.v7i1.14401.",
   "J. Leskovec and C. Faloutsos, “Sampling from large graphs,” in *Proc. ACM SIGKDD Int. Conf. Knowledge Discovery and Data Mining*, 2006, pp. 631–636, doi: 10.1145/1150402.1150479.",
   "“LEN: Large Engagement Networks,” Dataset repository, accessed Nov. 1, 2026. [Online]. Available: https://erdemub.github.io/large-engagement-network/",
-  "S. Maslov and K. Sneppen, “Specificity and stability in topology of protein networks,” *Science*, vol. 296, no. 5569, pp. 910–913, 2002.",
-  "G. Varoquaux, “Cross-validation failure: Small sample sizes lead to large error bars,” *NeuroImage*, vol. 180, pp. 68–77, 2018.",
-  "A. A. Hagberg, D. A. Schult, and P. J. Swart, “Exploring network structure, dynamics, and function using NetworkX,” in *Proc. 7th Python in Science Conf. (SciPy)*, 2008, pp. 11–15.",
+  "D. Pacheco, P.-M. Hui, C. Torres-Lugo, B. T. Truong, A. Flammini, and F. Menczer, “Uncovering coordinated networks on social media: Methods and case studies,” in *Proc. Int. AAAI Conf. Web and Social Media (ICWSM)*, vol. 15, 2021, pp. 455–466, doi: 10.1609/icwsm.v15i1.18075.",
+  "O. Varol, E. Ferrara, F. Menczer, and A. Flammini, “Early detection of promoted campaigns on social media,” *EPJ Data Sci.*, vol. 6, no. 1, 2017, art. no. 13, doi: 10.1140/epjds/s13688-017-0111-y.",
+  "S. Maslov and K. Sneppen, “Specificity and stability in topology of protein networks,” *Science*, vol. 296, no. 5569, pp. 910–913, 2002, doi: 10.1126/science.1065103.",
+  "G. Varoquaux, “Cross-validation failure: Small sample sizes lead to large error bars,” *NeuroImage*, vol. 180, pp. 68–77, 2018, doi: 10.1016/j.neuroimage.2017.06.061.",
+  "A. A. Hagberg, D. A. Schult, and P. J. Swart, “Exploring network structure, dynamics, and function using NetworkX,” in *Proc. 7th Python in Science Conf. (SciPy)*, 2008, pp. 11–15, doi: 10.25080/TCWV9851.",
   "F. Pedregosa *et al.*, “Scikit-learn: Machine learning in Python,” *J. Mach. Learn. Res.*, vol. 12, pp. 2825–2830, 2011.",
+  "K. H. Brodersen, C. S. Ong, K. E. Stephan, and J. M. Buhmann, “The balanced accuracy and its posterior distribution,” in *Proc. 20th Int. Conf. Pattern Recognition (ICPR)*, 2010, pp. 3121–3124, doi: 10.1109/ICPR.2010.764.",
+  "T. Gneiting and A. E. Raftery, “Strictly proper scoring rules, prediction, and estimation,” *J. Amer. Statist. Assoc.*, vol. 102, no. 477, pp. 359–378, 2007, doi: 10.1198/016214506000001437.",
   "B. Efron and R. J. Tibshirani, *An Introduction to the Bootstrap*. New York, NY, USA: Chapman & Hall, 1993.",
-  "S. Holm, “A simple sequentially rejective multiple test procedure,” *Scandinavian J. Statistics*, vol. 6, no. 2, pp. 65–70, 1979."
+  "S. Holm, “A simple sequentially rejective multiple test procedure,” *Scandinavian J. Statistics*, vol. 6, no. 2, pp. 65–70, 1979.",
+  "N. K. Ahmed, J. Neville, and R. Kompella, “Network sampling: From static to streaming graphs,” *ACM Trans. Knowl. Discov. Data*, vol. 8, no. 2, pp. 1–56, 2014, doi: 10.1145/2601438."
 ]
